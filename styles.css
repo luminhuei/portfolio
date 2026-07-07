@@ -758,3 +758,11 @@ html[lang="zh-Hant"] em {
   font-style: normal;
   font-family: "Iansui", "LXGW WenKai TC", "Noto Serif TC", serif;
 }
+/* display-size emphasis: real pen-on-paper handwriting (ChenYuluoyan) */
+html[lang="zh-Hant"] .hero-title em,
+html[lang="zh-Hant"] .case-title em,
+html[lang="zh-Hant"] .case-lead em,
+html[lang="zh-Hant"] .step-title em,
+html[lang="zh-Hant"] .footer-title em {
+  font-family: "辰宇落雁體 Thin", "Chenyuluoyan", "Iansui", "Noto Serif TC", serif;
+}
