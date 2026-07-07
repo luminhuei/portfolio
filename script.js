@@ -572,3 +572,39 @@ if (caseTitle) {
     caseTitle.appendChild(document.createTextNode(" "));
   });
 }
+
+/* ---------- Work index: floating hover preview ---------- */
+function initWorkIndex() {
+  const peek = document.getElementById("tocPeek");
+  if (!peek) return;
+  if (window.matchMedia("(hover: none)").matches) return;
+
+  const img = peek.querySelector(".toc-peek-img");
+  const note = peek.querySelector(".toc-peek-note");
+  const tags = peek.querySelector(".toc-peek-tags");
+
+  const place = (e) => {
+    const w = peek.offsetWidth;
+    const h = peek.offsetHeight;
+    let x = e.clientX + 28;
+    let y = e.clientY - h / 2;
+    if (x + w > window.innerWidth - 16) x = e.clientX - w - 28;
+    y = Math.max(16, Math.min(window.innerHeight - h - 16, y));
+    peek.style.transform = `translate(${x}px, ${y}px)`;
+  };
+
+  document.querySelectorAll(".toc-row").forEach((row) => {
+    row.addEventListener("mouseenter", (e) => {
+      img.style.background = row.style.getPropertyValue("--lg") || "";
+      note.textContent = row.dataset.note || "";
+      tags.textContent = row.dataset.tags || "";
+      peek.hidden = false;
+      place(e);
+    });
+    row.addEventListener("mousemove", place);
+    row.addEventListener("mouseleave", () => {
+      peek.hidden = true;
+    });
+  });
+}
+initWorkIndex();
