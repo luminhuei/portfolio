@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytics Dashboard — Min Huei Lu</title>
+  <meta name="description" content="A business data hub for restaurant owners — the daily window for operators of 700+ active stores." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="case.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="nav-logo" href="index.html" aria-label="Home">ML</a>
+    <nav class="nav">
+      <a class="nav-link" href="index.html#work">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></svg>
+        Work
+      </a>
+      <a class="nav-link" href="index.html#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9 14c1 1.4 5 1.4 6 0"/><path d="M9.5 9.8h.01M14.5 9.8h.01"/></svg>
+        About
+      </a>
+      <a class="nav-link" href="https://docs.google.com/document/d/1N3t4DdJfruSLgAqbMZaBIx6HJFr7ifMk/edit" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V5a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 3.5V8h4"/></svg>
+        CV
+      </a>
+    </nav>
+    <a class="nav-mail" href="mailto:luminhuei@gmail.com" aria-label="Email me">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4.5 7.5l7.5 5.5 7.5-5.5"/></svg>
+    </a>
+  </div>
+
+  <header class="case-hero">
+    <h1 class="case-title">Turning numbers into answers.</h1>
+  </header>
+
+  <main class="case">
+
+    <!-- Overview -->
+    <section class="case-intro">
+      <div class="case-intro-main">
+        <p class="case-kicker reveal">Overview</p>
+        <p class="case-lead reveal">The daily business window for operators of <em>700+ active stores</em>.</p>
+        <div class="case-intro-body reveal">
+          <p>The Analytics Dashboard (Report Center) is a business data hub for restaurant owners &mdash; letting operators with no data background understand today&rsquo;s business in seconds, trace every dollar when they need to, and trust every number on the screen.</p>
+          <p><strong>Constraints:</strong> the specification and accounting definitions were owned by the PM and benchmarked to industry standards &mdash; not to be deviated from. One web app had to serve both desktop and mobile reading postures.</p>
+          <p><strong>Key trade&#8209;off:</strong> we invested more engineering resources and polish time in UI readability than a typical reporting build &mdash; trading higher development cost for reports owners can read simply and clearly.</p>
+        </div>
+      </div>
+
+      <dl class="case-meta reveal">
+        <div><dt>Company</dt><dd>Peblla</dd></div>
+        <div><dt>Platform</dt><dd>Responsive Web App</dd></div>
+        <div><dt>Year</dt><dd>2024</dd></div>
+        <div><dt>Team</dt><dd>Product Manager<br />Engineering<br />Data Team</dd></div>
+        <div><dt>Role</dt><dd>UI Design<br />Design System<br />Responsive Design</dd></div>
+      </dl>
+    </section>
+
+    <!-- Problem / Approach / Results -->
+    <section class="psr">
+      <div class="psr-card reveal">
+        <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5"/><path d="M12 15.8h.01"/></svg>
+        <h2>Problem</h2>
+        <ul>
+          <li>The answer to &ldquo;how is my business?&rdquo; was <strong>scattered</strong> across POS, delivery platforms, bank statements, and separate reports.</li>
+          <li>Owners aren&rsquo;t analysts &mdash; their window for data is <strong>five minutes before opening</strong>.</li>
+          <li>One unexplained mismatch, and an owner <strong>never trusts the dashboard again</strong>.</li>
+        </ul>
+      </div>
+      <div class="psr-card reveal">
+        <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15 9l-2 4.5L8.5 15l2-4.5z"/></svg>
+        <h2>Approach</h2>
+        <ul>
+          <li><strong>Numbers into answers</strong>: comparisons on by default, judgment at a glance.</li>
+          <li><strong>Data honesty as interface language</strong> &mdash; disclose, reconcile, never pretend.</li>
+          <li>One web app, <strong>two reading postures</strong> &mdash; carried by a reporting design system.</li>
+        </ul>
+      </div>
+      <div class="psr-card reveal">
+        <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 17l5.5-5.5 4 4L20.5 7"/><path d="M14.5 7h6v6"/></svg>
+        <h2>Results</h2>
+        <ul>
+          <li>The daily window for <strong>700+ active stores</strong> (724 weekly active, Apr 2026).</li>
+          <li>Serving a platform doing <strong>~$27.98M monthly GMV</strong> across 920K orders.</li>
+          <li>Confusion absorbed by the interface &mdash; <strong>fewer &ldquo;numbers don&rsquo;t match&rdquo; calls</strong>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Final screens -->
+    <section class="case-section" id="screens">
+      <p class="case-kicker reveal">Final screens</p>
+      <div class="gallery">
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(160deg, #d9f0ff, #b8ebff)"><span>Sales Overview</span></div>
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(190deg, #e2f4ff, #a3d9ff)"><span>Sales Summary &amp; date picker</span></div>
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(150deg, #ccecff, #e6f7ff)"><span>Transaction Details</span></div>
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(170deg, #d4eeff, #c2e6ff)"><span>Mobile card stream</span></div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="case-section" id="process">
+      <p class="case-kicker reveal">Process</p>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">01</p>
+        <p class="step-label reveal">The scattered answer</p>
+        <h2 class="step-title reveal">One question, <em>four places to look</em>.</h2>
+        <div class="step-body reveal">
+          <p>Restaurant owners answer the same question every day: how is my business actually doing? But the answer is scattered everywhere &mdash; sales data lives in the POS, delivery data on third-party platforms, deposits on bank statements, tips and refunds in yet other reports. Nobody has time to piece these fragments into a conclusion they can act on.</p>
+          <p>The core question: <strong>how do you let an owner with no data background understand today&rsquo;s business in seconds, trace every dollar when needed &mdash; and trust every number on the screen?</strong></p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">02</p>
+        <p class="step-label reveal">Who it&rsquo;s for</p>
+        <h2 class="step-title reveal">They don&rsquo;t want data. <em>They want answers</em>.</h2>
+        <div class="step-body reveal">
+          <p>The primary users are restaurant owners and franchisees &mdash; not data analysts, with zero report training. Their days are consumed by running the store; the time they have for data might be five minutes before opening, or a gap after the rush.</p>
+          <p>What they want isn&rsquo;t data &mdash; it&rsquo;s answers: <strong>Is today better than yesterday? Did all the money come in? Which channel is growing?</strong></p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">03</p>
+        <p class="step-label reveal">The spec</p>
+        <h2 class="step-title reveal">A mature category &mdash; where <em>presentation decides</em>.</h2>
+        <div class="step-body reveal">
+          <p>Reporting follows well-established standards in restaurant SaaS. A dedicated PM owned the information logic &mdash; benchmarked against Toast&rsquo;s Settlement Time business-day definition, 3rd Party Excl./Incl. accounting toggles, and per-transaction fee breakdown granularity &mdash; giving design a clear, complete specification.</p>
+          <p>My work started from that spec: turning industry-standard information logic into an interface an owner can read at a glance. With the architecture fixed, <strong>the UI layer is what determines whether the product succeeds</strong> &mdash; the same data, presented differently, decides whether an owner &ldquo;gets it in seconds&rdquo; or drowns in it.</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">04</p>
+        <p class="step-label reveal">Decision one</p>
+        <h2 class="step-title reveal">Turning numbers <em>into answers</em>.</h2>
+        <div class="step-body reveal">
+          <p>An owner&rsquo;s real question is never &ldquo;how much did we sell today&rdquo; &mdash; it&rsquo;s &ldquo;is this number good?&rdquo; Is $21,862 something to celebrate or worry about? Without a reference point, a number is just a number.</p>
+          <p>So Sales Overview&rsquo;s core metrics default to a comparison against yesterday, with green-up / red-down percentages sitting right beside the big numbers &mdash; no mental math, no remembering yesterday&rsquo;s figures. Net Sales, Payments, and Refunds anchor the page as three top cards, while breakdowns by payment method, channel, and dining type fold into tabs inside each card: <strong>visual weight strictly follows how often owners ask the question, not how complex the data is</strong>.</p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(160deg, #d9f0ff, #e6f7ff)"><span>Sales Overview &mdash; three cards, judgment at a glance</span></div>
+          <figcaption>Three anchor cards with period-over-period indicators &mdash; the tone of the day, set in one look</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">05</p>
+        <p class="step-label reveal">Decision two</p>
+        <h2 class="step-title reveal">Data honesty as <em>interface language</em>.</h2>
+        <div class="step-body reveal">
+          <p>A dashboard&rsquo;s biggest risk isn&rsquo;t looking bad &mdash; it&rsquo;s an owner discovering the numbers don&rsquo;t reconcile, and never trusting it again. The spec includes many mechanisms protecting reconciliation accuracy; the UI&rsquo;s job is to make them visible, understandable, and unthreatening:</p>
+          <ul>
+            <li><strong>Configurable Settlement Time:</strong> a restaurant&rsquo;s &ldquo;day&rdquo; isn&rsquo;t a calendar day &mdash; stores closing after midnight settle at 5 AM, and reports count by business day</li>
+            <li><strong>Honest disclosure on third-party data:</strong> fees and refunds can cause mismatches &mdash; the interface says so directly and offers a 3rd Party Excl./Incl. toggle, instead of pretending the data is perfect</li>
+            <li><strong>Sales vs Payment reconciliation &amp; Unclosed Orders:</strong> the gap between billed and collected sits right on the surface, making differences explainable</li>
+            <li><strong>Data sync status:</strong> when data isn&rsquo;t real-time, the interface states the cutoff clearly</li>
+          </ul>
+          <p>These notices consistently use <strong>informational yellow rather than error-level red</strong> &mdash; informing without alarming is the discipline of designing for trust.</p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(190deg, #e2f4ff, #ccecff)"><span>Honesty UI &mdash; disclosure banner &amp; reconciliation</span></div>
+          <figcaption>Yellow informs, red alarms: disclosure banners, the Excl./Incl. toggle, and reconciliation in the open</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">06</p>
+        <p class="step-label reveal">Decision three</p>
+        <h2 class="step-title reveal">One web app, <em>two reading postures</em>.</h2>
+        <div class="step-body reveal">
+          <p>Desktop and mobile browsers log into the same system, but the two devices serve entirely different postures. Desktop carries &ldquo;sitting down to reconcile&rdquo;: full reports, line-item tables, download and export. Mobile re-composes everything into a vertical card stream for &ldquo;checking the pulse&rdquo; &mdash; an owner pulls out their phone in any spare moment and knows how the business is doing within 30 seconds.</p>
+          <p>Same data: <strong>desktop reads it in tables, mobile scans it in cards.</strong></p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(150deg, #d4eeff, #e6f7ff)"><span>Desktop tables vs. mobile card stream</span></div>
+          <figcaption>The same numbers in two postures: reconcile at a desk, check the pulse from a pocket</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">07</p>
+        <p class="step-label reveal">Design system</p>
+        <h2 class="step-title reveal">One language for the <em>whole reporting family</em>.</h2>
+        <div class="step-body reveal">
+          <p>Report Center isn&rsquo;t one page &mdash; it&rsquo;s a family of reports living on two breakpoints. My most important output was the design system built to carry it:</p>
+          <ul>
+            <li><strong>Metric card component:</strong> large value + period-over-period indicator, with globally unified semantic colors (green up, red down) &mdash; new metrics plug straight in</li>
+            <li><strong>Chart and table standards:</strong> unified styles and interactions across bar charts, trend charts, and line-item tables</li>
+            <li><strong>Tiered notice banners:</strong> disclaimers and sync status componentized, expressed uniformly across pages</li>
+            <li><strong>Responsive re-composition rules:</strong> each component&rsquo;s desktop-to-mobile reflow is componentized &mdash; new report pages support both devices by default</li>
+          </ul>
+          <p>Adding a new report page means assembling components, not designing from scratch. The spec guarantees every page is correct; the design system guarantees every page speaks the same language &mdash; <strong>learn to read one report, and you&rsquo;ve learned to read them all.</strong></p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Solution -->
+    <section class="case-section" id="solution">
+      <p class="case-kicker reveal">Solution</p>
+      <h2 class="step-title reveal">Four modules, <em>by depth of question</em>.</h2>
+
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">01</span> Sales Overview &mdash; how is business today</h3>
+        <p>Net Sales, Payments, and Refunds as three core cards with period-over-period indicators set the tone at a glance; breakdowns by payment method, channel, and dining type expand on demand; restaurant-specific line items &mdash; taxes, tips, auto gratuity, voided amounts &mdash; are all accounted for.</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">02</span> Sales Summary &mdash; how is the trend</h3>
+        <p>Sales distribution by day, day of week, and hour, paired with Today / Yesterday / Last Week / Last Month / Custom presets &mdash; letting owners see the rhythm of the business: which day peaks, which hours run hottest.</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">03</span> Transaction Details &mdash; where every dollar went</h3>
+        <p>Every transaction&rsquo;s amount, tip, auto gratuity, transaction fee, additional fee, and net total laid out transparently, with Payment / Refund / Adjust Fee categorization and download support &mdash; owners reconcile without digging through bank statements.</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">04</span> Mobile &mdash; the pulse in your pocket</h3>
+        <p>Sales and upsell trends, third-party vs direct channel comparison, top-selling items, channel distribution, member activity, Google / Yelp review sentiment, and off-premise geo distribution &mdash; all designed for &ldquo;pull out your phone, understand in 30 seconds.&rdquo;</p>
+      </div>
+      <figure class="reveal">
+        <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(165deg, #c2e6ff, #e2f4ff)"><span>Mobile long-scroll &mdash; the full pulse view</span></div>
+        <figcaption>The mobile card stream: trends, top sellers, channels, reviews &mdash; scannable end to end</figcaption>
+      </figure>
+    </section>
+
+    <!-- Impact -->
+    <section class="case-section" id="impact">
+      <p class="case-kicker reveal">Impact</p>
+      <h2 class="step-title reveal">The value of a report is <em>quiet</em>.</h2>
+      <div class="step-body reveal">
+        <p>Report Center is the business window Peblla merchants open every day, serving the operators of over 700 active stores &mdash; on a platform processing roughly $27.98M in monthly GMV across 920K orders.</p>
+        <p>A reporting product&rsquo;s success shows in two quiet things: whether owners build the habit of checking daily, and whether calls to their Account Manager asking &ldquo;the numbers don&rsquo;t match&rdquo; decline. A report that doesn&rsquo;t read as a judgment turns every confusion into a phone call; one with clear hierarchy and consistent semantics <strong>absorbs those calls into the interface</strong> &mdash; report design quality shows up directly in the cost of human support.</p>
+      </div>
+      <div class="stats">
+        <div class="stat reveal">
+          <p class="stat-value">724</p>
+          <p class="stat-title">Weekly active stores</p>
+          <p class="stat-sub">Operators opening the dashboard as their daily window (Apr 2026)</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-value">$27.9M</p>
+          <p class="stat-title">Monthly platform GMV</p>
+          <p class="stat-sub">Across 920K orders (Feb 2026) &mdash; every dollar traceable in the reports</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-value">30 sec</p>
+          <p class="stat-title">Phone out to pulse taken</p>
+          <p class="stat-sub">The mobile promise: understand the business in any spare moment</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="case-section" id="reflection">
+      <p class="case-kicker reveal">Reflection</p>
+      <p class="case-lead reveal">In a mature category, the designer&rsquo;s value is the <em>precision of presentation</em>.</p>
+      <div class="step-body reveal">
+        <p>How do you measure the success of a report? Every store looks at its reports &mdash; &ldquo;being used&rdquo; is guaranteed, but it isn&rsquo;t the same as &ldquo;well designed.&rdquo;</p>
+        <p>If I did this again, I&rsquo;d instrument two metrics from day one: the frequency of Account Manager inquiries, and whether owners check in proactively every day. Where the specification follows industry consensus, a UI designer&rsquo;s value isn&rsquo;t inventing new logic &mdash; it&rsquo;s the precision of presentation.</p>
+      </div>
+    </section>
+
+    <!-- Next -->
+    <a class="next-project reveal" href="index.html#work">
+      <div>
+        <p class="next-label">Next</p>
+        <p class="next-title">All projects <span aria-hidden="true">&rarr;</span></p>
+      </div>
+      <span class="next-thumb" style="--lg: linear-gradient(135deg, #5adba5, #d9f99d)"></span>
+    </a>
+
+  </main>
+
+  <footer id="contact" class="footer">
+    <div class="eyes" aria-hidden="true">
+      <span class="eye"><span class="pupil"></span></span>
+      <span class="eye"><span class="pupil"></span></span>
+    </div>
+
+    <div class="footer-connect">
+      <h2 class="footer-title">Let&rsquo;s connect.</h2>
+      <p class="footer-sub">I&rsquo;m always down for a chat.</p>
+      <div class="footer-actions">
+        <a href="mailto:luminhuei@gmail.com" aria-label="Email me">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4.5 7.5l7.5 5.5 7.5-5.5"/></svg>
+        </a>
+        <a href="https://docs.google.com/document/d/1N3t4DdJfruSLgAqbMZaBIx6HJFr7ifMk/edit" target="_blank" rel="noopener" aria-label="CV">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V5a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 3.5V8h4"/><path d="M9 12h6M9 15.5h6"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/minhueilu/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.06V19.5h2.88zM5.5 7.19a1.69 1.69 0 1 0 0-3.38 1.69 1.69 0 0 0 0 3.38zM10.06 8.5H12.8v1.5h.04c.38-.72 1.31-1.48 2.7-1.48 2.89 0 3.42 1.9 3.42 4.38v6.6h-2.87v-5.85c0-1.4-.03-3.19-1.95-3.19-1.95 0-2.25 1.52-2.25 3.09v5.95h-2.87z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <a class="marquee" href="mailto:luminhuei@gmail.com" aria-label="Click to mail me">
+      <div class="marquee-track">
+        <span>Click to mail me&nbsp;&mdash;&nbsp;Click to mail me&nbsp;&mdash;&nbsp;Click to mail me&nbsp;&mdash;&nbsp;Click to mail me&nbsp;&mdash;&nbsp;</span>
+        <span aria-hidden="true">Click to mail me&nbsp;&mdash;&nbsp;Click to mail me&nbsp;&mdash;&nbsp;Click to mail me&nbsp;&mdash;&nbsp;Click to mail me&nbsp;&mdash;&nbsp;</span>
+      </div>
+    </a>
+
+    <p class="footer-name" aria-hidden="true">Min Huei Lu</p>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Min Huei Lu</span>
+      <span>Built with code &amp; love</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
