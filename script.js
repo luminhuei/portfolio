@@ -290,8 +290,11 @@ const PILLS = [
 })();
 
 // ---------------------------------------------------------------------------
-// Footer eyes: pupils follow the mouse around the screen.
-// Max travel = the slack between pupil and eye white (±6px x, ±10px y).
+// Footer eyes: pupils follow the mouse, same algorithm as the original site —
+// the pupil sits on a circle of radius min(15, distance-to-mouse) around the
+// eye center, pointed at the mouse. No easing: eyes dart instantly, which is
+// what real eyes do. Radius 15 lets the pupil poke 9px past the white
+// horizontally (4.5px vertically) and merge with the dark footer.
 // ---------------------------------------------------------------------------
 (function initEyes() {
   const eyes = [...document.querySelectorAll(".eye")];
@@ -311,26 +314,17 @@ const PILLS = [
   const state = eyes.map((eye) => ({
     eye,
     pupil: eye.querySelector(".pupil"),
-    x: 0,
-    y: 0,
   }));
 
-  // matches the original: the pupil may poke ~3.5px past the eye white
-  // horizontally, visually merging with the dark footer behind it
-  const MAX_X = 9.5;
-  const MAX_Y = 10;
+  const RADIUS = 15;
   const update = () => {
     for (const s of state) {
       const r = s.eye.getBoundingClientRect();
       const dx = mx - (r.left + r.width / 2);
       const dy = my - (r.top + r.height / 2);
-      const d = Math.hypot(dx, dy) || 1;
-      const reach = Math.min(1, d / 160); // nearby mouse moves the pupil less
-      const tx = (dx / d) * MAX_X * reach;
-      const ty = (dy / d) * MAX_Y * reach;
-      s.x += (tx - s.x) * 0.14;
-      s.y += (ty - s.y) * 0.14;
-      s.pupil.style.transform = `translate(${s.x.toFixed(2)}px, ${s.y.toFixed(2)}px)`;
+      const dist = Math.min(RADIUS, Math.hypot(dx, dy));
+      const ang = Math.atan2(dy, dx);
+      s.pupil.style.transform = `translate(${(Math.cos(ang) * dist).toFixed(2)}px, ${(Math.sin(ang) * dist).toFixed(2)}px)`;
     }
   };
   window.__eyes = { update };

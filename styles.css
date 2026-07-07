@@ -430,9 +430,9 @@ html, body { overflow-x: clip; }
   position: absolute;
   left: 50%;
   top: 24px;
-  width: 5px;
-  height: 5px;
-  margin-left: -2.5px;
+  width: 4.5px;
+  height: 4.5px;
+  margin-left: -2.25px;
   background: #fffefd;
   border-radius: 50%;
 }
