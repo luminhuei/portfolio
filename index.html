@@ -49,18 +49,14 @@
     </p>
 
     <div class="minagpt reveal">
-      <div class="chat-panel" hidden>
-        <div class="chat-log"></div>
-      </div>
-      <div class="chat-chips">
-        <button class="chip" type="button">What has Mina shipped?</button>
-        <button class="chip" type="button">What makes her different?</button>
-        <button class="chip" type="button">Tell me about Mobile POS</button>
-      </div>
       <form class="chat-bar">
         <input class="chat-input" type="text" placeholder="Ask MinaGPT about my work&hellip;" aria-label="Ask MinaGPT about Mina's work" maxlength="200" />
         <button class="chat-send" type="submit" aria-label="Send">&uarr;</button>
       </form>
+      <div class="chat-chips">
+        <button class="chip" type="button">What has Mina shipped?</button>
+        <button class="chip" type="button">What makes her different?</button>
+      </div>
     </div>
 
     <a class="hero-scroll reveal" href="#work">&darr;&nbsp;&nbsp;Projects ( 2024 &ndash; 25 )&nbsp;&nbsp;&darr;</a>
@@ -199,6 +195,19 @@
       <span>Built with code &amp; love</span>
     </div>
   </footer>
+
+  <div class="chat-screen" hidden>
+    <button class="chat-close" type="button" aria-label="Close chat">&#10005;</button>
+    <div class="chat-scroll">
+      <div class="chat-log"></div>
+    </div>
+    <div class="chat-screen-bar">
+      <form class="chat-bar">
+        <input class="chat-input" type="text" placeholder="Ask MinaGPT about my work&hellip;" aria-label="Ask MinaGPT about Mina's work" maxlength="200" />
+        <button class="chat-send" type="submit" aria-label="Send">&uarr;</button>
+      </form>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js"></script>
   <script src="script.js"></script>

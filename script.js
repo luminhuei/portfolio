@@ -296,11 +296,25 @@ const PILLS = [
 // ---------------------------------------------------------------------------
 (function initMinaGPT() {
   const box = document.querySelector(".minagpt");
-  if (!box) return;
-  const panel = box.querySelector(".chat-panel");
-  const log = box.querySelector(".chat-log");
-  const form = box.querySelector(".chat-bar");
-  const input = box.querySelector(".chat-input");
+  const screen = document.querySelector(".chat-screen");
+  if (!box || !screen) return;
+  const log = screen.querySelector(".chat-log");
+  const scroll = screen.querySelector(".chat-scroll");
+  const heroForm = box.querySelector(".chat-bar");
+  const heroInput = box.querySelector(".chat-input");
+  const screenForm = screen.querySelector(".chat-screen-bar .chat-bar");
+  const screenInput = screenForm.querySelector(".chat-input");
+  const closeBtn = screen.querySelector(".chat-close");
+
+  const openChat = () => {
+    screen.hidden = false;
+    document.body.classList.add("chat-open");
+    screenInput.focus();
+  };
+  const closeChat = () => {
+    screen.hidden = true;
+    document.body.classList.remove("chat-open");
+  };
 
   const ANSWERS = [
     { match: /pos|handheld|tableside|checkout/i,
@@ -343,9 +357,9 @@ const PILLS = [
   const ask = (q) => {
     if (!q.trim()) return;
     finishCurrent();
-    panel.hidden = false;
+    openChat();
     const u = document.createElement("div");
-    u.className = "chat-msg";
+    u.className = "chat-msg chat-msg-user-row";
     const bubble = document.createElement("span");
     bubble.className = "chat-msg-user";
     bubble.textContent = q;
@@ -355,7 +369,7 @@ const PILLS = [
     const b = document.createElement("div");
     b.className = "chat-msg chat-msg-bot";
     log.appendChild(b);
-    panel.scrollTop = panel.scrollHeight;
+    scroll.scrollTop = scroll.scrollHeight;
 
     const text = reply(q);
     const state = { el: b, text, i: 0, timer: null };
@@ -363,7 +377,7 @@ const PILLS = [
     const tick = () => {
       if (current !== state) return;
       b.textContent = text.slice(0, ++state.i);
-      panel.scrollTop = panel.scrollHeight;
+      scroll.scrollTop = scroll.scrollHeight;
       if (state.i < text.length) state.timer = setTimeout(tick, 14);
       else current = null;
     };
@@ -373,11 +387,24 @@ const PILLS = [
   box.querySelectorAll(".chip").forEach((chip) =>
     chip.addEventListener("click", () => ask(chip.textContent))
   );
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    ask(input.value);
-    input.value = "";
+  const wireForm = (form, input) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      ask(input.value);
+      input.value = "";
+    });
+  };
+  wireForm(heroForm, heroInput);
+  wireForm(screenForm, screenInput);
+
+  closeBtn.addEventListener("click", closeChat);
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !screen.hidden) closeChat();
   });
+  // the nav stays visible in chat mode; using it should leave the chat
+  document.querySelectorAll(".topbar a").forEach((a) =>
+    a.addEventListener("click", closeChat)
+  );
 })();
 
 // ---------------------------------------------------------------------------
