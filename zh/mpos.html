@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>手持點餐系統 Mobile POS — Min Huei Lu</title>
+  <meta name="description" content="裝進服務生口袋的手持點餐系統 — 上線三個月內,64% 的結帳從櫃台移到桌邊完成。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@latest/style.css" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../case.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="nav-logo" href="index.html" aria-label="首頁">ML</a>
+    <nav class="nav">
+      <a class="nav-link" href="index.html#work">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></svg>
+        作品
+      </a>
+      <a class="nav-link" href="index.html#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9 14c1 1.4 5 1.4 6 0"/><path d="M9.5 9.8h.01M14.5 9.8h.01"/></svg>
+        關於
+      </a>
+      <a class="nav-link" href="https://docs.google.com/document/d/1N3t4DdJfruSLgAqbMZaBIx6HJFr7ifMk/edit" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V5a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 3.5V8h4"/></svg>
+        履歷
+      </a>
+      <span class="nav-link nav-lang" aria-label="Language"><a href="../mpos.html" lang="en">EN</a>·<span class="on">繁</span></span>
+    </nav>
+    <a class="nav-mail" href="mailto:luminhuei@gmail.com" aria-label="寫信給我">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4.5 7.5l7.5 5.5 7.5-5.5"/></svg>
+    </a>
+  </div>
+
+  <header class="case-hero">
+    <h1 class="case-title">裝進口袋的手持點餐系統。</h1>
+  </header>
+
+  <main class="case">
+
+    <!-- Overview -->
+    <section class="case-intro">
+      <div class="case-intro-main">
+        <p class="case-kicker reveal">Overview</p>
+        <p class="case-lead reveal">上線三個月內,<em>64% 的結帳</em>從櫃台移到了桌邊。</p>
+        <div class="case-intro-body reveal">
+          <p>Mobile POS 讓點餐、送廚、結帳都發生在桌邊,而不是櫃台。整個產品圍繞一個核心問題:如何把桌機 POS 的核心流程裝進一塊手機螢幕 &mdash;&mdash; 讓服務生單手、快速、不出錯地完成桌邊工作?</p>
+          <p><strong>限制條件:</strong>手機螢幕的操作範圍極小,無法承載桌機 POS 的全部功能;交互體驗對標 Toast&nbsp;GO。</p>
+          <p><strong>關鍵取捨:</strong>刪減功能 &mdash;&mdash; 高頻的桌邊流程搬上手機、打磨到極致,其餘功能保留在櫃台桌機 POS 上操作。</p>
+        </div>
+      </div>
+
+      <dl class="case-meta reveal">
+        <div><dt>Company</dt><dd>Peblla</dd></div>
+        <div><dt>Platform</dt><dd>手持裝置</dd></div>
+        <div><dt>Year</dt><dd>2025</dd></div>
+        <div><dt>Team</dt><dd>產品經理<br />工程團隊</dd></div>
+        <div><dt>Role</dt><dd>UI 設計<br />互動設計<br />設計系統</dd></div>
+      </dl>
+    </section>
+
+    <!-- 問題 / 方法 / 成果 -->
+    <section class="psr">
+      <div class="psr-card reveal">
+        <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5"/><path d="M12 15.8h.01"/></svg>
+        <h2>問題</h2>
+        <ul>
+          <li><strong>一份訂單,三趟路</strong> &mdash;&mdash; 點餐發生在櫃台,而不是桌邊。</li>
+          <li>高峰期的來回奔波,拖慢<strong>出菜與翻台的節奏</strong>。</li>
+          <li>一旦斷網,櫃台桌機會讓<strong>整家店</strong>跟著停擺。</li>
+        </ul>
+      </div>
+      <div class="psr-card reveal">
+        <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15 9l-2 4.5L8.5 15l2-4.5z"/></svg>
+        <h2>方法</h2>
+        <ul>
+          <li><strong>高頻桌邊流程</strong>完整搬上手機,打磨到極致。</li>
+          <li><strong>原則先行</strong>:單手操作、拇指路徑最短、風險操作加防護。</li>
+          <li>組件化的<strong>設計系統</strong>,以語義化色彩支撐雙主題。</li>
+        </ul>
+      </div>
+      <div class="psr-card reveal">
+        <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 17l5.5-5.5 4 4L20.5 7"/><path d="M14.5 7h6v6"/></svg>
+        <h2>成果</h2>
+        <ul>
+          <li>三個月內,<strong>64% 的結帳</strong>移到桌邊完成。</li>
+          <li>行業基準:手持 POS 做得好,<strong>翻台效率提升 15&ndash;35%</strong>。</li>
+          <li>迴轉壽司的數盤結帳,變成<strong>掃描即完成</strong>。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 最終畫面 -->
+    <section class="case-section" id="screens">
+      <p class="case-kicker reveal">Final screens</p>
+      <div class="gallery">
+        <div class="fig-ph reveal" style="--ar: 350/702; --ph: linear-gradient(160deg, #ffe8d9, #ffd0a8)"><span>桌台視圖</span></div>
+        <div class="fig-ph reveal" style="--ar: 350/702; --ph: linear-gradient(200deg, #fff3d6, #ffc98f)"><span>桌邊點餐</span></div>
+        <div class="fig-ph reveal" style="--ar: 350/702; --ph: linear-gradient(150deg, #ffdfc2, #ffefda)"><span>顧客面結帳</span></div>
+        <div class="fig-ph reveal" style="--ar: 350/702; --ph: linear-gradient(180deg, #ffe2cc, #ffd4b0)"><span>訂單歷史</span></div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="case-section" id="process">
+      <p class="case-kicker reveal">Process</p>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">01</p>
+        <p class="step-label reveal">現場的問題</p>
+        <h2 class="step-title reveal">一份訂單,<em>三趟路</em>。</h2>
+        <div class="step-body reveal">
+          <p>走進一家使用傳統桌機 POS 的餐廳,你會看到同樣的場景不斷上演:服務生在桌邊用紙筆記下點單,走回櫃台排隊輸入系統,再走回桌邊確認。高峰期這些來回累積起來,直接拖慢了點餐、出菜和翻台的節奏。</p>
+          <p>而一旦斷網或停電,櫃台那台桌機會瞬間停擺 &mdash;&mdash; 整家店的運轉隨之中斷。Mobile POS 要解決的正是這兩件事:讓點餐和結帳發生在桌邊,並讓系統在網路不穩時依然可靠。</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">02</p>
+        <p class="step-label reveal">為誰而做</p>
+        <h2 class="step-title reveal">受過訓練的服務生,靠<em>肌肉記憶</em>操作。</h2>
+        <div class="step-body reveal">
+          <p>Mobile POS 的用戶是受過培訓的餐廳服務生 &mdash;&mdash; 他們會接受基本的上手訓練,但工作環境是高壓的:噪音、趕時間、客人直視、站立、單手持機。</p>
+          <p>因此設計目標不是「第一眼看懂」,而是<strong>訓練後能盲操作、高峰期不出錯</strong>:操作位置固定、路徑最短、風險操作有防護。這個用戶定位允許比消費級產品更高的資訊密度,但對操作一致性的要求也嚴苛得多。</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">03</p>
+        <p class="step-label reveal">研究</p>
+        <h2 class="step-title reveal">對標、盤點,以及<em>看真實的手</em>。</h2>
+        <div class="step-body reveal">
+          <p>我們對標 <strong>Toast GO</strong> 的產品定位與交互模式 &mdash;&mdash; 包括在桌台頁和點單流程中隨時查看桌餐帳單(按支付狀態分頁)的做法,作為訂單歷史功能的重要參考。</p>
+          <p>同時盤點桌機 POS 的完整功能清單,判斷哪些必須搬上手機、哪些可以留下;並研究員工在真實門店的使用習慣 &mdash;&mdash; 通常左手拿設備、右手操作、站著使用。</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">04</p>
+        <p class="step-label reveal">決策一</p>
+        <h2 class="step-title reveal">功能取捨 &mdash;&mdash; 什麼值得<em>裝進口袋</em>。</h2>
+        <div class="step-body reveal">
+          <p>手機螢幕裝不下桌機 POS 的全部功能,這是這個專案最根本的取捨。我們按「桌邊發生的頻率」篩選:點餐、結帳、訂單管理等高頻流程完整搬上手機、一步直達;部分低頻或複雜的功能被有意捨棄,保留在櫃台桌機上操作。</p>
+          <p>Mobile POS 的定位從來不是取代桌機,而是<strong>把值得隨身攜帶的那部分做到極致</strong> &mdash;&mdash; 服務生手裡的設備越輕,桌邊的服務越快。</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">05</p>
+        <p class="step-label reveal">決策二</p>
+        <h2 class="step-title reveal">一塊螢幕,<em>兩種觀眾</em>。</h2>
+        <div class="step-body reveal">
+          <p>Mobile POS 有一個桌機永遠不會面對的時刻:結帳時,設備會轉向顧客。螢幕的觀眾從「受過訓練的員工」瞬間切換成「零培訓的顧客」&mdash;&mdash; 而且顧客是在服務生站在身旁的社交情境下選小費、簽名。</p>
+          <p>因此員工側介面追求資訊密度與效率,而顧客面向的支付與小費介面刻意做到極簡、金額清晰 &mdash;&mdash; 這部分經過了多輪評審打磨,避免顧客在壓力情境下產生困惑或尷尬。</p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(150deg, #ffdfc2, #fff0e0)"><span>員工側 vs. 顧客面小費畫面</span></div>
+          <figcaption>同一台設備、兩種觀眾:員工側的資訊密度 vs. 顧客側的極簡大字</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">06</p>
+        <p class="step-label reveal">決策三</p>
+        <h2 class="step-title reveal">為「<em>被打斷</em>」而設計。</h2>
+        <div class="step-body reveal">
+          <p>辦公軟體假設用戶能專注走完一個流程,餐廳現場恰恰相反:點單點到一半,隔壁桌呼叫、廚房傳話、顧客改主意都是常態。</p>
+          <p>因此所有核心流程都要能<strong>安全中斷、隨時恢復</strong>:未提交的訂單保留在原狀態,服務生處理完插入事務後能從中斷處繼續,而不是從頭再來。</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">07</p>
+        <p class="step-label reveal">交互原則</p>
+        <h2 class="step-title reveal">貫穿<em>每個畫面</em>的規則。</h2>
+        <div class="step-body reveal">
+          <ul>
+            <li><strong>操作路徑最短</strong>,不做多餘的操作</li>
+            <li>需要輸入的地方,<strong>一定自動喚起鍵盤</strong></li>
+            <li><strong>拇指移動路徑最短</strong>,盡量做到單手操作</li>
+            <li><strong>重要且不可撤回的操作刻意增加難度</strong> &mdash;&mdash; Void 與 Discount 需要 PIN 驗證:在所有原則都追求最短路徑的系統裡,這是唯一一處反向設計,用「慢」換「安全」</li>
+            <li><strong>按鈕位置與狀態保持一致</strong>,降低尋找成本</li>
+          </ul>
+          <p>這些原則落到具體介面,是大量細節的打磨:數字鍵盤從線框改成色塊、部分抽屜改成彈窗以縮短拇指路徑、Confirm 與 Done 的文案區分、精簡備註輸入路徑 &mdash;&mdash; 小改動,卻決定服務生在忙亂環境中能否快速準確地操作。</p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(170deg, #fff3d6, #ffd9b8)"><span>Before / After &mdash; 數字鍵盤與抽屜改彈窗</span></div>
+          <figcaption>改版前後:線框鍵盤變色塊、抽屜變成拇指可達的彈窗</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">08</p>
+        <p class="step-label reveal">設計系統</p>
+        <h2 class="step-title reveal">把決策鎖進<em>組件</em>。</h2>
+        <div class="step-body reveal">
+          <p>面對幾十個功能頁面的移植工作,逐頁繪製既慢又無法保證一致。因此我為 Mobile POS 搭建了組件化的設計系統:</p>
+          <ul>
+            <li><strong>組件變體</strong>:按鈕、輸入框、彈窗、列表項的 Variant 體系,覆蓋尺寸、狀態與使用場景</li>
+            <li><strong>語義化色彩</strong>:顏色按用途定義,Light / Dark 雙主題共用同一套組件結構</li>
+            <li><strong>交互規範內建於組件</strong>:新頁面使用組件就自動繼承規範,不靠設計師自覺</li>
+          </ul>
+          <p>頁面設計從「逐頁繪製」變成「組裝組件」,設計與工程之間有了單一可信來源 &mdash;&mdash; 後續頁面的交付成本大幅降低。</p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/620; --ph: linear-gradient(160deg, #ffe8d9, #ffefda)"><span>組件變體矩陣 &mdash; Light / Dark</span></div>
+          <figcaption>一套組件、所有狀態、兩種主題</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <!-- Solution -->
+    <section class="case-section" id="solution">
+      <p class="case-kicker reveal">Solution</p>
+      <h2 class="step-title reveal">跟著服務生的<em>完整服務動線</em>。</h2>
+
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">01</span> 帶位與桌台管理</h3>
+        <p>桌台視圖還原門店實際佈局,哪桌空著、哪桌用餐中一目了然;列表視圖適合快速檢索訂單。選定桌台後,所有操作都歸屬這張桌子,訂單不會張冠李戴。</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">02</span> 桌邊點餐與客製化</h3>
+        <p>客人話音剛落,訂單已即時送進廚房。加料、忌口、特殊要求當場錄入 &mdash;&mdash; 選中菜品直接進入輸入介面並自動喚起鍵盤。</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">03</span> 上菜節奏控制(Delay Send)</h3>
+        <p>客人想先吃前菜、後吃拉麵,但拉麵出餐更快。服務生可為指定菜品設定延遲送廚,讓廚房按客人期待的節奏出菜,而不是按出餐速度。</p>
+      </div>
+      <figure class="reveal">
+        <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(150deg, #ffe2cc, #fff0e0)"><span>Delay Send 延遲送廚流程</span></div>
+        <figcaption>延遲送廚:廚房跟著客人的節奏出菜</figcaption>
+      </figure>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">04</span> 前廳後廚即時聯動(KDS)</h3>
+        <p>訂單從桌邊發出,直接出現在後廚螢幕;出餐狀態同步回傳手持端 &mdash;&mdash; 前廳後廚不再靠口頭傳話和紙本單據。</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">05</span> 桌邊結帳:拆單與彈性支付</h3>
+        <p>一桌多人可拆分帳單分別支付;非接觸卡、Apple Pay / Google Pay、禮品卡、會員積分折抵全部支援 &mdash;&mdash; 客人想怎麼付,桌邊都能收。小費選擇與支付在同一流程內完成。</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">06</span> 掃盤結帳</h3>
+        <p>針對迴轉壽司業態,每個盤子帶有可掃描標識。服務生用 Mobile POS 對著一疊盤子掃描,即可一次核算用量並直接結帳 &mdash;&mdash; 徹底取代人工數盤。</p>
+      </div>
+      <figure class="reveal">
+        <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(165deg, #ffd9b8, #fff3d6)"><span>掃盤結帳 &mdash; 掃一疊盤子,結帳完成</span></div>
+        <figcaption>全案最強記憶點:對準盤子,結帳即完成</figcaption>
+      </figure>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">+</span> 全天候可靠</h3>
+        <p>主動線之外:<strong>訂單歷史</strong>按 Open / Authed / Closed 分頁,可直接編輯、支付、退款、補印;<strong>Light / Dark 雙主題</strong>應對午市窗邊與晚市酒吧區的光線差異;<strong>離線可靠性</strong>讓核心點餐流程在網路不穩、甚至系統宕機時繼續運作,恢復後自動同步。</p>
+      </div>
+    </section>
+
+    <!-- Impact -->
+    <section class="case-section" id="impact">
+      <p class="case-kicker reveal">Impact</p>
+      <h2 class="step-title reveal">結帳離開了櫃台 &mdash;&mdash; <em>再也沒回去</em>。</h2>
+      <div class="step-body reveal">
+        <p>上線後最直接的變化發生在結帳環節:三個月內,<strong>64% 的結帳從櫃台桌機轉移到桌邊的 Mobile POS 完成</strong>。服務生不再為結帳來回奔波,客人從示意結帳到離店的等待時間被實質壓縮。</p>
+        <p>行業研究也佐證了方向:手持 POS 配合合理的流程設計,通常能帶來 15&ndash;35% 的翻台效率提升 &mdash;&mdash; 而介面設計正是這一切落地的前提。如果服務生在桌邊手忙腳亂,客人只會要求回櫃台結帳。</p>
+      </div>
+      <div class="stats">
+        <div class="stat reveal">
+          <p class="stat-value">64%</p>
+          <p class="stat-title">結帳移到桌邊完成</p>
+          <p class="stat-sub">上線三個月內,相對櫃台桌機 POS 的統計</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-value">15&ndash;35%</p>
+          <p class="stat-title">翻台效率提升</p>
+          <p class="stat-sub">手持 POS 搭配良好流程設計的行業基準</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-value">0</p>
+          <p class="stat-title">人工數盤</p>
+          <p class="stat-sub">迴轉壽司結帳變成「掃描即完成」</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="case-section" id="reflection">
+      <p class="case-kicker reveal">Reflection</p>
+      <p class="case-lead reveal">原則先於畫面 &mdash;&mdash; 而「<em>不出錯</em>」比「好看」重要。</p>
+      <div class="step-body reveal">
+        <p>把桌面系統搬到手機上,最大的陷阱是逐頁「縮小」而不是重新「設計」。先確立原則 &mdash;&mdash; 單手可操作、拇指路徑最短、風險操作加確認 &mdash;&mdash; 幾十個頁面的移植就從「重新爭論」變成「套用原則」。</p>
+        <p>而在高壓使用場景裡,「不出錯」遠比「好看」重要:色塊鍵盤、抽屜改彈窗、Confirm 與 Done 的區分,這些評審會上看似很小的改動,實際決定了一線人員高峰期能否盲操作。</p>
+        <p>如果重來一次,我會更早推動在真實門店做小規模實地觀察與測試 &mdash;&mdash; 強光下的可讀性、油手指的誤觸,只有真實環境才會暴露。</p>
+      </div>
+    </section>
+
+    <!-- Next -->
+    <a class="next-project reveal" href="points-alliance.html">
+      <div>
+        <p class="next-label">Next</p>
+        <p class="next-title">積分聯盟 App <span aria-hidden="true">&rarr;</span></p>
+      </div>
+      <span class="next-thumb" style="--lg: linear-gradient(135deg, #9757ff, #fbcfe8)"></span>
+    </a>
+
+  </main>
+
+  <footer id="contact" class="footer">
+    <div class="eyes" aria-hidden="true">
+      <span class="eye"><span class="pupil"></span></span>
+      <span class="eye"><span class="pupil"></span></span>
+    </div>
+
+    <div class="footer-connect">
+      <h2 class="footer-title">聊聊吧。</h2>
+      <p class="footer-sub">隨時歡迎找我聊天。</p>
+      <div class="footer-actions">
+        <a href="mailto:luminhuei@gmail.com" aria-label="寫信給我">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4.5 7.5l7.5 5.5 7.5-5.5"/></svg>
+        </a>
+        <a href="https://docs.google.com/document/d/1N3t4DdJfruSLgAqbMZaBIx6HJFr7ifMk/edit" target="_blank" rel="noopener" aria-label="履歷">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V5a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 3.5V8h4"/><path d="M9 12h6M9 15.5h6"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/minhueilu/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.06V19.5h2.88zM5.5 7.19a1.69 1.69 0 1 0 0-3.38 1.69 1.69 0 0 0 0 3.38zM10.06 8.5H12.8v1.5h.04c.38-.72 1.31-1.48 2.7-1.48 2.89 0 3.42 1.9 3.42 4.38v6.6h-2.87v-5.85c0-1.4-.03-3.19-1.95-3.19-1.95 0-2.25 1.52-2.25 3.09v5.95h-2.87z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <a class="marquee" href="mailto:luminhuei@gmail.com" aria-label="點擊寫信給我">
+      <div class="marquee-track">
+        <span>點擊寫信給我&nbsp;&mdash;&nbsp;點擊寫信給我&nbsp;&mdash;&nbsp;點擊寫信給我&nbsp;&mdash;&nbsp;點擊寫信給我&nbsp;&mdash;&nbsp;</span>
+        <span aria-hidden="true">點擊寫信給我&nbsp;&mdash;&nbsp;點擊寫信給我&nbsp;&mdash;&nbsp;點擊寫信給我&nbsp;&mdash;&nbsp;點擊寫信給我&nbsp;&mdash;&nbsp;</span>
+      </div>
+    </a>
+
+    <p class="footer-name" aria-hidden="true">Min Huei Lu</p>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Min Huei Lu</span>
+      <span>用程式碼與愛打造</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

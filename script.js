@@ -358,9 +358,35 @@ const PILLS = [
   const FALLBACK =
     "I'm a lightweight preview of MinaGPT — the fully AI-powered version arrives with the case studies. Meanwhile, scroll down for four projects, or email Mina at luminhuei@gmail.com 😊";
 
+  // Traditional Chinese brain for /zh/ pages (regexes match zh + en keywords)
+  const ANSWERS_ZH = [
+    { match: /pos|手持|桌邊|結帳/i,
+      a: "Mina 為全服務餐廳設計了一套手持 POS —— 從一開始就為手持而生,不是桌機縮小版。上線三個月內,64% 的結帳從櫃台移到桌邊完成。完整案例就在下面的 Mobile POS。" },
+    { match: /point|loyalt|alliance|積分|聯盟|會員/i,
+      a: "積分聯盟 App 是她在 2025 年從 0 到 1 主導的跨品牌忠誠度 MVP —— 試點期間 643 名會員跨品牌下單、71 名會員兌換 36,361+ 積分,驗證了核心假設。" },
+    { match: /dashboard|analytic|report|報表|儀表|數據/i,
+      a: "她為 B2B 數據報表中心設計了 UI 與設計系統 —— 700+ 家門店營運者每天打開的經營窗口,核心理念是「一眼讀懂、數字誠實」。" },
+    { match: /tablet|平板|點餐|吃到飽/i,
+      a: "自助點餐平板為吃到飽餐廳而生:正式測試中,5 位零培訓用戶全部獨立完成完整點餐流程 —— 真正的零學習成本。" },
+    { match: /ship|project|work|portfolio|做過|作品|產品|專案/i,
+      a: "2024–25 年四個產品:手持 Mobile POS(64% 結帳移到桌邊)、積分聯盟 App(643 名跨品牌會員)、B2B 數據儀表板(700+ 每日營運者)、零培訓自助點餐平板。往下捲就能看到 ↓" },
+    { match: /different|superpower|strength|unique|不同|獨特|特別|品牌/i,
+      a: "她的跨度:品牌識別、UX/UI 到設計系統,一路走完整段旅程。曾在貢茶帶領品牌與數位設計(7 座國際獎項、美國銷售成長 140%),後於 Peblla 打造全美 750+ 家餐廳使用的餐飲科技。" },
+    { match: /process|research|method|流程|方法|怎麼做/i,
+      a: "成果先行、研究驅動:從真實營運限制出發,和真實用戶一起測試(服務生、店主、甚至第一次見到產品的客人),再用設計系統讓整個團隊跑得更快。" },
+    { match: /contact|email|hire|reach|linkedin|resume|cv|聯絡|聯繫|信箱|履歷/i,
+      a: "寫信到 luminhuei@gmail.com,或在 LinkedIn 搜尋 minhueilu。她隨時歡迎聊聊 ☕" },
+    { match: /who|about|mina|min\s?huei|background|experience|背景|介紹|是誰/i,
+      a: "Min Huei Lu(Mina)是一位擁有十年品牌與 UX/UI 經驗的產品設計師 —— 貢茶、Peblla,B2B 與 B2C,從品牌識別到設計系統,途中拿下 8 座國際設計獎。" },
+  ];
+  const FALLBACK_ZH =
+    "我是 MinaGPT 的輕量預覽版 —— 完整 AI 版即將登場。先往下看看四個專案,或直接寫信給 Mina:luminhuei@gmail.com 😊";
+
+  const IS_ZH = document.documentElement.lang === "zh-Hant";
   const reply = (q) => {
-    const hit = ANSWERS.find((c) => c.match.test(q));
-    return hit ? hit.a : FALLBACK;
+    const set = IS_ZH ? ANSWERS_ZH : ANSWERS;
+    const hit = set.find((c) => c.match.test(q));
+    return hit ? hit.a : IS_ZH ? FALLBACK_ZH : FALLBACK;
   };
 
   // one live typewriter at a time; a new question finishes the previous

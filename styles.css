@@ -14,8 +14,8 @@
   --card-dark-muted: #a1a1aa;
   --card-light: #f4f4f5;
   --footer-bg: #0c0c0c;
-  --serif: "Instrument Serif", Georgia, serif;
-  --sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  --serif: "Instrument Serif", "Noto Serif TC", Georgia, serif;
+  --sans: "Geist", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
   --mono: "Geist Mono", ui-monospace, monospace;
   --radius: 28px;
   --page-pad: clamp(20px, 4vw, 48px);
@@ -78,6 +78,7 @@ a { color: inherit; }
   border-radius: 999px;
   font-size: 14px;
   font-weight: 500;
+  white-space: nowrap;
   text-decoration: none;
   color: var(--ink);
   transition: background 0.2s ease, color 0.2s ease;
@@ -731,4 +732,29 @@ html, body { overflow-x: clip; }
   .reveal, .seq { opacity: 1; transform: none; transition: none; }
   .hero-gradient::before { animation: none; }
   html { scroll-behavior: auto; }
+}
+
+/* ---------- Language toggle in the nav ---------- */
+.nav-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--faint);
+}
+.nav-lang a { color: var(--faint); text-decoration: none; transition: color 0.2s ease; }
+.nav-lang a:hover { color: var(--accent); }
+.nav-lang .on { color: var(--ink); font-weight: 600; }
+
+/* ---------- Traditional Chinese typography ----------
+   CJK has no italics and hates negative tracking; emphasis uses Kai style
+   (LXGW WenKai TC) the way Latin uses italic. */
+html[lang="zh-Hant"] body { line-height: 1.75; }
+html[lang="zh-Hant"] .hero-title,
+html[lang="zh-Hant"] .footer-title { letter-spacing: 0.02em; }
+html[lang="zh-Hant"] em {
+  font-style: normal;
+  font-family: "LXGW WenKai TC", "Noto Serif TC", serif;
 }

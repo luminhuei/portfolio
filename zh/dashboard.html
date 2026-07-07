@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>數據儀表板 — Min Huei Lu</title>
+  <meta name="description" content="給餐廳老闆的經營數據中心 — 700+ 家活躍門店營運者每天打開的經營窗口。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@latest/style.css" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../case.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="nav-logo" href="index.html" aria-label="首頁">ML</a>
+    <nav class="nav">
+      <a class="nav-link" href="index.html#work">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></svg>
+        作品
+      </a>
+      <a class="nav-link" href="index.html#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9 14c1 1.4 5 1.4 6 0"/><path d="M9.5 9.8h.01M14.5 9.8h.01"/></svg>
+        關於
+      </a>
+      <a class="nav-link" href="https://docs.google.com/document/d/1N3t4DdJfruSLgAqbMZaBIx6HJFr7ifMk/edit" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V5a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 3.5V8h4"/></svg>
+        履歷
+      </a>
+      <span class="nav-link nav-lang" aria-label="Language"><a href="../dashboard.html" lang="en">EN</a>·<span class="on">繁</span></span>
+    </nav>
+    <a class="nav-mail" href="mailto:luminhuei@gmail.com" aria-label="寫信給我">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4.5 7.5l7.5 5.5 7.5-5.5"/></svg>
+    </a>
+  </div>
+
+  <header class="case-hero">
+    <h1 class="case-title">把數字做成答案。</h1>
+  </header>
+
+  <main class="case">
+
+    <!-- Overview -->
+    <section class="case-intro">
+      <div class="case-intro-main">
+        <p class="case-kicker reveal">Overview</p>
+        <p class="case-lead reveal"><em>700+ 家活躍門店</em>營運者每天打開的經營窗口。</p>
+        <div class="case-intro-body reveal">
+          <p>數據儀表板(Report Center)是給餐廳老闆的經營數據中心 &mdash;&mdash; 讓沒有數據背景的經營者幾秒看懂今天的生意、查清每一筆錢的去向,並且敢於相信螢幕上的每一個數字。</p>
+          <p><strong>限制條件:</strong>功能規格與資訊口徑由產品經理定義、對標行業標準,不可偏離;同一個 Web App 需同時服務桌面與手機兩種閱讀姿態。</p>
+          <p><strong>關鍵取捨:</strong>在 UI 可讀性上投入高於常規報表的工程資源與打磨時間 &mdash;&mdash; 用更高的開發成本,換老闆「看得更簡單、更清楚」的閱讀體驗。</p>
+        </div>
+      </div>
+
+      <dl class="case-meta reveal">
+        <div><dt>Company</dt><dd>Peblla</dd></div>
+        <div><dt>Platform</dt><dd>響應式 Web App</dd></div>
+        <div><dt>Year</dt><dd>2024</dd></div>
+        <div><dt>Team</dt><dd>產品經理<br />工程團隊<br />數據團隊</dd></div>
+        <div><dt>Role</dt><dd>UI 設計<br />設計系統<br />響應式設計</dd></div>
+      </dl>
+    </section>
+
+    <!-- 問題 / 方法 / 成果 -->
+    <section class="psr">
+      <div class="psr-card reveal">
+        <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5"/><path d="M12 15.8h.01"/></svg>
+        <h2>問題</h2>
+        <ul>
+          <li>「生意做得怎麼樣?」的答案<strong>散落</strong>在 POS、外送平台、銀行對帳單和各種報表裡。</li>
+          <li>老闆不是分析師 &mdash;&mdash; 看數據的時間是<strong>開店前的五分鐘</strong>。</li>
+          <li>一次對不上的數字,老闆就<strong>再也不信這個儀表板</strong>。</li>
+        </ul>
+      </div>
+      <div class="psr-card reveal">
+        <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15 9l-2 4.5L8.5 15l2-4.5z"/></svg>
+        <h2>方法</h2>
+        <ul>
+          <li><strong>把數字做成答案</strong>:預設開啟對比,一眼完成判斷。</li>
+          <li><strong>把數字的誠實做成介面語言</strong> &mdash;&mdash; 坦白揭露、攤開對帳、絕不假裝。</li>
+          <li>一個 Web App、<strong>兩種閱讀姿態</strong> &mdash;&mdash; 由報表設計系統支撐。</li>
+        </ul>
+      </div>
+      <div class="psr-card reveal">
+        <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 17l5.5-5.5 4 4L20.5 7"/><path d="M14.5 7h6v6"/></svg>
+        <h2>成果</h2>
+        <ul>
+          <li><strong>700+ 家活躍門店</strong>的每日經營窗口(2026 年 4 月週活躍 724 家)。</li>
+          <li>服務月 GMV 約 <strong>$27.98M</strong>、92 萬筆訂單的平台。</li>
+          <li>困惑被介面消化 &mdash;&mdash; <strong>「數字對不上」的客服電話減少</strong>。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 最終畫面 -->
+    <section class="case-section" id="screens">
+      <p class="case-kicker reveal">Final screens</p>
+      <div class="gallery">
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(160deg, #d9f0ff, #b8ebff)"><span>銷售總覽</span></div>
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(190deg, #e2f4ff, #a3d9ff)"><span>銷售摘要與日期選擇器</span></div>
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(150deg, #ccecff, #e6f7ff)"><span>逐筆交易明細</span></div>
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(170deg, #d4eeff, #c2e6ff)"><span>手機卡片流</span></div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="case-section" id="process">
+      <p class="case-kicker reveal">Process</p>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">01</p>
+        <p class="step-label reveal">散落的答案</p>
+        <h2 class="step-title reveal">一個問題,<em>四個地方找答案</em>。</h2>
+        <div class="step-body reveal">
+          <p>餐廳老闆每天都在回答同一個問題:我的生意到底做得怎麼樣?但答案散落各處 &mdash;&mdash; 銷售數據在 POS 裡、外送數據在第三方平台、到帳金額在銀行對帳單、小費與退款又在另外的報表裡。沒有人有時間把這些碎片拼成能直接行動的結論。</p>
+          <p>核心問題:<strong>如何讓一個沒有數據背景的餐廳老闆,幾秒內看懂今天的生意、需要時查到每一筆錢的去向,並且敢於相信螢幕上的每一個數字?</strong></p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">02</p>
+        <p class="step-label reveal">為誰而做</p>
+        <h2 class="step-title reveal">他們要的不是數據,<em>是答案</em>。</h2>
+        <div class="step-body reveal">
+          <p>主要用戶是餐廳老闆與加盟商 &mdash;&mdash; 不是數據分析師,沒受過任何報表培訓。他們的一天被門店運營填滿,看數據的時間可能是早上開店前的五分鐘、或高峰過後的間隙。</p>
+          <p>他們要的不是數據,而是答案:<strong>今天比昨天好嗎?錢都收齊了嗎?哪個渠道在成長?</strong></p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">03</p>
+        <p class="step-label reveal">規格</p>
+        <h2 class="step-title reveal">成熟品類裡,<em>呈現決定成敗</em>。</h2>
+        <div class="step-body reveal">
+          <p>報表功能在餐飲 SaaS 行業已有非常成熟的資訊標準。專門的產品經理負責報表邏輯的定義 &mdash;&mdash; 對標 Toast 的 Settlement Time 營業日定義、3rd Party Excl./Incl. 口徑切換、逐筆費用拆解粒度 &mdash;&mdash; 為設計提供了完整清晰的規格。</p>
+          <p>我的工作從這份規格開始:把行業標準的資訊邏輯,轉化為老闆一眼能讀懂的介面。架構已定,<strong>UI 層面的功夫決定產品成敗</strong> &mdash;&mdash; 同樣的數據,呈現方式決定老闆是「幾秒看懂」還是「一頭霧水」。</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">04</p>
+        <p class="step-label reveal">決策一</p>
+        <h2 class="step-title reveal">把數字<em>做成答案</em>。</h2>
+        <div class="step-body reveal">
+          <p>老闆真正的問題從來不是「今天賣了多少」,而是「這個數字好不好」&mdash;&mdash; $21,862 是該高興還是該擔心?沒有參照,數字只是數字。</p>
+          <p>因此銷售總覽的核心指標預設開啟與昨日的對比,綠漲紅跌的百分比直接壓在大數字旁 &mdash;&mdash; 不需要心算、不需要記憶昨天的數字。淨銷售、收款、退款三張大卡置頂定調,支付方式、渠道、用餐類型的拆解收進卡片內的分頁:<strong>視覺權重嚴格跟隨「老闆提問的頻率」排序,而不是數據本身的複雜度</strong>。</p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(160deg, #d9f0ff, #e6f7ff)"><span>銷售總覽 &mdash; 三張大卡,一眼定調</span></div>
+          <figcaption>三張核心卡片與同比漲跌 &mdash;&mdash; 今天的基調,一眼看完</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">05</p>
+        <p class="step-label reveal">決策二</p>
+        <h2 class="step-title reveal">把「數字的誠實」做成<em>介面語言</em>。</h2>
+        <div class="step-body reveal">
+          <p>儀表板最大的風險不是不好看,而是老闆發現數字對不上之後,再也不信它。規格裡有大量保障對帳準確的機制,UI 的職責是讓它們被看見、被理解、而不嚇到人:</p>
+          <ul>
+            <li><strong>Settlement Time 可配置:</strong>餐廳的「一天」不是日曆的一天 &mdash;&mdash; 凌晨打烊的門店,營業日在清晨 5 點才結算,報表必須按營業日統計</li>
+            <li><strong>第三方數據的誠實聲明:</strong>手續費與退款可能導致數字對不上 &mdash;&mdash; 介面直接告知,並提供 Excl./Incl. 切換,而不是假裝數據完美</li>
+            <li><strong>Sales vs Payment 對帳區與未結訂單:</strong>「應收」與「實收」的差異直接攤在檯面上,讓差異可解釋</li>
+            <li><strong>數據同步狀態:</strong>非即時同步時,明確告知截至時間點</li>
+          </ul>
+          <p>這些提示統一使用<strong>資訊級的黃色而非錯誤級的紅色</strong> &mdash;&mdash; 告知而不製造恐慌,是為信任而設計的分寸。</p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(190deg, #e2f4ff, #ccecff)"><span>誠實性 UI &mdash; 聲明條與對帳區</span></div>
+          <figcaption>黃色告知、紅色才是警報:聲明條、口徑切換、攤開的對帳</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">06</p>
+        <p class="step-label reveal">決策三</p>
+        <h2 class="step-title reveal">同一個 Web App,<em>兩種閱讀姿態</em>。</h2>
+        <div class="step-body reveal">
+          <p>桌面與手機瀏覽器登入的是同一個系統,但兩種設備對應完全不同的姿態。桌面端承擔「坐下來對帳」:完整報表、逐筆明細、下載匯出;手機端重新編排為縱向卡片流,承擔「隨時把脈」&mdash;&mdash; 老闆在任何間隙掏出手機,30 秒內就知道生意的脈搏。</p>
+          <p>同樣的數據:<strong>桌面用表格讀,手機用卡片掃。</strong></p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(150deg, #d4eeff, #e6f7ff)"><span>桌面表格 vs. 手機卡片流</span></div>
+          <figcaption>同樣的數字、兩種姿態:在桌前對帳,在口袋裡把脈</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">07</p>
+        <p class="step-label reveal">設計系統</p>
+        <h2 class="step-title reveal">讓整個報表家族說<em>同一種語言</em>。</h2>
+        <div class="step-body reveal">
+          <p>Report Center 不是一個頁面,而是一整族報表,同時活在兩種斷點上。我最重要的產出,是支撐它的設計系統:</p>
+          <ul>
+            <li><strong>指標卡片組件:</strong>大數值 + 同比漲跌標識的標準結構,漲跌語義色全局統一 &mdash;&mdash; 新指標接入即用</li>
+            <li><strong>圖表與明細表格規範:</strong>柱狀圖、趨勢圖、逐筆表格的樣式與交互統一</li>
+            <li><strong>提示條分級體系:</strong>免責聲明、同步狀態等誠實性資訊組件化、跨頁面統一表達</li>
+            <li><strong>響應式重排規則:</strong>組件的桌面到手機重排邏輯組件化 &mdash;&mdash; 新報表頁天然支援兩種設備</li>
+          </ul>
+          <p>新增一張報表頁,是組裝組件而不是重新設計。規格保證每一頁內容正確,設計系統保證每一頁說同一種語言 &mdash;&mdash; <strong>老闆學會讀一張報表,就學會了讀所有報表。</strong></p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Solution -->
+    <section class="case-section" id="solution">
+      <p class="case-kicker reveal">Solution</p>
+      <h2 class="step-title reveal">按提問深度分層的<em>四個模組</em>。</h2>
+
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">01</span> 銷售總覽 &mdash; 今天生意怎麼樣</h3>
+        <p>淨銷售、收款、退款三張核心卡片搭配同比漲跌,一眼定調;按支付方式、渠道、用餐類型的拆解隨時展開;稅費、小費、自動服務費、作廢金額等餐飲特有條目全部在列。</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">02</span> 銷售摘要 &mdash; 趨勢怎麼樣</h3>
+        <p>按日、按星期、按時段的銷售分布圖表,配合日期預設與自定義區間 &mdash;&mdash; 讓老闆看出生意的節奏:哪天最旺、哪個時段最忙。</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">03</span> 逐筆交易明細 &mdash; 每一筆錢的去向</h3>
+        <p>每筆交易的金額、小費、自動服務費、手續費、附加費、淨到帳全部透明列出,支援分類與下載匯出 &mdash;&mdash; 老闆對帳不再需要翻銀行流水。</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">04</span> 手機版 &mdash; 隨身的生意脈搏</h3>
+        <p>銷售與加購趨勢、第三方 vs 直連渠道對比、暢銷商品榜、渠道分布、會員活躍、Google / Yelp 評價情感分析、外送地理分布 &mdash;&mdash; 一切為「掏出手機 30 秒看懂」而設計。</p>
+      </div>
+      <figure class="reveal">
+        <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(165deg, #c2e6ff, #e2f4ff)"><span>手機長捲動 &mdash; 完整把脈視圖</span></div>
+        <figcaption>手機卡片流:趨勢、暢銷榜、渠道、評價 &mdash;&mdash; 從頭到尾可掃讀</figcaption>
+      </figure>
+    </section>
+
+    <!-- Impact -->
+    <section class="case-section" id="impact">
+      <p class="case-kicker reveal">Impact</p>
+      <h2 class="step-title reveal">報表的價值,是<em>安靜的</em>。</h2>
+      <div class="step-body reveal">
+        <p>Report Center 是 Peblla 商家每天打開的經營窗口,服務超過 700 家活躍門店的經營者 &mdash;&mdash; 平台月 GMV 約 $27.98M、訂單 92 萬筆。</p>
+        <p>報表產品的成效體現在兩件安靜的事上:老闆是否養成每天主動查看的習慣,以及打給客戶經理問「數字對不上」的電話是否減少。讀不出判斷的報表,每次困惑都會變成一通電話;層級清晰、語義一致的報表,<strong>把這些電話消化在介面裡</strong> &mdash;&mdash; 報表設計的品質,直接體現在公司的人工服務成本上。</p>
+      </div>
+      <div class="stats">
+        <div class="stat reveal">
+          <p class="stat-value">724</p>
+          <p class="stat-title">週活躍門店</p>
+          <p class="stat-sub">把儀表板當每日經營窗口的營運者(2026 年 4 月)</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-value">$27.9M</p>
+          <p class="stat-title">平台月 GMV</p>
+          <p class="stat-sub">92 萬筆訂單(2026 年 2 月)&mdash;&mdash; 每一塊錢都能在報表裡追溯</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-value">30 秒</p>
+          <p class="stat-title">掏出手機到把完脈</p>
+          <p class="stat-sub">手機版的承諾:任何間隙都能看懂生意</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="case-section" id="reflection">
+      <p class="case-kicker reveal">Reflection</p>
+      <p class="case-lead reveal">在成熟品類裡,設計師的價值是<em>呈現的分寸</em>。</p>
+      <div class="step-body reveal">
+        <p>報表的成功要怎麼衡量?每家店都會看報表,「被使用」是必然的,但不等於「設計得好」。</p>
+        <p>如果重來一次,我會在上線時就埋好兩個指標的追蹤 &mdash;&mdash; 客戶經理的諮詢頻率,和老闆每天主動查看的習慣。在規格早有行業共識的成熟品類裡,UI 設計師的價值不在於發明新邏輯,而在於呈現的分寸。</p>
+      </div>
+    </section>
+
+    <!-- Next -->
+    <a class="next-project reveal" href="tablet.html">
+      <div>
+        <p class="next-label">Next</p>
+        <p class="next-title">自助點餐平板 <span aria-hidden="true">&rarr;</span></p>
+      </div>
+      <span class="next-thumb" style="--lg: linear-gradient(135deg, #5adba5, #d9f99d)"></span>
+    </a>
+
+  </main>
+
+  <footer id="contact" class="footer">
+    <div class="eyes" aria-hidden="true">
+      <span class="eye"><span class="pupil"></span></span>
+      <span class="eye"><span class="pupil"></span></span>
+    </div>
+
+    <div class="footer-connect">
+      <h2 class="footer-title">聊聊吧。</h2>
+      <p class="footer-sub">隨時歡迎找我聊天。</p>
+      <div class="footer-actions">
+        <a href="mailto:luminhuei@gmail.com" aria-label="寫信給我">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4.5 7.5l7.5 5.5 7.5-5.5"/></svg>
+        </a>
+        <a href="https://docs.google.com/document/d/1N3t4DdJfruSLgAqbMZaBIx6HJFr7ifMk/edit" target="_blank" rel="noopener" aria-label="履歷">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V5a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 3.5V8h4"/><path d="M9 12h6M9 15.5h6"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/minhueilu/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.06V19.5h2.88zM5.5 7.19a1.69 1.69 0 1 0 0-3.38 1.69 1.69 0 0 0 0 3.38zM10.06 8.5H12.8v1.5h.04c.38-.72 1.31-1.48 2.7-1.48 2.89 0 3.42 1.9 3.42 4.38v6.6h-2.87v-5.85c0-1.4-.03-3.19-1.95-3.19-1.95 0-2.25 1.52-2.25 3.09v5.95h-2.87z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <a class="marquee" href="mailto:luminhuei@gmail.com" aria-label="點擊寫信給我">
+      <div class="marquee-track">
+        <span>點擊寫信給我&nbsp;&mdash;&nbsp;點擊寫信給我&nbsp;&mdash;&nbsp;點擊寫信給我&nbsp;&mdash;&nbsp;點擊寫信給我&nbsp;&mdash;&nbsp;</span>
+        <span aria-hidden="true">點擊寫信給我&nbsp;&mdash;&nbsp;點擊寫信給我&nbsp;&mdash;&nbsp;點擊寫信給我&nbsp;&mdash;&nbsp;點擊寫信給我&nbsp;&mdash;&nbsp;</span>
+      </div>
+    </a>
+
+    <p class="footer-name" aria-hidden="true">Min Huei Lu</p>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Min Huei Lu</span>
+      <span>用程式碼與愛打造</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

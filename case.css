@@ -357,3 +357,11 @@
 @media (max-width: 820px) {
   .next-thumb { width: 96px; height: 72px; }
 }
+
+/* ---------- Traditional Chinese case typography ---------- */
+html[lang="zh-Hant"] .case-title,
+html[lang="zh-Hant"] .case-lead,
+html[lang="zh-Hant"] .step-title { letter-spacing: 0.02em; }
+html[lang="zh-Hant"] .case-intro-body,
+html[lang="zh-Hant"] .step-body,
+html[lang="zh-Hant"] .sol-item p { line-height: 1.95; font-size: 16.5px; }
