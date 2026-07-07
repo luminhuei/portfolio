@@ -162,7 +162,8 @@ a { color: inherit; }
 }
 .hero-face:hover { transform: scale(1.6) rotate(-4deg); }
 
-/* Animated gradient avatar — flowing colors instead of a photo */
+/* Animated gradient avatar — ocean waves: light on top, deep below,
+   with highlights flowing endlessly from left to right */
 .hero-gradient {
   position: relative;
   display: block;
@@ -172,13 +173,16 @@ a { color: inherit; }
 .hero-gradient::before {
   content: "";
   position: absolute;
-  inset: -60%;
-  background: conic-gradient(from 0deg, #7c5cff, #4fc3ff, #5affc3, #ffd24f, #ff5ca8, #7c5cff);
-  animation: gradient-spin 5s linear infinite;
-  filter: blur(10px) saturate(1.35);
+  inset: 0;
+  background:
+    linear-gradient(105deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.5) 42%, rgba(255, 255, 255, 0) 55%) 0 0 / 250% 100% no-repeat,
+    linear-gradient(95deg, rgba(185, 240, 255, 0) 20%, rgba(185, 240, 255, 0.45) 45%, rgba(185, 240, 255, 0) 70%) 0 0 / 400% 100% no-repeat,
+    linear-gradient(to bottom, #b9f0ff 0%, #4fc3ff 40%, #1668c9 72%, #0a2a66 100%);
+  animation: wave-flow 4.5s linear infinite;
 }
-@keyframes gradient-spin {
-  to { transform: rotate(360deg); }
+@keyframes wave-flow {
+  from { background-position: -250% 0, -400% 0, 0 0; }
+  to { background-position: 250% 0, 400% 0, 0 0; }
 }
 .hero-title {
   font-family: var(--serif);
