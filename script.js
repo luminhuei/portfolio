@@ -290,6 +290,97 @@ const PILLS = [
 })();
 
 // ---------------------------------------------------------------------------
+// MinaGPT — plan A: a fully static preview. No API keys, no network calls;
+// answers are pre-written and keyword-matched. Upgraded to a real AI later
+// via a Cloudflare Worker proxy (plan B) once the case studies are final.
+// ---------------------------------------------------------------------------
+(function initMinaGPT() {
+  const box = document.querySelector(".minagpt");
+  if (!box) return;
+  const panel = box.querySelector(".chat-panel");
+  const log = box.querySelector(".chat-log");
+  const form = box.querySelector(".chat-bar");
+  const input = box.querySelector(".chat-input");
+
+  const ANSWERS = [
+    { match: /pos|handheld|tableside|checkout/i,
+      a: "Mina designed a handheld POS for full-service restaurants — handheld-first, not a shrunken desktop POS. Within three months of launch, 64% of checkouts had moved to tableside. Full case study coming very soon." },
+    { match: /point|loyalt|alliance|reward|member/i,
+      a: "The Points Alliance app is a 0→1 cross-brand loyalty MVP she launched in 2025 — 643 members placed cross-brand orders and redeemed 36,361+ points across participating brands." },
+    { match: /dashboard|analytic|report|data/i,
+      a: "She designed the UI and design system for a B2B analytics report center that 600+ store operators check daily — built around trust-at-a-glance readability instead of decoration." },
+    { match: /tablet|ayce|self.?order/i,
+      a: "The self-ordering tablet was built for all-you-can-eat restaurants. In formal usability testing, 5 out of 5 untrained users completed the entire ordering flow — true zero-training UX." },
+    { match: /ship|project|work|portfolio|done|built|case/i,
+      a: "Four products between 2024–25: a handheld Mobile POS (64% of checkouts moved tableside), the Points Alliance loyalty app (643 cross-brand members), a B2B analytics dashboard (600+ daily operators), and a zero-training self-ordering tablet. Scroll down to meet them ↓" },
+    { match: /different|superpower|strength|special|unique|brand|system/i,
+      a: "Her range: she covers the whole journey — brand identity, UX/UI, and design systems. She led brand & digital at Gong cha (7 international awards, 140% US sales growth), then built restaurant tech at Peblla used by 750+ restaurants across the US." },
+    { match: /process|research|method|how.*(work|design)/i,
+      a: "Outcome-first and research-driven: she starts from real operational constraints, tests with actual users (servers, store operators, even first-time guests), and ships design systems so whole teams move faster." },
+    { match: /contact|email|hire|reach|linkedin|resume|cv|available/i,
+      a: "Email luminhuei@gmail.com, or find her on LinkedIn at minhueilu. She's always down for a chat ☕" },
+    { match: /who|about|mina|min\s?huei|background|experience|year/i,
+      a: "Min Huei Lu (Mina) is a product designer with 10 years across branding and UX/UI — Gong cha, then Peblla. B2B & B2C, from brand identity to design systems, with 8 international design awards along the way." },
+  ];
+  const FALLBACK =
+    "I'm a lightweight preview of MinaGPT — the fully AI-powered version arrives with the case studies. Meanwhile, scroll down for four projects, or email Mina at luminhuei@gmail.com 😊";
+
+  const reply = (q) => {
+    const hit = ANSWERS.find((c) => c.match.test(q));
+    return hit ? hit.a : FALLBACK;
+  };
+
+  // one live typewriter at a time; a new question finishes the previous
+  // answer instantly instead of silently swallowing the input
+  let current = null;
+  const finishCurrent = () => {
+    if (!current) return;
+    clearTimeout(current.timer);
+    current.el.textContent = current.text;
+    current = null;
+  };
+
+  const ask = (q) => {
+    if (!q.trim()) return;
+    finishCurrent();
+    panel.hidden = false;
+    const u = document.createElement("div");
+    u.className = "chat-msg";
+    const bubble = document.createElement("span");
+    bubble.className = "chat-msg-user";
+    bubble.textContent = q;
+    u.appendChild(bubble);
+    log.appendChild(u);
+
+    const b = document.createElement("div");
+    b.className = "chat-msg chat-msg-bot";
+    log.appendChild(b);
+    panel.scrollTop = panel.scrollHeight;
+
+    const text = reply(q);
+    const state = { el: b, text, i: 0, timer: null };
+    current = state;
+    const tick = () => {
+      if (current !== state) return;
+      b.textContent = text.slice(0, ++state.i);
+      panel.scrollTop = panel.scrollHeight;
+      if (state.i < text.length) state.timer = setTimeout(tick, 14);
+      else current = null;
+    };
+    state.timer = setTimeout(tick, 350);
+  };
+
+  box.querySelectorAll(".chip").forEach((chip) =>
+    chip.addEventListener("click", () => ask(chip.textContent))
+  );
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    ask(input.value);
+    input.value = "";
+  });
+})();
+
+// ---------------------------------------------------------------------------
 // Footer eyes: pupils follow the mouse, same algorithm as the original site —
 // the pupil sits on a circle of radius min(15, distance-to-mouse) around the
 // eye center, pointed at the mouse. No easing: eyes dart instantly, which is
