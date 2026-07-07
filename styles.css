@@ -173,13 +173,14 @@ a { color: inherit; }
 .hero-gradient::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -14px;
   /* two wavy water layers sliding sideways over a light sky-to-sea base;
-     the undulating wave line makes the level rise and fall at every point */
+     blurred so the wave lines melt into one continuous dark-to-light gradient */
   background:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 64' preserveAspectRatio='none'%3E%3Cpath d='M0 30 Q15 22 30 30 T60 30 T90 30 T120 30 V64 H0 Z' fill='%230a2a66'/%3E%3C/svg%3E") repeat-x 0 0 / 96px 100%,
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 64' preserveAspectRatio='none'%3E%3Cpath d='M0 24 Q15 15 30 24 T60 24 T90 24 T120 24 V64 H0 Z' fill='%232f8fe6' fill-opacity='0.75'/%3E%3C/svg%3E") repeat-x 0 0 / 64px 100%,
     linear-gradient(to bottom, #c4f1ff 0%, #7fd4ff 45%, #4fc3ff 100%);
+  filter: blur(7px) hue-rotate(0deg);
   animation:
     wave-slide 5s linear infinite,
     hue-cycle 21s linear infinite;
@@ -187,9 +188,11 @@ a { color: inherit; }
 @keyframes wave-slide {
   to { background-position: 96px 0, 64px 0, 0 0; }
 }
-/* starts on blue, then drifts through the whole color wheel (~3s per hue) */
+/* starts on blue, then drifts through the whole color wheel (~3s per hue);
+   blur rides along in the keyframes because filter is a single property */
 @keyframes hue-cycle {
-  to { filter: hue-rotate(360deg); }
+  from { filter: blur(7px) hue-rotate(0deg); }
+  to { filter: blur(7px) hue-rotate(360deg); }
 }
 .hero-title {
   font-family: var(--serif);
