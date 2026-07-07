@@ -365,3 +365,10 @@ html[lang="zh-Hant"] .step-title { letter-spacing: 0.02em; }
 html[lang="zh-Hant"] .case-intro-body,
 html[lang="zh-Hant"] .step-body,
 html[lang="zh-Hant"] .sol-item p { line-height: 1.95; font-size: 16.5px; }
+
+/* ---------- About: experience entries — year indicator on its own line ---------- */
+#experience .sol-item h3 { display: block; }
+#experience .sol-item .sol-num {
+  display: block;
+  margin-bottom: 6px;
+}
