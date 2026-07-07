@@ -413,7 +413,6 @@ html, body { overflow-x: clip; }
   height: 54px;
   background: #fffefd;
   border-radius: 40px;
-  overflow: hidden;
 }
 .pupil {
   position: absolute;

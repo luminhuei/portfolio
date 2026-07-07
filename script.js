@@ -315,7 +315,9 @@ const PILLS = [
     y: 0,
   }));
 
-  const MAX_X = 6;
+  // matches the original: the pupil may poke ~3.5px past the eye white
+  // horizontally, visually merging with the dark footer behind it
+  const MAX_X = 9.5;
   const MAX_Y = 10;
   const update = () => {
     for (const s of state) {
