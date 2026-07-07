@@ -157,11 +157,29 @@ a { color: inherit; }
 .hero-face {
   width: 48px;
   height: 64px;
-  object-fit: cover;
   border-radius: 999px;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .hero-face:hover { transform: scale(1.6) rotate(-4deg); }
+
+/* Animated gradient avatar — flowing colors instead of a photo */
+.hero-gradient {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  flex: none;
+}
+.hero-gradient::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: conic-gradient(from 0deg, #7c5cff, #4fc3ff, #5affc3, #ffd24f, #ff5ca8, #7c5cff);
+  animation: gradient-spin 5s linear infinite;
+  filter: blur(10px) saturate(1.35);
+}
+@keyframes gradient-spin {
+  to { transform: rotate(360deg); }
+}
 .hero-title {
   font-family: var(--serif);
   font-weight: 200;
@@ -295,6 +313,14 @@ html, body { overflow-x: clip; }
   border-radius: 8px;
   object-fit: cover;
 }
+.pcard-logo {
+  display: inline-block;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: var(--lg, var(--card-light));
+}
 .pcard-title {
   margin-top: 12px;
   font-size: clamp(21px, 2.1vw, 30px);
@@ -369,6 +395,22 @@ html, body { overflow-x: clip; }
   height: 100%;
   object-fit: cover;
   pointer-events: none;
+}
+/* Placeholder shots until real project screenshots arrive */
+.shot-ph {
+  background: var(--ph, var(--card-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shot-ph span {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(18, 18, 18, 0.35);
+  white-space: nowrap;
+  transform: rotate(-4deg);
 }
 
 .more {

@@ -138,17 +138,17 @@ const pillIcon = (paths, filled) =>
   `<svg viewBox="0 0 24 24" fill="${filled ? "currentColor" : "none"}" stroke="${filled ? "none" : "currentColor"}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${paths}</svg>`;
 
 const PILLS = [
-  { t: "Making it pop", bg: "#ff894a", svg: pillIcon('<path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M5.9 5.9l2.5 2.5M15.6 15.6l2.5 2.5M18.1 5.9l-2.5 2.5M8.4 15.6l-2.5 2.5"/>') },
+  { t: "Branding", bg: "#ff894a", svg: pillIcon('<path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M5.9 5.9l2.5 2.5M15.6 15.6l2.5 2.5M18.1 5.9l-2.5 2.5M8.4 15.6l-2.5 2.5"/>') },
   { t: "", bg: "#fbe58d", dot: true, svg: pillIcon('<path d="M12 3c.6 4.5 2.5 6.4 7 7-4.5.6-6.4 2.5-7 7-.6-4.5-2.5-6.4-7-7 4.5-.6 6.4-2.5 7-7z"/>', true) },
   { t: "", bg: "#a3d9ff", dot: true, svg: pillIcon('<path d="M5 12.5l4.5 4.5L19 7.5"/>') },
   { t: "", bg: "#ff894a", dot: true, svg: pillIcon('<path d="M9 18V6l8-2v12"/><circle cx="6.8" cy="18" r="2.2" fill="currentColor" stroke="none"/><circle cx="14.8" cy="16" r="2.2" fill="currentColor" stroke="none"/>') },
-  { t: "Testing", bg: "#d9c9ff", svg: pillIcon('<path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1z"/><path d="M14.5 6.5l3 3"/>') },
-  { t: "Improving UX", bg: "#fdcf00", svg: pillIcon('<circle cx="12" cy="12" r="8.5"/><path d="M9 14c1 1.4 5 1.4 6 0"/><path d="M9.5 9.8h.01M14.5 9.8h.01"/>') },
-  { t: "Reframing problems", bg: "#5adba5", svg: pillIcon('<path d="M9.5 4l-2 16M16.5 4l-2 16M4.5 9h16M3.5 15h16"/>') },
-  { t: "Moving rectangles", bg: "#a3d9ff", svg: pillIcon('<path d="M12 3v18M3 12h18M12 3l-2.2 2.2M12 3l2.2 2.2M12 21l-2.2-2.2M12 21l2.2-2.2M3 12l2.2-2.2M3 12l2.2 2.2M21 12l-2.2-2.2M21 12l-2.2 2.2"/>') },
-  { t: "Thinking systems", bg: "#fbcfe8", svg: pillIcon('<circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="4" ry="8.5"/><path d="M3.5 12h17"/>') },
+  { t: "Visual design", bg: "#d9c9ff", svg: pillIcon('<path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1z"/><path d="M14.5 6.5l3 3"/>') },
+  { t: "User testing", bg: "#fdcf00", svg: pillIcon('<circle cx="12" cy="12" r="8.5"/><path d="M9 14c1 1.4 5 1.4 6 0"/><path d="M9.5 9.8h.01M14.5 9.8h.01"/>') },
+  { t: "Design systems", bg: "#5adba5", svg: pillIcon('<path d="M9.5 4l-2 16M16.5 4l-2 16M4.5 9h16M3.5 15h16"/>') },
+  { t: "0 → 1 launches", bg: "#a3d9ff", svg: pillIcon('<path d="M3.5 17l5.5-5.5 4 4L20.5 7"/><path d="M14.5 7h6v6"/>') },
+  { t: "B2B & B2C", bg: "#fbcfe8", svg: pillIcon('<circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="4" ry="8.5"/><path d="M3.5 12h17"/>') },
   { t: "Prototyping", bg: "#f4f4f5", svg: pillIcon('<path d="M3 7h4l10 10h4"/><path d="M18.5 14.5L21 17l-2.5 2.5"/><path d="M3 17h4l3-3"/><path d="M14 10l3-3h4"/><path d="M18.5 4.5L21 7l-2.5 2.5"/>') },
-  { t: "Rounding corners", bg: "#d9f99d", svg: pillIcon('<path d="M4 20v-8a8 8 0 0 1 8-8h8"/>') },
+  { t: "Data dashboards", bg: "#d9f99d", svg: pillIcon('<path d="M5 20v-9M12 20V4M19 20v-6"/>') },
   { t: "", bg: "#f4f4f5", dot: true, svg: pillIcon('<path d="M12 4v16M5.1 8l13.8 8M18.9 8L5.1 16"/>') },
 ];
 
