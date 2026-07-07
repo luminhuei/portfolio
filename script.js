@@ -14,6 +14,25 @@ const observer = new IntersectionObserver(
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
 // ---------------------------------------------------------------------------
+// Hero entrance timeline (ms after load): intro → headline → positioning →
+// projects hint, then the chat bar arrives late, then its hint chips.
+// Tweak BAR_DELAY / CHIPS_DELAY to taste.
+// ---------------------------------------------------------------------------
+const BAR_DELAY = 6000;
+const CHIPS_DELAY = 10000;
+[
+  [".hero-intro", 200],
+  [".hero-title", 500],
+  [".hero-current", 850],
+  [".hero-scroll", 1200],
+  [".minagpt .chat-bar", BAR_DELAY],
+  [".minagpt .chat-chips", CHIPS_DELAY],
+].forEach(([sel, t]) => {
+  const el = document.querySelector(sel);
+  if (el) setTimeout(() => el.classList.add("visible"), t);
+});
+
+// ---------------------------------------------------------------------------
 // Image strips inside project cards: slow self-scrolling ticker that speeds up
 // with page scroll, loops seamlessly, and can be grabbed and flung.
 // ---------------------------------------------------------------------------
@@ -384,9 +403,58 @@ const PILLS = [
     state.timer = setTimeout(tick, 350);
   };
 
-  box.querySelectorAll(".chip").forEach((chip) =>
+  // hero chips + in-chat suggestion chips all ask on click
+  document.querySelectorAll(".minagpt .chip, .chat-suggest .chip").forEach((chip) =>
     chip.addEventListener("click", () => ask(chip.textContent))
   );
+
+  // suggestion row: native horizontal scroll + mouse drag-to-scroll
+  const suggest = screen.querySelector(".chat-suggest");
+  if (suggest) {
+    let down = false;
+    let dragging = false;
+    let startX = 0;
+    let startScroll = 0;
+    let moved = 0;
+    suggest.addEventListener("pointerdown", (e) => {
+      down = true;
+      dragging = false;
+      moved = 0;
+      startX = e.clientX;
+      startScroll = suggest.scrollLeft;
+    });
+    suggest.addEventListener("pointermove", (e) => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      moved = Math.max(moved, Math.abs(dx));
+      // capture only once it's clearly a drag, so plain clicks stay native
+      if (!dragging && moved > 6) {
+        dragging = true;
+        suggest.setPointerCapture(e.pointerId);
+        suggest.classList.add("dragging");
+      }
+      if (dragging) suggest.scrollLeft = startScroll - dx;
+    });
+    const up = () => {
+      down = false;
+      dragging = false;
+      suggest.classList.remove("dragging");
+    };
+    suggest.addEventListener("pointerup", up);
+    suggest.addEventListener("pointercancel", up);
+    // a drag should not fire the chip underneath the pointer
+    suggest.addEventListener(
+      "click",
+      (e) => {
+        if (moved > 6) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      },
+      true
+    );
+  }
+
   const wireForm = (form, input) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();

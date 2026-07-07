@@ -38,13 +38,15 @@ body {
 
 a { color: inherit; }
 
-/* ---------- Reveal on scroll ---------- */
-.reveal {
+/* ---------- Reveal on scroll (.reveal) / timed entrance (.seq) ---------- */
+.reveal,
+.seq {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.reveal.visible { opacity: 1; transform: none; }
+.reveal.visible,
+.seq.visible { opacity: 1; transform: none; }
 
 /* ---------- Nav ---------- */
 .topbar {
@@ -271,6 +273,27 @@ body.chat-open { overflow: hidden; }
   max-width: 720px;
   margin: 0 auto;
 }
+/* Horizontally scrollable / draggable suggestion row above the input */
+.chat-suggest {
+  max-width: 720px;
+  margin: 0 auto 10px;
+  overflow-x: auto;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+}
+.chat-suggest::-webkit-scrollbar { display: none; }
+.chat-suggest.dragging { cursor: grabbing; }
+.chat-suggest-track {
+  display: flex;
+  gap: 8px;
+  width: max-content;
+  padding: 2px 24px;
+}
+.chat-suggest .chip { white-space: nowrap; background: rgba(255, 254, 253, 0.85); }
 .chat-close {
   position: absolute;
   top: 24px;
@@ -703,7 +726,7 @@ html, body { overflow-x: clip; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal, .seq { opacity: 1; transform: none; transition: none; }
   .hero-gradient::before { animation: none; }
   html { scroll-behavior: auto; }
 }
