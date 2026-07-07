@@ -754,8 +754,10 @@ html, body { overflow-x: clip; }
 html[lang="zh-Hant"] body { line-height: 1.75; }
 html[lang="zh-Hant"] .hero-title,
 html[lang="zh-Hant"] .footer-title { letter-spacing: 0.02em; }
-html[lang="zh-Hant"] em { font-style: normal; }
+/* CJK has no italics: emphasis renders as gray instead (EN keeps italic) */
+html[lang="zh-Hant"] em { font-style: normal; color: var(--muted); }
 /* pen-on-paper handwriting: homepage hero only — an accent, not a system */
 html[lang="zh-Hant"] .hero-title em {
   font-family: "辰宇落雁體 Thin", "Chenyuluoyan", "Iansui", "Noto Serif TC", serif;
+  color: inherit;
 }
