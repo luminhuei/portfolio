@@ -1,32 +1,6 @@
-/* ---------- Fonts (PP Editorial New, served from the same public asset host the live site uses) ---------- */
-@font-face {
-  font-family: "PP Editorial New";
-  src: url("https://framerusercontent.com/assets/XVuJxrEXb8jdhTKGx0Zqrz5EU.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "PP Editorial New";
-  src: url("https://framerusercontent.com/assets/vlcgXHhjPOw3oP9tEp2XLY0L7i0.woff2") format("woff2");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "PP Editorial New";
-  src: url("https://framerusercontent.com/assets/4dGoCwTMexd525sToIYTAJwmRPQ.woff2") format("woff2");
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "PP Editorial New";
-  src: url("https://framerusercontent.com/assets/dAyJdsFSSclRCnpez7DDYRWXcI.woff2") format("woff2");
-  font-weight: 200;
-  font-style: italic;
-  font-display: swap;
-}
+/* ---------- Fonts ----------
+   Serif: Instrument Serif (Google Fonts, OFL) — the community's go-to free
+   stand-in for PP Editorial New. Loaded via the <link> tag in each page. */
 
 /* ---------- Tokens ---------- */
 :root {
@@ -40,7 +14,7 @@
   --card-dark-muted: #a1a1aa;
   --card-light: #f4f4f5;
   --footer-bg: #0c0c0c;
-  --serif: "PP Editorial New", Georgia, serif;
+  --serif: "Instrument Serif", Georgia, serif;
   --sans: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
   --mono: "Geist Mono", ui-monospace, monospace;
   --radius: 28px;
@@ -196,14 +170,14 @@ a { color: inherit; }
 }
 .hero-title {
   font-family: var(--serif);
-  font-weight: 200;
+  font-weight: 400;
   font-size: clamp(38px, 4.75vw, 72px);
   line-height: 1.1;
   letter-spacing: -0.03em;
 }
 .hero-title em {
   font-style: italic;
-  font-weight: 200;
+  font-weight: 400;
 }
 .hero-current {
   margin-top: 36px;
@@ -500,7 +474,7 @@ html, body { overflow-x: clip; }
 }
 .footer-title {
   font-family: var(--serif);
-  font-weight: 200;
+  font-weight: 400;
   font-style: italic;
   font-size: clamp(40px, 6vw, 80px);
   letter-spacing: -0.02em;
@@ -560,7 +534,7 @@ html, body { overflow-x: clip; }
   margin-top: clamp(32px, 4vw, 56px);
   padding: 0 clamp(20px, 4vw, 64px);
   font-family: var(--serif);
-  font-weight: 200;
+  font-weight: 400;
   font-size: clamp(56px, 15.5vw, 300px);
   line-height: 1;
   letter-spacing: -0.03em;
