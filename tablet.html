@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ordering Tablet — Min Huei Lu</title>
+  <meta name="description" content="A tableside self-ordering tablet for all-you-can-eat restaurants — 5 of 5 untrained users completed the full flow." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="case.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="nav-logo" href="index.html" aria-label="Home">ML</a>
+    <nav class="nav">
+      <a class="nav-link" href="index.html#work">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></svg>
+        Work
+      </a>
+      <a class="nav-link" href="index.html#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9 14c1 1.4 5 1.4 6 0"/><path d="M9.5 9.8h.01M14.5 9.8h.01"/></svg>
+        About
+      </a>
+      <a class="nav-link" href="https://docs.google.com/document/d/1N3t4DdJfruSLgAqbMZaBIx6HJFr7ifMk/edit" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V5a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 3.5V8h4"/></svg>
+        CV
+      </a>
+    </nav>
+    <a class="nav-mail" href="mailto:luminhuei@gmail.com" aria-label="Email me">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4.5 7.5l7.5 5.5 7.5-5.5"/></svg>
+    </a>
+  </div>
+
+  <header class="case-hero">
+    <h1 class="case-title">Zero training, hundreds of dishes.</h1>
+  </header>
+
+  <main class="case">
+
+    <!-- Overview -->
+    <section class="case-intro">
+      <div class="case-intro-main">
+        <p class="case-kicker reveal">Overview</p>
+        <p class="case-lead reveal">In formal testing, <em>5 of 5 untrained users</em> completed the full flow.</p>
+        <div class="case-intro-body reveal">
+          <p>The Ordering Tablet is a tableside self-ordering device for all-you-can-eat restaurants &mdash; usable by any guest with zero training, with tier permissions and round rules enforced by the interface itself instead of a server&rsquo;s memory.</p>
+          <p><strong>Constraints:</strong> zero training opportunity for users; tier and round rules vary by merchant, so the interface had to be configurable; limited engineering resources demanded strict feature triage.</p>
+          <p><strong>Key trade&#8209;off:</strong> walking away from the poster-style ordering merchants widely hoped for, and concentrating resources on what the target dining format actually needed.</p>
+        </div>
+      </div>
+
+      <dl class="case-meta reveal">
+        <div><dt>Company</dt><dd>Peblla</dd></div>
+        <div><dt>Platform</dt><dd>Tablet</dd></div>
+        <div><dt>Year</dt><dd>2024</dd></div>
+        <div><dt>Team</dt><dd>Product Manager<br />Engineering</dd></div>
+        <div><dt>Role</dt><dd>UX Design<br />UI Design<br />User Testing<br />Design System</dd></div>
+      </dl>
+    </section>
+
+    <!-- Problem / Approach / Results -->
+    <section class="psr">
+      <div class="psr-card reveal">
+        <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5"/><path d="M12 15.8h.01"/></svg>
+        <h2>Problem</h2>
+        <ul>
+          <li>AYCE tables order in rounds &mdash; <strong>hundreds of dishes per table</strong> overwhelm manual entry.</li>
+          <li>Tiered menus <strong>can&rsquo;t scale on a server&rsquo;s memory</strong>.</li>
+          <li>Guests have <strong>zero training and zero willingness to learn</strong>.</li>
+        </ul>
+      </div>
+      <div class="psr-card reveal">
+        <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15 9l-2 4.5L8.5 15l2-4.5z"/></svg>
+        <h2>Approach</h2>
+        <ul>
+          <li>Tier permissions shown as <strong>visible-but-locked</strong> &mdash; no confusion, built-in upgrade motivation.</li>
+          <li>Round control as a <strong>merchant-configurable rule system</strong>, not fixed logic.</li>
+          <li><strong>Deliberately dropped</strong> the poster-style ordering after prototyping it.</li>
+        </ul>
+      </div>
+      <div class="psr-card reveal">
+        <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 17l5.5-5.5 4 4L20.5 7"/><path d="M14.5 7h6v6"/></svg>
+        <h2>Results</h2>
+        <ul>
+          <li><strong>5 of 5 untrained users</strong> completed the full self-ordering flow.</li>
+          <li>Only <strong>minor refinements</strong> followed testing &mdash; no structural issues.</li>
+          <li><strong>One interface</strong> serving hot pot, sushi, and BBQ formats alike.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Final screens -->
+    <section class="case-section" id="screens">
+      <p class="case-kicker reveal">Final screens</p>
+      <div class="gallery">
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(160deg, #dcf7e9, #d9f99d)"><span>Menu browsing</span></div>
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(190deg, #e4fbe9, #b9f0d4)"><span>Tier lock badges</span></div>
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(150deg, #d2f5df, #ecfbd9)"><span>Order history</span></div>
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(170deg, #def8e6, #cdf2c4)"><span>Round control</span></div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="case-section" id="process">
+      <p class="case-kicker reveal">Process</p>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">01</p>
+        <p class="step-label reveal">The AYCE problem</p>
+        <h2 class="step-title reveal">Hundreds of dishes, <em>on human memory</em>.</h2>
+        <div class="step-body reveal">
+          <p>In all-you-can-eat hot pot, sushi, and BBQ restaurants, guests order in multiple rounds &mdash; a single table can accumulate over a hundred, sometimes several hundred dishes. Relying on servers to enter orders by hand simply doesn&rsquo;t hold up during peak hours.</p>
+          <p>And menus in this segment are priced in tiers: what guests can order depends on which tier they paid for. Expecting servers to memorize what each table may order, may not order, and has already ordered is neither realistic nor error-proof.</p>
+          <p>The core question: <strong>how do you let a completely untrained guest smoothly self-order hundreds of dishes &mdash; while staying within tier permissions and round-based rules?</strong></p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">02</p>
+        <p class="step-label reveal">Who it&rsquo;s for</p>
+        <h2 class="step-title reveal">The exact <em>opposite</em> of Mobile POS.</h2>
+        <div class="step-body reveal">
+          <p>The users are dine-in guests seeing this interface for the first time &mdash; from children to grandparents, with zero training opportunity and zero willingness to learn. This is the exact opposite design premise from Mobile POS, which serves trained servers: here, the interface must have <strong>zero learning cost</strong> &mdash; anyone should be able to pick it up and use it.</p>
+          <p>The secondary stakeholders are merchants: they care about operational efficiency and the accurate enforcement of tier permissions and dining rounds.</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">03</p>
+        <p class="step-label reveal">Research</p>
+        <h2 class="step-title reveal">Three merchant demands, <em>three fates</em>.</h2>
+        <div class="step-body reveal">
+          <p>Before design began, I conducted field observation in real restaurants, studying how guests behave in actual dining environments. Combined with market research and merchant interviews, this converged on the three demands that mattered most:</p>
+          <ul>
+            <li>Display <strong>ordered items</strong>, so guests don&rsquo;t re-order dishes they&rsquo;ve forgotten &mdash; which wastes food</li>
+            <li>Strictly enforce <strong>dining round control</strong></li>
+            <li>A desire for a <strong>full-poster, interactive ordering experience</strong>, distinct from the traditional image list</li>
+          </ul>
+          <p>These three demands met three different fates: the first two became core features. The third was deliberately dropped after validation.</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">04</p>
+        <p class="step-label reveal">Decision one</p>
+        <h2 class="step-title reveal">Hide it &mdash; or <em>visible but locked</em>?</h2>
+        <div class="step-body reveal">
+          <p>Facing tiered menu permissions, the most straightforward approach is to hide dishes a guest can&rsquo;t order &mdash; the cleanest interface. We didn&rsquo;t take that path. The final solution: <strong>greyed-out + lock badge</strong> &mdash; higher-tier dishes remain visible, just locked.</p>
+          <ul>
+            <li><strong>For guests:</strong> they see the full menu, and never wonder &ldquo;why does that table have a dish I can&rsquo;t find?&rdquo;</li>
+            <li><strong>For merchants:</strong> a greyed-out higher-tier dish is itself the motivation to upgrade &mdash; guests can see it but can&rsquo;t order it, and the call-server button is exactly that upgrade entry point</li>
+          </ul>
+          <p>The cost is an interface that always looks fuller than one showing only orderable dishes &mdash; we accepted the visual density in exchange for the double win of <strong>unconfused guests and built-in upgrade motivation</strong>.</p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(160deg, #dcf7e9, #ecfbd9)"><span>Same menu, two states &mdash; locked vs. unlocked</span></div>
+          <figcaption>The core moment: greyed-out dishes with lock badges before an upgrade, instantly unlocked after</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">05</p>
+        <p class="step-label reveal">Decision two</p>
+        <h2 class="step-title reveal">Round rules as <em>configuration</em>, not code.</h2>
+        <div class="step-body reveal">
+          <p>Round rules differ completely across dining formats &mdash; hot pot, sushi, and BBQ each restrict differently. So round control couldn&rsquo;t be fixed logic; it was designed as a <strong>merchant-configurable rule system rendered dynamically in the interface</strong> &mdash; one interface, carrying different round rules in different restaurants.</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">06</p>
+        <p class="step-label reveal">Decision three</p>
+        <h2 class="step-title reveal">The feature we <em>didn&rsquo;t build</em>.</h2>
+        <div class="step-body reveal">
+          <p>For the poster-style ordering merchants widely asked for, we built a prototype demo to validate the direction &mdash; and ultimately decided not to build it:</p>
+          <ul>
+            <li><strong>Engineering cost didn&rsquo;t match the payoff:</strong> high implementation effort against a small base of merchants it would apply to</li>
+            <li><strong>Wrong dining format:</strong> poster-style immersion suits high-end dining, while mid-to-low-priced AYCE guests want to order fast, frequently, and in rounds &mdash; not admire a beautiful menu</li>
+          </ul>
+          <p>That decision let the team concentrate resources on what the target segment actually needed: tier permissions, round control, and order history.</p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(190deg, #e4fbe9, #d2f5df)"><span>Poster prototype vs. shipped card layout</span></div>
+          <figcaption>Explored, validated, and deliberately walked away &mdash; the prototype beside what actually shipped</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">07</p>
+        <p class="step-label reveal">Design system</p>
+        <h2 class="step-title reveal">One kit, <em>many merchants</em>.</h2>
+        <div class="step-body reveal">
+          <p>As with Mobile POS, I designed a complete UI design system &mdash; component library and variant architecture &mdash; so restaurants across different merchants and dining formats could assemble their own ordering interface from the same components, instead of redesigning from scratch for every new merchant.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Solution -->
+    <section class="case-section" id="solution">
+      <p class="case-kicker reveal">Solution</p>
+      <h2 class="step-title reveal">The guest&rsquo;s journey, <em>self-served</em>.</h2>
+
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">01</span> Menu browsing + left-side categories</h3>
+        <p>Categories stay fixed on the left, so guests switch cuisines without getting lost; dishes are clear image-and-text cards &mdash; name, photo, and tier status at a glance.</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">02</span> Tier lock badges &amp; upgrade entry</h3>
+        <p>Dishes above the table&rsquo;s paid tier appear greyed-out with a lock badge &mdash; visible but not orderable; once an upgrade completes via the call-server button, locked dishes unlock instantly.</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">03</span> Cart</h3>
+        <p>When a whole table orders together, the cart is the confirmation zone before submitting: quantities and options at a glance, preventing mis-orders.</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">04</span> Order history</h3>
+        <p>Guests can check what the table has already ordered at any time &mdash; preventing duplicate orders at the source.</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">05</span> Call server</h3>
+        <p>Self-service doesn&rsquo;t mean no service. One tap summons a server for tier upgrades, special requests, or questions &mdash; reserving human service for the moments that genuinely need a human.</p>
+      </div>
+      <div class="sol-item reveal">
+        <h3><span class="sol-num">06</span> Round control</h3>
+        <p>Merchant-configured round rules render dynamically &mdash; guests know exactly what they can still order this round, reducing rule disputes between guests and servers.</p>
+      </div>
+      <figure class="reveal">
+        <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(165deg, #cdf2c4, #e4fbe9)"><span>Round limit state &mdash; gentle, not rejecting</span></div>
+        <figcaption>Rules rendered warmly: &ldquo;this round you can still order X&rdquo; &mdash; a limit that doesn&rsquo;t feel like a refusal</figcaption>
+      </figure>
+    </section>
+
+    <!-- Impact -->
+    <section class="case-section" id="impact">
+      <p class="case-kicker reveal">Impact</p>
+      <h2 class="step-title reveal">Tested, and <em>only small fixes needed</em>.</h2>
+      <div class="step-body reveal">
+        <p>After launch, I led formal user testing: five participants who had never seen the product walked through the complete self-ordering flow &mdash; five being the standard sample size for qualitative usability testing, enough to surface the vast majority of issues.</p>
+        <p>All five untrained users completed the main flow &mdash; browse &rarr; order &rarr; view ordered items &rarr; call server &mdash; <strong>without assistance</strong>. Only minor refinements followed, with no structural usability issues found. For a product built for untrained users, &ldquo;tested, and only small fixes needed&rdquo; is itself the evidence that the design goal was met.</p>
+      </div>
+      <div class="stats">
+        <div class="stat reveal">
+          <p class="stat-value">5/5</p>
+          <p class="stat-title">Untrained users completed the flow</p>
+          <p class="stat-sub">Browse &rarr; order &rarr; history &rarr; call server, without assistance</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-value">100s</p>
+          <p class="stat-title">Dishes per table, across rounds</p>
+          <p class="stat-sub">The order volume the interface absorbs so servers don&rsquo;t have to</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-value">1 &rarr; &infin;</p>
+          <p class="stat-title">One interface, many formats</p>
+          <p class="stat-sub">Hot pot, sushi, BBQ &mdash; carried by configurable rules and one design system</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="case-section" id="reflection">
+      <p class="case-kicker reveal">Reflection</p>
+      <p class="case-lead reveal">The most important lesson came from a feature we <em>didn&rsquo;t build</em>.</p>
+      <div class="step-body reveal">
+        <p>Merchants widely hoped for a full-poster ordering experience; we prototyped it, then deliberately walked away. It&rsquo;s all called &ldquo;restaurant ordering,&rdquo; but a hot pot chain, a high-end omakase, and a fast-food counter need completely different things.</p>
+        <p>That experience built a habit I&rsquo;ve kept ever since: whenever a restaurant-related design request comes in, I ask about the dining format first &mdash; it determines which features are worth building, and which appealing-sounding requests deserve a firm no. Designing round control as a configurable rule system rather than fixed logic is the same principle applied in the positive direction: one interface, serving many dining formats.</p>
+      </div>
+    </section>
+
+    <!-- Next -->
+    <a class="next-project reveal" href="index.html#work">
+      <div>
+        <p class="next-label">Next</p>
+        <p class="next-title">All projects <span aria-hidden="true">&rarr;</span></p>
+      </div>
+      <span class="next-thumb" style="--lg: linear-gradient(135deg, #ff894a, #fdcf00)"></span>
+    </a>
+
+  </main>
+
+  <footer id="contact" class="footer">
+    <div class="eyes" aria-hidden="true">
+      <span class="eye"><span class="pupil"></span></span>
+      <span class="eye"><span class="pupil"></span></span>
+    </div>
+
+    <div class="footer-connect">
+      <h2 class="footer-title">Let&rsquo;s connect.</h2>
+      <p class="footer-sub">I&rsquo;m always down for a chat.</p>
+      <div class="footer-actions">
+        <a href="mailto:luminhuei@gmail.com" aria-label="Email me">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4.5 7.5l7.5 5.5 7.5-5.5"/></svg>
+        </a>
+        <a href="https://docs.google.com/document/d/1N3t4DdJfruSLgAqbMZaBIx6HJFr7ifMk/edit" target="_blank" rel="noopener" aria-label="CV">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V5a1.5 1.5 0 0 1 1-1.5z"/><path d="M14 3.5V8h4"/><path d="M9 12h6M9 15.5h6"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/minhueilu/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.06V19.5h2.88zM5.5 7.19a1.69 1.69 0 1 0 0-3.38 1.69 1.69 0 0 0 0 3.38zM10.06 8.5H12.8v1.5h.04c.38-.72 1.31-1.48 2.7-1.48 2.89 0 3.42 1.9 3.42 4.38v6.6h-2.87v-5.85c0-1.4-.03-3.19-1.95-3.19-1.95 0-2.25 1.52-2.25 3.09v5.95h-2.87z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <a class="marquee" href="mailto:luminhuei@gmail.com" aria-label="Click to mail me">
+      <div class="marquee-track">
+        <span>Click to mail me&nbsp;&mdash;&nbsp;Click to mail me&nbsp;&mdash;&nbsp;Click to mail me&nbsp;&mdash;&nbsp;Click to mail me&nbsp;&mdash;&nbsp;</span>
+        <span aria-hidden="true">Click to mail me&nbsp;&mdash;&nbsp;Click to mail me&nbsp;&mdash;&nbsp;Click to mail me&nbsp;&mdash;&nbsp;Click to mail me&nbsp;&mdash;&nbsp;</span>
+      </div>
+    </a>
+
+    <p class="footer-name" aria-hidden="true">Min Huei Lu</p>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Min Huei Lu</span>
+      <span>Built with code &amp; love</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
