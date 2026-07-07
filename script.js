@@ -18,8 +18,8 @@ document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 // projects hint, then the chat bar arrives late, then its hint chips.
 // Tweak BAR_DELAY / CHIPS_DELAY to taste.
 // ---------------------------------------------------------------------------
-const BAR_DELAY = 6000;
-const CHIPS_DELAY = 10000;
+const BAR_DELAY = 1600;
+const CHIPS_DELAY = 2400;
 [
   [".hero-intro", 200],
   [".hero-title", 500],
