@@ -174,15 +174,16 @@ a { color: inherit; }
   content: "";
   position: absolute;
   inset: 0;
+  /* two wavy water layers sliding sideways over a light sky-to-sea base;
+     the undulating wave line makes the level rise and fall at every point */
   background:
-    linear-gradient(105deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.5) 42%, rgba(255, 255, 255, 0) 55%) 0 0 / 250% 100% no-repeat,
-    linear-gradient(95deg, rgba(185, 240, 255, 0) 20%, rgba(185, 240, 255, 0.45) 45%, rgba(185, 240, 255, 0) 70%) 0 0 / 400% 100% no-repeat,
-    linear-gradient(to bottom, #b9f0ff 0%, #4fc3ff 40%, #1668c9 72%, #0a2a66 100%);
-  animation: wave-flow 4.5s linear infinite;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 64' preserveAspectRatio='none'%3E%3Cpath d='M0 30 Q15 22 30 30 T60 30 T90 30 T120 30 V64 H0 Z' fill='%230a2a66'/%3E%3C/svg%3E") repeat-x 0 0 / 96px 100%,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 64' preserveAspectRatio='none'%3E%3Cpath d='M0 24 Q15 15 30 24 T60 24 T90 24 T120 24 V64 H0 Z' fill='%232f8fe6' fill-opacity='0.75'/%3E%3C/svg%3E") repeat-x 0 0 / 64px 100%,
+    linear-gradient(to bottom, #c4f1ff 0%, #7fd4ff 45%, #4fc3ff 100%);
+  animation: wave-slide 5s linear infinite;
 }
-@keyframes wave-flow {
-  from { background-position: -250% 0, -400% 0, 0 0; }
-  to { background-position: 250% 0, 400% 0, 0 0; }
+@keyframes wave-slide {
+  to { background-position: 96px 0, 64px 0, 0 0; }
 }
 .hero-title {
   font-family: var(--serif);
@@ -588,5 +589,6 @@ html, body { overflow-x: clip; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  .hero-gradient::before { animation: none; }
   html { scroll-behavior: auto; }
 }
