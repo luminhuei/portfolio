@@ -273,6 +273,52 @@ const PILLS = [
         );
       }
     });
+
+    // Ball-only obstacles: the floating navigation pieces and the MinaGPT ask
+    // bar act as walls for the ball. They live only in the ball's collision
+    // world — falling pills still rain straight through them. The navbar is
+    // fixed to the viewport, so obstacle positions re-sync on scroll/resize.
+    const OBSTACLES = [".nav-logo", ".topbar .nav", ".nav-mail", ".minagpt .chat-bar"];
+    const obstacleBodies = [];
+    const syncObstacles = () => {
+      const wr = wrap.getBoundingClientRect();
+      OBSTACLES.forEach((sel, i) => {
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const rc = el.getBoundingClientRect();
+        if (rc.width < 4 || rc.height < 4) return;
+        const cx = rc.left - wr.left + rc.width / 2;
+        const cy = rc.top - wr.top + rc.height / 2;
+        let ob = obstacleBodies[i];
+        // rebuild if the element was resized (e.g. viewport change)
+        if (ob && (Math.abs(ob.w - rc.width) > 2 || Math.abs(ob.h - rc.height) > 2)) {
+          Composite.remove(world, ob.body);
+          ob = obstacleBodies[i] = null;
+        }
+        if (!ob) {
+          obstacleBodies[i] = {
+            w: rc.width,
+            h: rc.height,
+            body: Bodies.rectangle(cx, cy, rc.width, rc.height, {
+              isStatic: true,
+              friction: 0,
+              restitution: 1,
+              chamfer: { radius: Math.min(rc.width, rc.height) / 2 - 1 },
+              collisionFilter: { category: CAT_CEIL, mask: CAT_BALL },
+            }),
+          };
+          Composite.add(world, obstacleBodies[i].body);
+        } else {
+          Body.setPosition(ob.body, { x: cx, y: cy });
+        }
+      });
+    };
+    syncObstacles();
+    // entrance animations translate these elements into place — re-sync a few
+    // times until the hero timeline (chat bar arrives ~1.6s) has settled
+    [600, 1400, 2600, 4000].forEach((t) => setTimeout(syncObstacles, t));
+    window.addEventListener("scroll", syncObstacles, { passive: true });
+    window.addEventListener("resize", syncObstacles);
   }
 
   // Called around each physics step to keep the ball perpetual and lively.
