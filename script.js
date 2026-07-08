@@ -751,3 +751,53 @@ function initWorkIndex() {
   });
 }
 initWorkIndex();
+
+/* ---------- Work index: subject-index filter (All / Product / Branding) ---------- */
+function initTocFilter() {
+  const bar = document.querySelector(".toc-filter");
+  if (!bar) return;
+  const buttons = bar.querySelectorAll(".toc-filter-btn");
+  const rows = document.querySelectorAll(".toc-row");
+  const eras = document.querySelectorAll(".toc-era");
+
+  const apply = (filter) => {
+    buttons.forEach((b) => {
+      const on = b.dataset.filter === filter;
+      b.classList.toggle("on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    rows.forEach((row) => {
+      row.classList.toggle(
+        "f-hide",
+        filter !== "all" && row.dataset.cat !== filter
+      );
+    });
+    // hide a chapter when the filter empties it (the appendix has no list — always shown)
+    eras.forEach((era) => {
+      const list = era.querySelector(".toc-list");
+      if (!list) return;
+      const any = [...list.querySelectorAll(".toc-row")].some(
+        (r) => !r.classList.contains("f-hide")
+      );
+      era.classList.toggle("f-hide", !any);
+    });
+  };
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const f = btn.dataset.filter;
+      apply(f);
+      // shareable view: work.html#product / #branding
+      history.replaceState(null, "", f === "all" ? location.pathname : "#" + f);
+    });
+  });
+
+  const applyFromHash = () => {
+    const h = location.hash.replace("#", "");
+    if (h === "product" || h === "branding") apply(h);
+    else if (h === "" || h === "all") apply("all");
+  };
+  applyFromHash();
+  window.addEventListener("hashchange", applyFromHash);
+}
+initTocFilter();

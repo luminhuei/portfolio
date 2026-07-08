@@ -521,3 +521,39 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
   .toc-tags { display: none; }
   .toc-era-num { display: none; }
 }
+
+/* ---------- Work index — subject-index filter ---------- */
+.toc-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin-top: clamp(40px, 6vw, 60px);
+  padding-top: 18px;
+  border-top: 1px solid rgba(18, 18, 18, 0.08);
+}
+.toc-filter-btn {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0 0 2px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+.toc-filter-btn span {
+  font-size: 10.5px;
+  color: var(--faint);
+  margin-left: 4px;
+}
+.toc-filter-btn:hover { color: var(--ink); }
+.toc-filter-btn.on {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+/* rows/chapters excluded by the active filter */
+.toc-row.f-hide,
+.toc-era.f-hide { display: none; }
