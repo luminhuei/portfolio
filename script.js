@@ -209,7 +209,7 @@ const PILLS = [
     const y = reduceMotion ? H() - h / 2 - 4 : -(150 + i * 170);
     const body = Bodies.rectangle(x, y, w, h, {
       chamfer: { radius: Math.min(w, h) / 2 - 1 },
-      restitution: 0.4,
+      restitution: 0.65, // springy: bounce a few times on landing, like a sponge
       friction: 0.4,
       frictionAir: 0.015,
       angle: (Math.random() - 0.5) * 0.5,
