@@ -231,7 +231,7 @@ const PILLS = [
     CAT_CEIL = 0x0004;
   const grav = engine.gravity || world.gravity || { y: 1, scale: 0.001 };
   const gCancel = grav.y * (grav.scale != null ? grav.scale : 0.001);
-  const BALL_SPEED = 6.2;
+  const BALL_SPEED = 4.8;
   let ceiling = null;
   if (ball) {
     const b = ball.body;
@@ -250,6 +250,29 @@ const PILLS = [
     Composite.add(world, ceiling);
     Body.setPosition(b, { x: W() * 0.5, y: H() * 0.5 });
     Body.setVelocity(b, { x: BALL_SPEED * 0.8, y: BALL_SPEED * 0.6 });
+
+    // When the ball strikes a pill, wake it and pop it away from the ball with a
+    // little lift + spin — otherwise settled pills sleep and ignore the hit.
+    Matter.Events.on(engine, "collisionStart", (evt) => {
+      for (const pair of evt.pairs) {
+        const other =
+          pair.bodyA === b ? pair.bodyB : pair.bodyB === b ? pair.bodyA : null;
+        if (!other || other.isStatic) continue;
+        Matter.Sleeping.set(other, false);
+        const dx = other.position.x - b.position.x;
+        const dy = other.position.y - b.position.y;
+        const d = Math.hypot(dx, dy) || 1;
+        const KICK = 3.6;
+        Body.setVelocity(other, {
+          x: other.velocity.x + (dx / d) * KICK,
+          y: other.velocity.y + (dy / d) * KICK - 1.4, // slight upward pop
+        });
+        Body.setAngularVelocity(
+          other,
+          other.angularVelocity + (Math.random() - 0.5) * 0.35
+        );
+      }
+    });
   }
 
   // Called around each physics step to keep the ball perpetual and lively.
