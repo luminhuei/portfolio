@@ -193,9 +193,12 @@ const PILLS = [
   Composite.add(world, [floor, leftWall, rightWall]);
 
   const items = [];
+  let ball = null; // the gray dot behaves like a bouncing arcade ball
   config.forEach((p, i) => {
     const el = document.createElement("div");
-    el.className = "pill" + (p.dot ? " pill-dot" : "");
+    const isBall = !reduceMotion && p.dot && p.bg === "#f4f4f5";
+    el.className =
+      "pill" + (p.dot ? " pill-dot" : "") + (isBall ? " pill-ball" : "");
     el.innerHTML = (p.t ? `<span>${p.t}</span>` : "") + p.svg;
     el.style.background = p.bg;
     wrap.appendChild(el);
@@ -213,9 +216,77 @@ const PILLS = [
       density: 0.002,
     });
     Composite.add(world, body);
-    items.push({ el, body, w, h });
+    const it = { el, body, w, h };
+    items.push(it);
+    if (isBall) ball = it;
     makeGrabbable(el, body);
   });
+
+  // Turn the gray dot into a perpetual bouncing ball: no gravity, no friction,
+  // full restitution, constant speed. It ricochets off the walls and knocks
+  // the other pills around. A ball-only ceiling (via collision filtering) keeps
+  // it inside the hero while the other pills still rain in from above.
+  const CAT_PILL = 0x0001,
+    CAT_BALL = 0x0002,
+    CAT_CEIL = 0x0004;
+  const grav = engine.gravity || world.gravity || { y: 1, scale: 0.001 };
+  const gCancel = grav.y * (grav.scale != null ? grav.scale : 0.001);
+  const BALL_SPEED = 6.2;
+  let ceiling = null;
+  if (ball) {
+    const b = ball.body;
+    b.restitution = 1;
+    b.friction = 0;
+    b.frictionStatic = 0;
+    b.frictionAir = 0;
+    b.collisionFilter = { category: CAT_BALL, mask: CAT_PILL | CAT_CEIL, group: 0 };
+    Body.setDensity(b, 0.005); // a touch heavier so it can shove pills around
+    ceiling = Bodies.rectangle(W() / 2, -30, W() * 4, 60, {
+      isStatic: true,
+      friction: 0,
+      restitution: 1,
+      collisionFilter: { category: CAT_CEIL, mask: CAT_BALL },
+    });
+    Composite.add(world, ceiling);
+    Body.setPosition(b, { x: W() * 0.5, y: H() * 0.5 });
+    Body.setVelocity(b, { x: BALL_SPEED * 0.8, y: BALL_SPEED * 0.6 });
+  }
+
+  // Called around each physics step to keep the ball perpetual and lively.
+  const maintainBall = (phase) => {
+    if (!ball || ball.el.classList.contains("held")) return;
+    const b = ball.body;
+    if (phase === "pre") {
+      Matter.Sleeping.set(b, false);
+      Body.applyForce(b, b.position, { x: 0, y: -b.mass * gCancel }); // cancel gravity
+      return;
+    }
+    // post-step: renormalize to a constant speed, avoid a vertical-only path
+    let vx = b.velocity.x,
+      vy = b.velocity.y;
+    const sp = Math.hypot(vx, vy);
+    if (sp < 0.01) {
+      vx = BALL_SPEED;
+      vy = -BALL_SPEED * 0.6;
+    } else if (Math.abs(vx) < 0.18 * sp) {
+      vx = (vx >= 0 ? 1 : -1) * 0.18 * sp;
+    }
+    const k = BALL_SPEED / Math.hypot(vx, vy);
+    Body.setVelocity(b, { x: vx * k, y: vy * k });
+    // safety net: never let a fast frame tunnel the ball out of the box
+    const r = Math.min(ball.w, ball.h) / 2;
+    const x = b.position.x,
+      y = b.position.y;
+    const nx = Math.max(r, Math.min(W() - r, x));
+    const ny = Math.max(r, Math.min(H() - r, y));
+    if (nx !== x || ny !== y) {
+      Body.setPosition(b, { x: nx, y: ny });
+      Body.setVelocity(b, {
+        x: nx !== x ? -b.velocity.x : b.velocity.x,
+        y: ny !== y ? -b.velocity.y : b.velocity.y,
+      });
+    }
+  };
 
   const sync = () => {
     for (const it of items) {
@@ -237,8 +308,10 @@ const PILLS = [
   let raf = null;
   let last = performance.now();
   const loop = (t) => {
+    maintainBall("pre");
     Engine.update(engine, Math.min(16.6, t - last));
     last = t;
+    maintainBall("post");
     sync();
     if (running) raf = requestAnimationFrame(loop);
   };
@@ -254,6 +327,7 @@ const PILLS = [
   window.addEventListener("resize", () => {
     Body.setPosition(floor, { x: W() / 2, y: H() + 30 });
     Body.setPosition(rightWall, { x: W() + 30, y: H() / 2 });
+    if (ceiling) Body.setPosition(ceiling, { x: W() / 2, y: -30 });
   });
 
   function makeGrabbable(el, body) {
