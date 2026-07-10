@@ -455,21 +455,6 @@
   font-weight: 500;
   letter-spacing: 0.1px;
 }
-.tdv-myorder {
-  flex: none;
-  margin-top: 16px;
-  height: 64px;
-  background: #fff;
-  border: 1px solid var(--g7);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-}
-.tdv-myorder b { font-size: 16px; font-weight: 500; letter-spacing: 0.15px; }
-.tdv-myorder span { font-size: 12px; font-weight: 500; letter-spacing: 0.5px; color: var(--g5); }
-
 @media (prefers-reduced-motion: reduce) {
   .tdv-card, .tdv-lock, .tdv-add { transition: none; }
   .tdv-add.tdv-popped { animation: none; }
