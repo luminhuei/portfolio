@@ -175,7 +175,7 @@
 }
 .tdv-tab.on { color: var(--g1); border-bottom-color: var(--g1); }
 .tdv-search {
-  margin-left: auto;
+  margin-left: 12px;
   width: 40px;
   height: 40px;
   border-radius: 50%;

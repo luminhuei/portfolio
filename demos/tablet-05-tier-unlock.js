@@ -37,7 +37,6 @@
       kicker: "Tier 1 · Included with your table",
       name: "Classic BBQ",
       locked: false,
-      limit: "<b>Limit:</b>&nbsp;3 items per round of ordering, 4 items total from this category",
       dishes: [
         ["Marinated Short Rib", "COMBO", "Sweet soy-marinated beef short rib, sliced thin for the grill and served with ssamjang."],
         ["Pork Belly Samgyeopsal", "TOP PICK", "Thick-cut pork belly grilled tableside, with lettuce wraps, garlic, and green-onion salad."],
@@ -91,7 +90,6 @@
     <section class="tdv-tier" data-tier="${t.key}" data-locks="${t.locked ? "1" : ""}">
       <p class="tdv-kicker">${t.kicker}</p>
       <div class="tdv-h">${t.name}</div>
-      ${t.limit ? `<div class="tdv-snack"><span class="tdv-snacktext">${t.limit}</span></div>` : ""}
       ${t.locked ? `
       <div class="tdv-snack tdv-bordered">
         <span class="tdv-snacktext tdv-lockmsg">${t.lockmsg}</span>
@@ -111,6 +109,7 @@
             <span class="tdv-pill">${I.receipt}My Order</span>
             <span class="tdv-pill">${I.bell}Check</span>
             <span class="tdv-pill tdv-outlined">${I.clock}<span class="tdv-timer">2:00:00</span></span>
+            <span class="tdv-search">${I.search}</span>
           </div>
         </div>
         <div class="tdv-body">
@@ -124,7 +123,6 @@
                 <span class="tdv-tab">Veggies</span>
                 <span class="tdv-tab">Sides</span>
                 <span class="tdv-tab">Drinks</span>
-                <span class="tdv-search">${I.search}</span>
               </div>
             </div>
             <div class="tdv-scroll">
