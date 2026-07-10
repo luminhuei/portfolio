@@ -1,0 +1,498 @@
+/* ============================================================
+   Interactive figure demos — shared styles
+   ============================================================ */
+
+.fig-demo {
+  position: relative;
+  /* Stripe-style stage: gradient panel with the device floating on it */
+  background: var(--demo-bg, linear-gradient(135deg, #5adba5, #d9f99d));
+  border-radius: 16px;
+  padding: clamp(22px, 5vw, 52px) 0;
+}
+.demo-stage {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+}
+.demo-hint {
+  position: absolute;
+  top: -24px;
+  right: 2px;
+  z-index: 5;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9a9aa1;
+  pointer-events: none;
+}
+.demo-replay {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  z-index: 5;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #18181b;
+  border: none;
+  border-radius: 100px;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+.demo-replay:hover { background: #3f3f46; }
+
+/* ============================================================
+   tablet-05-tier-unlock — v2, rebuilt 1:1 from Figma frame
+   3010:11395 (1194x834) and scaled to fit the stage.
+   Colors/type are the file's exact tokens (Roboto + M3 scale).
+   ============================================================ */
+.tdv {
+  /* absolutely positioned so the native 1194px box never widens the page —
+     only the scaled result is visible */
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* exact design tokens from the Figma file */
+  --g1: #212121;   /* System Gray 1 — primary text */
+  --g4: #757575;   /* System Gray 4 — secondary */
+  --g5: #9e9e9e;   /* System Gray 5 — secondary */
+  --g7: #e0e0e0;   /* System Gray 7 — stroke */
+  --g8: #eeeeee;   /* System Gray 8 — stroke */
+  --g9: #f5f5f5;   /* System Gray 9 — background */
+  --g10: #fafafa;  /* System Gray 10 — background */
+  --red: #ff3b30;
+  --orange: #ff9500;
+  --purple: #af52de;
+
+  width: 1194px;
+  height: 834px;
+  transform-origin: top left;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(18, 18, 18, 0.22), 0 6px 18px rgba(18, 18, 18, 0.1);
+  font-family: Roboto, "Geist", -apple-system, sans-serif;
+  color: var(--g1);
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+.tdv * { box-sizing: border-box; }
+.tdv p { margin: 0; }
+.tdv button { font-family: inherit; cursor: pointer; }
+
+/* ---- top bar: 56px, black bottom rule ---- */
+.tdv-top {
+  flex: none;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: #fff;
+  border-bottom: 1px solid var(--g1);
+}
+.tdv-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.tdv-logomark {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  border: 3px solid var(--g1);
+}
+.tdv-topbtns { display: flex; align-items: center; }
+.tdv-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 24px 0 16px;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: var(--g1);
+}
+.tdv-pill svg { width: 18px; height: 18px; }
+.tdv-pill.tdv-outlined {
+  border-color: var(--g7);
+  color: var(--purple);
+}
+
+/* ---- body: menu 820 + cart 374 ---- */
+.tdv-body { flex: 1; min-height: 0; display: flex; }
+.tdv-left {
+  width: 820px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #fff;
+}
+
+/* menu-type row + category tabs (sticky header block) */
+.tdv-menuhead {
+  flex: none;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(12, 12, 13, 0.05);
+  position: relative;
+  z-index: 2;
+}
+.tdv-menutype {
+  display: flex;
+  gap: 16px;
+  padding: 8px 32px;
+  border-bottom: 1px solid var(--g7);
+}
+.tdv-mt {
+  height: 40px;
+  padding: 0 24px;
+  border-radius: 100px;
+  border: 1px solid var(--g7);
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: var(--g1);
+}
+.tdv-mt.on { background: var(--g8); border-color: var(--g8); }
+.tdv-tabs {
+  display: flex;
+  align-items: center;
+  padding: 0 24px 0 16px;
+  border-bottom: 1px solid var(--g7);
+}
+.tdv-tab {
+  padding: 14px 16px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: var(--g4);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.tdv-tab.on { color: var(--g1); border-bottom-color: var(--g1); }
+.tdv-search {
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--g7);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tdv-search svg { width: 17px; height: 17px; }
+
+/* scrollable menu content — 756 wide, 32 left margin */
+.tdv-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  background: #fff;
+}
+.tdv-scroll::-webkit-scrollbar { width: 10px; }
+.tdv-scroll::-webkit-scrollbar-thumb { background: var(--g7); border-radius: 5px; }
+.tdv-content { width: 756px; margin-left: 32px; padding-bottom: 32px; }
+
+.tdv-kicker {
+  padding-top: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: var(--g4);
+}
+.tdv-h {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+  color: var(--g1);
+}
+.tdv-snack {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 48px;
+  margin: 16px 0 24px;
+  padding: 14px 16px;
+  border-radius: 4px;
+  background: var(--g9);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: var(--g4);
+}
+.tdv-snack.tdv-bordered { border: 1px solid var(--g7); }
+.tdv-snack .tdv-snacktext { flex: 1; min-width: 0; }
+.tdv-unlockbtn {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  color: var(--g1);
+  white-space: nowrap;
+}
+.tdv-unlockbtn svg { width: 20px; height: 20px; }
+.tdv-unlockbtn:hover { text-decoration: underline; }
+
+/* dish cards — 244 wide, exact card anatomy */
+.tdv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 244px);
+  gap: 20px 12px;
+}
+.tdv-card {
+  width: 244px;
+  border: 1px solid var(--g7);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  transition: opacity 0.6s ease, filter 0.6s ease;
+}
+.tdv-media { position: relative; padding: 16px 16px 0; }
+.tdv-img {
+  width: 212px;
+  height: 212px;
+  border-radius: 12px;
+  background: linear-gradient(160deg, #ececee, #f6f6f7); /* gray placeholder by request */
+}
+.tdv-lock {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(33, 33, 33, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.tdv-lock svg { width: 13px; height: 13px; }
+.tdv-text { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+.tdv-name { font-size: 16px; line-height: 24px; letter-spacing: 0.5px; }
+.tdv-tag {
+  align-self: flex-start;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--g9);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--g4);
+}
+.tdv-desc {
+  height: 32px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+  color: var(--g4);
+}
+.tdv-pricerow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tdv-price { font-size: 16px; line-height: 24px; letter-spacing: 0.5px; }
+.tdv-add {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--g9);
+  color: var(--g1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.tdv-add svg { width: 16px; height: 16px; }
+.tdv-add:hover { background: var(--g8); }
+.tdv-add:active { transform: scale(0.9); }
+@keyframes tdv-pop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.22); }
+  100% { transform: scale(1); }
+}
+.tdv-add.tdv-popped { animation: tdv-pop 0.35s ease; }
+
+/* locked (greyed) tier state */
+.tdv-tier2.tdv-locked .tdv-card {
+  opacity: 0.45;
+  filter: grayscale(1);
+}
+.tdv-tier2.tdv-locked .tdv-lock { opacity: 1; transform: scale(1); }
+.tdv-tier2.tdv-locked .tdv-add { pointer-events: none; }
+
+/* ---- cart rail: 374 wide, #FAFAFA ---- */
+.tdv-cart {
+  flex: 1;
+  min-width: 0;
+  background: var(--g10);
+  border-left: 1px solid var(--g7);
+  padding: 16px 22px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.tdv-cartcard {
+  background: #fff;
+  border: 1px solid var(--g7);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.tdv-carthead {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--g8);
+}
+.tdv-carthead b { font-size: 16px; font-weight: 500; letter-spacing: 0.15px; }
+.tdv-clear { font-size: 12px; font-weight: 500; letter-spacing: 0.5px; color: var(--g5); }
+.tdv-cartscroll { flex: 1; min-height: 0; overflow-y: auto; }
+.tdv-field {
+  margin: 16px;
+  height: 56px;
+  border: 1px solid var(--g7);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-size: 14px;
+  letter-spacing: 0.25px;
+  color: var(--g4);
+}
+.tdv-item {
+  display: flex;
+  gap: 12px;
+  padding: 8px 16px 12px;
+  border-bottom: 1px solid var(--g7);
+}
+.tdv-thumb {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 4px;
+  background: linear-gradient(160deg, #ececee, #f6f6f7);
+}
+.tdv-itembody { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.tdv-itemname { font-size: 16px; line-height: 24px; letter-spacing: 0.5px; }
+.tdv-cart-tag {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+  padding: 4px 8px;
+  border: 1px solid var(--g8);
+  border-radius: 4px;
+  font-size: 10px;
+  letter-spacing: 0.4px;
+  color: var(--g4);
+}
+.tdv-cart-tag::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+.tdv-mod { display: flex; gap: 12px; font-size: 12px; line-height: 16px; letter-spacing: 0.4px; color: var(--g1); }
+.tdv-mod span:first-child {
+  flex: none;
+  width: 16px;
+  text-align: center;
+  background: var(--g9);
+}
+.tdv-itemdesc { font-size: 12px; line-height: 16px; letter-spacing: 0.4px; color: var(--g4); }
+.tdv-discount { font-size: 12px; line-height: 16px; letter-spacing: 0.4px; color: var(--red); }
+.tdv-itemfoot { display: flex; align-items: center; justify-content: space-between; }
+.tdv-itemprice { font-size: 16px; letter-spacing: 0.5px; }
+.tdv-stepper { display: flex; align-items: center; }
+.tdv-step {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--g9);
+  color: var(--g1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tdv-step svg { width: 13px; height: 13px; }
+.tdv-qty { width: 40px; text-align: center; font-size: 14px; letter-spacing: 0.25px; }
+.tdv-cartfoot {
+  flex: none;
+  height: 64px;
+  border-top: 1px solid var(--g7);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+.tdv-submit {
+  flex: 1;
+  height: 40px;
+  border: none;
+  border-radius: 100px;
+  background: var(--g1);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+.tdv-myorder {
+  flex: none;
+  margin-top: 16px;
+  height: 64px;
+  background: #fff;
+  border: 1px solid var(--g7);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+.tdv-myorder b { font-size: 16px; font-weight: 500; letter-spacing: 0.15px; }
+.tdv-myorder span { font-size: 12px; font-weight: 500; letter-spacing: 0.5px; color: var(--g5); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tdv-card, .tdv-lock, .tdv-add { transition: none; }
+  .tdv-add.tdv-popped { animation: none; }
+  .tdv-scroll { scroll-behavior: auto; }
+}
