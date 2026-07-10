@@ -71,7 +71,7 @@ HTML 錨點 `#demo-{id}` · 檔案 `demos/{id}.js` · CSS 寫進 `demos/demos.cs
 
 | ID | 頁面 | 位置 | Figma 來源 | 互動 |
 |---|---|---|---|---|
-| `dashboard-04-sales-overview` | dashboard.html / zh | Process 04「Turning numbers into answers」的圖 | 檔案 EBx8zHO3QIWL3nzpU6HAuy,frames 119:1178(第二側欄展開)+ 123:2023(收合)(原生 1508×1117) | Peblla shadcn/ui 系統的儀表板外殼,無限自動循環:第二側欄(240px 白)滑出收合 → 子選單以手風琴縮排進主側欄 → 再展開復原;三顆收合/展開鈕都可手動點,含按壓特效。頂欄 52px:麵包屑 + 7 個選單(Search/時區/Organization/Store/Support/Account/Inbox)。主側欄 240px 灰,16 個 pattern 項目(active 橘 #FF4D00、New/Beta 徽章)。**中間 content 留白,Sales Overview 畫面待 Mina 提供**。字型 Inter(設計檔為 Roboto,沿用整站決定) |
+| `dashboard-04-sales-overview` | dashboard.html / zh | Process 04「Turning numbers into answers」的圖 | 檔案 EBx8zHO3QIWL3nzpU6HAuy,frames 119:1178(第二側欄展開)+ 123:2023(收合)(原生 1508×1117) | Peblla shadcn/ui 系統的儀表板外殼,無限自動循環:第二側欄(240px 白)滑出收合 → 子選單以手風琴縮排進主側欄 → 再展開復原;三顆收合/展開鈕都可手動點,含按壓特效。頂欄 52px:麵包屑 + 7 個選單(Search/時區/Organization/Store/Support/Account/Inbox)。主側欄 240px 灰,15 個真實項目(Report Center active 橘 #FF4D00 帶 New、Reputation 帶 Beta;icon 用 Feather 對應,文字來源 frame 124:1345);第二側欄三組:Sales(Sales Overview active/Sales Summary/Order Details)、Transactions、Reconciliation。**中間 content 留白,Sales Overview 畫面待 Mina 提供**。字型 Inter(設計檔為 Roboto,沿用整站決定) |
 | `tablet-05-tier-unlock` | tablet.html / zh | Process「Decision one」的圖 | frame 3010:11395(原生 1194×834) | 高級 AYCE BBQ 情境,無限自動循環:Tier 1 Classic BBQ(彩色)停留 → 平滑捲至 Tier 2 Premium Cuts(置灰+鎖徽章)→ Unlock 按壓特效 → 恢復彩色 → 同樣走 Tier 3 Wagyu Reserve(各 6 道菜)→ 捲回 Tier 1 並重新上鎖,循環(一圈約 13s)。圖不在視窗內會暫停;reduced-motion 改手動 Unlock。+ 會加購物車;藍色用餐倒數 2:00:00 每秒跳。菜品圖為灰色佔位(待真圖) |
 
 ## 待做的圖(tablet 頁提案)

@@ -17,11 +17,27 @@
       : (zh ? "自動播放 — 第二側欄收合與展開" : "Auto-plays — the sub-nav tucks away"),
   };
 
-  /* icons — Phosphor-style strokes, 24 viewBox, currentColor */
+  /* icons — top bar keeps Phosphor-style strokes; the nav items use Feather
+     equivalents as requested. All 24 viewBox, currentColor. */
   const S = (d, w) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w || 1.6}" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
   const I = {
-    circle: S('<circle cx="12" cy="12" r="8.2"/>'),
     chev: S('<path d="M6.5 9.75l5.5 5.5 5.5-5.5"/>', 1.8),
+    /* Feather icons for the primary rail */
+    fileText: S('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/>', 1.7),
+    barChart: S('<path d="M18 20V10M12 20V4M6 20v-6"/>', 1.7),
+    pieChart: S('<path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/>', 1.7),
+    percent: S('<path d="M19 5L5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>', 1.7),
+    list: S('<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>', 1.7),
+    cart: S('<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>', 1.7),
+    member: S('<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>', 1.7),
+    zap: S('<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>', 1.7),
+    grid: S('<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>', 1.7),
+    usersGroup: S('<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', 1.7),
+    layout: S('<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>', 1.7),
+    star: S('<path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/>', 1.7),
+    gear: S('<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>', 1.7),
+    monitor: S('<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>', 1.7),
+    clipboard: S('<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/>', 1.7),
     outdent: S('<path d="M11 5.75h8.5M11 12h8.5M4.5 18.25h15"/><path d="M7.5 8.5L4 12l3.5 3.5"/>'),
     indent: S('<path d="M11 5.75h8.5M11 12h8.5M4.5 18.25h15"/><path d="M4.5 8.5L8 12l-3.5 3.5"/>'),
     search: S('<circle cx="11" cy="11" r="6.2"/><path d="M15.7 15.7L20.5 20.5"/>'),
@@ -33,21 +49,46 @@
     mail: S('<rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="M4.5 7.5l7.5 5.5 7.5-5.5"/>'),
   };
 
-  /* primary rail: 16 pattern items — first is the current page, one carries Beta */
-  const railItem = (i) => {
-    const on = i === 0;
-    const badge = i === 0 ? "New" : i === 12 ? "Beta" : "";
+  /* primary rail — the real Peblla store-admin menu; Report Center is the
+     current page and hosts the sub-nav accordion when the second rail is
+     collapsed */
+  const NAV1 = [
+    ["fileText", "Report Center", "New"],
+    ["barChart", "Report"],
+    ["pieChart", "Analytics"],
+    ["percent", "Promotions"],
+    ["list", "Menu"],
+    ["cart", "Order"],
+    ["member", "Member"],
+    ["zap", "Integration"],
+    ["grid", "Management"],
+    ["usersGroup", "Group Buy"],
+    ["layout", "Table Service"],
+    ["star", "Reputation", "Beta"],
+    ["gear", "Settings"],
+    ["monitor", "Devices"],
+    ["clipboard", "Store Account"],
+  ];
+  const SUBNAV = [
+    ["Sales", ["Sales Overview", "Sales Summary", "Order Details"]],
+    ["Transactions", ["Transaction Details"]],
+    ["Reconciliation", ["Payment Reconciliation", "Payout Reconciliation"]],
+  ];
+  const leaves = SUBNAV.flatMap(([, kids]) => kids);
+
+  const railItem = ([icon, label, badge], i) => {
+    const on = i === 0; // Report Center — the page we're on
     return `
-      <div class="adv-item${on ? " adv-on" : ""}${i === 1 ? " adv-parent" : ""}">
-        <span class="adv-ic20">${I.circle}</span>
-        <span class="adv-itemlabel">Navigation</span>
+      <div class="adv-item${on ? " adv-on adv-parent" : ""}">
+        <span class="adv-ic20">${I[icon]}</span>
+        <span class="adv-itemlabel">${label}</span>
         ${badge ? `<span class="adv-badge${badge === "New" ? " adv-badge-new" : ""}">${badge}</span>` : ""}
         <span class="adv-ic16 adv-chev">${I.chev}</span>
       </div>
-      ${i === 1 ? `
+      ${on ? `
       <div class="adv-acc">
         <div class="adv-accwrap">
-          ${[0, 1, 2, 3, 4, 5, 6].map((k) => `<div class="adv-subitem${k === 1 ? " adv-subon" : ""}">Nav dropdown</div>`).join("")}
+          ${leaves.map((label2) => `<div class="adv-subitem${label2 === "Sales Overview" ? " adv-subon" : ""}">${label2}</div>`).join("")}
         </div>
       </div>` : ""}`;
   };
@@ -74,7 +115,7 @@
               <button class="adv-iconbtn adv-r1toggle" aria-label="Collapse navigation">${I.outdent}</button>
               <span class="adv-storechip">Store</span>
             </div>
-            ${Array.from({ length: 16 }, (_, i) => railItem(i)).join("")}
+            ${NAV1.map(railItem).join("")}
           </div>
           <div class="adv-r1foot"><div class="adv-item adv-version">version 5.53.0</div></div>
         </aside>
@@ -93,17 +134,13 @@
         <aside class="adv-rail2">
           <div class="adv-r2top">
             <button class="adv-iconbtn adv-r2toggle" aria-label="Collapse sub-navigation">${I.outdent}</button>
-            <div class="adv-item2 adv-parent2"><span class="adv-itemlabel">Navigation</span><span class="adv-ic16 adv-chev-up">${I.chev}</span></div>
+            ${SUBNAV.map(([group, kids]) => `
+            <div class="adv-item2 adv-parent2"><span class="adv-itemlabel">${group}</span><span class="adv-ic16 adv-chev-up">${I.chev}</span></div>
             <div class="adv-sub2">
               <div class="adv-sub2wrap">
-                <div class="adv-subitem2 adv-sub2on">Navigation</div>
-                <div class="adv-subitem2">Navigation</div>
-                <div class="adv-subitem2">Navigation</div>
+                ${kids.map((label) => `<div class="adv-subitem2${label === "Sales Overview" ? " adv-sub2on" : ""}">${label}</div>`).join("")}
               </div>
-            </div>
-          </div>
-          <div class="adv-r2foot">
-            <div class="adv-item2"><span class="adv-itemlabel">Navigation</span><span class="adv-ic16 adv-chev">${I.chev}</span></div>
+            </div>`).join("")}
           </div>
         </aside>
 
