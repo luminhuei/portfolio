@@ -61,7 +61,7 @@
     <div class="demo-stage">
       <div class="tdv">
         <div class="tdv-top">
-          <div class="tdv-logo"><span class="tdv-logomark"></span>peblla</div>
+          <div class="tdv-logo"><span class="tdv-logodot"></span></div>
           <div class="tdv-topbtns">
             <span class="tdv-pill">${I.kiosk}#A62</span>
             <span class="tdv-pill">${I.user}Login</span>

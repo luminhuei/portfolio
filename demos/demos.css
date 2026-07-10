@@ -5,7 +5,7 @@
 .fig-demo {
   position: relative;
   /* Stripe-style stage: gradient panel with the device floating on it */
-  background: var(--demo-bg, linear-gradient(135deg, #5adba5, #d9f99d));
+  background: var(--demo-bg, linear-gradient(120deg, #ffd9e8, #e6dbff 48%, #cdeeff));
   border-radius: 16px;
   padding: clamp(22px, 5vw, 52px) 0;
 }
@@ -95,19 +95,12 @@
   background: #fff;
   border-bottom: 1px solid var(--g1);
 }
-.tdv-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-.tdv-logomark {
-  width: 22px;
-  height: 22px;
-  border-radius: 7px;
-  border: 3px solid var(--g1);
+.tdv-logo { display: flex; align-items: center; }
+.tdv-logodot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--g1);
 }
 .tdv-topbtns { display: flex; align-items: center; }
 .tdv-pill {
