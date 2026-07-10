@@ -12,16 +12,49 @@
   background-size: 100% 100%, 280% 100%;
   background-position: 0 0, 0% 100%;
   animation: demo-drift 26s ease-in-out infinite alternate;
-  border: 1px solid rgba(18, 18, 18, 0.07);
+  /* opaque so the pastel underneath can't tint it */
+  border: 1px solid #e4e4e1;
   border-radius: 16px;
   padding: clamp(22px, 5vw, 52px) 0;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fig-demo:hover {
+  transform: scale(1.05);
+  z-index: 5;
 }
 @keyframes demo-drift {
   from { background-position: 0 0, 0% 100%; }
   to { background-position: 0 0, 100% 100%; }
 }
+
+/* cursor-following colorful frame: a conic-gradient ring, revealed only
+   inside a soft radial window centred on the mouse (--mx/--my from JS) */
+.demo-ringwrap {
+  position: absolute;
+  inset: -1px;
+  border-radius: 17px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  -webkit-mask-image: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), #000 35%, transparent 75%);
+          mask-image: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), #000 35%, transparent 75%);
+}
+.fig-demo:hover .demo-ringwrap { opacity: 1; }
+.demo-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 17px;
+  padding: 1.5px; /* ring thickness */
+  background: conic-gradient(from 0deg, #ff9ec6, #b39dff, #7cc7ff, #7fe0b2, #ffd99e, #ff9ec6);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask-composite: exclude;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .fig-demo { animation: none; }
+  .fig-demo { animation: none; transition: none; }
+  .fig-demo:hover { transform: none; }
 }
 .demo-stage {
   width: 80%;

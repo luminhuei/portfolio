@@ -3,6 +3,7 @@
 命名規則:`{case}-{nn}-{slug}`(nn = 頁面上第 nn 個圖位)。
 每個 demo:HTML 錨點 `#demo-{id}` · 檔案 `demos/{id}.js` · 共用樣式 `demos/demos.css`。
 做法:照 Figma 原尺寸 1:1 重建(精確 token),整體縮放進漸層舞台(裝置佔 80% 寬)。
+共用 hover 效果:`demos/fig-hover.js` 讓每張 `.fig-demo` hover 時放大 5%,並有跟著滑鼠的彩色外框線段(conic 漸層 + radial 遮罩)。**script 標籤必須放在各 demo 的 js 之後**(demo 會重寫容器 innerHTML)。
 
 | ID | 頁面 | 位置 | Figma 來源 | 互動 |
 |---|---|---|---|---|
