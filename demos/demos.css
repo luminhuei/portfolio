@@ -95,7 +95,8 @@
 /* ============================================================
    tablet-05-tier-unlock — v2, rebuilt 1:1 from Figma frame
    3010:11395 (1194x834) and scaled to fit the stage.
-   Colors/type are the file's exact tokens (Roboto + M3 scale).
+   Colors/type are the file's exact tokens (M3 scale; Inter in place
+   of Roboto by request).
    ============================================================ */
 .tdv {
   /* absolutely positioned so the native 1194px box never widens the page —
@@ -123,7 +124,7 @@
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 30px 70px rgba(18, 18, 18, 0.22), 0 6px 18px rgba(18, 18, 18, 0.1);
-  font-family: Roboto, "Geist", -apple-system, sans-serif;
+  font-family: "Inter", "Geist", -apple-system, sans-serif;
   color: var(--g1);
   user-select: none;
   display: flex;
