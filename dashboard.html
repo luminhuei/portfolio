@@ -7,11 +7,12 @@
   <meta name="description" content="A business data hub for restaurant owners — the daily window for operators of 700+ active stores." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="case.css" />
+  <link rel="stylesheet" href="demos/demos.css" />
 </head>
-<body>
+<body class="case-dashboard">
 
   <div class="topbar">
     <a class="nav-logo" href="index.html" aria-label="Home">ML</a>
@@ -147,7 +148,7 @@
           <p>So Sales Overview&rsquo;s core metrics default to a comparison against yesterday, with green-up / red-down percentages sitting right beside the big numbers &mdash; no mental math, no remembering yesterday&rsquo;s figures. Net Sales, Payments, and Refunds anchor the page as three top cards, while breakdowns by payment method, channel, and dining type fold into tabs inside each card: <strong>visual weight strictly follows how often owners ask the question, not how complex the data is</strong>.</p>
         </div>
         <figure class="reveal">
-          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(160deg, #d9f0ff, #e6f7ff)"><span>Sales Overview &mdash; three cards, judgment at a glance</span></div>
+          <div class="fig-demo" id="demo-dashboard-04-sales-overview"></div>
           <figcaption>Three anchor cards with period-over-period indicators &mdash; the tone of the day, set in one look</figcaption>
         </figure>
       </article>
@@ -316,5 +317,7 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="demos/dashboard-04-sales-overview.js" defer></script>
+  <script src="demos/fig-hover.js" defer></script>
 </body>
 </html>

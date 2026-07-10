@@ -7,11 +7,12 @@
   <meta name="description" content="給餐廳老闆的經營數據中心 — 700+ 家活躍門店營運者每天打開的經營窗口。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
   <link rel="stylesheet" href="../case.css" />
+  <link rel="stylesheet" href="../demos/demos.css" />
 </head>
-<body>
+<body class="case-dashboard">
 
   <div class="topbar">
     <a class="nav-logo" href="index.html" aria-label="首頁">ML</a>
@@ -147,7 +148,7 @@
           <p>因此銷售總覽的核心指標預設開啟與昨日的對比,綠漲紅跌的百分比直接壓在大數字旁 &mdash;&mdash; 不需要心算、不需要記憶昨天的數字。淨銷售、收款、退款三張大卡置頂定調,支付方式、渠道、用餐類型的拆解收進卡片內的分頁:<strong>視覺權重嚴格跟隨「老闆提問的頻率」排序,而不是數據本身的複雜度</strong>。</p>
         </div>
         <figure class="reveal">
-          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(160deg, #d9f0ff, #e6f7ff)"><span>銷售總覽 &mdash; 三張大卡,一眼定調</span></div>
+          <div class="fig-demo" id="demo-dashboard-04-sales-overview"></div>
           <figcaption>三張核心卡片與同比漲跌 &mdash;&mdash; 今天的基調,一眼看完</figcaption>
         </figure>
       </article>
@@ -316,5 +317,7 @@
   </footer>
 
   <script src="../script.js"></script>
+  <script src="../demos/dashboard-04-sales-overview.js" defer></script>
+  <script src="../demos/fig-hover.js" defer></script>
 </body>
 </html>

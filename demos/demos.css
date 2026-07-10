@@ -104,8 +104,10 @@
    of Roboto by request).
    ============================================================ */
 /* per-case stages (body class set in each case page):
-   Ordering Tablet = neon sunset, Mobile POS = aurora; others TBD */
-.case-tablet .fig-demo {
+   Ordering Tablet = neon sunset, Analytics Dashboard = neon sunset,
+   Mobile POS = aurora; others TBD */
+.case-tablet .fig-demo,
+.case-dashboard .fig-demo {
   --fig-pastel: var(--fig-pastel-sunset);
   --fig-fade: var(--fig-fade-tall);
 }
@@ -469,4 +471,240 @@
 @media (prefers-reduced-motion: reduce) {
   .tdv-card, .tdv-lock, .tdv-add, .tdv-unlockbtn { transition: none; }
   .tdv-add.tdv-popped { animation: none; }
+}
+
+/* ============================================================
+   dashboard-04-sales-overview — Analytics Dashboard shell,
+   rebuilt 1:1 from the Peblla shadcn/ui frames 119:1178 and
+   123:2023 (1508x1117), scaled to fit the stage.
+   ============================================================ */
+.adv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Peblla design-system tokens from the Figma file */
+  --a-ink: #1a1a1a;     /* 90 - high emphasis */
+  --a-mid: #666666;     /* 60 - medium emphasis */
+  --a-soft: #4d4d4d;    /* 70 */
+  --a-border: #e6e6e6;  /* 10 - border */
+  --a-line: #cccccc;    /* 20 */
+  --a-panel: #f2f2f2;   /* 5 - primary container */
+  --a-brand: #ff4d00;   /* Peblla brand */
+  --a-brand-bg: rgba(255, 77, 0, 0.05);
+  --a-hover: rgba(0, 0, 0, 0.04);
+
+  width: 1508px;
+  height: 1117px;
+  transform-origin: top left;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(18, 18, 18, 0.22), 0 6px 18px rgba(18, 18, 18, 0.1);
+  font-family: "Inter", "Geist", -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--a-ink);
+  user-select: none;
+}
+.adv * { box-sizing: border-box; }
+.adv p { margin: 0; }
+.adv button { font-family: inherit; cursor: pointer; }
+
+/* ---- primary rail: 240px, panel gray ---- */
+.adv-rail1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 240px;
+  background: var(--a-panel);
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+.adv-r1head { flex: none; display: flex; align-items: center; padding: 16px; }
+.adv-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #000;
+}
+.adv-logomark { width: 20px; height: 20px; border-radius: 6px; background: #000; }
+.adv-r1menu { flex: 1; min-height: 0; overflow: hidden; padding: 16px; }
+.adv-r1menu > * + * { margin-top: 16px; }
+.adv-r1tools { display: flex; align-items: center; justify-content: space-between; }
+.adv-iconbtn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--a-border);
+  border-radius: 4px;
+  background: var(--a-panel);
+  color: var(--a-soft);
+  transition: transform 0.18s ease, opacity 0.18s ease, background 0.15s ease;
+}
+.adv-iconbtn svg { width: 20px; height: 20px; }
+.adv-iconbtn:hover { background: var(--a-border); }
+.adv-iconbtn.adv-press, .adv-iconbtn:active { transform: scale(0.88); opacity: 0.55; }
+.adv-storechip {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  border-radius: 4px;
+  background: var(--a-border);
+  font-size: 12px;
+  color: var(--a-mid);
+}
+.adv-item {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--a-mid);
+}
+.adv-item:hover:not(.adv-on):not(.adv-version) { background: var(--a-border); }
+.adv-item.adv-on { background: #fff; color: var(--a-brand); }
+.adv-itemlabel { flex: 1; min-width: 0; }
+.adv-ic20, .adv-ic16, .adv-ic12 { flex: none; display: flex; }
+.adv-ic20 svg { width: 20px; height: 20px; }
+.adv-ic16 svg { width: 16px; height: 16px; }
+.adv-ic12 svg { width: 12px; height: 12px; }
+.adv-badge { flex: none; font-size: 12px; font-weight: 400; color: var(--a-mid); }
+.adv-badge-new { color: var(--a-brand); }
+.adv-version { color: var(--a-mid); }
+.adv-version:hover { background: none; }
+.adv-r1foot { flex: none; padding: 16px; }
+
+/* accordion — sub-nav folded into the primary rail (collapsed state only) */
+.adv-acc {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin-top 0.45s ease;
+  margin-top: 0 !important;
+  padding-left: 16px;
+}
+.adv-collapsed .adv-acc { max-height: 420px; opacity: 1; margin-top: 16px !important; }
+.adv-accwrap { border-left: 1px solid var(--a-line); padding-left: 16px; }
+.adv-subitem {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--a-mid);
+}
+.adv-subitem + .adv-subitem { margin-top: 16px; }
+.adv-subitem:hover { background: var(--a-hover); }
+.adv-subitem.adv-subon { background: #fff; }
+.adv-parent .adv-chev svg { transition: transform 0.3s ease; }
+.adv-collapsed .adv-parent .adv-chev svg { transform: rotate(180deg); }
+
+/* ---- top nav: 52px, hairline bottom ---- */
+.adv-top {
+  position: absolute;
+  left: 240px;
+  right: 0;
+  top: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: #fff;
+  border-bottom: 1px solid var(--a-border);
+  z-index: 2;
+}
+.adv-crumbs { display: flex; align-items: center; padding-right: 16px; }
+.adv-crumb { padding: 10px; font-weight: 500; color: var(--a-mid); white-space: nowrap; }
+.adv-crumb-on { color: var(--a-ink); }
+.adv-topnav { display: flex; align-items: center; gap: 8px; }
+.adv-topitem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--a-ink);
+  white-space: nowrap;
+}
+.adv-topitem:hover { background: #f5f5f5; }
+.adv-topitem .adv-ic20 { color: #343330; }
+
+/* ---- second rail: 240px white, slides away when collapsed ---- */
+.adv-rail2 {
+  position: absolute;
+  left: 240px;
+  top: 52px;
+  bottom: 0;
+  width: 240px;
+  background: #fff;
+  border-right: 1px solid var(--a-line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+.adv-collapsed .adv-rail2 { transform: translateX(-24px); opacity: 0; pointer-events: none; }
+.adv-r2top { padding: 16px; }
+.adv-r2top > * + * { margin-top: 16px; }
+.adv-rail2 .adv-iconbtn { background: #fff; }
+.adv-rail2 .adv-iconbtn:hover { background: var(--a-panel); }
+.adv-item2 {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--a-mid);
+}
+.adv-sub2 { padding-left: 16px; }
+.adv-sub2wrap { border-left: 1px solid var(--a-line); padding-left: 16px; }
+.adv-subitem2 {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--a-mid);
+}
+.adv-subitem2 + .adv-subitem2 { margin-top: 16px; }
+.adv-subitem2:hover:not(.adv-sub2on) { background: var(--a-panel); }
+.adv-subitem2.adv-sub2on { background: var(--a-brand-bg); color: var(--a-brand); }
+.adv-chev-up svg { transform: rotate(180deg); }
+.adv-r2foot { padding: 16px; }
+
+/* expand button — appears where the second rail used to be */
+.adv-expandbtn {
+  position: absolute;
+  left: 256px;
+  top: 68px;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease 0.15s, transform 0.18s ease;
+  z-index: 2;
+}
+.adv-collapsed .adv-expandbtn { opacity: 1; pointer-events: auto; }
+
+/* content area — the Sales Overview screen lands here later */
+.adv-content { position: absolute; left: 480px; right: 0; top: 52px; bottom: 0; background: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .adv-rail2, .adv-acc, .adv-iconbtn, .adv-parent .adv-chev svg { transition: none; }
 }
