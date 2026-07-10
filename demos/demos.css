@@ -4,11 +4,16 @@
 
 .fig-demo {
   position: relative;
-  /* Stripe-style stage: pastel candy colors at the bottom fading to white at
-     the top, with the color layer drifting very slowly — a subtle wave.
-     Override the pastel layer per figure: #demo-xxx { --fig-pastel: linear-gradient(…); } */
+  /* Stripe-style stage: colors pooling at the bottom fading to white at the
+     top, with the color layer drifting very slowly — a subtle wave.
+     Pick a stage per figure (default is candy pastel with the short fade):
+       #demo-xxx { --fig-pastel: var(--fig-pastel-sunset); --fig-fade: var(--fig-fade-tall); } */
+  --fig-pastel-sunset: linear-gradient(100deg, #ff71ce, #ff9e7c 22%, #ffd23f 45%, #ff71ce 68%, #b967ff 100%);
+  --fig-pastel-aurora: linear-gradient(100deg, #05ffa1, #01cdfe 25%, #8f6bff 50%, #ff8ad8 72%, #05ffa1 100%);
+  /* taller white for the vivid neon stages — color stays in the bottom third */
+  --fig-fade-tall: linear-gradient(180deg, #ffffff 0%, #ffffff 16%, rgba(255, 255, 255, 0.88) 36%, rgba(255, 255, 255, 0) 80%);
   background:
-    linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.86) 16%, rgba(255, 255, 255, 0) 64%),
+    var(--fig-fade, linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.86) 16%, rgba(255, 255, 255, 0) 64%)),
     var(--fig-pastel, linear-gradient(100deg, #ffd9e8, #e6dbff 26%, #cdeeff 52%, #d6f5e3 76%, #ffd9e8 100%));
   background-size: 100% 100%, 280% 100%;
   background-position: 0 0, 0% 100%;
@@ -98,6 +103,11 @@
    Colors/type are the file's exact tokens (M3 scale; Inter in place
    of Roboto by request).
    ============================================================ */
+#demo-tablet-05-tier-unlock {
+  /* neon sunset stage with the taller white fade */
+  --fig-pastel: var(--fig-pastel-sunset);
+  --fig-fade: var(--fig-fade-tall);
+}
 .tdv {
   /* absolutely positioned so the native 1194px box never widens the page —
      only the scaled result is visible */

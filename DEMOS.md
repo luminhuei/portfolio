@@ -5,7 +5,7 @@ Case study 頁的「圖」不用截圖,用程式碼 1:1 重建成可互動的展
 
 ## 共用層自動提供(demos.css + fig-hover.js,不用每張圖重寫)
 
-- **舞台背景**:粉彩糖果漸層 — 顏色聚在下方、往上漸白(上 16% 近全白),色層以 26s 極慢左右漂移(subtle wave)。要換色只覆寫色層:`#demo-xxx { --fig-pastel: linear-gradient(…); }`
+- **舞台背景**:顏色聚在下方、往上漸白,色層以 26s 極慢左右漂移(subtle wave)。預設是糖果粉彩;另有兩個霓虹預設可以每張圖指定 — `--fig-pastel-sunset`(霓虹日落:桃紅→蜜橘→金黃→紫)與 `--fig-pastel-aurora`(極光:電綠→青→紫→洋紅光緣),霓虹用時搭配加高白色 `--fig-fade: var(--fig-fade-tall)`(色彩只留下方 1/3)。用法:`#demo-xxx { --fig-pastel: var(--fig-pastel-sunset); --fig-fade: var(--fig-fade-tall); }`。tablet-05 用日落
 - **外框**:1px 不透明淺灰 `#e4e4e1`(不透明才不會被底下的粉彩染色)、圓角 16px
 - **Hover**:整張圖放大 5%(`scale(1.05)`,柔緩動 0.5s);同時彩色外框線段亮起,**跟著滑鼠沿邊框移動**(conic 彩虹環 + 以游標為中心的 radial 遮罩,離開後淡出恢復灰框)
 - **舞台寬度**:裝置容器 `.demo-stage` 佔舞台 80% 寬、置中
