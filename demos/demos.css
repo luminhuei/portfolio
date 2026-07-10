@@ -103,9 +103,14 @@
    Colors/type are the file's exact tokens (M3 scale; Inter in place
    of Roboto by request).
    ============================================================ */
-#demo-tablet-05-tier-unlock {
-  /* neon sunset stage with the taller white fade */
+/* per-case stages (body class set in each case page):
+   Ordering Tablet = neon sunset, Mobile POS = aurora; others TBD */
+.case-tablet .fig-demo {
   --fig-pastel: var(--fig-pastel-sunset);
+  --fig-fade: var(--fig-fade-tall);
+}
+.case-mpos .fig-demo {
+  --fig-pastel: var(--fig-pastel-aurora);
   --fig-fade: var(--fig-fade-tall);
 }
 .tdv {
