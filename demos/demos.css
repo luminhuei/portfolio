@@ -300,34 +300,24 @@
   text-transform: uppercase;
   color: var(--g4);
 }
-.tdv-desc {
-  height: 32px;
-  overflow: hidden;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 0.4px;
-  color: var(--g4);
-}
-.tdv-pricerow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.tdv-price { font-size: 16px; line-height: 24px; letter-spacing: 0.5px; }
 .tdv-add {
+  position: absolute;
+  right: 26px;
+  bottom: 10px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   border: none;
-  background: var(--g9);
+  background: #fff;
   color: var(--g1);
+  box-shadow: 0 1px 4px rgba(18, 18, 18, 0.16);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.15s ease, transform 0.15s ease;
 }
 .tdv-add svg { width: 16px; height: 16px; }
-.tdv-add:hover { background: var(--g8); }
+.tdv-add:hover { background: var(--g9); }
 .tdv-add:active { transform: scale(0.9); }
 @keyframes tdv-pop {
   0% { transform: scale(1); }
@@ -391,26 +381,6 @@
 }
 .tdv-itembody { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
 .tdv-itemname { font-size: 16px; line-height: 24px; letter-spacing: 0.5px; }
-.tdv-cart-tag {
-  align-self: flex-start;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 24px;
-  padding: 4px 8px;
-  border: 1px solid var(--g8);
-  border-radius: 4px;
-  font-size: 10px;
-  letter-spacing: 0.4px;
-  color: var(--g4);
-}
-.tdv-cart-tag::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--orange);
-}
 .tdv-mod { display: flex; gap: 12px; font-size: 12px; line-height: 16px; letter-spacing: 0.4px; color: var(--g1); }
 .tdv-mod span:first-child {
   flex: none;
@@ -418,10 +388,7 @@
   text-align: center;
   background: var(--g9);
 }
-.tdv-itemdesc { font-size: 12px; line-height: 16px; letter-spacing: 0.4px; color: var(--g4); }
-.tdv-discount { font-size: 12px; line-height: 16px; letter-spacing: 0.4px; color: var(--red); }
-.tdv-itemfoot { display: flex; align-items: center; justify-content: space-between; }
-.tdv-itemprice { font-size: 16px; letter-spacing: 0.5px; }
+.tdv-itemfoot { display: flex; align-items: center; justify-content: flex-end; }
 .tdv-stepper { display: flex; align-items: center; }
 .tdv-step {
   width: 32px;

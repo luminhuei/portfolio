@@ -78,14 +78,12 @@
     },
   ];
 
-  const card = ([name, tag, desc]) => `
+  const card = ([name, tag]) => `
     <div class="tdv-card">
-      <div class="tdv-media"><div class="tdv-img"></div><span class="tdv-lock">${I.lock}</span></div>
+      <div class="tdv-media"><div class="tdv-img"></div><span class="tdv-lock">${I.lock}</span><button class="tdv-add" aria-label="Add ${name}">${I.plus}</button></div>
       <div class="tdv-text">
         <p class="tdv-name">${name}</p>
         ${tag ? `<span class="tdv-tag">${tag}</span>` : `<span class="tdv-tag" style="visibility:hidden">·</span>`}
-        <p class="tdv-desc">${desc}</p>
-        <div class="tdv-pricerow"><span class="tdv-price">$20.00</span><button class="tdv-add" aria-label="Add ${name}">${I.plus}</button></div>
       </div>
     </div>`;
 
@@ -141,12 +139,10 @@
                   <span class="tdv-thumb"></span>
                   <div class="tdv-itembody">
                     <p class="tdv-itemname">Marinated Short Rib</p>
-                    <span class="tdv-cart-tag">Combo</span>
                     <div class="tdv-mod"><span>1</span><span>Extra Ssamjang</span></div>
                     <div class="tdv-mod"><span>2</span><span>Kimchi Refill</span></div>
                     <div class="tdv-mod"><span>1</span><span>Steamed Egg Souffl&eacute;</span></div>
                     <div class="tdv-itemfoot">
-                      <span class="tdv-itemprice">$20.00</span>
                       <span class="tdv-stepper"><button class="tdv-step">${I.minus}</button><span class="tdv-qty">1</span><button class="tdv-step">${I.plus}</button></span>
                     </div>
                   </div>
@@ -155,10 +151,7 @@
                   <span class="tdv-thumb"></span>
                   <div class="tdv-itembody">
                     <p class="tdv-itemname">Pork Belly Samgyeopsal</p>
-                    <p class="tdv-itemdesc">Thick-cut pork belly grilled tableside, with lettuce wraps and green-onion salad</p>
-                    <p class="tdv-discount">Buy 1 Get 1 Discount ( -$10.00)</p>
                     <div class="tdv-itemfoot">
-                      <span class="tdv-itemprice">$20.00</span>
                       <span class="tdv-stepper"><button class="tdv-step">${I.minus}</button><span class="tdv-qty">2</span><button class="tdv-step">${I.plus}</button></span>
                     </div>
                   </div>
