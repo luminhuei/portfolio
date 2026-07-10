@@ -103,7 +103,7 @@
       <div class="adv">
         <aside class="adv-rail1">
           <div class="adv-r1head">
-            <span class="adv-logo"><span class="adv-logomark"></span>peblla</span>
+            <span class="adv-logomark"></span>
           </div>
           <div class="adv-r1menu">
             <div class="adv-r1tools">
