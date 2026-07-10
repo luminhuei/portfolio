@@ -137,9 +137,6 @@
                   <span class="tdv-thumb"></span>
                   <div class="tdv-itembody">
                     <p class="tdv-itemname">Marinated Short Rib</p>
-                    <div class="tdv-mod"><span>1</span><span>Extra Ssamjang</span></div>
-                    <div class="tdv-mod"><span>2</span><span>Kimchi Refill</span></div>
-                    <div class="tdv-mod"><span>1</span><span>Steamed Egg Souffl&eacute;</span></div>
                     <div class="tdv-itemfoot">
                       <span class="tdv-stepper"><button class="tdv-step">${I.minus}</button><span class="tdv-qty">1</span><button class="tdv-step">${I.plus}</button></span>
                     </div>
