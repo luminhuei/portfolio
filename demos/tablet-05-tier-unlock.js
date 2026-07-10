@@ -2,8 +2,9 @@
    tablet-05-tier-unlock (v2) — rebuilt 1:1 from Figma frame 3010:11395.
    The device renders at its native 1194x834 and is scaled to fit the stage,
    so every measurement, color, and type size is the file's exact value.
-   Category 1 orderable; Category 2 (Platinum) greys out as it scrolls into
-   view; "Unlock" restores it in place. Dish photos are gray placeholders.
+   Scenario: a premium all-you-can-eat BBQ. Tier 1 comes with the table;
+   Tiers 2-3 are paid upgrades that grey out (with lock badges) as they
+   scroll into view and unlock in place. Dish photos: gray placeholders.
 --------------------------------------------------------------------------- */
 (function () {
   const root = document.getElementById("demo-tablet-05-tier-unlock");
@@ -15,7 +16,7 @@
     replay: zh ? "↺ 重新鎖定" : "↺ Lock again",
   };
 
-  /* icons (all inline SVG, stroke = currentColor unless noted) */
+  /* icons (inline SVG) */
   const I = {
     kiosk: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="11" rx="1.5"/><path d="M12 15v3M8.5 21h7M9 18h6"/></svg>',
     user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5.5 20c1-3.4 3.5-5 6.5-5s5.5 1.6 6.5 5"/></svg>',
@@ -28,22 +29,52 @@
     lock: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>',
   };
 
-  /* dish data — names/descriptions in the file's voice, prices $20 flat */
-  const CAT1 = [
-    ["Spicy Miso Ramen", "COMBO", "Spicy dashi broth made with savory miso and chicken stock with a special blend of chili bean sauce."],
-    ["Creamy Ramen", "TOP PICK", "Rich and creamy chicken broth made with shiitake mushroom dashi, soy milk, and original sesame sauce."],
-    ["Zen Ramen", "ORDERED", "Light and healthy pork broth made with kombu seaweed, shiitake mushroom, and white soy sauce."],
-    ["Shoyu Classic", "", "Clear soy-sauce broth simmered with chicken bones, bonito flakes, and a touch of yuzu peel."],
-    ["Garlic Tonkotsu", "TOP PICK", "Deep pork-bone broth finished with black garlic oil, wood-ear mushroom, and braised pork belly."],
-    ["Yuzu Shio", "NEW", "Delicate salt-based broth brightened with fresh yuzu citrus, bamboo shoots, and sesame."],
-  ];
-  const CAT2 = [
-    ["Wagyu Truffle Ramen", "PLATINUM", "A5 wagyu slices over rich paitan broth with shaved black truffle and a slow-poached egg."],
-    ["Uni Butter Ramen", "PLATINUM", "Sea urchin butter melted into creamy chicken broth, topped with ikura and chive oil."],
-    ["Lobster Paitan", "PLATINUM", "Whole-lobster broth simmered overnight, finished with claw meat and saffron oil."],
-    ["King Crab Tsukemen", "PLATINUM", "Dipping-style noodles with king crab broth reduction and charred sweet corn."],
-    ["A5 Beef Bowl", "PLATINUM", "Seared A5 striploin over koshihikari rice with truffle ponzu and onsen egg."],
-    ["Golden Broth Special", "PLATINUM", "The chef's reserve: 48-hour golden chicken broth with foie gras chashu."],
+  /* ---- AYCE BBQ menu: Tier 1 included, Tiers 2-3 paid upgrades ---- */
+  const TIERS = [
+    {
+      key: "t1",
+      kicker: "Tier 1 · Included with your table",
+      name: "Classic BBQ",
+      locked: false,
+      limit: "<b>Limit:</b>&nbsp;3 items per round of ordering, 4 items total from this category",
+      dishes: [
+        ["Marinated Short Rib", "COMBO", "Sweet soy-marinated beef short rib, sliced thin for the grill and served with ssamjang."],
+        ["Pork Belly Samgyeopsal", "TOP PICK", "Thick-cut pork belly grilled tableside, with lettuce wraps, garlic, and green-onion salad."],
+        ["Spicy Chicken Bulgogi", "ORDERED", "Boneless chicken thigh in gochujang marinade, charred over the open flame."],
+        ["Beef Brisket Slices", "", "Paper-thin brisket that cooks in seconds — dip in sesame oil with a pinch of salt."],
+        ["Garlic Shrimp Skewers", "TOP PICK", "Butterflied shrimp brushed with garlic butter, finished with a squeeze of lemon."],
+        ["Seasonal Veggie Platter", "NEW", "Mushrooms, kabocha, corn cheese, and peppers — everything the grill's edge is for."],
+      ],
+    },
+    {
+      key: "t2",
+      kicker: "Tier 2 · Paid upgrade",
+      name: "Premium Cuts",
+      locked: true,
+      lockmsg: "Premium Cuts is available as a paid upgrade. Please contact your server to unlock this menu.",
+      donemsg: "Premium Cuts unlocked — enjoy!",
+      dishes: [
+        ["Prime Ribeye", "PREMIUM", "Well-marbled USDA Prime ribeye, cut to order and rested before it hits your grill."],
+        ["Beef Tongue with Scallion", "PREMIUM", "Delicate tongue slices with scallion salt — the connoisseur's first order."],
+        ["Iberico Pork Collar", "PREMIUM", "Spanish Iberico presa with deep nutty fat — grill slow at the cooler edge."],
+        ["Miso Black Cod", "PREMIUM", "Sweet miso-cured black cod that caramelizes beautifully over charcoal."],
+        ["Herb Lamb Chops", "PREMIUM", "Frenched lamb chops in rosemary marinade — sear fast, two minutes a side."],
+        ["Jumbo Tiger Prawns", "PREMIUM", "Head-on tiger prawns brushed with chili butter, grilled in the shell."],
+      ],
+    },
+    {
+      key: "t3",
+      kicker: "Tier 3 · Paid upgrade",
+      name: "Wagyu Reserve",
+      locked: true,
+      lockmsg: "Wagyu Reserve is available as a paid upgrade. Please contact your server to unlock this menu.",
+      donemsg: "Wagyu Reserve unlocked — enjoy!",
+      dishes: [
+        ["A5 Wagyu Striploin", "WAGYU", "Certified A5 from Kagoshima — snowflake marbling that melts at grill temperature."],
+        ["Wagyu Chateaubriand", "WAGYU", "The tenderest center cut, portioned for the table and seared whole."],
+        ["Truffle Wagyu Nigiri", "WAGYU", "Seared wagyu over rice with shaved truffle — finished tableside."],
+      ],
+    },
   ];
 
   const card = ([name, tag, desc]) => `
@@ -57,6 +88,19 @@
       </div>
     </div>`;
 
+  const tierSection = (t) => `
+    <section class="tdv-tier" data-tier="${t.key}" data-locks="${t.locked ? "1" : ""}">
+      <p class="tdv-kicker">${t.kicker}</p>
+      <div class="tdv-h">${t.name}</div>
+      ${t.limit ? `<div class="tdv-snack"><span class="tdv-snacktext">${t.limit}</span></div>` : ""}
+      ${t.locked ? `
+      <div class="tdv-snack tdv-bordered">
+        <span class="tdv-snacktext tdv-lockmsg">${t.lockmsg}</span>
+        <button class="tdv-unlockbtn">Unlock ${I.chevron}</button>
+      </div>` : ""}
+      <div class="tdv-grid">${t.dishes.map(card).join("")}</div>
+    </section>`;
+
   root.innerHTML = `
     <div class="demo-stage">
       <div class="tdv">
@@ -66,7 +110,7 @@
             <span class="tdv-pill">${I.kiosk}#A62</span>
             <span class="tdv-pill">${I.user}Login</span>
             <span class="tdv-pill">${I.bell}Service</span>
-            <span class="tdv-pill tdv-outlined">${I.clock}Dining Closed</span>
+            <span class="tdv-pill tdv-outlined">${I.clock}<span class="tdv-timer">2:00:00</span></span>
           </div>
         </div>
         <div class="tdv-body">
@@ -77,34 +121,18 @@
                 <button class="tdv-mt">Drink Menu</button>
               </div>
               <div class="tdv-tabs">
-                <span class="tdv-tab on">Category 1</span>
-                <span class="tdv-tab">Category 2</span>
-                <span class="tdv-tab">Category 3</span>
-                <span class="tdv-tab">Category 4</span>
-                <span class="tdv-tab">Category 5</span>
-                <span class="tdv-tab">Category 6</span>
-                <span class="tdv-tab">Category 7</span>
+                <span class="tdv-tab on">Beef</span>
+                <span class="tdv-tab">Pork</span>
+                <span class="tdv-tab">Chicken</span>
+                <span class="tdv-tab">Seafood</span>
+                <span class="tdv-tab">Veggies</span>
+                <span class="tdv-tab">Sides</span>
+                <span class="tdv-tab">Drinks</span>
                 <span class="tdv-search">${I.search}</span>
               </div>
             </div>
             <div class="tdv-scroll">
-              <div class="tdv-content">
-                <section class="tdv-tier1">
-                  <p class="tdv-kicker">Full Menu</p>
-                  <div class="tdv-h">Category 1 Name</div>
-                  <div class="tdv-snack"><span class="tdv-snacktext"><b>Limit:</b>&nbsp;3 items per round of ordering, 4 items total from this category</span></div>
-                  <div class="tdv-grid">${CAT1.map(card).join("")}</div>
-                </section>
-                <section class="tdv-tier2">
-                  <p class="tdv-kicker">Full Menu</p>
-                  <div class="tdv-h">Category 2 Name</div>
-                  <div class="tdv-snack tdv-bordered">
-                    <span class="tdv-snacktext tdv-lockmsg">This menu is available for Platinum members. Please contact your server to unlock this menu.</span>
-                    <button class="tdv-unlockbtn">Unlock ${I.chevron}</button>
-                  </div>
-                  <div class="tdv-grid">${CAT2.map(card).join("")}</div>
-                </section>
-              </div>
+              <div class="tdv-content">${TIERS.map(tierSection).join("")}</div>
             </div>
           </div>
           <aside class="tdv-cart">
@@ -115,11 +143,11 @@
                 <div class="tdv-item">
                   <span class="tdv-thumb"></span>
                   <div class="tdv-itembody">
-                    <p class="tdv-itemname">Spicy Miso Ramen</p>
+                    <p class="tdv-itemname">Marinated Short Rib</p>
                     <span class="tdv-cart-tag">Combo</span>
-                    <div class="tdv-mod"><span>1</span><span>Extra Spicy Paste</span></div>
-                    <div class="tdv-mod"><span>2</span><span>Extra Pork Belly</span></div>
-                    <div class="tdv-mod"><span>1</span><span>Extra Lava Egg</span></div>
+                    <div class="tdv-mod"><span>1</span><span>Extra Ssamjang</span></div>
+                    <div class="tdv-mod"><span>2</span><span>Kimchi Refill</span></div>
+                    <div class="tdv-mod"><span>1</span><span>Steamed Egg Souffl&eacute;</span></div>
                     <div class="tdv-itemfoot">
                       <span class="tdv-itemprice">$20.00</span>
                       <span class="tdv-stepper"><button class="tdv-step">${I.minus}</button><span class="tdv-qty">1</span><button class="tdv-step">${I.plus}</button></span>
@@ -129,8 +157,8 @@
                 <div class="tdv-item">
                   <span class="tdv-thumb"></span>
                   <div class="tdv-itembody">
-                    <p class="tdv-itemname">Creamy Ramen</p>
-                    <p class="tdv-itemdesc">Dish Summary or extra Text, show all contents no matter how long the text is</p>
+                    <p class="tdv-itemname">Pork Belly Samgyeopsal</p>
+                    <p class="tdv-itemdesc">Thick-cut pork belly grilled tableside, with lettuce wraps and green-onion salad</p>
                     <p class="tdv-discount">Buy 1 Get 1 Discount ( -$10.00)</p>
                     <div class="tdv-itemfoot">
                       <span class="tdv-itemprice">$20.00</span>
@@ -152,14 +180,9 @@
   const stage = root.querySelector(".demo-stage");
   const device = root.querySelector(".tdv");
   const scroller = root.querySelector(".tdv-scroll");
-  const tier2 = root.querySelector(".tdv-tier2");
-  const lockmsg = root.querySelector(".tdv-lockmsg");
-  const unlockBtn = root.querySelector(".tdv-unlockbtn");
   const replayBtn = root.querySelector(".demo-replay");
   const countEl = root.querySelector(".tdv-count");
-  const LOCK_MSG = lockmsg.textContent;
   let count = 2;
-  let unlocked = false;
 
   /* scale the native 1194x834 device to fit the stage width */
   const fit = () => {
@@ -170,28 +193,49 @@
   new ResizeObserver(fit).observe(stage);
   fit();
 
-  /* the tier greys out as it scrolls into view (and stays locked) */
-  const io = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting && !unlocked) tier2.classList.add("tdv-locked");
-    },
-    { root: scroller, threshold: 0.18 }
-  );
-  io.observe(tier2);
+  /* dining timer: guests just sat down — 2 hours left, counting down (blue) */
+  const timerEl = root.querySelector(".tdv-timer");
+  let secs = 2 * 3600;
+  const tickTimer = () => {
+    if (secs > 0) secs -= 1;
+    const h = Math.floor(secs / 3600);
+    const m = String(Math.floor((secs % 3600) / 60)).padStart(2, "0");
+    const s = String(secs % 60).padStart(2, "0");
+    timerEl.textContent = `${h}:${m}:${s}`;
+  };
+  setInterval(tickTimer, 1000);
 
-  unlockBtn.addEventListener("click", () => {
-    unlocked = true;
-    tier2.classList.remove("tdv-locked");
-    lockmsg.textContent = "Platinum menu unlocked — enjoy!";
-    unlockBtn.style.display = "none";
-    replayBtn.hidden = false;
+  /* paid tiers grey out as they scroll into view, each with its own unlock */
+  const lockedTiers = [...root.querySelectorAll('.tdv-tier[data-locks="1"]')];
+  const state = new Map(); // section -> { unlocked }
+  lockedTiers.forEach((sec) => {
+    const t = TIERS.find((x) => x.key === sec.dataset.tier);
+    state.set(sec, { unlocked: false, lockmsg: t.lockmsg, donemsg: t.donemsg });
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !state.get(sec).unlocked) sec.classList.add("tdv-locked");
+      },
+      { root: scroller, threshold: 0.15 }
+    );
+    io.observe(sec);
+
+    sec.querySelector(".tdv-unlockbtn").addEventListener("click", () => {
+      state.get(sec).unlocked = true;
+      sec.classList.remove("tdv-locked");
+      sec.querySelector(".tdv-lockmsg").textContent = state.get(sec).donemsg;
+      sec.querySelector(".tdv-unlockbtn").style.display = "none";
+      replayBtn.hidden = false;
+    });
   });
 
   replayBtn.addEventListener("click", () => {
-    unlocked = false;
-    tier2.classList.add("tdv-locked");
-    lockmsg.textContent = LOCK_MSG;
-    unlockBtn.style.display = "";
+    lockedTiers.forEach((sec) => {
+      state.get(sec).unlocked = false;
+      sec.classList.add("tdv-locked");
+      sec.querySelector(".tdv-lockmsg").textContent = state.get(sec).lockmsg;
+      sec.querySelector(".tdv-unlockbtn").style.display = "";
+    });
     replayBtn.hidden = true;
   });
 

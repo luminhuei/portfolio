@@ -12,6 +12,7 @@
   background-size: 100% 100%, 280% 100%;
   background-position: 0 0, 0% 100%;
   animation: demo-drift 26s ease-in-out infinite alternate;
+  border: 1px solid rgba(18, 18, 18, 0.07);
   border-radius: 16px;
   padding: clamp(22px, 5vw, 52px) 0;
 }
@@ -79,6 +80,7 @@
   --red: #ff3b30;
   --orange: #ff9500;
   --purple: #af52de;
+  --blue: #007aff;
 
   width: 1194px;
   height: 834px;
@@ -133,7 +135,8 @@
 .tdv-pill svg { width: 18px; height: 18px; }
 .tdv-pill.tdv-outlined {
   border-color: var(--g7);
-  color: var(--purple);
+  color: var(--blue);
+  font-variant-numeric: tabular-nums;
 }
 
 /* ---- body: menu 820 + cart 374 ---- */
@@ -351,13 +354,13 @@
 }
 .tdv-add.tdv-popped { animation: tdv-pop 0.35s ease; }
 
-/* locked (greyed) tier state */
-.tdv-tier2.tdv-locked .tdv-card {
+/* locked (greyed) tier state — any tier */
+.tdv-tier.tdv-locked .tdv-card {
   opacity: 0.45;
   filter: grayscale(1);
 }
-.tdv-tier2.tdv-locked .tdv-lock { opacity: 1; transform: scale(1); }
-.tdv-tier2.tdv-locked .tdv-add { pointer-events: none; }
+.tdv-tier.tdv-locked .tdv-lock { opacity: 1; transform: scale(1); }
+.tdv-tier.tdv-locked .tdv-add { pointer-events: none; }
 
 /* ---- cart rail: 374 wide, #FAFAFA ---- */
 .tdv-cart {

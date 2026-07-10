@@ -6,4 +6,4 @@
 
 | ID | 頁面 | 位置 | Figma 來源 | 互動 |
 |---|---|---|---|---|
-| `tablet-05-tier-unlock` | tablet.html / zh | Process「Decision one」的圖 | frame 3010:11395 | Category 1 可點餐;捲到 Category 2 時整區變置灰+鎖徽章;點 Unlock 原地恢復顏色;↺ 重玩;+ 會加購物車。菜品圖為灰色佔位(待真圖) |
+| `tablet-05-tier-unlock` | tablet.html / zh | Process「Decision one」的圖 | frame 3010:11395 | 高級 AYCE BBQ 情境:Tier 1 Classic BBQ(隨桌附)可點;Tier 2 Premium Cuts / Tier 3 Wagyu Reserve(付費升級)捲入視野時變置灰+鎖徽章,各自可 Unlock 原地恢復;↺ 重玩全部重鎖;+ 會加購物車;藍色用餐倒數 2:00:00 每秒跳。菜品圖為灰色佔位(待真圖) |
