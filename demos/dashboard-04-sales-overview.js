@@ -74,23 +74,18 @@
     ["Transactions", ["Transaction Details"]],
     ["Reconciliation", ["Payment Reconciliation", "Payout Reconciliation"]],
   ];
-  const leaves = SUBNAV.flatMap(([, kids]) => kids);
 
+  /* the sub-nav lives ONLY in the second rail — collapsing it never unfolds
+     anything inside the gray primary rail */
   const railItem = ([icon, label, badge], i) => {
     const on = i === 0; // Report Center — the page we're on
     return `
-      <div class="adv-item${on ? " adv-on adv-parent" : ""}">
+      <div class="adv-item${on ? " adv-on" : ""}">
         <span class="adv-ic20">${I[icon]}</span>
         <span class="adv-itemlabel">${label}</span>
         ${badge ? `<span class="adv-badge${badge === "New" ? " adv-badge-new" : ""}">${badge}</span>` : ""}
         <span class="adv-ic16 adv-chev">${I.chev}</span>
-      </div>
-      ${on ? `
-      <div class="adv-acc">
-        <div class="adv-accwrap">
-          ${leaves.map((label2) => `<div class="adv-subitem${label2 === "Sales Overview" ? " adv-subon" : ""}">${label2}</div>`).join("")}
-        </div>
-      </div>` : ""}`;
+      </div>`;
   };
 
   const TOPNAV = [

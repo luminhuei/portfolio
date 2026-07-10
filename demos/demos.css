@@ -584,32 +584,6 @@
 .adv-version:hover { background: none; }
 .adv-r1foot { flex: none; padding: 16px; }
 
-/* accordion — sub-nav folded into the primary rail (collapsed state only) */
-.adv-acc {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin-top 0.45s ease;
-  margin-top: 0 !important;
-  padding-left: 16px;
-}
-.adv-collapsed .adv-acc { max-height: 420px; opacity: 1; margin-top: 16px !important; }
-.adv-accwrap { border-left: 1px solid var(--a-line); padding-left: 16px; }
-.adv-subitem {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  padding: 6px 8px;
-  border-radius: 8px;
-  font-weight: 500;
-  color: var(--a-mid);
-}
-.adv-subitem + .adv-subitem { margin-top: 16px; }
-.adv-subitem:hover { background: var(--a-hover); }
-.adv-subitem.adv-subon { background: #fff; }
-.adv-parent .adv-chev svg { transition: transform 0.3s ease; }
-.adv-collapsed .adv-parent .adv-chev svg { transform: rotate(180deg); }
-
 /* ---- top nav: 52px, hairline bottom ---- */
 .adv-top {
   position: absolute;
@@ -706,5 +680,5 @@
 .adv-content { position: absolute; left: 480px; right: 0; top: 52px; bottom: 0; background: #fff; }
 
 @media (prefers-reduced-motion: reduce) {
-  .adv-rail2, .adv-acc, .adv-iconbtn, .adv-parent .adv-chev svg { transition: none; }
+  .adv-rail2, .adv-iconbtn { transition: none; }
 }
