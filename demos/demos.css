@@ -158,24 +158,6 @@
   position: relative;
   z-index: 2;
 }
-.tdv-menutype {
-  display: flex;
-  gap: 16px;
-  padding: 8px 32px;
-  border-bottom: 1px solid var(--g7);
-}
-.tdv-mt {
-  height: 40px;
-  padding: 0 24px;
-  border-radius: 100px;
-  border: 1px solid var(--g7);
-  background: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.1px;
-  color: var(--g1);
-}
-.tdv-mt.on { background: var(--g8); border-color: var(--g8); }
 .tdv-tabs {
   display: flex;
   align-items: center;
@@ -393,19 +375,7 @@
 }
 .tdv-carthead b { font-size: 16px; font-weight: 500; letter-spacing: 0.15px; }
 .tdv-clear { font-size: 12px; font-weight: 500; letter-spacing: 0.5px; color: var(--g5); }
-.tdv-cartscroll { flex: 1; min-height: 0; overflow-y: auto; }
-.tdv-field {
-  margin: 16px;
-  height: 56px;
-  border: 1px solid var(--g7);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  font-size: 14px;
-  letter-spacing: 0.25px;
-  color: var(--g4);
-}
+.tdv-cartscroll { flex: 1; min-height: 0; overflow-y: auto; padding-top: 8px; }
 .tdv-item {
   display: flex;
   gap: 12px;

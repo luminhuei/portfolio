@@ -116,10 +116,6 @@
         <div class="tdv-body">
           <div class="tdv-left">
             <div class="tdv-menuhead">
-              <div class="tdv-menutype">
-                <button class="tdv-mt on">Full Menu</button>
-                <button class="tdv-mt">Drink Menu</button>
-              </div>
               <div class="tdv-tabs">
                 <span class="tdv-tab on">Beef</span>
                 <span class="tdv-tab">Pork</span>
@@ -139,7 +135,6 @@
             <div class="tdv-cartcard">
               <div class="tdv-carthead"><b>Shopping Cart (<span class="tdv-count">2</span>)</b><span class="tdv-clear">Clear Cart</span></div>
               <div class="tdv-cartscroll">
-                <div class="tdv-field">Special Instructions on Order</div>
                 <div class="tdv-item">
                   <span class="tdv-thumb"></span>
                   <div class="tdv-itembody">
