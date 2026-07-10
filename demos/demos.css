@@ -243,9 +243,12 @@
   letter-spacing: 0.25px;
   color: var(--g1);
   white-space: nowrap;
+  transition: transform 0.18s ease, opacity 0.18s ease;
 }
 .tdv-unlockbtn svg { width: 20px; height: 20px; }
 .tdv-unlockbtn:hover { text-decoration: underline; }
+.tdv-unlockbtn.tdv-press,
+.tdv-unlockbtn:active { transform: scale(0.88); opacity: 0.55; }
 
 /* dish cards — borderless, image-first; whitespace does the separating */
 .tdv-grid {
@@ -414,7 +417,8 @@
   letter-spacing: 0.1px;
 }
 @media (prefers-reduced-motion: reduce) {
-  .tdv-card, .tdv-lock, .tdv-add { transition: none; }
+  .tdv-card, .tdv-lock, .tdv-add, .tdv-unlockbtn { transition: none; }
+  .tdv-scroll { scroll-behavior: auto; }
   .tdv-add.tdv-popped { animation: none; }
   .tdv-scroll { scroll-behavior: auto; }
 }

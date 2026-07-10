@@ -11,9 +11,11 @@
   if (!root) return;
 
   const zh = (document.documentElement.lang || "").startsWith("zh");
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const T = {
-    hint: zh ? "可互動 — 捲動,然後解鎖" : "Interactive — scroll, then unlock",
-    replay: zh ? "↺ 重新鎖定" : "↺ Lock again",
+    hint: reduced
+      ? (zh ? "可互動 — 點 Unlock 解鎖" : "Interactive — tap Unlock")
+      : (zh ? "自動播放 — 各 Tier 輪流解鎖" : "Auto-plays — tiers unlock on a loop"),
   };
 
   /* icons (inline SVG) */
@@ -73,6 +75,9 @@
         ["A5 Wagyu Striploin", "WAGYU", "Certified A5 from Kagoshima — snowflake marbling that melts at grill temperature."],
         ["Wagyu Chateaubriand", "WAGYU", "The tenderest center cut, portioned for the table and seared whole."],
         ["Truffle Wagyu Nigiri", "WAGYU", "Seared wagyu over rice with shaved truffle — finished tableside."],
+        ["Wagyu Zabuton", "WAGYU", "The rare chuck-flap 'cushion cut' — intense marbling, impossibly tender off the grill."],
+        ["A5 Wagyu Ribcap", "WAGYU", "The prized spinalis crown of the ribeye, sliced thin for a quick kiss of flame."],
+        ["Wagyu Karubi Short Rib", "WAGYU", "Classic yakiniku short rib in sweet garlic soy — rich, glossy, unmistakably wagyu."],
       ],
     },
   ];
@@ -87,7 +92,7 @@
     </div>`;
 
   const tierSection = (t) => `
-    <section class="tdv-tier" data-tier="${t.key}" data-locks="${t.locked ? "1" : ""}">
+    <section class="tdv-tier${t.locked ? " tdv-locked" : ""}" data-tier="${t.key}">
       <p class="tdv-kicker">${t.kicker}</p>
       <div class="tdv-h">${t.name}</div>
       ${t.locked ? `
@@ -158,13 +163,11 @@
         </div>
       </div>
     </div>
-    <span class="demo-hint">${T.hint}</span>
-    <button class="demo-replay" hidden>${T.replay}</button>`;
+    <span class="demo-hint">${T.hint}</span>`;
 
   const stage = root.querySelector(".demo-stage");
   const device = root.querySelector(".tdv");
   const scroller = root.querySelector(".tdv-scroll");
-  const replayBtn = root.querySelector(".demo-replay");
   const countEl = root.querySelector(".tdv-count");
   let count = 2;
 
@@ -189,39 +192,82 @@
   };
   setInterval(tickTimer, 1000);
 
-  /* paid tiers grey out as they scroll into view, each with its own unlock */
-  const lockedTiers = [...root.querySelectorAll('.tdv-tier[data-locks="1"]')];
-  const state = new Map(); // section -> { unlocked }
-  lockedTiers.forEach((sec) => {
-    const t = TIERS.find((x) => x.key === sec.dataset.tier);
-    state.set(sec, { unlocked: false, lockmsg: t.lockmsg, donemsg: t.donemsg });
+  /* ---- tier lock state ---- */
+  const tierEls = {};
+  root.querySelectorAll(".tdv-tier").forEach((s) => (tierEls[s.dataset.tier] = s));
+  const tierData = {};
+  TIERS.forEach((t) => (tierData[t.key] = t));
 
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !state.get(sec).unlocked) sec.classList.add("tdv-locked");
-      },
-      { root: scroller, threshold: 0.15 }
-    );
-    io.observe(sec);
+  const setLocked = (key, locked) => {
+    const sec = tierEls[key];
+    const t = tierData[key];
+    if (!t.locked) return; // tier 1 never locks
+    sec.classList.toggle("tdv-locked", locked);
+    sec.querySelector(".tdv-lockmsg").textContent = locked ? t.lockmsg : t.donemsg;
+    sec.querySelector(".tdv-unlockbtn").style.display = locked ? "" : "none";
+  };
 
-    sec.querySelector(".tdv-unlockbtn").addEventListener("click", () => {
-      state.get(sec).unlocked = true;
-      sec.classList.remove("tdv-locked");
-      sec.querySelector(".tdv-lockmsg").textContent = state.get(sec).donemsg;
-      sec.querySelector(".tdv-unlockbtn").style.display = "none";
-      replayBtn.hidden = false;
-    });
+  /* manual unlock still works — and is the only mode under reduced motion */
+  ["t2", "t3"].forEach((key) => {
+    tierEls[key].querySelector(".tdv-unlockbtn").addEventListener("click", () => setLocked(key, false));
   });
 
-  replayBtn.addEventListener("click", () => {
-    lockedTiers.forEach((sec) => {
-      state.get(sec).unlocked = false;
-      sec.classList.add("tdv-locked");
-      sec.querySelector(".tdv-lockmsg").textContent = state.get(sec).lockmsg;
-      sec.querySelector(".tdv-unlockbtn").style.display = "";
+  /* ---- auto-play: an endless tour of the three tiers ----
+     Tier 1 in full color → glide to Tier 2 (greyed) → press Unlock →
+     colors return → same for Tier 3 → glide home, re-lock, repeat. */
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  let onStage = true; // animate only while the figure is on screen
+  new IntersectionObserver(([e]) => (onStage = e.isIntersecting), { threshold: 0.3 }).observe(stage);
+  const waitOnStage = async () => {
+    while (!onStage) await sleep(280);
+  };
+
+  const scrollTier = (key) =>
+    new Promise((res) => {
+      const top = key === "t1" ? 0 : tierEls[key].offsetTop - scroller.offsetTop;
+      if (Math.abs(scroller.scrollTop - top) < 2) return res();
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        scroller.removeEventListener("scrollend", finish);
+        res();
+      };
+      scroller.addEventListener("scrollend", finish);
+      scroller.scrollTo({ top, behavior: "smooth" });
+      setTimeout(finish, 1500); // Safari has no scrollend event
     });
-    replayBtn.hidden = true;
-  });
+
+  const pressUnlock = async (key) => {
+    if (!tierEls[key].classList.contains("tdv-locked")) return; // a visitor beat us to it
+    const btn = tierEls[key].querySelector(".tdv-unlockbtn");
+    btn.classList.add("tdv-press");
+    await sleep(220);
+    btn.classList.remove("tdv-press");
+    await sleep(160);
+    setLocked(key, false);
+  };
+
+  const cycle = async () => {
+    for (;;) {
+      await waitOnStage();
+      await sleep(2600); // Tier 1, everything in color
+      for (const key of ["t2", "t3"]) {
+        await waitOnStage();
+        await scrollTier(key);
+        await sleep(1400); // take in the greyed tier
+        await pressUnlock(key); // press, then the colors return
+        await sleep(2600);
+      }
+      await waitOnStage();
+      await scrollTier("t1"); // glide home
+      await sleep(500);
+      setLocked("t2", true); // re-lock below the fold
+      setLocked("t3", true);
+    }
+  };
+  if (!reduced) cycle();
 
   /* + buttons bump the cart count (inert while a tier is locked) */
   root.querySelectorAll(".tdv-add").forEach((btn) => {
