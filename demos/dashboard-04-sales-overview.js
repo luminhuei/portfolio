@@ -9,13 +9,8 @@
   const root = document.getElementById("demo-dashboard-04-sales-overview");
   if (!root) return;
 
-  const zh = (document.documentElement.lang || "").startsWith("zh");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const T = {
-    hint: reduced
-      ? (zh ? "可互動 — 點按鈕收合側欄" : "Interactive — toggle the sub-nav")
-      : (zh ? "自動播放 — 第二側欄收合與展開" : "Auto-plays — the sub-nav tucks away"),
-  };
+  /* no corner hint on this figure — removed by request */
 
   /* icons — top bar keeps Phosphor-style strokes; the nav items use Feather
      equivalents as requested. All 24 viewBox, currentColor. */
@@ -142,8 +137,7 @@
         <button class="adv-iconbtn adv-expandbtn" aria-label="Expand sub-navigation">${I.indent}</button>
         <main class="adv-content"></main>
       </div>
-    </div>
-    <span class="demo-hint">${T.hint}</span>`;
+    </div>`;
 
   const stage = root.querySelector(".demo-stage");
   const device = root.querySelector(".adv");
