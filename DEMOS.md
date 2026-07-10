@@ -62,7 +62,7 @@ HTML 錨點 `#demo-{id}` · 檔案 `demos/{id}.js` · CSS 寫進 `demos/demos.cs
 ## 動態圖的慣例
 
 - 自動循環用 `async` 迴圈 + `sleep`;**圖滑出視窗要暫停**(IntersectionObserver threshold 0.3)
-- 平滑捲動等 `scrollend` + 1.5s timeout 後備(Safari 沒有 scrollend)
+- 內部捲動用 **rAF 自己驅動**(easeInOut;不要用原生 smooth scroll——會被頁面自身的平滑捲動互相取消,見 tablet-05 的 scrollTier)
 - 按鈕按壓特效:press class(scale 0.88 + opacity 0.55, 0.18s)
 - 手動互動要能與自動循環共存(自動步驟先檢查狀態,已被使用者觸發就跳過)
 - `prefers-reduced-motion` 給靜態可手動版:不自動捲動、hint 換成可互動文案、demos.css 補該前綴的 reduced-motion 規則

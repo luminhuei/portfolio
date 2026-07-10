@@ -223,20 +223,25 @@
     while (!onStage) await sleep(280);
   };
 
+  /* rAF-driven glide: native smooth scrolls get cancelled when the page
+     runs its own smooth scroll (Chrome animates one at a time), which left
+     tiers re-locking on screen — driving scrollTop by hand is immune */
+  const easeInOut = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
   const scrollTier = (key) =>
     new Promise((res) => {
-      const top = key === "t1" ? 0 : tierEls[key].offsetTop - scroller.offsetTop;
-      if (Math.abs(scroller.scrollTop - top) < 2) return res();
-      let done = false;
-      const finish = () => {
-        if (done) return;
-        done = true;
-        scroller.removeEventListener("scrollend", finish);
-        res();
+      const from = scroller.scrollTop;
+      const to = key === "t1" ? 0 : tierEls[key].offsetTop - scroller.offsetTop;
+      const dist = to - from;
+      if (Math.abs(dist) < 2) return res();
+      const dur = Math.min(1100, 450 + Math.abs(dist) * 0.35);
+      let start;
+      const step = (ts) => {
+        if (start === undefined) start = ts;
+        const t = Math.min(1, (ts - start) / dur);
+        scroller.scrollTop = from + dist * easeInOut(t);
+        t < 1 ? requestAnimationFrame(step) : res();
       };
-      scroller.addEventListener("scrollend", finish);
-      scroller.scrollTo({ top, behavior: "smooth" });
-      setTimeout(finish, 1500); // Safari has no scrollend event
+      requestAnimationFrame(step);
     });
 
   const pressUnlock = async (key) => {

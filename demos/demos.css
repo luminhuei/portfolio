@@ -226,7 +226,7 @@
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  scroll-behavior: smooth;
+  /* no scroll-behavior:smooth — the autoplay glides via rAF in JS */
   background: #fff;
 }
 .tdv-scroll::-webkit-scrollbar { width: 10px; }
@@ -452,6 +452,5 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .tdv-card, .tdv-lock, .tdv-add, .tdv-unlockbtn { transition: none; }
-  .tdv-scroll { scroll-behavior: auto; }
   .tdv-add.tdv-popped { animation: none; }
 }
