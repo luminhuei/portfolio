@@ -5,10 +5,11 @@
 .fig-demo {
   position: relative;
   /* Stripe-style stage: pastel candy colors at the bottom fading to white at
-     the top, with the color layer drifting very slowly — a subtle wave */
+     the top, with the color layer drifting very slowly — a subtle wave.
+     Override the pastel layer per figure: #demo-xxx { --fig-pastel: linear-gradient(…); } */
   background:
     linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.86) 16%, rgba(255, 255, 255, 0) 64%),
-    linear-gradient(100deg, #ffd9e8, #e6dbff 26%, #cdeeff 52%, #d6f5e3 76%, #ffd9e8 100%);
+    var(--fig-pastel, linear-gradient(100deg, #ffd9e8, #e6dbff 26%, #cdeeff 52%, #d6f5e3 76%, #ffd9e8 100%));
   background-size: 100% 100%, 280% 100%;
   background-position: 0 0, 0% 100%;
   animation: demo-drift 26s ease-in-out infinite alternate;
@@ -453,5 +454,4 @@
   .tdv-card, .tdv-lock, .tdv-add, .tdv-unlockbtn { transition: none; }
   .tdv-scroll { scroll-behavior: auto; }
   .tdv-add.tdv-popped { animation: none; }
-  .tdv-scroll { scroll-behavior: auto; }
 }
