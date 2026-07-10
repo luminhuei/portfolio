@@ -39,7 +39,7 @@
       locked: false,
       dishes: [
         ["Marinated Short Rib", "COMBO", "Sweet soy-marinated beef short rib, sliced thin for the grill and served with ssamjang."],
-        ["Pork Belly Samgyeopsal", "TOP PICK", "Thick-cut pork belly grilled tableside, with lettuce wraps, garlic, and green-onion salad."],
+        ["Pork Belly Samgyeopsal", "", "Thick-cut pork belly grilled tableside, with lettuce wraps, garlic, and green-onion salad."],
         ["Spicy Chicken Bulgogi", "ORDERED", "Boneless chicken thigh in gochujang marinade, charred over the open flame."],
         ["Beef Brisket Slices", "", "Paper-thin brisket that cooks in seconds — dip in sesame oil with a pinch of salt."],
         ["Garlic Shrimp Skewers", "TOP PICK", "Butterflied shrimp brushed with garlic butter, finished with a squeeze of lemon."],
