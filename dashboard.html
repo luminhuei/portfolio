@@ -101,7 +101,7 @@
         <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(160deg, #d9f0ff, #b8ebff)"><span>Sales Overview</span></div>
         <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(190deg, #e2f4ff, #a3d9ff)"><span>Sales Summary &amp; date picker</span></div>
         <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(150deg, #ccecff, #e6f7ff)"><span>Transaction Details</span></div>
-        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(170deg, #d4eeff, #c2e6ff)"><span>Mobile card stream</span></div>
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(170deg, #d4eeff, #c2e6ff)"><span>Weekly Report card stream</span></div>
       </div>
     </section>
 
@@ -134,14 +134,14 @@
         <p class="step-label reveal">The spec</p>
         <h2 class="step-title reveal">A mature category &mdash; where <em>presentation decides</em>.</h2>
         <div class="step-body reveal">
-          <p>Reporting follows well-established standards in restaurant SaaS. A dedicated PM owned the information logic &mdash; benchmarked against Toast&rsquo;s Settlement Time business-day definition, 3rd Party Excl./Incl. accounting toggles, and per-transaction fee breakdown granularity &mdash; giving design a clear, complete specification.</p>
-          <p>My work started from that spec: turning industry-standard information logic into an interface an owner can read at a glance. With the architecture fixed, <strong>the UI layer is what determines whether the product succeeds</strong> &mdash; the same data, presented differently, decides whether an owner &ldquo;gets it in seconds&rdquo; or drowns in it.</p>
+          <p>Reporting follows well-established standards in restaurant SaaS, so the specification came from two lines: <strong>industry conventions</strong> &mdash; a dedicated PM owned the reporting logic, benchmarked against Toast&rsquo;s Settlement Time business-day definition, 3rd Party Excl./Incl. accounting toggles, and per-transaction fee breakdown granularity &mdash; and <strong>the real needs and business planning of restaurant owners</strong>: the operating questions they actually use these numbers to answer. Together they formed a clear, complete specification.</p>
+          <p>My work started from that spec: turning industry-standard information logic into an interface an owner can read at a glance. The spec guarantees every page is correct; <strong>the UI decides whether an owner &ldquo;gets it in seconds&rdquo; or drowns in it</strong> &mdash; three principles carried that work across the whole reporting family.</p>
         </div>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">04</p>
-        <p class="step-label reveal">Decision one</p>
+        <p class="step-label reveal">Principle one</p>
         <h2 class="step-title reveal">Turning numbers <em>into answers</em>.</h2>
         <div class="step-body reveal">
           <p>An owner&rsquo;s real question is never &ldquo;how much did we sell today&rdquo; &mdash; it&rsquo;s &ldquo;is this number good?&rdquo; Is $21,862 something to celebrate or worry about? Without a reference point, a number is just a number.</p>
@@ -155,12 +155,11 @@
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">05</p>
-        <p class="step-label reveal">Decision two</p>
+        <p class="step-label reveal">Principle two</p>
         <h2 class="step-title reveal">Data honesty as <em>interface language</em>.</h2>
         <div class="step-body reveal">
           <p>A dashboard&rsquo;s biggest risk isn&rsquo;t looking bad &mdash; it&rsquo;s an owner discovering the numbers don&rsquo;t reconcile, and never trusting it again. The spec includes many mechanisms protecting reconciliation accuracy; the UI&rsquo;s job is to make them visible, understandable, and unthreatening:</p>
           <ul>
-            <li><strong>Configurable Settlement Time:</strong> a restaurant&rsquo;s &ldquo;day&rdquo; isn&rsquo;t a calendar day &mdash; stores closing after midnight settle at 5 AM, and reports count by business day</li>
             <li><strong>Honest disclosure on third-party data:</strong> fees and refunds can cause mismatches &mdash; the interface says so directly and offers a 3rd Party Excl./Incl. toggle, instead of pretending the data is perfect</li>
             <li><strong>Sales vs Payment reconciliation &amp; Unclosed Orders:</strong> the gap between billed and collected sits right on the surface, making differences explainable</li>
             <li><strong>Data sync status:</strong> when data isn&rsquo;t real-time, the interface states the cutoff clearly</li>
@@ -175,7 +174,7 @@
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">06</p>
-        <p class="step-label reveal">Decision three</p>
+        <p class="step-label reveal">Principle three</p>
         <h2 class="step-title reveal">One web app, <em>two reading postures</em>.</h2>
         <div class="step-body reveal">
           <p>Desktop and mobile browsers log into the same system, but the two devices serve entirely different postures. Desktop carries &ldquo;sitting down to reconcile&rdquo;: full reports, line-item tables, download and export. Mobile re-composes everything into a vertical card stream for &ldquo;checking the pulse&rdquo; &mdash; an owner pulls out their phone in any spare moment and knows how the business is doing within 30 seconds.</p>
@@ -192,7 +191,7 @@
         <p class="step-label reveal">Design system</p>
         <h2 class="step-title reveal">One language for the <em>whole reporting family</em>.</h2>
         <div class="step-body reveal">
-          <p>Report Center isn&rsquo;t one page &mdash; it&rsquo;s a family of reports living on two breakpoints. My most important output was the design system built to carry it:</p>
+          <p>I joined when Report Center was just getting started &mdash; the first wave covered Sales Overview, Sales Summary, Order / Transaction Details, and the Weekly Report, so the whole family grew under one design language from its very first pages. It isn&rsquo;t one page but a family of reports living on two breakpoints, and my most important output was the design system built to carry it:</p>
           <ul>
             <li><strong>Metric card component:</strong> large value + period-over-period indicator, with globally unified semantic colors (green up, red down) &mdash; new metrics plug straight in</li>
             <li><strong>Chart and table standards:</strong> unified styles and interactions across bar charts, trend charts, and line-item tables</li>
@@ -207,27 +206,27 @@
     <!-- Solution -->
     <section class="case-section" id="solution">
       <p class="case-kicker reveal">Solution</p>
-      <h2 class="step-title reveal">Four modules, <em>by depth of question</em>.</h2>
+      <h2 class="step-title reveal">Four modules, to the <em>rhythm of an owner&rsquo;s questions</em>.</h2>
 
       <div class="sol-item reveal">
         <h3><span class="sol-num">01</span> Sales Overview &mdash; how is business today</h3>
-        <p>Net Sales, Payments, and Refunds as three core cards with period-over-period indicators set the tone at a glance; breakdowns by payment method, channel, and dining type expand on demand; restaurant-specific line items &mdash; taxes, tips, auto gratuity, voided amounts &mdash; are all accounted for.</p>
+        <p>Net Sales, Payments, and Refunds as three core cards with period-over-period indicators set the tone at a glance, with breakdowns folded into tabs inside each card. The Sales vs Payment reconciliation area and Unclosed Orders make differences explainable, and the Miscellaneous and Performance blocks round out taxes, tips, auto gratuity, and voided amounts &mdash; every restaurant-specific line item accounted for.</p>
       </div>
       <div class="sol-item reveal">
-        <h3><span class="sol-num">02</span> Sales Summary &mdash; how is the trend</h3>
-        <p>Sales distribution by day, day of week, and hour, paired with Today / Yesterday / Last Week / Last Month / Custom presets &mdash; letting owners see the rhythm of the business: which day peaks, which hours run hottest.</p>
+        <h3><span class="sol-num">02</span> Sales Summary &mdash; how is the rhythm</h3>
+        <p>Sales by Day, Day of Week, and Time of Day charts reveal the rhythm; summary cards below &mdash; Net Sales, Revenue, Cash, Payment, Server Sales, Unclosed Orders &mdash; cover the books. Date presets pair with a dual-calendar custom range, and a &ldquo;day&rdquo; means the business day, not the calendar day &mdash; stores closing after midnight settle at 5 AM, with Settlement Time configurable.</p>
       </div>
       <div class="sol-item reveal">
-        <h3><span class="sol-num">03</span> Transaction Details &mdash; where every dollar went</h3>
-        <p>Every transaction&rsquo;s amount, tip, auto gratuity, transaction fee, additional fee, and net total laid out transparently, with Payment / Refund / Adjust Fee categorization and download support &mdash; owners reconcile without digging through bank statements.</p>
+        <h3><span class="sol-num">03</span> Order / Transaction Details &mdash; where every dollar went</h3>
+        <p>Every order&rsquo;s full fee chain laid out transparently &mdash; amount, tips, auto gratuity, delivery fee, Dasher tips, transaction and additional fees, down to the final Net Total, with prepaid amounts and refunds accounted for &mdash; plus Payment / Refund / Adjust Fee categorization and export. Each transaction carries its business dimensions too, from dining type and channel to split payment and promotions; when data isn&rsquo;t real-time, the page states the cutoff clearly.</p>
       </div>
       <div class="sol-item reveal">
-        <h3><span class="sol-num">04</span> Mobile &mdash; the pulse in your pocket</h3>
-        <p>Sales and upsell trends, third-party vs direct channel comparison, top-selling items, channel distribution, member activity, Google / Yelp review sentiment, and off-premise geo distribution &mdash; all designed for &ldquo;pull out your phone, understand in 30 seconds.&rdquo;</p>
+        <h3><span class="sol-num">04</span> Weekly Report &mdash; the week in review</h3>
+        <p>Ten modules review the whole operation: Net Sales, Upsells, Third Party, Direct Delivery, Top Sales Items, channel distribution, sales &amp; upsell trends, member analysis, Google / Yelp review sentiment, and off-premise geo distribution. The entire report is designed for mobile reading as a vertical card stream &mdash; where Toast sends an email digest, Peblla made it a complete report readable in one scroll on the phone.</p>
       </div>
       <figure class="reveal">
-        <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(165deg, #c2e6ff, #e2f4ff)"><span>Mobile long-scroll &mdash; the full pulse view</span></div>
-        <figcaption>The mobile card stream: trends, top sellers, channels, reviews &mdash; scannable end to end</figcaption>
+        <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(165deg, #c2e6ff, #e2f4ff)"><span>Weekly Report &mdash; mobile long-scroll</span></div>
+        <figcaption>Ten modules, one scroll &mdash; a full week of business in 30 seconds</figcaption>
       </figure>
     </section>
 
@@ -246,7 +245,7 @@
           <p class="stat-sub">Operators opening the dashboard as their daily window (Apr 2026)</p>
         </div>
         <div class="stat reveal">
-          <p class="stat-value">$27.9M</p>
+          <p class="stat-value">$27.98M</p>
           <p class="stat-title">Monthly platform GMV</p>
           <p class="stat-sub">Across 920K orders (Feb 2026) &mdash; every dollar traceable in the reports</p>
         </div>

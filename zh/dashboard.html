@@ -101,7 +101,7 @@
         <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(160deg, #d9f0ff, #b8ebff)"><span>銷售總覽</span></div>
         <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(190deg, #e2f4ff, #a3d9ff)"><span>銷售摘要與日期選擇器</span></div>
         <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(150deg, #ccecff, #e6f7ff)"><span>逐筆交易明細</span></div>
-        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(170deg, #d4eeff, #c2e6ff)"><span>手機卡片流</span></div>
+        <div class="fig-ph reveal" style="--ar: 1000/620; --ph: linear-gradient(170deg, #d4eeff, #c2e6ff)"><span>Weekly Report 卡片流</span></div>
       </div>
     </section>
 
@@ -134,14 +134,14 @@
         <p class="step-label reveal">規格</p>
         <h2 class="step-title reveal">成熟品類裡,<em>呈現決定成敗</em>。</h2>
         <div class="step-body reveal">
-          <p>報表功能在餐飲 SaaS 行業已有非常成熟的資訊標準。專門的產品經理負責報表邏輯的定義 &mdash;&mdash; 對標 Toast 的 Settlement Time 營業日定義、3rd Party Excl./Incl. 口徑切換、逐筆費用拆解粒度 &mdash;&mdash; 為設計提供了完整清晰的規格。</p>
-          <p>我的工作從這份規格開始:把行業標準的資訊邏輯,轉化為老闆一眼能讀懂的介面。架構已定,<strong>UI 層面的功夫決定產品成敗</strong> &mdash;&mdash; 同樣的數據,呈現方式決定老闆是「幾秒看懂」還是「一頭霧水」。</p>
+          <p>報表功能在餐飲 SaaS 行業已有非常成熟的資訊標準,規格來自兩條線:<strong>行業的既定規則</strong> &mdash;&mdash; 專門的產品經理負責報表邏輯的定義,對標 Toast 的 Settlement Time 營業日定義、3rd Party Excl./Incl. 口徑切換、逐筆費用拆解粒度;以及<strong>餐廳老闆的實際需求與營業規劃</strong>:他們真正要用這些數字回答的經營問題。兩條線合成一份完整清晰的規格。</p>
+          <p>我的工作從這份規格開始:把行業標準的資訊邏輯,轉化為老闆一眼能讀懂的介面。規格保證每一頁內容正確,<strong>UI 決定老闆是「幾秒看懂」還是「一頭霧水」</strong> &mdash;&mdash; 三條原則貫穿整個報表家族的介面設計。</p>
         </div>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">04</p>
-        <p class="step-label reveal">決策一</p>
+        <p class="step-label reveal">原則一</p>
         <h2 class="step-title reveal">把數字<em>做成答案</em>。</h2>
         <div class="step-body reveal">
           <p>老闆真正的問題從來不是「今天賣了多少」,而是「這個數字好不好」&mdash;&mdash; $21,862 是該高興還是該擔心?沒有參照,數字只是數字。</p>
@@ -155,12 +155,11 @@
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">05</p>
-        <p class="step-label reveal">決策二</p>
+        <p class="step-label reveal">原則二</p>
         <h2 class="step-title reveal">把「數字的誠實」做成<em>介面語言</em>。</h2>
         <div class="step-body reveal">
           <p>儀表板最大的風險不是不好看,而是老闆發現數字對不上之後,再也不信它。規格裡有大量保障對帳準確的機制,UI 的職責是讓它們被看見、被理解、而不嚇到人:</p>
           <ul>
-            <li><strong>Settlement Time 可配置:</strong>餐廳的「一天」不是日曆的一天 &mdash;&mdash; 凌晨打烊的門店,營業日在清晨 5 點才結算,報表必須按營業日統計</li>
             <li><strong>第三方數據的誠實聲明:</strong>手續費與退款可能導致數字對不上 &mdash;&mdash; 介面直接告知,並提供 Excl./Incl. 切換,而不是假裝數據完美</li>
             <li><strong>Sales vs Payment 對帳區與未結訂單:</strong>「應收」與「實收」的差異直接攤在檯面上,讓差異可解釋</li>
             <li><strong>數據同步狀態:</strong>非即時同步時,明確告知截至時間點</li>
@@ -175,7 +174,7 @@
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">06</p>
-        <p class="step-label reveal">決策三</p>
+        <p class="step-label reveal">原則三</p>
         <h2 class="step-title reveal">同一個 Web App,<em>兩種閱讀姿態</em>。</h2>
         <div class="step-body reveal">
           <p>桌面與手機瀏覽器登入的是同一個系統,但兩種設備對應完全不同的姿態。桌面端承擔「坐下來對帳」:完整報表、逐筆明細、下載匯出;手機端重新編排為縱向卡片流,承擔「隨時把脈」&mdash;&mdash; 老闆在任何間隙掏出手機,30 秒內就知道生意的脈搏。</p>
@@ -192,7 +191,7 @@
         <p class="step-label reveal">設計系統</p>
         <h2 class="step-title reveal">讓整個報表家族說<em>同一種語言</em>。</h2>
         <div class="step-body reveal">
-          <p>Report Center 不是一個頁面,而是一整族報表,同時活在兩種斷點上。我最重要的產出,是支撐它的設計系統:</p>
+          <p>我加入時,Report Center 剛剛起步 &mdash;&mdash; 第一批交付涵蓋銷售總覽、銷售摘要、逐筆明細與 Weekly Report,這一族報表從第一批頁面開始,就在同一套設計語言下生長。它不是一個頁面,而是一整族報表,同時活在兩種斷點上;我最重要的產出,是支撐它的設計系統:</p>
           <ul>
             <li><strong>指標卡片組件:</strong>大數值 + 同比漲跌標識的標準結構,漲跌語義色全局統一 &mdash;&mdash; 新指標接入即用</li>
             <li><strong>圖表與明細表格規範:</strong>柱狀圖、趨勢圖、逐筆表格的樣式與交互統一</li>
@@ -207,27 +206,27 @@
     <!-- Solution -->
     <section class="case-section" id="solution">
       <p class="case-kicker reveal">Solution</p>
-      <h2 class="step-title reveal">按提問深度分層的<em>四個模組</em>。</h2>
+      <h2 class="step-title reveal">跟著老闆提問節奏的<em>四個模組</em>。</h2>
 
       <div class="sol-item reveal">
         <h3><span class="sol-num">01</span> 銷售總覽 &mdash; 今天生意怎麼樣</h3>
-        <p>淨銷售、收款、退款三張核心卡片搭配同比漲跌,一眼定調;按支付方式、渠道、用餐類型的拆解隨時展開;稅費、小費、自動服務費、作廢金額等餐飲特有條目全部在列。</p>
+        <p>淨銷售、收款、退款三張核心卡片搭配同比漲跌一眼定調,拆解收進卡片內的分頁;Sales vs Payment 對帳區與未結訂單把「應收」與「實收」的差異攤在檯面上,讓差異可解釋;Miscellaneous 與 Performance 補齊稅費、小費、自動服務費、作廢金額等餐飲特有條目。</p>
       </div>
       <div class="sol-item reveal">
-        <h3><span class="sol-num">02</span> 銷售摘要 &mdash; 趨勢怎麼樣</h3>
-        <p>按日、按星期、按時段的銷售分布圖表,配合日期預設與自定義區間 &mdash;&mdash; 讓老闆看出生意的節奏:哪天最旺、哪個時段最忙。</p>
+        <h3><span class="sol-num">02</span> 銷售摘要 &mdash; 生意的節奏</h3>
+        <p>Sales by Day、Day of Week、Time of Day 三組分布圖表讓老闆看出節奏;圖表之下的匯總卡片管總帳 &mdash;&mdash; 一頁之內,圖表回答節奏,卡片回答總帳。日期預設配雙月曆自定義區間;這裡的「一天」是營業日而非日曆日 &mdash;&mdash; 凌晨打烊的門店清晨 5 點才結算,Settlement Time 可配置,讓按日統計對得上門店真實的營業節奏。</p>
       </div>
       <div class="sol-item reveal">
         <h3><span class="sol-num">03</span> 逐筆交易明細 &mdash; 每一筆錢的去向</h3>
-        <p>每筆交易的金額、小費、自動服務費、手續費、附加費、淨到帳全部透明列出,支援分類與下載匯出 &mdash;&mdash; 老闆對帳不再需要翻銀行流水。</p>
+        <p>每筆訂單的費用全鏈路透明列出 &mdash;&mdash; 金額、小費、自動服務費、外送費、Dasher 小費、手續費、附加費,直到最終的淨到帳,預付與退款一併在列;支援 Payment / Refund / Adjust Fee 分類與下載匯出。每筆交易同時掛載用餐類型、渠道、拆分支付、促銷等業務維度;非即時同步時,頁面明確告知數據截至時間點。</p>
       </div>
       <div class="sol-item reveal">
-        <h3><span class="sol-num">04</span> 手機版 &mdash; 隨身的生意脈搏</h3>
-        <p>銷售與加購趨勢、第三方 vs 直連渠道對比、暢銷商品榜、渠道分布、會員活躍、Google / Yelp 評價情感分析、外送地理分布 &mdash;&mdash; 一切為「掏出手機 30 秒看懂」而設計。</p>
+        <h3><span class="sol-num">04</span> Weekly Report &mdash; 一週的經營回顧</h3>
+        <p>十個模組回顧經營全貌:淨銷售、加購、第三方、直連外送、暢銷商品榜、渠道分布、銷售與加購趨勢、會員分析、Google / Yelp 評價情感分析、外送地理分布。整份報告為手機閱讀而設計的縱向卡片流 &mdash;&mdash; Toast 用 email 摘要推送,Peblla 選擇做成手機上一次滾動讀完的完整報告。</p>
       </div>
       <figure class="reveal">
-        <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(165deg, #c2e6ff, #e2f4ff)"><span>手機長捲動 &mdash; 完整把脈視圖</span></div>
-        <figcaption>手機卡片流:趨勢、暢銷榜、渠道、評價 &mdash;&mdash; 從頭到尾可掃讀</figcaption>
+        <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(165deg, #c2e6ff, #e2f4ff)"><span>Weekly Report &mdash; 手機長捲動</span></div>
+        <figcaption>十個模組,一次滾動 &mdash;&mdash; 30 秒讀完一週的生意</figcaption>
       </figure>
     </section>
 
@@ -246,7 +245,7 @@
           <p class="stat-sub">把儀表板當每日經營窗口的營運者(2026 年 4 月)</p>
         </div>
         <div class="stat reveal">
-          <p class="stat-value">$27.9M</p>
+          <p class="stat-value">$27.98M</p>
           <p class="stat-title">平台月 GMV</p>
           <p class="stat-sub">92 萬筆訂單(2026 年 2 月)&mdash;&mdash; 每一塊錢都能在報表裡追溯</p>
         </div>
