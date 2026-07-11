@@ -136,10 +136,12 @@
   };
 
   const DS = {
-    /* the exact Figma frame — default view and the custom-range target */
+    /* the exact Figma frame — default view and the custom-range target.
+       The default reads as a custom range so the date row agrees with the
+       May 10 – Jun 19 charts and the table totals. */
     full: {
-      preset: "Today",
-      range: "Mar 01, 2025",
+      preset: "Custom range",
+      range: "May 10, 2025 - Jun 19, 2025",
       xlabels: ["May 10", "15", "20", "25", "30", "Jun 4", "9", "14", "19"],
       dayPath: FIGMA_DAY_PATH,
       dates: dates(0, 10, 41),
@@ -230,22 +232,28 @@
   };
   const fmtSerial = (s) => (s <= 31 ? `May ${String(s).padStart(2, "0")}, 2025` : `Jun ${String(s - 31).padStart(2, "0")}, 2025`);
 
-  /* ---- tables: 1:1 with the design file's anonymized placeholders ---- */
-  const vals = (n, bold) => `<span class="asv-trvals">${Array(n).fill(`<span class="asv-trv">${bold ? "<b>$0.00</b>" : "$0.00"}</span>`).join("")}</span>`;
-  const trow = (label, n, info) => `
+  /* ---- tables: real card/row names read from the live product screens
+     (Figma 134:13624 + 134:13616), filled with Golden Ember BBQ (#A62)
+     fake data for May 10 – Jun 19, 2025. Every number reconciles: the
+     Sales-by-day line integrates to Net Sales $13,486.50, and the same
+     total flows through Net sales -> Revenue -> Dining/Service/Chains/
+     Service mode; taxes, tips, gratuity, cash and voids all cross-foot
+     (row structure and styling stay exactly as the design frame). ---- */
+  const cell = (v, bold) => `<span class="asv-trv">${bold ? `<b>${v}</b>` : v}</span>`;
+  const trow = (label, vals, info) => `
     <div class="asv-tr">
       <span class="asv-trlabel">${label}${info ? `<span class="asv-tinfo">${I.info}</span>` : ""}</span>
-      ${vals(n)}
+      <span class="asv-trvals">${vals.map((v) => cell(v)).join("")}</span>
     </div>`;
   const thead2 = (cols) => `
     <div class="asv-tr asv-tr-head">
       <span class="asv-trlabel">${cols[0]}</span>
       <span class="asv-trvals">${cols.slice(1).map(([t, inf]) => `<span class="asv-trv">${t}${inf ? `<span class="asv-tinfo">${I.info}</span>` : ""}</span>`).join("")}</span>
     </div>`;
-  const ttotal = (label, n) => `
+  const ttotal = (label, vals) => `
     <div class="asv-tr asv-tr-total">
       <span class="asv-trlabel"><b>${label}</b></span>
-      ${vals(n, 1)}
+      <span class="asv-trvals">${vals.map((v) => cell(v, 1)).join("")}</span>
     </div>`;
   const tcard = (title, act, body) => `
     <section class="asv-tcard">
@@ -259,57 +267,121 @@
   const slidersBtn = `<button class="asv-ticon">${I.sliders}</button>`;
 
   const TABLES_LEFT = [
-    tcard("Revenue summary", "", [1, 1, 1, 0, 0, 1].map((f) => trow("List name", 1, f)).join("") + ttotal("Total amount", 1)),
-    tcard("Net sales", "", [1, 0, 0, 1].map((f) => trow("List name", 1, f)).join("") + ttotal("Total", 1)),
+    tcard("Revenue summary", "",
+      trow("Net Sales", ["$13,486.50"], 1) +
+      trow("Net Taxes", ["$1,092.41"], 1) +
+      trow("Net Gratuity", ["$486.00"], 1) +
+      trow("Tips", ["$1,975.25"]) +
+      trow("Service Charges", ["$312.00"]) +
+      trow("Delivery Fees", ["$164.80"], 1) +
+      ttotal("Total amount", ["$17,516.96"])),
+    tcard("Net sales", "",
+      trow("Gross Sales", ["$14,982.35"], 1) +
+      trow("Promotion", ["$842.75"]) +
+      trow("Points", ["$187.60"]) +
+      trow("Sales Refund", ["$465.50"], 1) +
+      ttotal("Net Sales", ["$13,486.50"])),
     tcard("Gratuity summary", slidersBtn,
-      thead2(["List title here", ["Table 2", 1], ["Table 3", 1], ["Table 4"]]) +
-      [0, 0, 0, 0].map(() => trow("List name", 3)).join("") + ttotal("Total", 3)),
-    tcard("Unclosed orders", viewBtn, trow("List name", 1, 1) + trow("List name", 1)),
+      thead2(["Gratuity type", ["Charged", 1], ["Refunded", 1], ["Net"]]) +
+      trow("Auto Gratuity 18%", ["$342.00", "$18.00", "$324.00"]) +
+      trow("Auto Gratuity 20%", ["$128.00", "$0.00", "$128.00"]) +
+      trow("Manual Gratuity", ["$22.00", "$0.00", "$22.00"]) +
+      trow("3rd Party Gratuity", ["$12.00", "$0.00", "$12.00"]) +
+      ttotal("Total", ["$504.00", "$18.00", "$486.00"])),
+    tcard("Unclosed orders", viewBtn,
+      trow("Unclosed Order", ["$268.40"], 1) +
+      trow("Unclosed Order Volume", ["6"])),
     tcard("Dining type summary", "",
-      thead2(["List title here", ["Table 2"], ["Table 3"], ["Table 4"]]) +
-      [0, 0, 0, 0].map(() => trow("List name", 3)).join("") + ttotal("Total", 3)),
+      thead2(["Dining type", ["Net Sales"], ["Orders"], ["Guests"]]) +
+      trow("AYCE Dinner", ["$7,412.80", "132", "264"]) +
+      trow("AYCE Lunch", ["$3,268.90", "86", "158"]) +
+      trow("À la carte", ["$1,894.30", "71", "92"]) +
+      trow("Happy Hour", ["$910.50", "34", "34"]) +
+      ttotal("Total", ["$13,486.50", "323", "548"])),
     tcard("Service area summary", "",
-      thead2(["List title here", ["Table 2"], ["Table 3"], ["Table 4"]]) +
-      [0, 0, 0, 0].map(() => trow("List name", 3)).join("") + ttotal("Total", 3)),
+      thead2(["Service area", ["Net Sales"], ["Orders"], ["Guests"]]) +
+      trow("Main Dining", ["$8,652.35", "196", "342"]) +
+      trow("Patio", ["$2,314.90", "58", "108"]) +
+      trow("Bar Counter", ["$1,532.75", "47", "62"]) +
+      trow("Private Room", ["$986.50", "22", "36"]) +
+      ttotal("Total", ["$13,486.50", "323", "548"])),
     tcard("Discount summary", "",
-      thead2(["List title here", ["Table 3"], ["Table 4"]]) +
-      Array(11).fill(trow("List name", 2)).join("") + ttotal("Total", 2)),
+      thead2(["Discount", ["Amount"], ["Count"]]) +
+      trow("Happy Hour 20%", ["$228.40", "21"]) +
+      trow("Loyalty Reward", ["$146.25", "13"]) +
+      trow("Birthday Dessert", ["$89.50", "11"]) +
+      trow("Employee Meal 50%", ["$86.10", "9"]) +
+      trow("Manager Comp", ["$78.00", "4"]) +
+      trow("Student 10%", ["$59.80", "8"]) +
+      trow("Senior 10%", ["$47.35", "7"]) +
+      trow("First Visit $5", ["$45.00", "9"]) +
+      trow("Grand Opening Coupon", ["$32.50", "5"]) +
+      trow("Damaged Dish Comp", ["$18.25", "2"]) +
+      trow("Off-peak Combo", ["$11.60", "3"]) +
+      ttotal("Total", ["$842.75", "92"])),
   ].join("");
 
   const TABLES_RIGHT = [
     tcard("Cash summary", "",
-      thead2(["List title here", ["Table 4"]]) +
-      [0, 0, 1, 0, 0, 1].map((f) => trow("List name", 1, f)).join("") + ttotal("Total cash", 1)),
+      thead2(["Cash flow", ["Amount"]]) +
+      trow("Total Cash Payments", ["$1,482.90"]) +
+      trow("Cash Refund", ["$36.50"]) +
+      trow("Cash Before Tipout", ["$1,446.40"], 1) +
+      trow("Paid In", ["$50.00"]) +
+      trow("Paid Out", ["$128.75"]) +
+      trow("Non Cash Tips", ["$212.40"], 1) +
+      ttotal("Total Cash", ["$1,155.25"])),
     tcard("Payment summary", viewBtn + slidersBtn,
-      thead2(["List title here", ["Table 1"], ["Table 2"], ["Table 3"], ["Table 4"]]) +
-      [0, 0, 0, 0].map(() => trow("List name", 4)).join("") +
-      ttotal("Subtotal", 4) +
+      thead2(["Payment method", ["Payments"], ["Tips", 1], ["Auto Gratuity"], ["Total"]]) +
+      trow("Card", ["$10,318.65", "$1,624.85", "$402.00", "$12,345.50"]) +
+      trow("Cash", ["$1,482.90", "$212.40", "$32.00", "$1,727.30"]) +
+      trow("Gift Card", ["$868.20", "$58.00", "$12.00", "$938.20"]) +
+      trow("3rd Party", ["$1,238.75", "$80.00", "$40.00", "$1,358.75"]) +
+      ttotal("Subtotal", ["$13,908.50", "$1,975.25", "$486.00", "$16,369.75"]) +
       '<div class="asv-tr asv-tr-gap"></div>' +
-      trow("Deposit sales collected", 1, 1) +
-      ttotal("Total", 4)),
+      trow("Deposit Sales Collected", ["$180.00"], 1) +
+      ttotal("Total", ["$14,088.50", "$1,975.25", "$486.00", "$16,549.75"])),
     tcard("Chains, sales summary", "",
-      thead2(["List title here", ["Table 2"], ["Table 3"], ["Table 4"]]) +
-      [0, 0, 0, 0].map(() => trow("List name", 3)).join("") + ttotal("Total", 3)),
+      thead2(["Location", ["Net Sales"], ["Orders"], ["Guests"]]) +
+      trow("#A62 — Downtown", ["$13,486.50", "323", "548"]) +
+      trow("#A63 — Express", ["$9,842.20", "402", "402"]) +
+      trow("#A64 — Riverside", ["$11,204.35", "287", "471"]) +
+      trow("Web Store", ["$2,318.60", "96", "96"]) +
+      ttotal("Total", ["$36,851.65", "1,108", "1,517"])),
     tcard("Service mode", "",
-      thead2(["List title here", ["Table 2"], ["Table 3"], ["Table 4"]]) +
-      Array(8).fill(trow("List name", 3)).join("")),
+      thead2(["Metric", ["Quick Service"], ["Table Service"], ["Total"]]) +
+      trow("Net Sales", ["$3,842.15", "$9,644.35", "$13,486.50"]) +
+      trow("Total Guests", ["152", "396", "548"]) +
+      trow("Avg/Guest", ["$25.28", "$24.35", "$24.61"]) +
+      trow("Total Payments", ["118", "214", "332"]) +
+      trow("Avg/Payment", ["$32.56", "$45.07", "$40.62"]) +
+      trow("Total Orders", ["109", "214", "323"]) +
+      trow("Avg/Order", ["$35.25", "$45.07", "$41.75"]) +
+      trow("Turn Time", ["-", "52:24", "52:24"])),
     tcard("Tax summary", viewBtn,
-      thead2(["List title here", ["Table 3"], ["Table 4"]]) +
-      [0, 0, 0, 0].map(() => trow("List name", 2)).join("") + ttotal("Total", 2)),
+      thead2(["Tax type", ["Taxable Sales"], ["Tax Collected"]]) +
+      trow("Dine-in Sales Tax 8%", ["$10,743.30", "$859.46"]) +
+      trow("Takeout Sales Tax 8%", ["$1,832.60", "$146.61"]) +
+      trow("Liquor Tax 8.25%", ["$910.60", "$75.13"]) +
+      trow("Packaging Fee 5%", ["$224.20", "$11.21"]) +
+      ttotal("Total", ["$13,710.70", "$1,092.41"])),
     tcard("Void summary", viewBtn,
       thead2(["Type", ["Amount"], ["Amount %"], ["Volume"], ["Volume %"]]) +
-      [0, 0, 0].map(() => trow("List name", 4)).join("") + ttotal("Total", 4)),
+      trow("Voided Items", ["$129.75", "0.87%", "11", "3.4%"]) +
+      trow("Sales Refund", ["$465.50", "3.11%", "9", "2.8%"]) +
+      trow("Comps", ["$86.20", "0.58%", "4", "1.2%"]) +
+      ttotal("Total", ["$681.45", "4.55%", "24", "7.4%"])),
   ].join("");
 
   const CONTENT = `
     <div class="asv-daterow">
-      <button class="asv-btn" data-preset-btn><span data-preset-label>Today</span><span class="adv-ic12">${I.chev}</span></button>
-      <button class="asv-btn" data-range-btn><span data-range-label>Mar 01, 2025</span><span class="adv-ic12">${I.chev}</span></button>
+      <button class="asv-btn" data-preset-btn><span data-preset-label>Custom range</span><span class="adv-ic12">${I.chev}</span></button>
+      <button class="asv-btn" data-range-btn><span data-range-label>May 10, 2025 - Jun 19, 2025</span><span class="adv-ic12">${I.chev}</span></button>
       <button class="asv-btn">Custom hours<span class="adv-ic12">${I.chev}</span></button>
       <button class="asv-btn asv-btn-med" data-search-btn>Search</button>
 
       <div class="asv-pop asv-menu" data-menu>
-        ${MENU.map(([label, key]) => `<div class="asv-mitem${key === "today" ? " asv-msel" : ""}" data-pick="${key}">${label}</div>`).join("")}
+        ${MENU.map(([label, key]) => `<div class="asv-mitem${key === "custom" ? " asv-msel" : ""}" data-pick="${key}">${label}</div>`).join("")}
       </div>
 
       <div class="asv-pop asv-cal" data-cal>
@@ -503,7 +575,7 @@
 
   let ds = DS.full;
   const tip = $("[data-tip]");
-  const money = (v) => `$${Math.max(0, Math.round(v))}.00`;
+  const money = (v) => (v < 0 ? `-$${Math.abs(Math.round(v))}.00` : `$${Math.round(v)}.00`);
   const showTipAt = (x) => {
     /* x in plot coords 0..1163 */
     x = Math.max(0, Math.min(PLOT_W, x));
@@ -515,7 +587,7 @@
     $("[data-tip-net]").textContent = money(net);
     const orders = Math.max(1, Math.round(Math.max(net, 0) / 41.7));
     $("[data-tip-orders]").textContent = orders;
-    $("[data-tip-guests]").textContent = orders;
+    $("[data-tip-guests]").textContent = Math.max(orders, Math.round(Math.max(net, 0) / 24.6));
     tip.style.left = `${68 + best.x}px`;
     tip.style.top = `${10 + best.y}px`;
     tip.classList.toggle("asv-tip-flip", best.x > PLOT_W - 240);
