@@ -1081,3 +1081,247 @@
   .asv-btn, .asv-tab, .asv-pop, .asv-mitem, .asv-cd, .asv-calbtn, .asv-anim, .asv-tip,
   [data-dowbars] .asv-bar { transition: none; }
 }
+
+/* ============================================================
+   dashboard-07-order-transaction — Order Details ⇄ Transaction
+   Details from Figma 467:15607 / 467:16822, chrome removed:
+   pure report content on a 1520x1120 panel.
+   ============================================================ */
+.odv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  --a-ink: #1a1a1a;
+  --a-mid: #666666;
+  --a-soft: #4d4d4d;
+  --a-border: #e6e6e6;
+  --a-line: #cccccc;
+  --a-panel: #f2f2f2;
+  --a-brand: #ff4d00;
+
+  width: 1520px;
+  height: 1120px;
+  transform-origin: top left;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(18, 18, 18, 0.22), 0 6px 18px rgba(18, 18, 18, 0.1);
+  font-family: "Inter", "Geist", -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--a-ink);
+  user-select: none;
+  padding: 28px 32px;
+}
+.odv * { box-sizing: border-box; }
+.odv p { margin: 0; }
+.odv button { font-family: inherit; cursor: pointer; }
+.odv-ic12 svg { width: 12px; height: 12px; display: block; }
+.odv-ic14 svg { width: 14px; height: 14px; display: block; }
+.odv-ic16 svg { width: 16px; height: 16px; display: block; }
+.odv-ic20 svg { width: 20px; height: 20px; display: block; }
+
+/* top filter row */
+.odv-filters { display: flex; align-items: center; gap: 8px; }
+.odv-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--a-border);
+  border-radius: 8px;
+  background: #fff;
+  font-weight: 500;
+  color: var(--a-ink);
+  white-space: nowrap;
+}
+.odv-btn:hover { background: #fafafa; }
+.odv-searchbtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: var(--a-ink);
+  color: #fff;
+}
+.odv-searchbtn svg { width: 20px; height: 20px; }
+.odv-searchbtn:hover { background: #333; }
+
+/* Order / Transaction switch — the product's own tabs */
+.odv-tabs { display: flex; gap: 4px; margin-top: 18px; border-bottom: 1px solid var(--a-border); }
+.odv-tab {
+  padding: 10px 16px 12px;
+  border: none;
+  background: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--a-mid);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+}
+.odv-tab:hover { color: var(--a-ink); }
+.odv-tab.on { color: var(--a-brand); border-bottom-color: var(--a-brand); }
+
+.odv-view { display: none; }
+.odv-view.on { display: block; }
+.odv-h2 { margin: 22px 0 0; font-size: 26px; line-height: 34px; font-weight: 600; color: var(--a-ink); }
+.odv-note { margin-top: 6px; color: var(--a-mid); }
+
+/* amber sync-honesty banner */
+.odv-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 12px 16px;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  background: #fffbeb;
+  color: #92400e;
+}
+.odv-banner .odv-ic20 { color: #b45309; }
+.odv-banner p { flex: 1; min-width: 0; }
+.odv-bannerx {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: #92400e;
+}
+.odv-bannerx svg { width: 14px; height: 14px; }
+.odv-bannerx:hover { background: #fef3c7; }
+
+/* segmented pills + right-side actions */
+.odv-segrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; }
+.odv-seg { display: inline-flex; gap: 2px; padding: 3px; border-radius: 10px; background: var(--a-panel); }
+.odv-segbtn {
+  border: none;
+  background: none;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--a-mid);
+  white-space: nowrap;
+}
+.odv-segbtn.on { background: #fff; color: var(--a-ink); box-shadow: 0 1px 2px rgba(18, 18, 18, 0.08); }
+.odv-actions { display: flex; align-items: center; gap: 8px; }
+.odv-export {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  background: var(--a-ink);
+  color: #fff;
+  font-weight: 500;
+}
+.odv-export:hover { background: #333; }
+
+/* filter chips */
+.odv-chips { display: flex; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.odv-fchip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px dashed var(--a-line);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--a-mid);
+}
+.odv-fchip:hover { background: #fafafa; }
+.odv-fchip-set { border-style: solid; color: var(--a-ink); }
+.odv-fchipval {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--a-panel);
+  font-size: 12px;
+  color: var(--a-mid);
+}
+
+/* tables */
+.odv-tablewrap { margin-top: 16px; border: 1px solid var(--a-border); border-radius: 12px; overflow: hidden; }
+.odv-table { width: 100%; border-collapse: collapse; }
+.odv-table th {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--a-mid);
+  border-bottom: 1px solid var(--a-border);
+  background: #fafafa;
+  white-space: nowrap;
+}
+.odv-table td {
+  padding: 14px;
+  border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.odv-table tbody tr:last-child td { border-bottom: none; }
+.odv-table tbody tr:hover { background: #fafafa; }
+.odv-link { color: var(--a-brand); font-weight: 500; cursor: pointer; }
+.odv-link:hover { text-decoration: underline; }
+
+/* status chips */
+.odv-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.odv-chip-paid { color: #17853f; background: #e9f8f0; }
+.odv-chip-refund { color: #0e7090; background: #e7f6f8; }
+.odv-chip-partial { color: #b93815; background: #fff4ed; }
+
+/* txn subtype panels */
+.odv-txnpanel { display: none; }
+.odv-txnpanel.on { display: block; }
+
+/* footer / pagination */
+.odv-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; color: var(--a-mid); }
+.odv-pager { display: flex; align-items: center; gap: 10px; }
+.odv-pagesize {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--a-border);
+  border-radius: 8px;
+  background: #fff;
+  font-weight: 500;
+  color: var(--a-ink);
+}
+.odv-pageno { padding: 0 6px; }
+.odv-pagebtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--a-border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--a-soft);
+}
+.odv-pagebtn svg { width: 14px; height: 14px; }
+.odv-pagebtn:hover { background: #fafafa; }
