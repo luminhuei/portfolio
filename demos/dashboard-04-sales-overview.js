@@ -9,8 +9,7 @@
   const root = document.getElementById("demo-dashboard-04-sales-overview");
   if (!root) return;
 
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  /* no corner hint on this figure — removed by request */
+  /* no corner hint and no auto-play on this figure — static, readable */
 
   /* icons — top bar keeps Phosphor-style strokes; the nav items use Feather
      equivalents as requested. All 24 viewBox, currentColor. */
@@ -165,11 +164,6 @@
     </div>`;
 
   const CONTENT = `
-    <div class="adv-banner">
-      <span class="adv-ic20">${I.info}</span>
-      <p>3rd party sales can take up to 24 hours to sync &mdash; totals may differ from platform reports. <a class="adv-bannerlink">Learn more</a></p>
-      <button class="adv-bannerx" aria-label="Dismiss">${I.x}</button>
-    </div>
     <div class="adv-seg" data-seg>
       <button class="adv-segbtn on">3rd Party Excl.</button>
       <button class="adv-segbtn">3rd Party Incl.</button>
@@ -177,11 +171,13 @@
     <h1 class="adv-h2">Sales Overview</h1>
     <p class="adv-sub">Golden Ember BBQ &middot; Store #A62</p>
     <div class="adv-filters">
-      <button class="adv-filter">${I.cal}Jul 04, 2026 - Jul 10, 2026<span class="adv-ic12">${I.chev}</span></button>
-      <button class="adv-filter">${I.clock}5:00 am - 4:59 am</button>
-      <span class="adv-cmp">compared to</span>
-      <button class="adv-filter">Jun 27, 2026 - Jul 03, 2026<span class="adv-ic12">${I.chev}</span></button>
-      <button class="adv-filter adv-searchbtn">${I.search}Search</button>
+      <div class="adv-filtergroup">
+        <button class="adv-filter">${I.cal}Jul 04, 2026 - Jul 10, 2026<span class="adv-ic12">${I.chev}</span></button>
+        <button class="adv-filter">${I.clock}5:00 am - 4:59 am</button>
+        <span class="adv-cmp">compared to</span>
+        <button class="adv-filter">Jun 27, 2026 - Jul 03, 2026<span class="adv-ic12">${I.chev}</span></button>
+      </div>
+      <button class="adv-filter">${I.search}Search</button>
     </div>
     <div class="adv-cards adv-cards3">
       ${METRICS.map(metricCard).join("")}
@@ -255,7 +251,6 @@
           </div>
         </aside>
 
-        <button class="adv-iconbtn adv-expandbtn" aria-label="Expand sub-navigation">${I.indent}</button>
         <main class="adv-content">${CONTENT}</main>
       </div>
     </div>`;
@@ -273,16 +268,10 @@
   new ResizeObserver(fit).observe(stage);
   fit();
 
-  /* ---- collapse / expand: the second rail slides away and the sub-nav
-     folds into the primary rail as an accordion ---- */
-  const setCollapsed = (on) => device.classList.toggle("adv-collapsed", on);
-  const isCollapsed = () => device.classList.contains("adv-collapsed");
+  /* rails are static by design — the primary rail stays icon-only and the
+     second rail stays open, so the Sales Overview remains readable */
 
-  root.querySelector(".adv-r2toggle").addEventListener("click", () => setCollapsed(true));
-  root.querySelector(".adv-expandbtn").addEventListener("click", () => setCollapsed(false));
-  root.querySelector(".adv-r1toggle").addEventListener("click", () => setCollapsed(!isCollapsed()));
-
-  /* ---- content interactions: metric tabs, segmented toggles, banner ---- */
+  /* ---- content interactions: metric tabs, segmented toggles ---- */
   root.querySelectorAll(".adv-card[data-card]").forEach((card) => {
     card.querySelectorAll(".adv-tab2").forEach((tab) => {
       tab.addEventListener("click", () => {
@@ -299,41 +288,4 @@
       });
     });
   });
-  root.querySelector(".adv-bannerx").addEventListener("click", () => {
-    root.querySelector(".adv-banner").remove();
-  });
-
-  /* ---- auto-play: tuck the sub-nav away, bring it back, forever ---- */
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-  let onStage = true;
-  new IntersectionObserver(([e]) => (onStage = e.isIntersecting), { threshold: 0.3 }).observe(stage);
-  const waitOnStage = async () => {
-    while (!onStage) await sleep(280);
-  };
-
-  const pressBtn = async (btn) => {
-    btn.classList.add("adv-press");
-    await sleep(220);
-    btn.classList.remove("adv-press");
-    await sleep(140);
-  };
-
-  const cycle = async () => {
-    for (;;) {
-      await waitOnStage();
-      await sleep(3000);
-      if (!isCollapsed()) {
-        await pressBtn(root.querySelector(".adv-r2toggle"));
-        setCollapsed(true);
-      }
-      await waitOnStage();
-      await sleep(3000);
-      if (isCollapsed()) {
-        await pressBtn(root.querySelector(".adv-expandbtn"));
-        setCollapsed(false);
-      }
-    }
-  };
-  if (!reduced) cycle();
 })();
