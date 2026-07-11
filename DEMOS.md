@@ -57,7 +57,7 @@ HTML 錨點 `#demo-{id}` · 檔案 `demos/{id}.js` · CSS 寫進 `demos/demos.cs
    ```
 6. **圖片規則**:菜品/內容照片一律灰色漸層佔位(`linear-gradient(160deg,#ececee,#f6f6f7)`),真圖等另外批准後才上線。
 7. **驗證**(改完必做):`node --check demos/{id}.js` → 確認伺服器活著(`python3 -m http.server 4174 -d /Users/Mina/FramerAgent/luminhuei-portfolio-2026`,docroot 是 repo 根目錄)→ 瀏覽器帶 `?v=N` cache-bust 重載 → 在 console(或瀏覽器 MCP 的 javascript 工具)斷言關鍵狀態(class、computed style、位置)→ 截圖 + 確認 console 無錯 → zh 頁同樣過一次。
-8. **收尾**:更新下方清單(含 Figma node-id 與原生尺寸)→ commit + push。
+8. **收尾**:更新下方清單(含 Figma node-id 與原生尺寸)→ **改過 demos.css 或 demo js 時,把頁面上資源連結的 `?v=` 參數換成當天日期**(否則瀏覽器快取會讓人看到舊版)→ commit + push。
 
 ## 動態圖的慣例
 
