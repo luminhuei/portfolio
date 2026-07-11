@@ -707,6 +707,21 @@
 .adv-filter:hover { background: #fafafa; }
 .adv-filter .adv-ic20 { color: #343330; }
 .adv-cmp { padding: 0 4px; color: var(--a-mid); }
+/* Search is the hero action on this page — solid black, white icon */
+.adv-searchbtn {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: var(--a-ink);
+  color: #fff;
+}
+.adv-searchbtn svg { width: 20px; height: 20px; }
+.adv-searchbtn:hover { background: #333333; }
 
 /* metric / summary cards */
 .adv-cards { display: grid; gap: 16px; margin-top: 16px; }

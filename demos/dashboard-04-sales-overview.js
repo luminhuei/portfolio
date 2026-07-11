@@ -177,7 +177,7 @@
         <span class="adv-cmp">compared to</span>
         <button class="adv-filter">Jun 27, 2026 - Jul 03, 2026<span class="adv-ic12">${I.chev}</span></button>
       </div>
-      <button class="adv-filter">${I.search}Search</button>
+      <button class="adv-searchbtn" aria-label="Search">${I.search}</button>
     </div>
     <div class="adv-cards adv-cards3">
       ${METRICS.map(metricCard).join("")}
