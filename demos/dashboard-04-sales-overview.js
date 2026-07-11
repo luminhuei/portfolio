@@ -33,6 +33,13 @@
     gear: S('<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>', 1.7),
     monitor: S('<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>', 1.7),
     clipboard: S('<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/>', 1.7),
+    /* content-area icons */
+    info: S('<circle cx="12" cy="12" r="8.5"/><path d="M12 11.2v5"/><path d="M12 7.6h.01"/>', 1.7),
+    cal: S('<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/>', 1.7),
+    clock: S('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>', 1.7),
+    x: S('<path d="M6 6l12 12M18 6L6 18"/>', 1.7),
+    arrUp: S('<path d="M12 19V5"/><path d="M6 11l6-6 6 6"/>', 2),
+    arrDown: S('<path d="M12 5v14"/><path d="M6 13l6 6 6-6"/>', 2),
     outdent: S('<path d="M11 5.75h8.5M11 12h8.5M4.5 18.25h15"/><path d="M7.5 8.5L4 12l3.5 3.5"/>'),
     indent: S('<path d="M11 5.75h8.5M11 12h8.5M4.5 18.25h15"/><path d="M4.5 8.5L8 12l-3.5 3.5"/>'),
     search: S('<circle cx="11" cy="11" r="6.2"/><path d="M15.7 15.7L20.5 20.5"/>'),
@@ -93,6 +100,120 @@
     [I.mail, "Inbox"],
   ];
 
+  /* ---- Sales Overview content — fake data for a fictional AYCE house,
+     Golden Ember BBQ (store #A62, same store as the tablet figure) ---- */
+  const row = ([label, val, info]) => `
+    <div class="adv-mrow">
+      <span class="adv-mlabel">${label}${info ? `<span class="adv-ic14">${I.info}</span>` : ""}</span>
+      <span class="adv-mval">${val}</span>
+    </div>`;
+
+  const badge = (dir, good, text) => `
+    <span class="adv-delta ${good ? "adv-delta-good" : "adv-delta-bad"}">
+      <span class="adv-ic12">${dir === "up" ? I.arrUp : I.arrDown}</span>${text}
+    </span>`;
+
+  const METRICS = [
+    {
+      name: "Net Sales", value: "$21,862.50", delta: badge("up", true, "+4.9%"),
+      tabs: {
+        "Payment": [["Card", "$14,210.75", 1], ["Cash", "$3,406.20"], ["Gift Card", "$1,982.05"], ["3rd Party", "$2,263.50", 1]],
+        "Channel": [["Dine-in", "$12,463.90"], ["Takeout", "$4,187.25"], ["Delivery", "$3,251.15", 1], ["Kiosk", "$1,960.20"]],
+        "Dining Type": [["AYCE Dinner", "$13,842.00"], ["AYCE Lunch", "$5,214.30"], ["À la carte", "$2,806.20"]],
+      },
+    },
+    {
+      name: "Payment Total", value: "$22,410.30", delta: badge("up", true, "+3.2%"),
+      tabs: {
+        "Payment": [["Card", "$17,105.40"], ["Cash", "$3,406.20"], ["Gift Card", "$1,898.70"]],
+        "Channel": [["Dine-in", "$12,982.45"], ["Takeout", "$4,308.90"], ["Delivery", "$3,420.75"], ["Kiosk", "$1,698.20"]],
+      },
+    },
+    {
+      name: "Refund Total", value: "$547.80", delta: badge("up", false, "+1.8%"),
+      tabs: {
+        "Refund": [["Card Refund", "$383.40"], ["Cash Refund", "$164.40"]],
+        "Void": [["Voided Items", "$129.75"], ["Comps", "$86.20"]],
+      },
+    },
+  ];
+
+  const metricCard = (m, ci) => {
+    const tabNames = Object.keys(m.tabs);
+    return `
+    <div class="adv-card" data-card="${ci}">
+      <div class="adv-cardhead">
+        <span class="adv-cardtitle">${m.name}<span class="adv-ic14">${I.info}</span></span>
+        ${m.delta}
+      </div>
+      <p class="adv-bigval">${m.value}</p>
+      <div class="adv-tabs2">
+        ${tabNames.map((t, i) => `<button class="adv-tab2${i === 0 ? " on" : ""}" data-tab="${t}">${t}</button>`).join("")}
+      </div>
+      ${tabNames.map((t, i) => `<div class="adv-tabpanel${i === 0 ? " on" : ""}" data-panel="${t}">${m.tabs[t].map(row).join("")}</div>`).join("")}
+    </div>`;
+  };
+
+  const simpleCard = (title, deltaHtml, rows, extra) => `
+    <div class="adv-card">
+      <div class="adv-cardhead">
+        <span class="adv-cardtitle">${title}<span class="adv-ic14">${I.info}</span></span>
+        ${deltaHtml}
+      </div>
+      ${extra || ""}
+      <div class="adv-tabpanel on">${rows.map(row).join("")}</div>
+    </div>`;
+
+  const CONTENT = `
+    <div class="adv-banner">
+      <span class="adv-ic20">${I.info}</span>
+      <p>3rd party sales can take up to 24 hours to sync &mdash; totals may differ from platform reports. <a class="adv-bannerlink">Learn more</a></p>
+      <button class="adv-bannerx" aria-label="Dismiss">${I.x}</button>
+    </div>
+    <div class="adv-seg" data-seg>
+      <button class="adv-segbtn on">3rd Party Excl.</button>
+      <button class="adv-segbtn">3rd Party Incl.</button>
+    </div>
+    <h1 class="adv-h2">Sales Overview</h1>
+    <p class="adv-sub">Golden Ember BBQ &middot; Store #A62</p>
+    <div class="adv-filters">
+      <button class="adv-filter">${I.cal}Jul 04, 2026 - Jul 10, 2026<span class="adv-ic12">${I.chev}</span></button>
+      <button class="adv-filter">${I.clock}5:00 am - 4:59 am</button>
+      <span class="adv-cmp">compared to</span>
+      <button class="adv-filter">Jun 27, 2026 - Jul 03, 2026<span class="adv-ic12">${I.chev}</span></button>
+      <button class="adv-filter adv-searchbtn">${I.search}Search</button>
+    </div>
+    <div class="adv-cards adv-cards3">
+      ${METRICS.map(metricCard).join("")}
+    </div>
+    <div class="adv-cards adv-cards2">
+      ${simpleCard("Sales VS Payment", badge("up", true, "+0.8%"), [
+        ["Total Sales (incl. tax & tips)", "$23,910.45", 1],
+        ["Total Payments", "$22,410.30", 1],
+        ["Difference &mdash; open orders", "$1,500.15"],
+      ])}
+      ${simpleCard("Unclosed orders", badge("down", true, "-3.1%"), [
+        ["Unclosed amount", "$1,500.15"],
+        ["Open orders", "12"],
+        ["Projected payments", "$1,687.35"],
+      ])}
+    </div>
+    <div class="adv-cards adv-cards2">
+      ${simpleCard("Miscellaneous", badge("up", true, "+1.2%"), [
+        ["Taxes", "$1,857.90"],
+        ["Tips", "$2,467.55", 1],
+        ["Auto Gratuity", "$486.00"],
+        ["Voided Amount", "$129.75", 1],
+      ], `<div class="adv-seg adv-seg-sm" data-seg><button class="adv-segbtn on">Refund Incl</button><button class="adv-segbtn">Sales only</button></div>`)}
+      ${simpleCard("Performance", badge("up", true, "+5.4%"), [
+        ["Orders", "342"],
+        ["Average order value", "$63.92"],
+        ["Guests served", "518"],
+        ["Sales per guest", "$42.21"],
+        ["Peak hour &mdash; 7 to 8 pm", "$3,214.60"],
+      ])}
+    </div>`;
+
   root.innerHTML = `
     <div class="demo-stage">
       <div class="adv">
@@ -135,7 +256,7 @@
         </aside>
 
         <button class="adv-iconbtn adv-expandbtn" aria-label="Expand sub-navigation">${I.indent}</button>
-        <main class="adv-content"></main>
+        <main class="adv-content">${CONTENT}</main>
       </div>
     </div>`;
 
@@ -160,6 +281,27 @@
   root.querySelector(".adv-r2toggle").addEventListener("click", () => setCollapsed(true));
   root.querySelector(".adv-expandbtn").addEventListener("click", () => setCollapsed(false));
   root.querySelector(".adv-r1toggle").addEventListener("click", () => setCollapsed(!isCollapsed()));
+
+  /* ---- content interactions: metric tabs, segmented toggles, banner ---- */
+  root.querySelectorAll(".adv-card[data-card]").forEach((card) => {
+    card.querySelectorAll(".adv-tab2").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        card.querySelectorAll(".adv-tab2").forEach((t) => t.classList.toggle("on", t === tab));
+        card.querySelectorAll(".adv-tabpanel").forEach((p) =>
+          p.classList.toggle("on", p.dataset.panel === tab.dataset.tab));
+      });
+    });
+  });
+  root.querySelectorAll("[data-seg]").forEach((seg) => {
+    seg.querySelectorAll(".adv-segbtn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        seg.querySelectorAll(".adv-segbtn").forEach((b) => b.classList.toggle("on", b === btn));
+      });
+    });
+  });
+  root.querySelector(".adv-bannerx").addEventListener("click", () => {
+    root.querySelector(".adv-banner").remove();
+  });
 
   /* ---- auto-play: tuck the sub-nav away, bring it back, forever ---- */
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
