@@ -219,8 +219,7 @@
           </div>
           <div class="adv-r1menu">
             <div class="adv-r1tools">
-              <button class="adv-iconbtn adv-r1toggle" aria-label="Collapse navigation">${I.outdent}</button>
-              <span class="adv-storechip">Store</span>
+              <button class="adv-iconbtn adv-r1toggle" aria-label="Navigation">${I.outdent}</button>
             </div>
             ${NAV1.map(railItem).join("")}
           </div>

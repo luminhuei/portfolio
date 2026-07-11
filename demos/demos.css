@@ -525,11 +525,10 @@
   z-index: 3;
 }
 .adv-r1head { flex: none; display: flex; align-items: center; justify-content: center; padding: 16px 0; }
-/* icon-only: labels, badges, chevrons, chips and the version footer disappear */
+/* icon-only: labels, badges, chevrons and the version footer disappear */
 .adv-rail1 .adv-itemlabel,
 .adv-rail1 .adv-badge,
 .adv-rail1 .adv-chev,
-.adv-storechip,
 .adv-r1foot { display: none; }
 .adv-r1tools { justify-content: center !important; }
 .adv-rail1 .adv-item { justify-content: center; gap: 0; padding: 6px; }
@@ -553,16 +552,6 @@
 .adv-iconbtn svg { width: 20px; height: 20px; }
 .adv-iconbtn:hover { background: var(--a-border); }
 .adv-iconbtn.adv-press, .adv-iconbtn:active { transform: scale(0.88); opacity: 0.55; }
-.adv-storechip {
-  height: 20px;
-  display: flex;
-  align-items: center;
-  padding: 0 8px;
-  border-radius: 4px;
-  background: var(--a-border);
-  font-size: 12px;
-  color: var(--a-mid);
-}
 .adv-item {
   height: 40px;
   display: flex;
