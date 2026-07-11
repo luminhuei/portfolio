@@ -13,7 +13,6 @@
   const I = {
     chev: S('<path d="M6.5 9.75l5.5 5.5 5.5-5.5"/>', 1.8),
     search: S('<circle cx="11" cy="11" r="6.2"/><path d="M15.7 15.7L20.5 20.5"/>'),
-    warn: S('<path d="M12 3.5L1.8 20.5h20.4z"/><path d="M12 10v5"/><path d="M12 17.6h.01"/>'),
     x: S('<path d="M6 6l12 12M18 6L6 18"/>'),
     plus: S('<path d="M12 5.5v13M5.5 12h13"/>', 2),
     filter: S('<path d="M4 5.5h16l-6.2 7.2v5.2L10.2 20v-7.3z"/>'),
@@ -80,13 +79,6 @@
       </table>
     </div>`;
 
-  const banner = `
-    <div class="odv-banner">
-      <span class="odv-ic20">${I.warn}</span>
-      <p>Data is not syncing in real time. Changes made after 5:00 am on Jul 10, may not be reflected in yesterday&rsquo;s data.</p>
-      <button class="odv-bannerx" aria-label="Dismiss">${I.x}</button>
-    </div>`;
-
   const footer = (total, pages) => `
     <div class="odv-foot">
       <span class="odv-total">Total ${total}</span>
@@ -124,7 +116,6 @@
         <section class="odv-view on" data-view="order">
           <h2 class="odv-h2">Order Details</h2>
           <p class="odv-note">This report does not include any third-party data from integration or manual entry on the POS</p>
-          ${banner}
           <div class="odv-segrow">
             <div class="odv-seg" data-seg>
               <button class="odv-segbtn on">Standard</button>
@@ -145,7 +136,6 @@
         <section class="odv-view" data-view="txn">
           <h2 class="odv-h2">Transaction Details</h2>
           <p class="odv-note">This report does not include any third-party data from integration or manual entry on the POS</p>
-          ${banner}
           <div class="odv-segrow">
             <div class="odv-seg" data-txnseg>
               ${Object.keys(TXN_ROWS).map((k, i) => `<button class="odv-segbtn${i === 0 ? " on" : ""}" data-subtype="${k}">${k}</button>`).join("")}
@@ -176,25 +166,47 @@
   new ResizeObserver(fit).observe(stage);
   fit();
 
-  /* ---- interactions: view switch, subtype tabs, seg pills, banner ---- */
+  /* ---- interactions: view switch, subtype tabs, seg pills ---- */
+  const setView = (view) => {
+    root.querySelectorAll(".odv-tab").forEach((t) => t.classList.toggle("on", t.dataset.view === view));
+    root.querySelectorAll(".odv-view").forEach((v) => v.classList.toggle("on", v.dataset.view === view));
+  };
+  let lastManual = 0;
   root.querySelectorAll(".odv-tab").forEach((tab) => {
     tab.addEventListener("click", () => {
-      root.querySelectorAll(".odv-tab").forEach((t) => t.classList.toggle("on", t === tab));
-      root.querySelectorAll(".odv-view").forEach((v) => v.classList.toggle("on", v.dataset.view === tab.dataset.view));
+      lastManual = Date.now();
+      setView(tab.dataset.view);
     });
   });
   root.querySelectorAll("[data-txnseg] .odv-segbtn").forEach((btn) => {
     btn.addEventListener("click", () => {
+      lastManual = Date.now();
       btn.closest("[data-txnseg]").querySelectorAll(".odv-segbtn").forEach((b) => b.classList.toggle("on", b === btn));
       root.querySelectorAll(".odv-txnpanel").forEach((p) => p.classList.toggle("on", p.dataset.panel === btn.dataset.subtype));
     });
   });
   root.querySelectorAll("[data-seg] .odv-segbtn").forEach((btn) => {
     btn.addEventListener("click", () => {
+      lastManual = Date.now();
       btn.closest("[data-seg]").querySelectorAll(".odv-segbtn").forEach((b) => b.classList.toggle("on", b === btn));
     });
   });
-  root.querySelectorAll(".odv-bannerx").forEach((x) => {
-    x.addEventListener("click", () => root.querySelectorAll(".odv-banner").forEach((b) => (b.style.display = "none")));
-  });
+
+  /* ---- auto-switch between the two reports; a reader in control wins ---- */
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  let onStage = true;
+  new IntersectionObserver(([e]) => (onStage = e.isIntersecting), { threshold: 0.3 }).observe(stage);
+
+  const cycle = async () => {
+    for (;;) {
+      await sleep(6500);
+      while (!onStage) await sleep(280);
+      if (Date.now() - lastManual < 8000) continue; // reader is exploring — hold off
+      const current = root.querySelector(".odv-view.on").dataset.view;
+      setView(current === "order" ? "txn" : "order");
+    }
+  };
+  if (!reduced) cycle();
 })();
