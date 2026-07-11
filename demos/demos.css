@@ -10,6 +10,8 @@
        #demo-xxx { --fig-pastel: var(--fig-pastel-sunset); --fig-fade: var(--fig-fade-tall); } */
   --fig-pastel-sunset: linear-gradient(100deg, #ff71ce, #ff9e7c 22%, #ffd23f 45%, #ff71ce 68%, #b967ff 100%);
   --fig-pastel-aurora: linear-gradient(100deg, #05ffa1, #01cdfe 25%, #8f6bff 50%, #ff8ad8 72%, #05ffa1 100%);
+  /* 3rd preset — luminous high-key: butter yellow, sky cyan, lake teal, mint */
+  --fig-pastel-luminous: linear-gradient(100deg, #f7d94e, #8ce1f0 28%, #35c9c4 52%, #8bf0c4 74%, #ffe374 100%);
   /* taller white for the vivid neon stages — color stays in the bottom third */
   --fig-fade-tall: linear-gradient(180deg, #ffffff 0%, #ffffff 16%, rgba(255, 255, 255, 0.88) 36%, rgba(255, 255, 255, 0) 80%);
   background:
