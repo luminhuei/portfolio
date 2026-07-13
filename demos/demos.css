@@ -1277,9 +1277,10 @@
    1:1 from Figma Ng5Qec5PY0iDOczXTzjGc8 / 5407:3522. Material-3
    report cards. Native phone 412x812, scaled to each stage.
    ============================================================ */
-/* phone sits inside the shared .fig-demo #fafafa frame, centered with
-   side breathing room and capped so it stays a sensible size */
-.wk-stage { position: relative; width: 100%; max-width: 340px; margin: 0 auto; }
+/* one #fafafa .fig-demo frame holds both phones side by side, centered
+   with side breathing room; each phone capped so it stays a sensible size */
+.wk-duo { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(20px, 4vw, 52px); }
+.wk-cell { position: relative; flex: 0 1 340px; max-width: 340px; min-width: 0; }
 
 .wk {
   position: absolute;
@@ -1319,7 +1320,10 @@
 .wk-datebar { display: flex; align-items: center; gap: 8px; padding: 8px 4px 12px; font-size: 15px; font-weight: 500; color: var(--g1); }
 .wk-ic20 svg { width: 20px; height: 20px; display: block; color: var(--g4); }
 
-.wk-mtitle { margin: 18px 4px 12px; font-size: 17px; font-weight: 600; }
+/* .wk .wk-mtitle beats the `.wk p { margin:0 }` reset — gives the module
+   title real space from its card, and modules real space from each other */
+.wk .wk-mtitle { margin: 28px 4px 16px; font-size: 17px; font-weight: 600; }
+.wk .wk-scroll > .wk-mtitle:first-of-type { margin-top: 10px; }
 
 .wk-card { border: 1px solid var(--g7); border-radius: 12px; background: #fff; margin-bottom: 14px; overflow: hidden; }
 
@@ -1417,15 +1421,3 @@
 
 .wk-endcap { text-align: center; padding: 20px 0 4px; font-size: 12px; color: #bdbdbd; }
 
-/* two figures side by side */
-.wk-pair { display: flex; gap: clamp(16px, 3vw, 32px); align-items: flex-start; }
-.wk-pair > figure { display: block; flex: 1 1 0; min-width: 0; margin: 0; }
-@media (max-width: 720px) { .wk-pair { flex-direction: column; } }
-.wk-paircap {
-  margin-top: 18px;
-  text-align: center;
-  font-family: var(--mono);
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--faint);
-}

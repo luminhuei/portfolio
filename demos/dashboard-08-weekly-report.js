@@ -11,13 +11,8 @@
    Fake data: Golden Ember BBQ, store #A62, week of Jul 04-10, 2026.
 --------------------------------------------------------------------------- */
 (function () {
-  const roots = {
-    left: document.getElementById("demo-dashboard-08-weekly-left"),
-    right: document.getElementById("demo-dashboard-08-weekly-right"),
-  };
-  if (!roots.left && !roots.right) return;
-
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const root = document.getElementById("demo-dashboard-08-weekly-report");
+  if (!root) return;
   const S = (d, w) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w || 1.7}" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
   const I = {
     cal: S('<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/>', 1.7),
@@ -223,26 +218,26 @@
     })}
     <div class="wk-endcap">End of report</div>`;
 
-  /* Full-bleed phone screens — no pastel stage, no scale-down. Each phone
-     fills its column width and stays on the first screen; the reader scrolls
-     it by hand. */
-  const PHONES = { left: LEFT, right: RIGHT };
+  /* One #fafafa frame (same width as the other figures) holding both phones
+     side by side. Each phone is a capped-width screen the reader scrolls by
+     hand; it opens on the first screen. */
+  root.innerHTML = `
+    <div class="wk-duo">
+      <div class="wk-cell"><div class="wk"><div class="wk-scroll">${LEFT}</div></div></div>
+      <div class="wk-cell"><div class="wk"><div class="wk-scroll">${RIGHT}</div></div></div>
+    </div>`;
 
-  Object.keys(roots).forEach((side) => {
-    const root = roots[side];
-    if (!root) return;
-    root.innerHTML = `<div class="wk-stage"><div class="wk"><div class="wk-scroll">${PHONES[side]}</div></div></div>`;
-    const stage = root.querySelector(".wk-stage");
-    const device = root.querySelector(".wk");
+  root.querySelectorAll(".wk-cell").forEach((cell) => {
+    const device = cell.querySelector(".wk");
     const W = 412, H = 812;
     const fit = () => {
-      const w = stage.clientWidth;
+      const w = cell.clientWidth;
       if (!w) return;
-      const s = w / W;           // fill the column exactly (no 0.8 inset)
+      const s = w / W;
       device.style.transform = `scale(${s})`;
-      stage.style.height = `${Math.round(H * s)}px`;
+      cell.style.height = `${Math.round(H * s)}px`;
     };
-    new ResizeObserver(fit).observe(stage);
+    new ResizeObserver(fit).observe(cell);
     window.addEventListener("resize", fit);
     window.addEventListener("load", fit);
     fit();
