@@ -249,7 +249,12 @@
   new IntersectionObserver(([e]) => (onStage = e.isIntersecting), { threshold: 0.2 }).observe(root);
 
   /* press effect, then snap to the top instantly (used by auto-loop + click) */
+  let progress = 0;                     // 0 = top, 1 = bottom
+  let last = performance.now();
+  let phase = "top";                    // "top" (dwell) | "scroll" | "bottom" (dwell)
+  let holdT = 0;
   let snapping = false;
+
   const backToTop = () => {
     if (snapping) return;
     snapping = true;
@@ -264,17 +269,17 @@
     setTimeout(() => {
       backtop.classList.remove("wk-press");
       snapping = false;
-      last = performance.now();         // resume the glide cleanly
+      phase = "top";                    // dwell at the top again — read the title first
+      holdT = 0;
+      last = performance.now();
     }, 560);
   };
   backtop.addEventListener("click", backToTop);
 
-  let progress = 0;                     // 0 = top, 1 = bottom
-  let last = performance.now();
-  let bottomHold = 0;
   if (!reduced) {
+    const HOLD_TOP_MS = 2600;           // let the title be read before scrolling
+    const HOLD_BOTTOM_MS = 1400;        // dwell at the bottom before returning
     const DOWN_MS = 22000;              // time to glide top -> bottom
-    const HOLD_MS = 1400;               // dwell at the bottom before returning
     const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
     const tick = (now) => {
       const dt = now - last;
@@ -282,13 +287,16 @@
       if (onStage && !hovered && !snapping) {
         const range = scroll.scrollHeight - scroll.clientHeight;
         if (range > 2) {
-          if (progress < 1) {
+          if (phase === "top") {
+            holdT += dt;
+            if (holdT >= HOLD_TOP_MS) phase = "scroll";
+          } else if (phase === "scroll") {
             progress = Math.min(1, progress + dt / DOWN_MS);
             scroll.scrollTop = range * ease(progress);
-            if (progress >= 1) bottomHold = 0;
+            if (progress >= 1) { phase = "bottom"; holdT = 0; }
           } else {
-            bottomHold += dt;
-            if (bottomHold >= HOLD_MS) backToTop();
+            holdT += dt;
+            if (holdT >= HOLD_BOTTOM_MS) backToTop();
           }
         }
       }
