@@ -1309,6 +1309,9 @@
 .wk button { font-family: inherit; cursor: pointer; }
 .wk-scroll { height: 100%; overflow-y: auto; padding: 0 16px 26px; scrollbar-width: none; }
 .wk-scroll::-webkit-scrollbar { width: 0; height: 0; }
+/* smooth reappear after Back-to-top snaps the screen home */
+.wk-scroll.wk-fadein { animation: wk-fadein 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes wk-fadein { from { opacity: 0.25; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 .wk-status {
   position: sticky; top: 0; z-index: 4; height: 46px; margin: 0 -16px; padding: 0 24px;
@@ -1328,13 +1331,16 @@
 .wk-card { border: 1px solid var(--g7); border-radius: 12px; background: #fff; margin-bottom: 14px; overflow: hidden; }
 
 /* stat tabs header (with bottom rule) */
-.wk-tabs { display: flex; gap: 16px; padding: 16px 16px 0; border-bottom: 1px solid var(--g7); }
-.wk-tabs-4 { gap: 12px; }
-.wk-tab { flex: none; min-width: 75px; display: flex; flex-direction: column; gap: 3px; padding-bottom: 15px; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.wk-tabs { display: flex; gap: 14px; padding: 16px 16px 0; border-bottom: 1px solid var(--g7); }
+.wk-tabs-4 { gap: 8px; }
+.wk-tab { flex: none; min-width: 0; display: flex; flex-direction: column; gap: 3px; padding-bottom: 15px; border-bottom: 3px solid transparent; margin-bottom: -1px; }
 .wk-tabs-4 .wk-tab { min-width: 0; flex: 1; }
+.wk-tabs-4 .wk-tval { font-size: 18px; }
 .wk-tab-on { border-bottom-color: var(--brand); }
 .wk-tlabel { font-size: 14px; line-height: 20px; letter-spacing: 0.25px; color: var(--g4); white-space: nowrap; }
-.wk-tval { font-size: 20px; line-height: 28px; letter-spacing: 0; color: var(--g1); font-variant-numeric: tabular-nums; }
+/* proportional digits + tight tracking so long amounts (e.g. $121.4k,
+   $22,412.80) stay compact and never crowd the neighbouring stat */
+.wk-tval { font-size: 20px; line-height: 28px; letter-spacing: -0.3px; color: var(--g1); white-space: nowrap; }
 .wk-tsub { font-size: 12px; color: var(--g4); }
 .wk-delta { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; line-height: 16px; letter-spacing: 0.4px; }
 .wk-delta-up { color: var(--green); }
@@ -1350,7 +1356,7 @@
 .wk-detail { display: flex; gap: 16px; }
 .wk-dcol { display: flex; flex-direction: column; gap: 2px; min-width: 75px; }
 .wk-dl { font-size: 12px; letter-spacing: 0.4px; color: var(--g4); }
-.wk-dv { font-size: 14px; line-height: 20px; letter-spacing: 0.25px; color: var(--g1); font-variant-numeric: tabular-nums; }
+.wk-dv { font-size: 14px; line-height: 20px; letter-spacing: 0; color: var(--g1); white-space: nowrap; }
 
 /* dot legend */
 .wk-legend { display: flex; gap: 24px; }
@@ -1386,6 +1392,8 @@
 .wk-table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .wk-table th { text-align: left; padding: 12px 12px; font-size: 13px; font-weight: 400; color: var(--g4); border-bottom: 1.5px solid var(--g1); }
 .wk-table td { padding: 14px 12px; border-bottom: 1px solid var(--g8); font-variant-numeric: tabular-nums; vertical-align: middle; }
+/* item-name column: always one line — overflow shows an ellipsis */
+.wk-table td:nth-child(2) { max-width: 118px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .wk-table tbody tr:last-child td { border-bottom: none; }
 .wk-table .wk-r { text-align: right; }
 .wk-rankcell { display: flex; align-items: center; gap: 8px; }

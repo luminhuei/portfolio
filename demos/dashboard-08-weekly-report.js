@@ -256,6 +256,9 @@
     setTimeout(() => {
       scroll.scrollTop = 0;             // straight to the top, no scroll
       progress = 0;
+      scroll.classList.remove("wk-fadein");
+      void scroll.offsetWidth;          // restart the animation
+      scroll.classList.add("wk-fadein"); // then let the info fade+rise back in
     }, 240);
     setTimeout(() => {
       backtop.classList.remove("wk-press");
