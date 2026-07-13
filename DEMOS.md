@@ -1,17 +1,17 @@
 # Interactive figure demos — SOP
 
 Case study 頁的「圖」不用截圖,用程式碼 1:1 重建成可互動的展示。
-每張圖都套同一個模板:**粉彩糖果漸層舞台 + 灰色細外框 + hover 放大 5% + 跟著滑鼠的彩色外框線**。
+每張圖都套同一個模板:**純 #fafafa 灰底舞台 + 灰色細外框 + hover 放大 5% + 跟著滑鼠的彩色外框線**。
 
 ## 共用層自動提供(demos.css + fig-hover.js,不用每張圖重寫)
 
-- **舞台背景**:顏色聚在下方、往上漸白,色層以 26s 極慢左右漂移(subtle wave)。預設是糖果粉彩;另有三個預設可以每張圖指定 — 方案 1 `--fig-pastel-sunset`(霓虹日落:桃紅→蜜橘→金黃→紫)、方案 2 `--fig-pastel-aurora`(極光:電綠→青→紫→洋紅光緣)、方案 3 `--fig-pastel-luminous`(亮彩 high-key:奶油黃→天空青→湖水綠→薄荷,尚未指定給任何 case),使用時搭配加高白色 `--fig-fade: var(--fig-fade-tall)`(色彩只留下方 1/3)。舞台以 case 為單位指定:case 頁的 `<body>` 掛 `case-tablet` / `case-mpos` 這類 class,demos.css 用 `.case-xxx .fig-demo { --fig-pastel: …; --fig-fade: … }` 統一套用。**已定案:Ordering Tablet 全部日落、Mobile POS 全部極光**,其他 case 之後再定(單張要例外時用 `#demo-xxx` 覆寫)
+- **舞台背景**:純 `#fafafa` 灰底(2026-07-13 定案,**全站所有圖統一**;白色裝置面板在灰底上最清楚)。**粉彩漸層系統已整個退休** — 舊的 `--fig-pastel-sunset/aurora/luminous`、`--fig-fade-tall`、`demo-drift` 漂移動畫,以及 `.case-tablet/.case-mpos/.case-dashboard .fig-demo` 的逐頁指定全部從 demos.css 移除。之後新圖**不用挑舞台**,base `.fig-demo` 自動就是灰底;真要單張例外再用 `#demo-xxx` 覆寫 `background`
 - **外框**:1px 不透明淺灰 `#e4e4e1`(不透明才不會被底下的粉彩染色)、圓角 16px
 - **Hover**:整張圖放大 5%(`scale(1.05)`,柔緩動 0.5s);同時彩色外框線段亮起,**跟著滑鼠沿邊框移動**(conic 彩虹環 + 以游標為中心的 radial 遮罩,離開後淡出恢復灰框)
 - **舞台寬度**:裝置容器 `.demo-stage` 佔舞台 80% 寬、置中
 - **角落提示樣式**:`.demo-hint` mono 小字,位於圖右上角外側(文字內容由各 demo 提供)
 - **重播按鈕樣式**:`.demo-replay` 黑色小藥丸(右下角),給「播一次型」demo 用;循環型不需要
-- **reduced-motion(僅共用部分)**:自動停用背景漂移與 hover 縮放 — **demo 內部的動畫要自己停,見下方「每張圖自己負責」**
+- **reduced-motion(僅共用部分)**:自動停用 hover 縮放 — **demo 內部的動畫要自己停,見下方「每張圖自己負責」**
 
 ## 每張圖自己負責
 
