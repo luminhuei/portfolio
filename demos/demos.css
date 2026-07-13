@@ -1277,10 +1277,10 @@
    1:1 from Figma Ng5Qec5PY0iDOczXTzjGc8 / 5407:3522. Material-3
    report cards. Native phone 412x812, scaled to each stage.
    ============================================================ */
-/* one #fafafa .fig-demo frame holds both phones side by side, centered
-   with side breathing room; each phone capped so it stays a sensible size */
+/* one #fafafa .fig-demo frame with a single phone centered inside,
+   capped small so it stays a sensible size */
 .wk-duo { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(20px, 4vw, 52px); }
-.wk-cell { position: relative; flex: 0 1 340px; max-width: 340px; min-width: 0; }
+.wk-cell { position: relative; flex: 0 1 300px; max-width: 300px; min-width: 0; }
 
 .wk {
   position: absolute;

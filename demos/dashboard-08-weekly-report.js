@@ -1,14 +1,15 @@
 /* ---------------------------------------------------------------------------
-   dashboard-08-weekly-report — the Weekly Report's mobile card stream, shown
-   as TWO separate phone-screen figures (left + right), each a rounded,
-   shadowed screen panel (no device mockup). Rebuilt faithfully from Figma
-   Ng5Qec5PY0iDOczXTzjGc8 / 5407:3522 — Material-3 report cards: stat tabs +
-   detail row + charts with right-side y-axis, gridlines and dot legends;
-   stacked bars (gray past week, orange current), two-line member chart,
-   two-segment donut, ranked table with colored up/down deltas.
-   Native phone 412 wide; content scrolls; each phone slowly auto-scrolls.
-   Split 3+3 — left = sales performance, right = customers & place.
-   Fake data: Golden Ember BBQ, store #A62, week of Jul 04-10, 2026.
+   dashboard-08-weekly-report — the Weekly Report's mobile card stream as a
+   SINGLE phone screen centered in one #fafafa frame, slowly auto-scrolling
+   on a loop. Rebuilt faithfully from Figma Ng5Qec5PY0iDOczXTzjGc8 /
+   5407:3522 — Material-3 report cards: stat tabs + detail row + charts with
+   right-side y-axis, gridlines and dot legends; stacked bars (gray past
+   week, orange current), two-line member chart, two-segment donut, ranked
+   table with colored up/down deltas. Five modules top to bottom: Trend for
+   sales and upsell, Top sales items, Sales channel distribution, Member
+   analysis summary, Review summary (Off-premise geo removed by request).
+   Native phone 412 wide; content scrolls. Fake data: Golden Ember BBQ,
+   store #A62, week of Jul 04-10, 2026.
 --------------------------------------------------------------------------- */
 (function () {
   const root = document.getElementById("demo-dashboard-08-weekly-report");
@@ -153,8 +154,8 @@
 
   const heading = (t) => `<p class="wk-mtitle">${t}</p>`;
 
-  /* ============ LEFT PHONE — sales performance ============ */
-  const LEFT = `
+  /* ============ single phone — five modules, top to bottom ============ */
+  const CONTENT = `
     ${statusbar}${datebar}
     ${heading("Trend for sales and upsell")}
     ${trendCard({
@@ -196,11 +197,6 @@
         ${dotLegend([["a", "Net Sales"], ["b", "Upsell"]])}
       </div>
     </div>
-    <div class="wk-endcap">End of report</div>`;
-
-  /* ============ RIGHT PHONE — customers & place ============ */
-  const RIGHT = `
-    ${statusbar}${datebar}
     ${heading("Member analysis summary")}
     ${lineCard({
       label: "Active members", big: "518", big2: "518", dDir: "up", dTxt: "7%",
@@ -212,34 +208,53 @@
       a: ["Avg rate", "4.6", "up", "0.2"], b: ["Response / Review", "48/62", "up", "14%"],
       google: 78, yelp: 22,
     })}
-    ${heading("Off-premise geo distribution")}
-    ${geoCard({
-      a: ["Delivery orders", "214", "up", "12%"], b: ["Avg distance", "2.4 mi", "down", "0.3"],
-    })}
     <div class="wk-endcap">End of report</div>`;
 
-  /* One #fafafa frame (same width as the other figures) holding both phones
-     side by side. Each phone is a capped-width screen the reader scrolls by
-     hand; it opens on the first screen. */
+  /* One #fafafa frame (same width as the other figures) with a single phone
+     centered inside. The screen slowly auto-scrolls on a loop. */
   root.innerHTML = `
     <div class="wk-duo">
-      <div class="wk-cell"><div class="wk"><div class="wk-scroll">${LEFT}</div></div></div>
-      <div class="wk-cell"><div class="wk"><div class="wk-scroll">${RIGHT}</div></div></div>
+      <div class="wk-cell wk-solo"><div class="wk"><div class="wk-scroll">${CONTENT}</div></div></div>
     </div>`;
 
-  root.querySelectorAll(".wk-cell").forEach((cell) => {
-    const device = cell.querySelector(".wk");
-    const W = 412, H = 812;
-    const fit = () => {
-      const w = cell.clientWidth;
-      if (!w) return;
-      const s = w / W;
-      device.style.transform = `scale(${s})`;
-      cell.style.height = `${Math.round(H * s)}px`;
+  const cell = root.querySelector(".wk-cell");
+  const device = cell.querySelector(".wk");
+  const scroll = cell.querySelector(".wk-scroll");
+  const W = 412, H = 812;
+  const fit = () => {
+    const w = cell.clientWidth;
+    if (!w) return;
+    const s = w / W;
+    device.style.transform = `scale(${s})`;
+    cell.style.height = `${Math.round(H * s)}px`;
+  };
+  new ResizeObserver(fit).observe(cell);
+  window.addEventListener("resize", fit);
+  window.addEventListener("load", fit);
+  fit();
+
+  /* --- slow auto-scroll loop (down then back), pausing on hover / off screen --- */
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let hovered = false, onStage = true;
+  cell.addEventListener("pointerenter", () => (hovered = true));
+  cell.addEventListener("pointerleave", () => (hovered = false));
+  new IntersectionObserver(([e]) => (onStage = e.isIntersecting), { threshold: 0.2 }).observe(root);
+
+  if (!reduced) {
+    const PERIOD = 44000; // ms for a full down-and-back
+    const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+    const start = performance.now();
+    const tick = (now) => {
+      if (onStage && !hovered) {
+        const range = scroll.scrollHeight - scroll.clientHeight;
+        if (range > 2) {
+          const phase = ((now - start) % PERIOD) / PERIOD;
+          const tri = phase < 0.5 ? phase * 2 : (1 - phase) * 2;
+          scroll.scrollTop += (range * ease(tri) - scroll.scrollTop) * 0.08;
+        }
+      }
+      requestAnimationFrame(tick);
     };
-    new ResizeObserver(fit).observe(cell);
-    window.addEventListener("resize", fit);
-    window.addEventListener("load", fit);
-    fit();
-  });
+    requestAnimationFrame(tick);
+  }
 })();
