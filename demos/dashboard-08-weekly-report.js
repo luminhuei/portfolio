@@ -223,20 +223,22 @@
     })}
     <div class="wk-endcap">End of report</div>`;
 
+  /* Full-bleed phone screens — no pastel stage, no scale-down. Each phone
+     fills its column width and stays on the first screen; the reader scrolls
+     it by hand. */
   const PHONES = { left: LEFT, right: RIGHT };
-  const scrolls = [];
 
   Object.keys(roots).forEach((side) => {
     const root = roots[side];
     if (!root) return;
-    root.innerHTML = `<div class="demo-stage"><div class="wk"><div class="wk-scroll">${PHONES[side]}</div></div></div>`;
-    const stage = root.querySelector(".demo-stage");
+    root.innerHTML = `<div class="wk-stage"><div class="wk"><div class="wk-scroll">${PHONES[side]}</div></div></div>`;
+    const stage = root.querySelector(".wk-stage");
     const device = root.querySelector(".wk");
     const W = 412, H = 812;
     const fit = () => {
       const w = stage.clientWidth;
       if (!w) return;
-      const s = w / W;
+      const s = w / W;           // fill the column exactly (no 0.8 inset)
       device.style.transform = `scale(${s})`;
       stage.style.height = `${Math.round(H * s)}px`;
     };
@@ -244,35 +246,5 @@
     window.addEventListener("resize", fit);
     window.addEventListener("load", fit);
     fit();
-    scrolls.push({ el: root.querySelector(".wk-scroll"), stage });
   });
-
-  /* --- slow auto-scroll, pausing on hover / off screen --- */
-  const hovered = new WeakSet();
-  const onStage = new WeakSet();
-  scrolls.forEach(({ el, stage }) => {
-    const phone = el.closest(".wk");
-    phone.addEventListener("pointerenter", () => hovered.add(el));
-    phone.addEventListener("pointerleave", () => hovered.delete(el));
-    new IntersectionObserver(([e]) => e.isIntersecting ? onStage.add(el) : onStage.delete(el), { threshold: 0.2 }).observe(stage);
-    onStage.add(el);
-  });
-
-  if (!reduced && scrolls.length) {
-    const PERIOD = 36000;
-    const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
-    const start = performance.now();
-    const tick = (now) => {
-      scrolls.forEach(({ el }, i) => {
-        if (hovered.has(el) || !onStage.has(el)) return;
-        const range = el.scrollHeight - el.clientHeight;
-        if (range <= 2) return;
-        const phase = (((now - start + i * PERIOD * 0.5) % PERIOD) / PERIOD);
-        const tri = phase < 0.5 ? phase * 2 : (1 - phase) * 2;
-        el.scrollTop += (range * ease(tri) - el.scrollTop) * 0.08;
-      });
-      requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }
 })();

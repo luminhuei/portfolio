@@ -1303,6 +1303,10 @@
    1:1 from Figma Ng5Qec5PY0iDOczXTzjGc8 / 5407:3522. Material-3
    report cards. Native phone 412x812, scaled to each stage.
    ============================================================ */
+/* full-bleed holder — no pastel stage, no hover, phone fills the column */
+.wk-holder { width: 100%; }
+.wk-stage { position: relative; width: 100%; }
+
 .wk {
   position: absolute;
   top: 0;
@@ -1351,10 +1355,10 @@
 .wk-tab { flex: none; min-width: 75px; display: flex; flex-direction: column; gap: 3px; padding-bottom: 15px; border-bottom: 3px solid transparent; margin-bottom: -1px; }
 .wk-tabs-4 .wk-tab { min-width: 0; flex: 1; }
 .wk-tab-on { border-bottom-color: var(--brand); }
-.wk-tlabel { font-size: 14px; letter-spacing: 0.25px; color: var(--g4); white-space: nowrap; }
-.wk-tval { font-size: 20px; line-height: 26px; color: var(--g1); font-variant-numeric: tabular-nums; }
+.wk-tlabel { font-size: 14px; line-height: 20px; letter-spacing: 0.25px; color: var(--g4); white-space: nowrap; }
+.wk-tval { font-size: 20px; line-height: 28px; letter-spacing: 0; color: var(--g1); font-variant-numeric: tabular-nums; }
 .wk-tsub { font-size: 12px; color: var(--g4); }
-.wk-delta { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; letter-spacing: 0.4px; }
+.wk-delta { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; line-height: 16px; letter-spacing: 0.4px; }
 .wk-delta-up { color: var(--green); }
 .wk-delta-down { color: var(--red); }
 .wk-tri { width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; }
@@ -1368,7 +1372,7 @@
 .wk-detail { display: flex; gap: 16px; }
 .wk-dcol { display: flex; flex-direction: column; gap: 2px; min-width: 75px; }
 .wk-dl { font-size: 12px; letter-spacing: 0.4px; color: var(--g4); }
-.wk-dv { font-size: 14px; letter-spacing: 0.25px; color: var(--g1); font-variant-numeric: tabular-nums; }
+.wk-dv { font-size: 14px; line-height: 20px; letter-spacing: 0.25px; color: var(--g1); font-variant-numeric: tabular-nums; }
 
 /* dot legend */
 .wk-legend { display: flex; gap: 24px; }
@@ -1440,8 +1444,8 @@
 .wk-endcap { text-align: center; padding: 20px 0 4px; font-size: 12px; color: #bdbdbd; }
 
 /* two figures side by side */
-.wk-pair { display: flex; gap: clamp(16px, 3vw, 40px); align-items: stretch; }
-.wk-pair > figure { flex: 1; min-width: 0; margin: 0; }
+.wk-pair { display: flex; gap: clamp(16px, 3vw, 40px); align-items: flex-start; }
+.wk-pair > figure { display: block; flex: 1; min-width: 0; margin: 0; }
 @media (max-width: 720px) { .wk-pair { flex-direction: column; } }
 .wk-paircap {
   margin-top: 18px;
