@@ -1297,3 +1297,232 @@
 }
 .odv-pagebtn svg { width: 14px; height: 14px; }
 .odv-pagebtn:hover { background: #fafafa; }
+
+/* ============================================================
+   dashboard-08-weekly-report — two phone-screen panels (no device
+   mockup), each a scrolling mobile card stream. Figma
+   Ng5Qec5PY0iDOczXTzjGc8 / 5407:3522. Group 900x812, screens 390x780.
+   ============================================================ */
+.wkl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  --a-ink: #1a1a1a;
+  --a-mid: #666666;
+  --a-faint: #9a9aa1;
+  --a-border: #ededed;
+  --a-panel: #f5f5f5;
+  --a-brand: #ff4d00;
+  width: 900px;
+  height: 812px;
+  transform-origin: top left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  font-family: "Inter", "Geist", -apple-system, sans-serif;
+  color: var(--a-ink);
+  user-select: none;
+}
+.wkl * { box-sizing: border-box; }
+.wkl p { margin: 0; }
+.wkl button { font-family: inherit; cursor: pointer; }
+
+.wkl-phone {
+  width: 390px;
+  height: 780px;
+  flex: none;
+  background: #fff;
+  border-radius: 42px;
+  box-shadow: 0 30px 70px rgba(18, 18, 18, 0.20), 0 6px 18px rgba(18, 18, 18, 0.10);
+  overflow: hidden;
+}
+.wkl-scroll {
+  height: 100%;
+  overflow-y: auto;
+  padding: 0 16px 28px;
+  scrollbar-width: none;
+}
+.wkl-scroll::-webkit-scrollbar { width: 0; height: 0; }
+
+/* status bar + report header */
+.wkl-status {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  height: 46px;
+  margin: 0 -16px;
+  padding: 0 22px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wkl-time { font-size: 14px; font-weight: 600; letter-spacing: 0.2px; }
+.wkl-statusicons { display: flex; align-items: center; gap: 6px; }
+.wkl-statusicons svg { width: 17px; height: 17px; display: block; color: var(--a-ink); }
+.wkl-head { padding: 6px 4px 8px; }
+.wkl-htitle { font-size: 21px; font-weight: 700; letter-spacing: -0.01em; }
+.wkl-hsub { margin-top: 3px; font-size: 12.5px; color: var(--a-mid); }
+
+.wkl-mtitle { margin: 18px 4px 10px; font-size: 16px; font-weight: 600; }
+.wkl-card {
+  border: 1px solid var(--a-border);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+.wkl-tablecard { padding: 4px 4px; }
+
+/* twin stat header (label / value / delta) */
+.wkl-twins { display: flex; gap: 16px; }
+.wkl-twin { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.wkl-tlabel { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--a-mid); }
+.wkl-tval { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.wkl-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.wkl-dot-a { background: var(--a-brand); }
+.wkl-dot-b { background: #d4d4d8; }
+.wkl-dot-c { background: #ffc7ac; }
+.wkl-delta { display: inline-flex; align-items: center; gap: 2px; font-size: 12px; font-weight: 500; }
+.wkl-delta svg { width: 12px; height: 12px; }
+.wkl-delta-up { color: #17853f; }
+.wkl-delta-down { color: #d92d20; }
+
+/* grouped bars */
+.wkl-gbars { display: flex; align-items: flex-end; gap: 18px; height: 116px; margin-top: 16px; padding-top: 6px; }
+.wkl-ggroup { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; }
+.wkl-gpair { flex: 1; width: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 6px; }
+.wkl-gbar { width: 22px; border-radius: 4px 4px 0 0; background: #eceef0; min-height: 3px; }
+.wkl-gbar-b { width: 22px; background: #f4f5f6; }
+.wkl-gbar-hot { background: var(--a-brand); }
+.wkl-gbar-bhot { background: #ffb596; }
+.wkl-glabel { font-size: 11.5px; color: var(--a-faint); }
+
+/* single-series columns */
+.wkl-cols { display: flex; align-items: flex-end; gap: 14px; height: 96px; margin-top: 14px; }
+.wkl-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; }
+.wkl-colbar { width: 100%; max-width: 40px; flex: 1 0 auto; align-self: center; background: linear-gradient(180deg, #ff7a45, #ff4d00); border-radius: 5px 5px 0 0; min-height: 3px; }
+.wkl-col { position: relative; }
+.wkl-col .wkl-colbar { height: 0; }
+.wkl-collabel { font-size: 11.5px; color: var(--a-faint); }
+/* height comes from inline style on .wkl-colbar; override the flex above */
+.wkl-cols .wkl-colbar { flex: none; }
+
+/* triple stat + subline */
+.wkl-triple { display: flex; gap: 10px; }
+.wkl-stat { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.wkl-slabel { font-size: 12px; color: var(--a-mid); }
+.wkl-sval { font-size: 17px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.wkl-sub2 { margin-top: 12px; font-size: 13px; color: var(--a-mid); }
+.wkl-sub2 b { color: var(--a-ink); }
+
+/* top-items table */
+.wkl-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.wkl-table th { text-align: left; padding: 10px 10px; font-size: 11.5px; font-weight: 500; color: var(--a-faint); border-bottom: 1px solid var(--a-border); }
+.wkl-table td { padding: 11px 10px; border-bottom: 1px solid #f4f4f4; font-variant-numeric: tabular-nums; vertical-align: middle; }
+.wkl-table tbody tr:last-child td { border-bottom: none; }
+.wkl-table .wkl-r { text-align: right; }
+.wkl-table td:first-child { display: flex; align-items: center; gap: 4px; }
+.wkl-table td svg { width: 12px; height: 12px; color: #17853f; }
+.wkl-table td:first-child svg { color: #17853f; }
+.wkl-rank { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; font-weight: 600; color: var(--a-brand); }
+.wkl-tag { font-size: 10.5px; color: var(--a-brand); border: 1px solid #ffd9c9; border-radius: 4px; padding: 1px 5px; margin-left: 2px; }
+
+/* line chart */
+.wkl-line { width: 100%; height: 120px; margin-top: 14px; display: block; }
+.wkl-legend { display: flex; gap: 16px; margin-top: 10px; font-size: 12px; color: var(--a-mid); }
+.wkl-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.wkl-legend-col { flex-direction: column; gap: 8px; }
+
+/* donut */
+.wkl-donutrow { display: flex; align-items: center; gap: 20px; margin-top: 14px; }
+.wkl-donut { width: 128px; height: 128px; flex: none; }
+.wkl-donutbig { text-anchor: middle; font-size: 26px; font-weight: 700; fill: var(--a-ink); }
+.wkl-donutsm { text-anchor: middle; font-size: 11px; fill: var(--a-faint); }
+.wkl-link { display: inline-flex; align-items: center; gap: 2px; margin-top: 14px; border: none; background: none; padding: 0; font-size: 13px; font-weight: 500; color: var(--a-brand); }
+.wkl-link svg { width: 15px; height: 15px; }
+
+/* abstract map */
+.wkl-map { position: relative; margin-top: 14px; border-radius: 12px; overflow: hidden; height: 180px; }
+.wkl-map svg { width: 100%; height: 100%; display: block; }
+.wkl-maplabel { position: absolute; left: 10px; bottom: 10px; display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.92); font-size: 12px; font-weight: 500; box-shadow: 0 2px 6px rgba(18, 18, 18, 0.12); }
+.wkl-ic14 svg { width: 14px; height: 14px; color: var(--a-brand); }
+
+.wkl-endcap { text-align: center; padding: 22px 0 6px; font-size: 12px; color: var(--a-faint); }
+
+@media (prefers-reduced-motion: reduce) {
+  .wkl-scroll { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   dashboard-06b-sales-summary-spotlight — Stripe-style alt take
+   on the Solution 02 figure (comparison with dashboard-06; same
+   data, no navigation chrome). Native 1600x760: chrome-free
+   panel 1328x548 at x=272 with the three charts, floating card
+   520 wide overlapping on the left where the 13 summary tables
+   rotate. Charts/tables reuse the asv- classes; asp- is layout.
+   ============================================================ */
+.asp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1816px;
+  height: 640px;
+  transform-origin: top left;
+  font-family: "Inter", "Geist", -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1a1a1a;
+  user-select: none;
+  /* the asv- child classes read these Peblla tokens */
+  --a-ink: #1a1a1a;
+  --a-mid: #666666;
+  --a-border: #e6e6e6;
+  --a-line: #cccccc;
+  --a-panel: #f2f2f2;
+  --a-brand: #ff4d00;
+}
+.asp * { box-sizing: border-box; }
+.asp p, .asp h1 { margin: 0; }
+.asp button { font-family: inherit; cursor: pointer; }
+
+.asp-panel {
+  position: absolute;
+  left: 448px;
+  top: 24px;
+  width: 1368px;
+  height: 548px;
+  /* extra left padding keeps every chart clear of the floating card while
+     the two cards still visibly overlap */
+  padding: 48px 48px 48px 88px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 30px 70px rgba(18, 18, 18, 0.22), 0 6px 18px rgba(18, 18, 18, 0.1);
+}
+.asp-chart1 { margin-top: 32px; }
+.asp-duo { margin-top: 40px; }
+
+/* floating summary card — the rotation stage */
+.asp-float {
+  position: absolute;
+  left: 0;
+  top: 170px;
+  width: 520px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 30px 70px rgba(18, 18, 18, 0.22), 0 6px 18px rgba(18, 18, 18, 0.1);
+  overflow: hidden;
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.asp-float.asp-swap { opacity: 0; transform: translateY(10px); }
+/* tighter value columns so even the 4-column tables fit the card */
+.asp-float .asv-trv { width: 72px; }
+.asp-float .asv-trvals { gap: 12px; }
+.asp-float .asv-trlabel { white-space: nowrap; overflow: hidden; }
+.asp-float .asv-thead { border-bottom: 1px solid var(--a-border); }
+
+@media (prefers-reduced-motion: reduce) {
+  .asp-float { transition: none; }
+}
