@@ -4,23 +4,11 @@
 
 .fig-demo {
   position: relative;
-  /* Stripe-style stage: colors pooling at the bottom fading to white at the
-     top, with the color layer drifting very slowly — a subtle wave.
-     Pick a stage per figure (default is candy pastel with the short fade):
-       #demo-xxx { --fig-pastel: var(--fig-pastel-sunset); --fig-fade: var(--fig-fade-tall); } */
-  --fig-pastel-sunset: linear-gradient(100deg, #ff71ce, #ff9e7c 22%, #ffd23f 45%, #ff71ce 68%, #b967ff 100%);
-  --fig-pastel-aurora: linear-gradient(100deg, #05ffa1, #01cdfe 25%, #8f6bff 50%, #ff8ad8 72%, #05ffa1 100%);
-  /* 3rd preset — luminous high-key: butter yellow, sky cyan, lake teal, mint */
-  --fig-pastel-luminous: linear-gradient(100deg, #f7d94e, #8ce1f0 28%, #35c9c4 52%, #8bf0c4 74%, #ffe374 100%);
-  /* taller white for the vivid neon stages — color stays in the bottom third */
-  --fig-fade-tall: linear-gradient(180deg, #ffffff 0%, #ffffff 16%, rgba(255, 255, 255, 0.88) 36%, rgba(255, 255, 255, 0) 80%);
-  background:
-    var(--fig-fade, linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.86) 16%, rgba(255, 255, 255, 0) 64%)),
-    var(--fig-pastel, linear-gradient(100deg, #ffd9e8, #e6dbff 26%, #cdeeff 52%, #d6f5e3 76%, #ffd9e8 100%));
-  background-size: 100% 100%, 280% 100%;
-  background-position: 0 0, 0% 100%;
-  animation: demo-drift 26s ease-in-out infinite alternate;
-  /* opaque so the pastel underneath can't tint it */
+  /* Flat light-gray stage for every figure — the white device panels read
+     cleanly against it. (Mina retired the pastel-gradient stages; #fafafa
+     is now the single default.) Border, hover zoom and cursor-following
+     ring stay. */
+  background: #fafafa;
   border: 1px solid #e4e4e1;
   border-radius: 16px;
   padding: clamp(22px, 5vw, 52px) 0;
@@ -29,10 +17,6 @@
 .fig-demo:hover {
   transform: scale(1.05);
   z-index: 5;
-}
-@keyframes demo-drift {
-  from { background-position: 0 0, 0% 100%; }
-  to { background-position: 0 0, 100% 100%; }
 }
 
 /* cursor-following colorful frame: a conic-gradient ring, revealed only
@@ -105,23 +89,8 @@
    Colors/type are the file's exact tokens (M3 scale; Inter in place
    of Roboto by request).
    ============================================================ */
-/* per-case stages (body class set in each case page):
-   Ordering Tablet = neon sunset, Mobile POS = aurora; others TBD */
-.case-tablet .fig-demo {
-  --fig-pastel: var(--fig-pastel-sunset);
-  --fig-fade: var(--fig-fade-tall);
-}
-.case-mpos .fig-demo {
-  --fig-pastel: var(--fig-pastel-aurora);
-  --fig-fade: var(--fig-fade-tall);
-}
-/* Analytics Dashboard: a flat #fafafa stage instead of a pastel gradient —
-   the neon backdrop fought the data-dense report figures (Mina's call).
-   Keeps the border, hover zoom and cursor-following ring. */
-.case-dashboard .fig-demo {
-  background: #fafafa;
-  animation: none;
-}
+/* every figure now uses the flat #fafafa stage from the .fig-demo base rule
+   above — no per-case gradient presets anymore */
 .tdv {
   /* absolutely positioned so the native 1194px box never widens the page —
      only the scaled result is visible */
@@ -1308,9 +1277,9 @@
    1:1 from Figma Ng5Qec5PY0iDOczXTzjGc8 / 5407:3522. Material-3
    report cards. Native phone 412x812, scaled to each stage.
    ============================================================ */
-/* full-bleed holder — no pastel stage, no hover, phone fills the column */
-.wk-holder { width: 100%; }
-.wk-stage { position: relative; width: 100%; }
+/* phone sits inside the shared .fig-demo #fafafa frame, centered with
+   side breathing room and capped so it stays a sensible size */
+.wk-stage { position: relative; width: 100%; max-width: 340px; margin: 0 auto; }
 
 .wk {
   position: absolute;
@@ -1330,9 +1299,7 @@
   border-radius: 42px;
   overflow: hidden;
   box-shadow: 0 30px 70px rgba(18, 18, 18, 0.20), 0 6px 18px rgba(18, 18, 18, 0.10);
-  /* Roboto to match the Material-3 design file (the rest of the dashboard
-     figures use Inter — see note; ask before aligning them all) */
-  font-family: "Roboto", "Inter", -apple-system, sans-serif;
+  font-family: "Inter", "Geist", -apple-system, sans-serif;
   color: var(--g1);
   user-select: none;
 }
@@ -1451,9 +1418,9 @@
 .wk-endcap { text-align: center; padding: 20px 0 4px; font-size: 12px; color: #bdbdbd; }
 
 /* two figures side by side */
-.wk-pair { display: flex; justify-content: center; gap: clamp(20px, 3vw, 44px); align-items: flex-start; }
-.wk-pair > figure { display: block; flex: 0 1 340px; min-width: 0; margin: 0; }
-@media (max-width: 720px) { .wk-pair { flex-direction: column; align-items: center; } .wk-pair > figure { width: 100%; max-width: 360px; } }
+.wk-pair { display: flex; gap: clamp(16px, 3vw, 32px); align-items: flex-start; }
+.wk-pair > figure { display: block; flex: 1 1 0; min-width: 0; margin: 0; }
+@media (max-width: 720px) { .wk-pair { flex-direction: column; } }
 .wk-paircap {
   margin-top: 18px;
   text-align: center;
