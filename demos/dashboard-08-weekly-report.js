@@ -104,19 +104,20 @@
       </div>
     </div>`;
 
-  /* review donut: Google (orange) + Yelp (light) with small gaps */
+  /* review donut: a seamless closed ring — a full light-orange (Yelp) circle
+     with the dark-orange (Google) arc laid over its share, so the two colors
+     meet edge-to-edge with no white gap */
   const donutCard = (r) => {
-    const rad = 52, c = 2 * Math.PI * rad, gap = 8;
-    const gseg = (r.google / 100) * c - gap, yseg = (r.yelp / 100) * c - gap;
+    const rad = 52, c = 2 * Math.PI * rad;
+    const gseg = (r.google / 100) * c;
     return `
     <div class="wk-card">
       <div class="wk-tabs">${tab(r.a[0], r.a[1], r.a[2], r.a[3])}${tab(r.b[0], r.b[1], r.b[2], r.b[3])}</div>
       <div class="wk-body wk-body-center">
         <svg class="wk-donut" viewBox="0 0 140 140">
+          <circle cx="70" cy="70" r="${rad}" fill="none" stroke="#ffc7ac" stroke-width="17"/>
           <circle cx="70" cy="70" r="${rad}" fill="none" stroke="#ff4d00" stroke-width="17"
-            stroke-dasharray="${gseg.toFixed(1)} ${(c - gseg).toFixed(1)}" stroke-dashoffset="${(-gap / 2).toFixed(1)}" transform="rotate(-90 70 70)"/>
-          <circle cx="70" cy="70" r="${rad}" fill="none" stroke="#ffc7ac" stroke-width="17"
-            stroke-dasharray="${yseg.toFixed(1)} ${(c - yseg).toFixed(1)}" stroke-dashoffset="${(-(gseg + gap + gap / 2)).toFixed(1)}" transform="rotate(-90 70 70)"/>
+            stroke-dasharray="${gseg.toFixed(2)} ${(c - gseg).toFixed(2)}" transform="rotate(-90 70 70)"/>
         </svg>
         ${dotLegend([["a", `Google ${r.google}%`], ["b", `Yelp ${r.yelp}%`]])}
         <button class="wk-sentiment">Sentiment analysis${I.chev}</button>
