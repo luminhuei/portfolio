@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
   <link rel="stylesheet" href="../case.css" />
-  <link rel="stylesheet" href="../demos/demos.css?v=20260713b" />
+  <link rel="stylesheet" href="../demos/demos.css?v=20260713c" />
 </head>
 <body class="case-dashboard">
 
@@ -212,11 +212,6 @@
         <div class="fig-demo" id="demo-dashboard-06-sales-summary"></div>
         <figcaption>預設覆蓋高頻提問,雙月曆留給深度對帳</figcaption>
       </figure>
-      <!-- 同一圖位的另一種表現(Stripe 聚光燈式),比較中 — 之後會淘汰一張 -->
-      <figure class="reveal">
-        <div class="fig-demo" id="demo-dashboard-06b-sales-summary-spotlight"></div>
-        <figcaption>另一種表現 &mdash; 去掉導覽的聚光燈版本,匯總卡片輪流上台</figcaption>
-      </figure>
       <div class="sol-item reveal">
         <h3><span class="sol-num">03</span> 逐筆交易明細 &mdash; 每一筆錢的去向</h3>
         <p>每筆訂單的費用全鏈路透明列出 &mdash;&mdash; 金額、小費、自動服務費、外送費、Dasher 小費、手續費、附加費,直到最終的淨到帳,預付與退款一併在列;支援 Payment / Refund / Adjust Fee 分類與下載匯出。每筆交易同時掛載用餐類型、渠道、拆分支付、促銷等業務維度;非即時同步時,頁面明確告知數據截至時間點。</p>
@@ -229,10 +224,17 @@
         <h3><span class="sol-num">04</span> Weekly Report &mdash; 一週的經營回顧</h3>
         <p>十個模組回顧經營全貌:淨銷售、加購、第三方、直連外送、暢銷商品榜、渠道分布、銷售與加購趨勢、會員分析、Google / Yelp 評價情感分析、外送地理分布。整份報告為手機閱讀而設計的縱向卡片流 &mdash;&mdash; Toast 用 email 摘要推送,Peblla 選擇做成手機上一次滾動讀完的完整報告。</p>
       </div>
-      <figure class="reveal">
-        <div class="fig-demo" id="demo-dashboard-08-weekly-report"></div>
-        <figcaption>你口袋裡的一週,一次滑完 &mdash;&mdash; 生意的脈搏,隨手掃過</figcaption>
-      </figure>
+      <div class="wk-pair reveal">
+        <figure>
+          <div class="fig-demo" id="demo-dashboard-08-weekly-left"></div>
+          <figcaption>業績面 &mdash;&mdash; 趨勢、暢銷、渠道</figcaption>
+        </figure>
+        <figure>
+          <div class="fig-demo" id="demo-dashboard-08-weekly-right"></div>
+          <figcaption>顧客面 &mdash;&mdash; 會員、評價、地理分布</figcaption>
+        </figure>
+      </div>
+      <p class="wk-paircap reveal">你口袋裡的一週,一次滑完 &mdash;&mdash; 生意的脈搏,隨手掃過。</p>
     </section>
 
     <!-- Impact -->
@@ -321,11 +323,10 @@
   </footer>
 
   <script src="../script.js"></script>
-  <script src="../demos/dashboard-04-sales-overview.js?v=20260713a" defer></script>
-  <script src="../demos/dashboard-06-sales-summary.js?v=20260713a" defer></script>
-  <script src="../demos/dashboard-06b-sales-summary-spotlight.js?v=20260713b" defer></script>
-  <script src="../demos/dashboard-07-order-transaction.js?v=20260713a" defer></script>
-  <script src="../demos/dashboard-08-weekly-report.js?v=20260713b" defer></script>
-  <script src="../demos/fig-hover.js?v=20260713a" defer></script>
+  <script src="../demos/dashboard-04-sales-overview.js?v=20260713c" defer></script>
+  <script src="../demos/dashboard-06-sales-summary.js?v=20260713c" defer></script>
+  <script src="../demos/dashboard-07-order-transaction.js?v=20260713c" defer></script>
+  <script src="../demos/dashboard-08-weekly-report.js?v=20260713c" defer></script>
+  <script src="../demos/fig-hover.js?v=20260713c" defer></script>
 </body>
 </html>

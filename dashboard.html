@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="case.css" />
-  <link rel="stylesheet" href="demos/demos.css?v=20260713b" />
+  <link rel="stylesheet" href="demos/demos.css?v=20260713c" />
 </head>
 <body class="case-dashboard">
 
@@ -212,11 +212,6 @@
         <div class="fig-demo" id="demo-dashboard-06-sales-summary"></div>
         <figcaption>Presets cover the frequent questions; the dual calendar serves deep reconciliation</figcaption>
       </figure>
-      <!-- alt take of the same figure, Stripe-spotlight style — comparing the two; one will be retired -->
-      <figure class="reveal">
-        <div class="fig-demo" id="demo-dashboard-06b-sales-summary-spotlight"></div>
-        <figcaption>Alt take &mdash; the same page as a chrome-free spotlight; the summary cards take turns</figcaption>
-      </figure>
       <div class="sol-item reveal">
         <h3><span class="sol-num">03</span> Order / Transaction Details &mdash; where every dollar went</h3>
         <p>Every order&rsquo;s full fee chain laid out transparently &mdash; amount, tips, auto gratuity, delivery fee, Dasher tips, transaction and additional fees, down to the final Net Total, with prepaid amounts and refunds accounted for &mdash; plus Payment / Refund / Adjust Fee categorization and export. Each transaction carries its business dimensions too, from dining type and channel to split payment and promotions; when data isn&rsquo;t real-time, the page states the cutoff clearly.</p>
@@ -229,10 +224,17 @@
         <h3><span class="sol-num">04</span> Weekly Report &mdash; the week in review</h3>
         <p>Ten modules review the whole operation: Net Sales, Upsells, Third Party, Direct Delivery, Top Sales Items, channel distribution, sales &amp; upsell trends, member analysis, Google / Yelp review sentiment, and off-premise geo distribution. The entire report is designed for mobile reading as a vertical card stream &mdash; where Toast sends an email digest, Peblla made it a complete report readable in one scroll on the phone.</p>
       </div>
-      <figure class="reveal">
-        <div class="fig-demo" id="demo-dashboard-08-weekly-report"></div>
-        <figcaption>The whole week, one thumb-scroll &mdash; the pulse of the business in your pocket</figcaption>
-      </figure>
+      <div class="wk-pair reveal">
+        <figure>
+          <div class="fig-demo" id="demo-dashboard-08-weekly-left"></div>
+          <figcaption>Sales performance &mdash; trends, top items, channels</figcaption>
+        </figure>
+        <figure>
+          <div class="fig-demo" id="demo-dashboard-08-weekly-right"></div>
+          <figcaption>Customers &amp; place &mdash; members, reviews, geography</figcaption>
+        </figure>
+      </div>
+      <p class="wk-paircap reveal">The whole week, one thumb-scroll &mdash; the pulse of the business in your pocket.</p>
     </section>
 
     <!-- Impact -->
@@ -321,11 +323,10 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="demos/dashboard-04-sales-overview.js?v=20260713a" defer></script>
-  <script src="demos/dashboard-06-sales-summary.js?v=20260713a" defer></script>
-  <script src="demos/dashboard-06b-sales-summary-spotlight.js?v=20260713b" defer></script>
-  <script src="demos/dashboard-07-order-transaction.js?v=20260713a" defer></script>
-  <script src="demos/dashboard-08-weekly-report.js?v=20260713b" defer></script>
-  <script src="demos/fig-hover.js?v=20260713a" defer></script>
+  <script src="demos/dashboard-04-sales-overview.js?v=20260713c" defer></script>
+  <script src="demos/dashboard-06-sales-summary.js?v=20260713c" defer></script>
+  <script src="demos/dashboard-07-order-transaction.js?v=20260713c" defer></script>
+  <script src="demos/dashboard-08-weekly-report.js?v=20260713c" defer></script>
+  <script src="demos/fig-hover.js?v=20260713c" defer></script>
 </body>
 </html>
