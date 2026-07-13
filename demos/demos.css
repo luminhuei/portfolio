@@ -106,16 +106,21 @@
    of Roboto by request).
    ============================================================ */
 /* per-case stages (body class set in each case page):
-   Ordering Tablet = neon sunset, Analytics Dashboard = neon sunset,
-   Mobile POS = aurora; others TBD */
-.case-tablet .fig-demo,
-.case-dashboard .fig-demo {
+   Ordering Tablet = neon sunset, Mobile POS = aurora; others TBD */
+.case-tablet .fig-demo {
   --fig-pastel: var(--fig-pastel-sunset);
   --fig-fade: var(--fig-fade-tall);
 }
 .case-mpos .fig-demo {
   --fig-pastel: var(--fig-pastel-aurora);
   --fig-fade: var(--fig-fade-tall);
+}
+/* Analytics Dashboard: a flat #fafafa stage instead of a pastel gradient —
+   the neon backdrop fought the data-dense report figures (Mina's call).
+   Keeps the border, hover zoom and cursor-following ring. */
+.case-dashboard .fig-demo {
+  background: #fafafa;
+  animation: none;
 }
 .tdv {
   /* absolutely positioned so the native 1194px box never widens the page —
@@ -1325,7 +1330,9 @@
   border-radius: 42px;
   overflow: hidden;
   box-shadow: 0 30px 70px rgba(18, 18, 18, 0.20), 0 6px 18px rgba(18, 18, 18, 0.10);
-  font-family: "Inter", "Geist", -apple-system, sans-serif;
+  /* Roboto to match the Material-3 design file (the rest of the dashboard
+     figures use Inter — see note; ask before aligning them all) */
+  font-family: "Roboto", "Inter", -apple-system, sans-serif;
   color: var(--g1);
   user-select: none;
 }
@@ -1444,9 +1451,9 @@
 .wk-endcap { text-align: center; padding: 20px 0 4px; font-size: 12px; color: #bdbdbd; }
 
 /* two figures side by side */
-.wk-pair { display: flex; gap: clamp(16px, 3vw, 40px); align-items: flex-start; }
-.wk-pair > figure { display: block; flex: 1; min-width: 0; margin: 0; }
-@media (max-width: 720px) { .wk-pair { flex-direction: column; } }
+.wk-pair { display: flex; justify-content: center; gap: clamp(20px, 3vw, 44px); align-items: flex-start; }
+.wk-pair > figure { display: block; flex: 0 1 340px; min-width: 0; margin: 0; }
+@media (max-width: 720px) { .wk-pair { flex-direction: column; align-items: center; } .wk-pair > figure { width: 100%; max-width: 360px; } }
 .wk-paircap {
   margin-top: 18px;
   text-align: center;
