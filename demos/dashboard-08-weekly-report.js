@@ -22,6 +22,7 @@
     batt: S('<rect x="2" y="8" width="17" height="9" rx="2"/><path d="M21 11v3"/><rect x="4" y="10" width="11" height="5" rx="1" fill="currentColor" stroke="none"/>'),
     chev: S('<path d="M9 6l6 6-6 6"/>', 2),
     pin: S('<path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/>'),
+    arrowUp: S('<path d="M12 19V5"/><path d="M6 11l6-6 6 6"/>', 2),
   };
   const up = '<span class="wk-tri wk-tri-up"></span>';
   const down = '<span class="wk-tri wk-tri-down"></span>';
@@ -208,7 +209,10 @@
       a: ["Avg rate", "4.6", "up", "0.2"], b: ["Response / Review", "48/62", "up", "14%"],
       google: 78, yelp: 22,
     })}
-    <div class="wk-endcap">End of report</div>`;
+    <div class="wk-endcap">
+      <p class="wk-endtext">End of report</p>
+      <button class="wk-backtop" type="button">${I.arrowUp}Back to top</button>
+    </div>`;
 
   /* One #fafafa frame (same width as the other figures) with a single phone
      centered inside. The screen slowly auto-scrolls on a loop. */
@@ -233,24 +237,55 @@
   window.addEventListener("load", fit);
   fit();
 
-  /* --- slow auto-scroll loop (down then back), pausing on hover / off screen --- */
+  /* --- slow one-way auto-scroll: glide DOWN to the bottom, then the
+     "Back to top" button presses itself and the screen snaps back to the
+     top (no reverse scrolling). Pauses on hover / off screen. --- */
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const backtop = cell.querySelector(".wk-backtop");
   let hovered = false, onStage = true;
   cell.addEventListener("pointerenter", () => (hovered = true));
   cell.addEventListener("pointerleave", () => (hovered = false));
   new IntersectionObserver(([e]) => (onStage = e.isIntersecting), { threshold: 0.2 }).observe(root);
 
+  /* press effect, then snap to the top instantly (used by auto-loop + click) */
+  let snapping = false;
+  const backToTop = () => {
+    if (snapping) return;
+    snapping = true;
+    backtop.classList.add("wk-press");
+    setTimeout(() => {
+      scroll.scrollTop = 0;             // straight to the top, no scroll
+      progress = 0;
+    }, 240);
+    setTimeout(() => {
+      backtop.classList.remove("wk-press");
+      snapping = false;
+      last = performance.now();         // resume the glide cleanly
+    }, 560);
+  };
+  backtop.addEventListener("click", backToTop);
+
+  let progress = 0;                     // 0 = top, 1 = bottom
+  let last = performance.now();
+  let bottomHold = 0;
   if (!reduced) {
-    const PERIOD = 44000; // ms for a full down-and-back
+    const DOWN_MS = 22000;              // time to glide top -> bottom
+    const HOLD_MS = 1400;               // dwell at the bottom before returning
     const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
-    const start = performance.now();
     const tick = (now) => {
-      if (onStage && !hovered) {
+      const dt = now - last;
+      last = now;
+      if (onStage && !hovered && !snapping) {
         const range = scroll.scrollHeight - scroll.clientHeight;
         if (range > 2) {
-          const phase = ((now - start) % PERIOD) / PERIOD;
-          const tri = phase < 0.5 ? phase * 2 : (1 - phase) * 2;
-          scroll.scrollTop += (range * ease(tri) - scroll.scrollTop) * 0.08;
+          if (progress < 1) {
+            progress = Math.min(1, progress + dt / DOWN_MS);
+            scroll.scrollTop = range * ease(progress);
+            if (progress >= 1) bottomHold = 0;
+          } else {
+            bottomHold += dt;
+            if (bottomHold >= HOLD_MS) backToTop();
+          }
         }
       }
       requestAnimationFrame(tick);
