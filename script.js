@@ -544,6 +544,17 @@ const PILLS = [
 
   const ask = (q) => {
     if (!q.trim()) return;
+    // analytics: record what visitors ask (GA4 event + Clarity session tag)
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "minagpt_question", {
+        question_text: q.slice(0, 100),
+        page_path: location.pathname,
+        lang: IS_ZH ? "zh" : "en",
+      });
+    }
+    if (typeof window.clarity === "function") {
+      window.clarity("set", "minagpt_question", q.slice(0, 100));
+    }
     finishCurrent();
     openChat();
     const u = document.createElement("div");
