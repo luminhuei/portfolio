@@ -542,7 +542,7 @@ const PILLS = [
     current = null;
   };
 
-  const ask = (q) => {
+  const ask = (q, via) => {
     if (!q.trim()) return;
     // analytics: record what visitors ask (GA4 event + Clarity session tag)
     if (typeof window.gtag === "function") {
@@ -554,6 +554,10 @@ const PILLS = [
     }
     if (typeof window.clarity === "function") {
       window.clarity("set", "minagpt_question", q.slice(0, 100));
+    }
+    // instant Discord ping (via the Cloudflare Worker) — who asked what
+    if (typeof window.portfolioNotify === "function") {
+      window.portfolioNotify("question", { text: q, via: via || "typed" });
     }
     finishCurrent();
     openChat();
@@ -585,7 +589,7 @@ const PILLS = [
 
   // hero chips + in-chat suggestion chips all ask on click
   document.querySelectorAll(".minagpt .chip, .chat-suggest .chip").forEach((chip) =>
-    chip.addEventListener("click", () => ask(chip.textContent))
+    chip.addEventListener("click", () => ask(chip.textContent, "chip"))
   );
 
   // suggestion row: native horizontal scroll + mouse drag-to-scroll

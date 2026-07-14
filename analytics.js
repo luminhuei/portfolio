@@ -11,6 +11,7 @@
 (function () {
   var GA_ID = "G-H28VTXNLWJ"; // Google Analytics 4 Measurement ID
   var CLARITY_ID = "xmh398wie4"; // Microsoft Clarity Project ID
+  var NOTIFY_URL = "";        // Cloudflare Worker URL for Discord pings — fill after deploy
 
   /* --- Google Analytics 4 (gtag.js) --- */
   if (GA_ID) {
@@ -32,4 +33,44 @@
       y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", CLARITY_ID);
   }
+
+  /* --- Instant Discord pings (proxied through a Cloudflare Worker) ---
+     window.portfolioNotify(type, {text, via, source}) fires a fire-and-forget
+     beacon to the Worker, which formats a message and posts it to the Discord
+     webhook (kept as a Worker secret — never in this file). text/plain avoids
+     a CORS preflight. No-op until NOTIFY_URL is set. */
+  function utmSource() {
+    try { return new URLSearchParams(location.search).get("utm_source") || ""; }
+    catch (e) { return ""; }
+  }
+  window.portfolioNotify = function (type, detail) {
+    if (!NOTIFY_URL) return;
+    detail = detail || {};
+    var body = JSON.stringify({
+      type: type,
+      text: detail.text || "",
+      via: detail.via || "",
+      page: document.title || location.pathname,
+      source: detail.source || utmSource(),
+    });
+    try {
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(NOTIFY_URL, new Blob([body], { type: "text/plain" }));
+      } else {
+        fetch(NOTIFY_URL, { method: "POST", body: body, keepalive: true,
+          headers: { "Content-Type": "text/plain" } });
+      }
+    } catch (e) {}
+  };
+
+  /* Ping once per session when a company-tagged link (?utm_source=…) is opened */
+  (function () {
+    var src = utmSource();
+    if (!src) return;
+    try {
+      if (sessionStorage.getItem("pf_notified_visit")) return;
+      sessionStorage.setItem("pf_notified_visit", "1");
+    } catch (e) {}
+    window.portfolioNotify("visit", { source: src });
+  })();
 })();
