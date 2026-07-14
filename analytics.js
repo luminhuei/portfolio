@@ -10,7 +10,7 @@
 --------------------------------------------------------------------------- */
 (function () {
   var GA_ID = "G-H28VTXNLWJ"; // Google Analytics 4 Measurement ID
-  var CLARITY_ID = "";        // Microsoft Clarity Project ID — fill when created
+  var CLARITY_ID = "xmh398wie4"; // Microsoft Clarity Project ID
 
   /* --- Google Analytics 4 (gtag.js) --- */
   if (GA_ID) {
