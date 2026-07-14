@@ -11,7 +11,7 @@
 (function () {
   var GA_ID = "G-H28VTXNLWJ"; // Google Analytics 4 Measurement ID
   var CLARITY_ID = "xmh398wie4"; // Microsoft Clarity Project ID
-  var NOTIFY_URL = "";        // Cloudflare Worker URL for Discord pings — fill after deploy
+  var NOTIFY_URL = "https://portfolio-notify.luminhuei.workers.dev"; // Cloudflare Worker → Discord
 
   /* --- Google Analytics 4 (gtag.js) --- */
   if (GA_ID) {
