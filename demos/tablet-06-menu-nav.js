@@ -127,6 +127,36 @@
   const sideFor = (mode) =>
     MODE_CATS[mode].map((c, i) => `<button class="tdv-subnav${i === 0 ? " on" : ""}">${c}</button>`).join("");
 
+  /* per-mode menus for Decision 04 — so switching a mode changes the dishes
+     too, like a real tableside iPad. All-fabricated demo data; the BBQ tier
+     structure (used by Decision 05) is separate and untouched above. */
+  const MODE_MENU = {
+    "Hot Pot": { kicker: "Included with your table", title: "Signature Hot Pot", dishes: [
+      ["Mala Spicy Broth", "SIGNATURE"], ["Pork Bone Broth", ""], ["Sliced Ribeye", "TOP PICK"], ["Fatty Beef Roll", ""],
+      ["Fresh Shrimp Paste", ""], ["Handmade Fish Tofu", "NEW"], ["Napa & Mushroom Set", ""], ["Hand-pulled Udon", ""],
+    ] },
+    "BBQ": { kicker: "Included with your table", title: "Classic BBQ", dishes: [
+      ["Marinated Short Rib", "COMBO"], ["Pork Belly Samgyeopsal", ""], ["Spicy Chicken Bulgogi", "ORDERED"], ["Beef Brisket Slices", ""],
+      ["Garlic Shrimp Skewers", "TOP PICK"], ["Seasonal Veggie Platter", "NEW"], ["Prime Ribeye", "PREMIUM"], ["A5 Wagyu Striploin", "WAGYU"],
+    ] },
+    "Sushi": { kicker: "Included with your table", title: "Sushi & Sashimi", dishes: [
+      ["Salmon Nigiri", "TOP PICK"], ["Bluefin Tuna Nigiri", ""], ["Spicy Tuna Roll", ""], ["Dragon Roll", "SIGNATURE"],
+      ["Salmon Sashimi", ""], ["Chirashi Bowl", "NEW"], ["Shrimp Tempura", ""], ["Miso Soup", ""],
+    ] },
+    "Drinks": { kicker: "Free refills", title: "Drinks", dishes: [
+      ["Iced Barley Tea", ""], ["Yuzu Soda", "NEW"], ["Peach Green Tea", ""], ["Fresh Lemonade", ""],
+      ["Draft Beer", ""], ["Cold Brew Coffee", ""],
+    ] },
+    "Desserts": { kicker: "Included with your table", title: "Desserts", dishes: [
+      ["Matcha Lava Cake", "NEW"], ["Black Sesame Ice Cream", ""], ["Mango Mochi", ""], ["Seasonal Fruit Plate", ""],
+      ["Brown Sugar Boba", "TOP PICK"], ["Egg Tart", ""],
+    ] },
+  };
+  const flatSection = (mode) => {
+    const m = MODE_MENU[mode];
+    return `<section class="tdv-tier"><p class="tdv-kicker">${m.kicker}</p><div class="tdv-h">${m.title}</div><div class="tdv-grid">${m.dishes.map(card).join("")}</div></section>`;
+  };
+
   function build(root) {
     const focus = root.dataset.focus === "tier" ? "tier" : "nav";
 
@@ -159,7 +189,7 @@
                 </div>
               </div>
               <div class="tdv-scroll">
-                <div class="tdv-content">${TIERS.map(tierSection).join("")}</div>
+                <div class="tdv-content">${focus === "nav" ? flatSection("BBQ") : TIERS.map(tierSection).join("")}</div>
               </div>
             </div>
             <aside class="tdv-cart">
@@ -195,6 +225,7 @@
     const device = root.querySelector(".tdv");
     const scroller = root.querySelector(".tdv-scroll");
     const sideEl = root.querySelector(".tdv-side");
+    const contentEl = root.querySelector(".tdv-content");
     const cartEl = root.querySelector(".tdv-cart");
     const scrimEl = root.querySelector(".tdv-scrim");
     const countEl = root.querySelector(".tdv-count");
@@ -221,6 +252,7 @@
     const setMode = (mode) => {
       root.querySelectorAll(".tdv-tab").forEach((e) => e.classList.toggle("on", e.textContent === mode));
       sideEl.innerHTML = sideFor(mode);
+      if (focus === "nav") { contentEl.innerHTML = flatSection(mode); scroller.scrollTop = 0; }
     };
     const setSub = (label) => root.querySelectorAll(".tdv-subnav").forEach((e) => e.classList.toggle("on", e.textContent === label));
     root.querySelectorAll(".tdv-tab").forEach((e) => e.addEventListener("click", () => setMode(e.textContent)));
@@ -255,12 +287,12 @@
     ["t2", "t3"].forEach((key) => tierEls[key].querySelector(".tdv-unlockbtn").addEventListener("click", () => setLocked(key, false)));
     if (focus === "nav") { setLocked("t2", false); setLocked("t3", false); }
 
-    root.querySelectorAll(".tdv-add").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        count += 1; countEl.textContent = count;
-        root.querySelector(".tdv-fabbadge").textContent = count;
-        btn.classList.remove("tdv-popped"); void btn.offsetWidth; btn.classList.add("tdv-popped");
-      });
+    contentEl.addEventListener("click", (e) => {
+      const btn = e.target.closest(".tdv-add");
+      if (!btn) return;
+      count += 1; countEl.textContent = count;
+      root.querySelector(".tdv-fabbadge").textContent = count;
+      btn.classList.remove("tdv-popped"); void btn.offsetWidth; btn.classList.add("tdv-popped");
     });
 
     /* ---- auto-play ---- */
