@@ -154,8 +154,8 @@
             <div class="tdv-left">
               <div class="tdv-toolbar">
                 <div class="tdv-density" role="group" aria-label="Layout density">
-                  <button class="tdv-dbtn on" data-cols="3" aria-label="Three per row">${I.grid3}</button>
-                  <button class="tdv-dbtn" data-cols="4" aria-label="Four per row">${I.grid4}</button>
+                  <button class="tdv-dbtn on" data-cols="3" aria-label="Fewer per row">${I.minus}</button>
+                  <button class="tdv-dbtn" data-cols="4" aria-label="More per row">${I.plus}</button>
                 </div>
               </div>
               <div class="tdv-scroll">

@@ -1798,7 +1798,7 @@
 .tdv-density { display: inline-flex; border: 1px solid var(--g7); border-radius: 9px; overflow: hidden; }
 .tdv-dbtn { width: 42px; height: 34px; display: flex; align-items: center; justify-content: center; background: #fff; color: var(--g5); border: none; cursor: pointer; }
 .tdv-dbtn svg { width: 19px; height: 19px; }
-.tdv-dbtn.on { background: var(--g1); color: #fff; }
+.tdv-dbtn.on { background: var(--g7); color: var(--g1); }
 
 /* responsive grid — 3 or 4 per row; the images scale to the column width */
 .tdv-hasnav .tdv-content { width: auto; margin-left: 0; padding: 4px 28px 28px; }
