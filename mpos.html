@@ -49,8 +49,8 @@
         <p class="case-lead reveal">Within three months of launch, <em>64% of checkouts</em> moved from the counter to the tableside.</p>
         <div class="case-intro-body reveal">
           <p>Mobile POS brings ordering, kitchen firing, and checkout to the tableside instead of the counter. It was built around one core question: how do you fit a desktop POS&rsquo;s core flows onto a single phone screen &mdash; and let servers complete tableside work one&#8209;handed, fast, and without errors?</p>
-          <p><strong>Constraints:</strong> a phone screen offers an extremely small operating surface &mdash; it cannot carry the desktop POS&rsquo;s full feature set. Interaction experience benchmarked against Toast&nbsp;GO.</p>
-          <p><strong>Key trade&#8209;off:</strong> cutting features &mdash; high&#8209;frequency tableside flows move to the phone and are polished to the extreme, while the rest stays on the countertop POS.</p>
+          <p><strong>Constraints:</strong> a phone screen cannot carry the desktop POS&rsquo;s full feature set. Interaction experience benchmarked against Toast&nbsp;GO.</p>
+          <p><strong>Key trade&#8209;off:</strong> only the high&#8209;frequency tableside flows move to the phone; the rest stays on the countertop POS.</p>
         </div>
       </div>
 
@@ -78,9 +78,9 @@
         <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15 9l-2 4.5L8.5 15l2-4.5z"/></svg>
         <h2>Approach</h2>
         <ul>
-          <li><strong>High-frequency tableside flows</strong> moved to the phone &mdash; polished to the extreme.</li>
           <li><strong>Principles first</strong>: one-handed use, minimal thumb travel, guarded risky actions.</li>
-          <li>A componentized <strong>design system</strong> with semantic colors for Light / Dark.</li>
+          <li><strong>Color as a faster channel than text</strong> &mdash; table states, dish categories, and the keypad share one color language.</li>
+          <li>A componentized <strong>design system</strong> with the interaction rules baked into the components.</li>
         </ul>
       </div>
       <div class="psr-card reveal">
@@ -88,8 +88,8 @@
         <h2>Results</h2>
         <ul>
           <li><strong>64% of checkouts</strong> moved tableside within three months.</li>
-          <li>Industry benchmark: <strong>15&ndash;35% faster table turns</strong> with handheld POS done right.</li>
           <li>Sushi plate counting became <strong>scan-and-done</strong>.</li>
+          <li>Core flows <strong>survive network outages</strong> &mdash; offline checkout, auto-sync on recovery.</li>
         </ul>
       </div>
     </section>
@@ -112,8 +112,7 @@
         <p class="step-label reveal">The floor problem</p>
         <h2 class="step-title reveal">One order, <em>three trips</em>.</h2>
         <div class="step-body reveal">
-          <p>Walk into a restaurant running a traditional countertop POS and you&rsquo;ll see the same scene play out: a server jots down the order on paper at the table, walks back to the counter, queues up to enter it into the system, then walks back to the table to confirm. During peak hours these round trips add up, slowing down ordering, kitchen output, and table turnover.</p>
-          <p>And the moment the network or power goes down, that countertop terminal goes dark &mdash; and the entire restaurant grinds to a halt with it. Mobile POS was built to solve exactly these two problems: move ordering and checkout to the tableside, and keep the system reliable even when the network isn&rsquo;t.</p>
+          <p>In a restaurant running a traditional countertop POS, the same scene plays out all day: a server jots the order on paper at the table, walks back to the counter to queue and enter it, then walks back to confirm. At peak hours these round trips pile up and slow ordering, kitchen output, and table turnover &mdash; and the moment the network or power dies, that countertop terminal takes the whole restaurant down with it. Mobile POS exists to fix both: bring ordering and checkout to the tableside, and stay dependable when the network isn&rsquo;t.</p>
         </div>
       </article>
 
@@ -122,8 +121,7 @@
         <p class="step-label reveal">Who it&rsquo;s for</p>
         <h2 class="step-title reveal">Trained servers, operating by <em>muscle memory</em>.</h2>
         <div class="step-body reveal">
-          <p>Mobile POS is built for trained restaurant servers &mdash; staff who receive basic onboarding, but who work under real pressure: noise, time constraints, guests watching, standing, device in one hand.</p>
-          <p>The design goal is therefore not &ldquo;understandable at first glance&rdquo; but <strong>operable by muscle memory after training, and error-free at peak hours</strong>: fixed control positions, shortest paths, and guarded risky actions. This allowed higher information density than a consumer product &mdash; but demanded far stricter operational consistency in return.</p>
+          <p>Mobile POS is built for trained restaurant servers working under real pressure: noise, time constraints, guests watching, standing, device in one hand. The design goal is therefore not &ldquo;understandable at first glance&rdquo; but <strong>operable by muscle memory after training, and error-free at peak hours</strong> &mdash; fixed control positions, shortest paths, guarded risky actions. That allows higher information density than a consumer product, and demands far stricter operational consistency in return.</p>
         </div>
       </article>
 
@@ -132,8 +130,11 @@
         <p class="step-label reveal">Research</p>
         <h2 class="step-title reveal">Benchmark, audit, and <em>watch real hands</em>.</h2>
         <div class="step-body reveal">
-          <p>We benchmarked <strong>Toast GO</strong>&rsquo;s product positioning and interaction patterns &mdash; including its approach of surfacing table checks, tabbed by payment status, as a key reference for the order history feature.</p>
-          <p>We audited the desktop POS&rsquo;s complete feature list to determine which features had to move to mobile and which could stay behind, and studied how staff actually use devices in real restaurant settings &mdash; typically holding the device in the left hand and operating with the right, while standing.</p>
+          <ul>
+            <li>Benchmarked <strong>Toast GO</strong> &mdash; its always-accessible table checks, tabbed by payment status, became the key reference for order history</li>
+            <li>Audited the desktop POS&rsquo;s complete feature list: what must move to the phone, what stays behind</li>
+            <li>Watched how staff actually hold devices in real restaurants &mdash; typically left hand holding, right hand operating, standing</li>
+          </ul>
         </div>
       </article>
 
@@ -142,8 +143,7 @@
         <p class="step-label reveal">Decision one</p>
         <h2 class="step-title reveal">Feature triage &mdash; what deserves a place <em>in the pocket</em>.</h2>
         <div class="step-body reveal">
-          <p>A phone screen cannot hold everything the desktop POS does &mdash; that is this project&rsquo;s most fundamental trade-off. We filtered by how often things happen at the table: high-frequency tableside flows &mdash; ordering, checkout, order-history management &mdash; moved fully onto the phone, one tap away; some low-frequency or complex functions were deliberately left behind on the countertop POS.</p>
-          <p>Mobile POS was never meant to replace the terminal &mdash; it exists to <strong>perfect the part worth carrying</strong>. The lighter the device in a server&rsquo;s hand, the faster the service at the table.</p>
+          <p>We filtered by how often things happen at the table: ordering, checkout, and order-history management moved fully onto the phone, one tap away; low-frequency and complex functions deliberately stayed on the countertop POS. The cost is incompleteness &mdash; but Mobile POS was never meant to replace the terminal. It exists to <strong>perfect the part worth carrying</strong>: the lighter the device in a server&rsquo;s hand, the faster the service at the table.</p>
         </div>
       </article>
 
@@ -152,8 +152,7 @@
         <p class="step-label reveal">Decision two</p>
         <h2 class="step-title reveal">One screen, <em>two audiences</em>.</h2>
         <div class="step-body reveal">
-          <p>Mobile POS has a moment a countertop terminal never faces: at checkout, the device turns to face the guest. The audience flips instantly from a trained employee to an untrained customer &mdash; one choosing a tip and signing while the server stands right beside them.</p>
-          <p>So the staff-facing side is optimized for density and speed, while the guest-facing payment and tip screens are deliberately minimal with unmistakable amounts &mdash; refined across multiple review rounds to avoid confusion or awkwardness in a socially loaded moment.</p>
+          <p>Mobile POS has a moment a countertop terminal never faces: at checkout, the device turns to face the guest. The audience flips instantly from a trained employee to an untrained customer &mdash; one choosing a tip and signing while the server stands right beside them. So the staff-facing side is optimized for density and speed, while the guest-facing payment and tip screens are deliberately minimal with unmistakable amounts &mdash; refined across multiple review rounds to avoid confusion or awkwardness in a socially loaded moment.</p>
         </div>
         <figure class="reveal">
           <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(150deg, #ffdfc2, #fff0e0)"><span>Staff side vs. guest-facing tip screen</span></div>
@@ -166,13 +165,34 @@
         <p class="step-label reveal">Decision three</p>
         <h2 class="step-title reveal">Designing for <em>interruption</em>.</h2>
         <div class="step-body reveal">
-          <p>Office software assumes users can finish a flow uninterrupted; a restaurant floor is the opposite &mdash; mid-order, another table calls, the kitchen shouts, a guest changes their mind.</p>
-          <p>Every core flow therefore had to be <strong>safely interruptible and resumable</strong>: unsubmitted orders hold their state, and servers pick up exactly where they left off instead of starting over.</p>
+          <p>Office software assumes users can finish a flow uninterrupted; a restaurant floor is the opposite &mdash; mid-order, another table calls, the kitchen shouts, a guest changes their mind. Every core flow therefore had to be <strong>safely interruptible and resumable</strong>: unsubmitted orders hold their state, and servers pick up exactly where they left off instead of starting over.</p>
         </div>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">07</p>
+        <p class="step-label reveal">Decision four</p>
+        <h2 class="step-title reveal">Color is a <em>faster channel</em> than text.</h2>
+        <div class="step-body reveal">
+          <p>In a high-pressure environment, the cost of finding information has to approach zero &mdash; so one color language runs through the entire system:</p>
+          <ul>
+            <li><strong>Table states</strong> &mdash; open, dining, and overtime tables each carry a dedicated status color: a server reads the entire floor in one glance, no reading table by table</li>
+            <li><strong>Dish categories</strong> &mdash; seafood, drinks, and house specials each carry a dedicated color: in a grid of hundreds of items, finding a dish turns from reading into scanning &mdash; lock the color zone first, confirm the name second</li>
+            <li><strong>The number pad</strong> &mdash; outlined keys became solid color blocks, instantly readable as tappable</li>
+          </ul>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(160deg, #ffe4c9, #fff1de)"><span>Table View &mdash; status colors incl. overtime</span></div>
+          <figcaption>One glance at the floor: open, dining, and overtime tables each speak in color</figcaption>
+        </figure>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(155deg, #ffedd6, #ffcfa0)"><span>Category color-coded menu grid</span></div>
+          <figcaption>Color zones first, names second: scanning replaces reading in a dense menu grid</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">08</p>
         <p class="step-label reveal">Interaction principles</p>
         <h2 class="step-title reveal">Rules that run through <em>every screen</em>.</h2>
         <div class="step-body reveal">
@@ -183,7 +203,7 @@
             <li><strong>Deliberate friction for irreversible actions</strong> &mdash; Void and Discount require PIN verification: the one place designed to trade speed for safety</li>
             <li><strong>Consistent button positions and states</strong> across screens</li>
           </ul>
-          <p>These played out in detail-level refinements: the number pad restyled from outlined keys to solid color blocks, drawers converted to modals for thumb reach, a Confirm vs. Done copy distinction, and a streamlined note-input path &mdash; small changes that determine whether a server can operate accurately in a hectic environment.</p>
+          <p>In the details, that meant drawers converted to modals for thumb reach, a Confirm vs. Done copy distinction, and a streamlined note-input path &mdash; small changes that decide whether a server can operate accurately in a hectic environment.</p>
         </div>
         <figure class="reveal">
           <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(170deg, #fff3d6, #ffd9b8)"><span>Before / after &mdash; number pad &amp; drawer-to-modal</span></div>
@@ -192,17 +212,17 @@
       </article>
 
       <article class="step">
-        <p class="step-num reveal" aria-hidden="true">08</p>
+        <p class="step-num reveal" aria-hidden="true">09</p>
         <p class="step-label reveal">Design system</p>
         <h2 class="step-title reveal">Decisions locked into <em>components</em>.</h2>
         <div class="step-body reveal">
           <p>With dozens of screens to migrate, designing each page individually would have been slow and impossible to keep consistent. So I built a componentized design system:</p>
           <ul>
-            <li><strong>Component variants</strong> for buttons, inputs, modals, and list items &mdash; covering size, state (default / pressed / disabled), and use case</li>
+            <li><strong>Component variants</strong> for buttons, inputs, modals, and list items &mdash; covering size, state, and use case</li>
             <li><strong>Semantic color definitions</strong> so Light and Dark Mode share one component structure &mdash; no parallel design files to maintain</li>
-            <li><strong>Interaction rules baked into components</strong> &mdash; any new screen inherits the standards automatically</li>
+            <li><strong>Interaction rules baked into components</strong> &mdash; any new screen inherits the standards automatically, no designer discipline required</li>
           </ul>
-          <p>Screen design turned from &ldquo;drawing page by page&rdquo; into &ldquo;assembling from components,&rdquo; and design and engineering gained a single source of truth &mdash; handoff costs dropped dramatically.</p>
+          <p>Screen design turned from &ldquo;drawing page by page&rdquo; into &ldquo;assembling from components,&rdquo; and design and engineering gained a single source of truth.</p>
         </div>
         <figure class="reveal">
           <div class="fig-ph" style="--ar: 1000/620; --ph: linear-gradient(160deg, #ffe8d9, #ffefda)"><span>Component variants matrix &mdash; Light / Dark</span></div>
@@ -218,27 +238,19 @@
 
       <div class="sol-item reveal">
         <h3><span class="sol-num">01</span> Seating &amp; Table Management</h3>
-        <p>Servers switch freely between Table View &mdash; mirroring the restaurant&rsquo;s actual floor layout &mdash; and List View, built for quickly locating orders. Table states are <strong>color-coded: open, dining, and overtime tables each carry a dedicated status color</strong>, so a server reads the entire floor in a single glance &mdash; where to seat, who is dining, which table has run long and needs attention for turnover &mdash; no reading table by table. In a noisy, time-pressed environment, color is a faster information channel than text: the same judgment behind the color-block number pad. Once a table is assigned, every subsequent action belongs to that table.</p>
+        <p>Table View mirrors the restaurant&rsquo;s actual floor layout; List View locates orders fast. Once a table is assigned, every subsequent action belongs to that table &mdash; no orders end up on the wrong check.</p>
       </div>
       <div class="sol-item reveal">
         <h3><span class="sol-num">02</span> Tableside Ordering &amp; Modifiers</h3>
-        <p>The moment the guest finishes speaking, the order is already in the kitchen. For menus that routinely run to hundreds of items, <strong>every dish is color-coded by category &mdash; seafood, drinks, and house specials each carry a dedicated color</strong>: servers lock onto the color zone first, then read the name to confirm, turning &ldquo;finding the dish&rdquo; in a dense button grid from item-by-item reading into visual scanning. Add-ons, allergies, and special requests are captured on the spot &mdash; selecting an item leads straight into the input view with the keyboard auto-invoked.</p>
+        <p>The moment the guest finishes speaking, the order is already in the kitchen &mdash; add-ons, allergies, and special requests captured on the spot.</p>
       </div>
-      <figure class="reveal">
-        <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(155deg, #ffedd6, #ffcfa0)"><span>Category color-coded menu grid</span></div>
-        <figcaption>Color zones first, names second: scanning replaces reading in a dense menu grid</figcaption>
-      </figure>
       <div class="sol-item reveal">
         <h3><span class="sol-num">03</span> Coursing &amp; Delay Send</h3>
         <p>Guests want appetizers first and ramen after &mdash; but ramen comes out faster. Servers set a Delay Send on specific items, so the kitchen fires dishes on the guest&rsquo;s rhythm, not the kitchen&rsquo;s.</p>
       </div>
-      <figure class="reveal">
-        <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(150deg, #ffe2cc, #fff0e0)"><span>Delay Send flow</span></div>
-        <figcaption>Delay Send: the kitchen fires on the guest&rsquo;s rhythm</figcaption>
-      </figure>
       <div class="sol-item reveal">
         <h3><span class="sol-num">04</span> KDS Integration</h3>
-        <p>Orders sent from the tableside appear instantly on kitchen screens, and preparation status flows back to the handheld &mdash; no more verbal relay or paper tickets between front and back of house.</p>
+        <p>Orders sent from the tableside appear instantly on kitchen screens, and preparation status flows back to the handheld &mdash; no more verbal relay or paper tickets.</p>
       </div>
       <div class="sol-item reveal">
         <h3><span class="sol-num">05</span> Split Check &amp; Flexible Payments</h3>
@@ -254,7 +266,7 @@
       </figure>
       <div class="sol-item reveal">
         <h3><span class="sol-num">+</span> Always dependable</h3>
-        <p>Beyond the main journey: <strong>Order History</strong> organizes orders into Open / Authed / Closed tabs with edit, payment, refund, and reprint actions; <strong>Light / Dark Mode</strong> adapts to bright lunch windows and dim evening bars, sharing one component set through semantic colors; and <strong>offline reliability</strong> keeps core ordering running through network instability &mdash; even a full POS outage &mdash; syncing automatically on recovery.</p>
+        <p>Beyond the main journey: <strong>Order History</strong> organizes orders into Open / Authed / Closed tabs with edit, payment, refund, and reprint actions; <strong>Light / Dark Mode</strong> adapts to bright lunch windows and dim evening bars; and <strong>offline reliability</strong> keeps core ordering and checkout running through network instability &mdash; even a full POS outage &mdash; syncing automatically on recovery: the answer to the other half of the promise in the Problem.</p>
       </div>
     </section>
 
@@ -263,8 +275,8 @@
       <p class="case-kicker reveal">Impact</p>
       <h2 class="step-title reveal">Checkout left the counter &mdash; <em>and stayed gone</em>.</h2>
       <div class="step-body reveal">
-        <p>After launch, the most immediate change happened at checkout: within three months, <strong>64% of checkouts shifted from the countertop POS to tableside Mobile POS</strong>. Servers stopped shuttling back and forth for payment, and the guest&rsquo;s wait from asking for the check to walking out the door was substantially compressed.</p>
-        <p>Industry research supports the direction: handheld POS paired with well-designed workflows typically delivers a 15&ndash;35% improvement in table-turn efficiency &mdash; and interface design is the precondition for all of it. If a server fumbles at the table, guests will simply ask to pay at the counter.</p>
+        <p>After launch, the most immediate change happened at checkout: within three months, <strong>64% of checkouts shifted from the countertop POS to tableside Mobile POS</strong>. Servers stopped shuttling back and forth for payment, and the guest&rsquo;s wait from asking for the check to walking out the door was substantially compressed. Plate scanning, meanwhile, turned conveyor-belt sushi checkout from counting by hand into scan-and-done.</p>
+        <p><em>Industry reference, not measured on this project: handheld POS paired with well-designed workflows typically delivers 15&ndash;35% faster table turns &mdash; and interface design is the precondition for all of it. If a server fumbles at the table, guests will simply ask to pay at the counter.</em></p>
       </div>
       <div class="stats">
         <div class="stat reveal">
@@ -273,14 +285,14 @@
           <p class="stat-sub">Within three months of launch, measured against the countertop POS</p>
         </div>
         <div class="stat reveal">
-          <p class="stat-value">15&ndash;35%</p>
-          <p class="stat-title">Faster table turns</p>
-          <p class="stat-sub">Industry benchmark for handheld POS paired with well-designed workflows</p>
-        </div>
-        <div class="stat reveal">
           <p class="stat-value">0</p>
           <p class="stat-title">Plates counted by hand</p>
           <p class="stat-sub">Conveyor-belt sushi checkout became scan-and-done</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-value">15&ndash;35%</p>
+          <p class="stat-title">Faster table turns &mdash; industry benchmark</p>
+          <p class="stat-sub">Research range for well-designed handheld POS workflows; not measured on this project</p>
         </div>
       </div>
     </section>
@@ -290,8 +302,7 @@
       <p class="case-kicker reveal">Reflection</p>
       <p class="case-lead reveal">Principles before pixels &mdash; and <em>error-proof</em> beats beautiful.</p>
       <div class="step-body reveal">
-        <p>Moving a desktop system to a phone, the biggest trap is shrinking page by page instead of redesigning. With principles locked in first &mdash; one-handed operability, minimal thumb travel, added friction for risky actions &mdash; dozens of screen migrations became &ldquo;apply the principle&rdquo; rather than &ldquo;argue it again.&rdquo;</p>
-        <p>And in high-pressure environments, error-proof matters far more than beautiful: changes that looked minor in design reviews &mdash; the color-block number pad, drawers-to-modals, Confirm vs. Done &mdash; determined whether frontline staff could operate by muscle memory at peak hours.</p>
+        <p>Moving a desktop system to a phone, the biggest trap is shrinking page by page instead of redesigning. With principles locked in first, dozens of screen migrations became &ldquo;apply the principle&rdquo; rather than &ldquo;argue it again.&rdquo; And in high-pressure environments, error-proof matters far more than beautiful: changes that looked minor in design reviews decided whether frontline staff could operate by muscle memory at peak hours.</p>
         <p>If I did this again, I&rsquo;d push earlier for small-scale field observation in real restaurants &mdash; issues like readability in direct sunlight and mis-taps from greasy fingers only reveal themselves in the real world.</p>
       </div>
     </section>
