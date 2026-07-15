@@ -79,9 +79,9 @@
         <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15 9l-2 4.5L8.5 15l2-4.5z"/></svg>
         <h2>方法</h2>
         <ul>
+          <li><strong>兩層導覽</strong>加密度切換,讓上百道菜一直點得動。</li>
           <li>Tier 權限採<strong>可見但鎖定</strong> &mdash;&mdash; 客人不困惑,升級動力內建。</li>
           <li>輪次控制做成<strong>按商家配置的規則系統</strong>,不寫死邏輯。</li>
-          <li>海報式點餐做了 Prototype 後<strong>主動放棄</strong>。</li>
         </ul>
       </div>
       <div class="psr-card reveal">
@@ -114,9 +114,8 @@
         <p class="step-label reveal">吃到飽的難題</p>
         <h2 class="step-title reveal">上百道菜,<em>壓在人的記憶上</em>。</h2>
         <div class="step-body reveal">
-          <p>在吃到飽的火鍋、壽司、燒烤餐廳,客人分多輪點菜 &mdash;&mdash; 一桌累積可能達到上百道甚至幾百道菜。完全依靠服務員人工下單,高峰時段根本忙不過來。</p>
-          <p>而這類餐廳的菜品按價位分 Tier:客人付的價位不同,能點的範圍也不同。讓服務生死記每桌能點什麼、不能點什麼、點過什麼,既不現實也容易出錯。</p>
-          <p>核心問題:<strong>如何讓一個零培訓的客人,在遵守 Tier 權限與輪次規則的前提下,順暢地自助完成上百道菜的點餐?</strong></p>
+          <p>在吃到飽的火鍋、壽司、燒烤餐廳,客人分多輪點菜 &mdash;&mdash; 一桌累積可能達到上百道甚至幾百道菜,完全靠服務生人工下單,高峰時段根本忙不過來。而菜品又按價位分 Tier:付的檔位不同,能點的範圍也不同 &mdash;&mdash; 讓服務生死記每桌能點什麼、點過什麼,既不現實也必出錯。</p>
+          <p>核心問題:<strong>如何讓一個零培訓的客人,在 Tier 權限與輪次規則之內,順暢地自助點完上百道菜?</strong></p>
         </div>
       </article>
 
@@ -125,8 +124,7 @@
         <p class="step-label reveal">為誰而做</p>
         <h2 class="step-title reveal">與 Mobile POS <em>完全相反</em>的前提。</h2>
         <div class="step-body reveal">
-          <p>用戶是第一次見到這個介面的堂食客人 &mdash;&mdash; 從小孩到長輩,沒有任何培訓機會,也沒有學習意願。這和 Mobile POS(受過訓練的服務生)是完全相反的設計前提:介面必須做到<strong>零學習成本</strong>,任何人拿起來就會用。</p>
-          <p>次要利益相關者是商家:他們在乎運營效率,以及 Tier 權限、用餐輪次等規則的準確執行。</p>
+          <p>用戶是第一次見到這個介面的堂食客人 &mdash;&mdash; 從小孩到長輩,沒有培訓機會,也沒有學習意願。這和 Mobile POS(受過訓練的服務生)是完全相反的設計前提:介面必須做到<strong>零學習成本</strong>。次要利益相關者是商家:在乎運營效率,以及 Tier 與輪次規則的準確執行。</p>
         </div>
       </article>
 
@@ -141,7 +139,7 @@
             <li>嚴格執行<strong>用餐輪次控制</strong></li>
             <li>期待一種<strong>全海報式、互動式的點餐方式</strong>,與傳統圖片列表區隔</li>
           </ul>
-          <p>這三個訴求走向了不同的命運:前兩個成為核心功能,第三個在驗證後被主動放棄。</p>
+          <p>這三個訴求走向了不同的命運:前兩個成為核心功能,第三個的結局 &mdash;&mdash; 見後面「那個我們沒有做的功能」。</p>
         </div>
       </article>
 
@@ -240,7 +238,7 @@
         <p class="step-label reveal">設計系統</p>
         <h2 class="step-title reveal">一套組件,<em>服務多個商家</em>。</h2>
         <div class="step-body reveal">
-          <p>和 Mobile POS 一樣,我為自助點餐平板設計了整套 UI 設計系統(組件庫與 Variant 體系),讓不同商家、不同業態的餐廳都能基於同一套組件快速搭建自己的點餐介面,而不是每接一家商家就重新設計一次。</p>
+          <p>一套組件庫與 Variant 體系,讓不同商家、不同業態的餐廳都能基於同一套組件組出自己的點餐介面,而不是每接一家就重新設計一次 &mdash;&mdash; 這正是 411 台規模化部署背後的交付基礎。</p>
         </div>
       </article>
     </section>
@@ -251,7 +249,7 @@
       <h2 class="step-title reveal">五人驗證,<em>411 台上線</em>。</h2>
       <div class="step-body reveal">
         <p>如今這套點餐平板正運行在它當初為之設計的吃到飽火鍋、BBQ 與壽司餐廳的營運現場 &mdash;&mdash; <strong>411 台平板正式上線、日常使用中</strong>,平均每家約 16 台,大致是一桌一台。</p>
-        <p>上線前,我主導了正式的可用性測試:邀請 5 位從未接觸過產品的用戶,完整走一遍自助點餐流程 &mdash;&mdash; 5 人是質性可用性測試的標準樣本量,足以暴露絕大多數問題。5 位零培訓用戶均順利完成「瀏覽 &rarr; 點餐 &rarr; 查看已點 &rarr; 呼叫服務生」的主流程,<strong>全程無需協助</strong>,測試後僅做了少量細節修正,沒有發現結構性問題。對一個面向零培訓用戶的產品,「測完只需小修」正是目標達成的證據 &mdash;&mdash; 而這 411 台,就是那次乾淨的測試最終擴展成的規模。</p>
+        <p>上線前,我主導了正式的可用性測試:5 位從未接觸過產品的用戶,完整走一遍自助點餐流程。全數獨立完成「瀏覽 &rarr; 點餐 &rarr; 查看已點 &rarr; 呼叫服務生」的主流程,<strong>全程無需協助</strong>,測試後僅做少量細節修正、沒有結構性問題。對一個為零培訓用戶而生的產品,「測完只需小修」本身就是目標達成的證據 &mdash;&mdash; 而這 411 台,就是那次乾淨測試規模化後的樣子。</p>
       </div>
       <div class="stats">
         <div class="stat reveal">

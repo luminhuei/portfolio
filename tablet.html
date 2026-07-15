@@ -79,9 +79,9 @@
         <svg class="psr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15 9l-2 4.5L8.5 15l2-4.5z"/></svg>
         <h2>Approach</h2>
         <ul>
+          <li><strong>Two-tier navigation</strong> plus a density toggle keep hundreds of dishes scannable.</li>
           <li>Tier permissions shown as <strong>visible-but-locked</strong> &mdash; no confusion, built-in upgrade motivation.</li>
           <li>Round control as a <strong>merchant-configurable rule system</strong>, not fixed logic.</li>
-          <li><strong>Deliberately dropped</strong> the poster-style ordering after prototyping it.</li>
         </ul>
       </div>
       <div class="psr-card reveal">
@@ -114,8 +114,7 @@
         <p class="step-label reveal">The AYCE problem</p>
         <h2 class="step-title reveal">Hundreds of dishes, <em>on human memory</em>.</h2>
         <div class="step-body reveal">
-          <p>In all-you-can-eat hot pot, sushi, and BBQ restaurants, guests order in multiple rounds &mdash; a single table can accumulate over a hundred, sometimes several hundred dishes. Relying on servers to enter orders by hand simply doesn&rsquo;t hold up during peak hours.</p>
-          <p>And menus in this segment are priced in tiers: what guests can order depends on which tier they paid for. Expecting servers to memorize what each table may order, may not order, and has already ordered is neither realistic nor error-proof.</p>
+          <p>In all-you-can-eat hot pot, sushi, and BBQ restaurants, guests order in multiple rounds &mdash; a single table can accumulate over a hundred, sometimes several hundred dishes, and relying on servers to enter them by hand simply doesn&rsquo;t hold up at peak hours. Menus are priced in tiers, too: what a table can order depends on which tier it paid for &mdash; expecting servers to memorize who may order what, and what&rsquo;s already been ordered, is neither realistic nor error-proof.</p>
           <p>The core question: <strong>how do you let a completely untrained guest smoothly self-order hundreds of dishes &mdash; while staying within tier permissions and round-based rules?</strong></p>
         </div>
       </article>
@@ -125,8 +124,7 @@
         <p class="step-label reveal">Who it&rsquo;s for</p>
         <h2 class="step-title reveal">The exact <em>opposite</em> of Mobile POS.</h2>
         <div class="step-body reveal">
-          <p>The users are dine-in guests seeing this interface for the first time &mdash; from children to grandparents, with zero training opportunity and zero willingness to learn. This is the exact opposite design premise from Mobile POS, which serves trained servers: here, the interface must have <strong>zero learning cost</strong> &mdash; anyone should be able to pick it up and use it.</p>
-          <p>The secondary stakeholders are merchants: they care about operational efficiency and the accurate enforcement of tier permissions and dining rounds.</p>
+          <p>The users are dine-in guests seeing this interface for the first time &mdash; from children to grandparents, with zero training opportunity and zero willingness to learn. This is the exact opposite design premise from Mobile POS, which serves trained servers: the interface must carry <strong>zero learning cost</strong>. The secondary stakeholders are merchants, who care about operational efficiency and the accurate enforcement of tier and round rules.</p>
         </div>
       </article>
 
@@ -141,7 +139,7 @@
             <li>Strictly enforce <strong>dining round control</strong></li>
             <li>A desire for a <strong>full-poster, interactive ordering experience</strong>, distinct from the traditional image list</li>
           </ul>
-          <p>These three demands met three different fates: the first two became core features. The third was deliberately dropped after validation.</p>
+          <p>These three demands met three different fates: the first two became core features &mdash; and the third&rsquo;s fate is a story of its own (see &ldquo;The feature we didn&rsquo;t build&rdquo;).</p>
         </div>
       </article>
 
@@ -240,7 +238,7 @@
         <p class="step-label reveal">Design system</p>
         <h2 class="step-title reveal">One kit, <em>many merchants</em>.</h2>
         <div class="step-body reveal">
-          <p>As with Mobile POS, I designed a complete UI design system &mdash; component library and variant architecture &mdash; so restaurants across different merchants and dining formats could assemble their own ordering interface from the same components, instead of redesigning from scratch for every new merchant.</p>
+          <p>A component library and variant architecture let restaurants across merchants and dining formats assemble their own ordering interface from the same components, instead of redesigning from scratch for every new merchant &mdash; the delivery foundation behind the 411-tablet rollout.</p>
         </div>
       </article>
     </section>
@@ -251,7 +249,7 @@
       <h2 class="step-title reveal">Validated by five, <em>live on 411</em>.</h2>
       <div class="step-body reveal">
         <p>Today the ordering tablet runs the floor at the all-you-can-eat hot pot, BBQ, and sushi restaurants it was built for &mdash; <strong>411 tablets live and in daily use</strong>, roughly sixteen per restaurant, about one at every table.</p>
-        <p>Before launch, I led formal usability testing: five participants who had never seen the product walked the complete self-ordering flow &mdash; five being the standard sample size for qualitative testing, enough to surface the vast majority of issues. All five untrained users completed the main flow &mdash; browse &rarr; order &rarr; view ordered items &rarr; call server &mdash; <strong>without assistance</strong>, with only minor refinements to follow and no structural issues found. &ldquo;Tested, and only small fixes needed&rdquo; was the goal for a product built for untrained guests &mdash; and those 411 tablets are what that clean test scaled into.</p>
+        <p>Before launch, I led formal usability testing: five participants who had never seen the product walked the complete self-ordering flow. All five completed it &mdash; browse &rarr; order &rarr; view ordered items &rarr; call server &mdash; <strong>without assistance</strong>, with only minor refinements to follow and no structural issues found. For a product built for untrained guests, &ldquo;tested, and only small fixes needed&rdquo; is itself the proof &mdash; and those 411 tablets are what that clean test scaled into.</p>
       </div>
       <div class="stats">
         <div class="stat reveal">
