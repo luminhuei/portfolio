@@ -1,15 +1,20 @@
 /* ---------------------------------------------------------------------------
-   tablet-06-menu-nav — the ORIGINAL tier-unlock demo (tablet-05-tier-unlock),
-   modified ONLY to correct the navigation IA:
-     • the top horizontal scroller now carries the major DINING MODES
-       (Hot Pot / BBQ / Sushi / Drinks / Desserts) instead of sub-categories
-     • a left SIDE NAVIGATION is added for that mode's sub-categories
-       (All / Beef / Pork / Chicken / Seafood / Veggies / Sides)
-   Everything else — card style, dish names, tags, tier sections, colours,
-   cart — is untouched. Strictly black/white/grey (white-label product; brand
-   colours belong to the merchants, not the chrome). One device, two focuses:
-     data-focus="nav"  → Decision one, plays the navigation story
-     data-focus="tier" → Decision two, the original greyed→unlock story
+   tablet-06-menu-nav — the ORIGINAL tier-unlock demo, modified only to add the
+   navigation Mina asked for. Strictly black/white/grey (white-label product —
+   brand colour belongs to the merchants, the chrome stays neutral). Card
+   style, dish names, tags and tier sections are the original, untouched.
+
+   Additions (Decision 04 shows the first two off; Decision 05 the tier tour):
+     • top scroller = major DINING MODES (Hot Pot / BBQ / Sushi / Drinks /
+       Desserts); switching a mode swaps the LEFT side-nav to that mode's
+       sub-categories
+     • a 3-vs-4-per-row DENSITY toggle at the content's top-right; the dish
+       images resize to the column width
+     • the cart is collapsed to a bottom-right icon (a drawer that slides in),
+       freeing the content area for the 3/4 layout
+
+   data-focus="nav"  → Decision 04: modes ↔ categories + density
+   data-focus="tier" → Decision 05: the original greyed → slide → unlock
    Original kept on disk as tablet-05-tier-unlock.js (backup).
 --------------------------------------------------------------------------- */
 (function () {
@@ -19,7 +24,6 @@
   const zh = (document.documentElement.lang || "").startsWith("zh");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* icons (inline SVG) — unchanged from the original */
   const I = {
     kiosk: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="11" rx="1.5"/><path d="M12 15v3M8.5 21h7M9 18h6"/></svg>',
     user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5.5 20c1-3.4 3.5-5 6.5-5s5.5 1.6 6.5 5"/></svg>',
@@ -31,6 +35,10 @@
     plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"/></svg>',
     minus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5.5 12h13"/></svg>',
     lock: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>',
+    cart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2.5 3.5h2.3l2.2 11.2a1.5 1.5 0 0 0 1.5 1.2h8.1a1.5 1.5 0 0 0 1.5-1.2L20 7H6"/></svg>',
+    close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+    grid3: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="5" width="4.3" height="14" rx="1"/><rect x="9.9" y="5" width="4.3" height="14" rx="1"/><rect x="16.3" y="5" width="4.3" height="14" rx="1"/></svg>',
+    grid4: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5.5" width="3.2" height="13" rx="1"/><rect x="8" y="5.5" width="3.2" height="13" rx="1"/><rect x="13" y="5.5" width="3.2" height="13" rx="1"/><rect x="18" y="5.5" width="3.2" height="13" rx="1"/></svg>',
   };
 
   /* ---- AYCE BBQ menu: Tier 1 included, Tiers 2-3 paid upgrades ----
@@ -42,12 +50,12 @@
       name: "Classic BBQ",
       locked: false,
       dishes: [
-        ["Marinated Short Rib", "COMBO", "Sweet soy-marinated beef short rib, sliced thin for the grill and served with ssamjang."],
-        ["Pork Belly Samgyeopsal", "", "Thick-cut pork belly grilled tableside, with lettuce wraps, garlic, and green-onion salad."],
-        ["Spicy Chicken Bulgogi", "ORDERED", "Boneless chicken thigh in gochujang marinade, charred over the open flame."],
-        ["Beef Brisket Slices", "", "Paper-thin brisket that cooks in seconds — dip in sesame oil with a pinch of salt."],
-        ["Garlic Shrimp Skewers", "TOP PICK", "Butterflied shrimp brushed with garlic butter, finished with a squeeze of lemon."],
-        ["Seasonal Veggie Platter", "NEW", "Mushrooms, kabocha, corn cheese, and peppers — everything the grill's edge is for."],
+        ["Marinated Short Rib", "COMBO", ""],
+        ["Pork Belly Samgyeopsal", "", ""],
+        ["Spicy Chicken Bulgogi", "ORDERED", ""],
+        ["Beef Brisket Slices", "", ""],
+        ["Garlic Shrimp Skewers", "TOP PICK", ""],
+        ["Seasonal Veggie Platter", "NEW", ""],
       ],
     },
     {
@@ -58,12 +66,12 @@
       lockmsg: "Premium Cuts is available as a paid upgrade. Please contact your server to unlock this menu.",
       donemsg: "Premium Cuts unlocked — enjoy!",
       dishes: [
-        ["Prime Ribeye", "PREMIUM", "Well-marbled USDA Prime ribeye, cut to order and rested before it hits your grill."],
-        ["Beef Tongue with Scallion", "PREMIUM", "Delicate tongue slices with scallion salt — the connoisseur's first order."],
-        ["Iberico Pork Collar", "PREMIUM", "Spanish Iberico presa with deep nutty fat — grill slow at the cooler edge."],
-        ["Miso Black Cod", "PREMIUM", "Sweet miso-cured black cod that caramelizes beautifully over charcoal."],
-        ["Herb Lamb Chops", "PREMIUM", "Frenched lamb chops in rosemary marinade — sear fast, two minutes a side."],
-        ["Jumbo Tiger Prawns", "PREMIUM", "Head-on tiger prawns brushed with chili butter, grilled in the shell."],
+        ["Prime Ribeye", "PREMIUM", ""],
+        ["Beef Tongue with Scallion", "PREMIUM", ""],
+        ["Iberico Pork Collar", "PREMIUM", ""],
+        ["Miso Black Cod", "PREMIUM", ""],
+        ["Herb Lamb Chops", "PREMIUM", ""],
+        ["Jumbo Tiger Prawns", "PREMIUM", ""],
       ],
     },
     {
@@ -74,19 +82,25 @@
       lockmsg: "Wagyu Reserve is available as a paid upgrade. Please contact your server to unlock this menu.",
       donemsg: "Wagyu Reserve unlocked — enjoy!",
       dishes: [
-        ["A5 Wagyu Striploin", "WAGYU", "Certified A5 from Kagoshima — snowflake marbling that melts at grill temperature."],
-        ["Wagyu Chateaubriand", "WAGYU", "The tenderest center cut, portioned for the table and seared whole."],
-        ["Truffle Wagyu Nigiri", "WAGYU", "Seared wagyu over rice with shaved truffle — finished tableside."],
-        ["Wagyu Zabuton", "WAGYU", "The rare chuck-flap 'cushion cut' — intense marbling, impossibly tender off the grill."],
-        ["A5 Wagyu Ribcap", "WAGYU", "The prized spinalis crown of the ribeye, sliced thin for a quick kiss of flame."],
-        ["Wagyu Karubi Short Rib", "WAGYU", "Classic yakiniku short rib in sweet garlic soy — rich, glossy, unmistakably wagyu."],
+        ["A5 Wagyu Striploin", "WAGYU", ""],
+        ["Wagyu Chateaubriand", "WAGYU", ""],
+        ["Truffle Wagyu Nigiri", "WAGYU", ""],
+        ["Wagyu Zabuton", "WAGYU", ""],
+        ["A5 Wagyu Ribcap", "WAGYU", ""],
+        ["Wagyu Karubi Short Rib", "WAGYU", ""],
       ],
     },
   ];
 
-  /* NEW navigation labels only — the two levels Mina asked for */
-  const MODES = ["Hot Pot", "BBQ", "Sushi", "Drinks", "Desserts"]; // top scroller (major dining modes)
-  const SUBS = ["All", "Beef", "Pork", "Chicken", "Seafood", "Veggies", "Sides"]; // left side-nav (sub-categories)
+  /* NEW nav labels only — dining modes (top) and each mode's sub-categories (left) */
+  const MODES = ["Hot Pot", "BBQ", "Sushi", "Drinks", "Desserts"];
+  const MODE_CATS = {
+    "Hot Pot": ["All", "Broths", "Beef", "Seafood", "Veggies", "Noodles"],
+    "BBQ": ["All", "Beef", "Pork", "Chicken", "Seafood", "Veggies", "Sides"],
+    "Sushi": ["All", "Nigiri", "Rolls", "Sashimi", "Tempura"],
+    "Drinks": ["All", "Soft Drinks", "Tea", "Beer & Sake"],
+    "Desserts": ["All", "Cakes", "Ice Cream", "Fruit"],
+  };
 
   /* card + tierSection — UNCHANGED from the original */
   const card = ([name, tag]) => `
@@ -110,12 +124,15 @@
       <div class="tdv-grid">${t.dishes.map(card).join("")}</div>
     </section>`;
 
+  const sideFor = (mode) =>
+    MODE_CATS[mode].map((c, i) => `<button class="tdv-subnav${i === 0 ? " on" : ""}">${c}</button>`).join("");
+
   function build(root) {
     const focus = root.dataset.focus === "tier" ? "tier" : "nav";
 
     root.innerHTML = `
       <div class="demo-stage">
-        <div class="tdv tdv-hasnav" data-focus="${focus}">
+        <div class="tdv tdv-hasnav" data-focus="${focus}" style="--cols:3">
           <div class="tdv-top">
             <div class="tdv-logo"><span class="tdv-logodot"></span></div>
             <div class="tdv-topbtns">
@@ -129,56 +146,60 @@
           </div>
           <div class="tdv-menuhead">
             <div class="tdv-tabs">
-              ${MODES.map((m, i) => `<span class="tdv-tab${i === 1 ? " on" : ""}">${m}</span>`).join("")}
+              ${MODES.map((m) => `<span class="tdv-tab${m === "BBQ" ? " on" : ""}">${m}</span>`).join("")}
             </div>
           </div>
           <div class="tdv-body">
-            <nav class="tdv-side">
-              ${SUBS.map((s, i) => `<button class="tdv-subnav${i === 0 ? " on" : ""}">${s}</button>`).join("")}
-            </nav>
+            <nav class="tdv-side">${sideFor("BBQ")}</nav>
             <div class="tdv-left">
+              <div class="tdv-toolbar">
+                <div class="tdv-density" role="group" aria-label="Layout density">
+                  <button class="tdv-dbtn on" data-cols="3" aria-label="Three per row">${I.grid3}</button>
+                  <button class="tdv-dbtn" data-cols="4" aria-label="Four per row">${I.grid4}</button>
+                </div>
+              </div>
               <div class="tdv-scroll">
                 <div class="tdv-content">${TIERS.map(tierSection).join("")}</div>
               </div>
             </div>
             <aside class="tdv-cart">
               <div class="tdv-cartcard">
-                <div class="tdv-carthead"><b>Shopping Cart (<span class="tdv-count">2</span>)</b><span class="tdv-clear">Clear Cart</span></div>
+                <div class="tdv-carthead"><b>Shopping Cart (<span class="tdv-count">2</span>)</b><button class="tdv-cartclose" aria-label="Close">${I.close}</button></div>
                 <div class="tdv-cartscroll">
                   <div class="tdv-item">
                     <span class="tdv-thumb"></span>
                     <div class="tdv-itembody">
                       <p class="tdv-itemname">Marinated Short Rib</p>
-                      <div class="tdv-itemfoot">
-                        <span class="tdv-stepper"><button class="tdv-step">${I.minus}</button><span class="tdv-qty">1</span><button class="tdv-step">${I.plus}</button></span>
-                      </div>
+                      <div class="tdv-itemfoot"><span class="tdv-stepper"><button class="tdv-step">${I.minus}</button><span class="tdv-qty">1</span><button class="tdv-step">${I.plus}</button></span></div>
                     </div>
                   </div>
                   <div class="tdv-item">
                     <span class="tdv-thumb"></span>
                     <div class="tdv-itembody">
                       <p class="tdv-itemname">Pork Belly Samgyeopsal</p>
-                      <div class="tdv-itemfoot">
-                        <span class="tdv-stepper"><button class="tdv-step">${I.minus}</button><span class="tdv-qty">2</span><button class="tdv-step">${I.plus}</button></span>
-                      </div>
+                      <div class="tdv-itemfoot"><span class="tdv-stepper"><button class="tdv-step">${I.minus}</button><span class="tdv-qty">2</span><button class="tdv-step">${I.plus}</button></span></div>
                     </div>
                   </div>
                 </div>
                 <div class="tdv-cartfoot"><button class="tdv-submit">Submit</button></div>
               </div>
             </aside>
+            <div class="tdv-scrim"></div>
+            <button class="tdv-cartfab" aria-label="Cart">${I.cart}<span class="tdv-fabbadge">2</span></button>
           </div>
         </div>
       </div>
-      <span class="demo-hint">${reduced ? (zh ? "可互動" : "Interactive") : (focus === "tier" ? (zh ? "自動播放 — Tier 解鎖" : "Auto-plays — tiers unlock") : (zh ? "自動播放 — 大類別與子分類導覽" : "Auto-plays — modes & sub-categories"))}</span>`;
+      <span class="demo-hint">${reduced ? (zh ? "可互動" : "Interactive") : (focus === "tier" ? (zh ? "自動播放 — Tier 解鎖" : "Auto-plays — tiers unlock") : (zh ? "自動播放 — 模式 · 分類 · 版面密度" : "Auto-plays — modes · categories · density"))}</span>`;
 
     const stage = root.querySelector(".demo-stage");
     const device = root.querySelector(".tdv");
     const scroller = root.querySelector(".tdv-scroll");
+    const sideEl = root.querySelector(".tdv-side");
+    const cartEl = root.querySelector(".tdv-cart");
+    const scrimEl = root.querySelector(".tdv-scrim");
     const countEl = root.querySelector(".tdv-count");
     let count = 2;
 
-    /* scale the native 1194x834 device to fit the stage width (unchanged) */
     const fit = () => {
       const s = stage.clientWidth / 1194;
       device.style.transform = `scale(${s})`;
@@ -188,7 +209,6 @@
     window.addEventListener("resize", fit);
     fit();
 
-    /* dining timer (unchanged) */
     const timerEl = root.querySelector(".tdv-timer");
     let secs = 2 * 3600;
     setInterval(() => {
@@ -197,15 +217,30 @@
       timerEl.textContent = `${h}:${m}:${s}`;
     }, 1000);
 
-    /* nav highlighting — clicking a mode / sub-category sets the active state */
-    const modeEls = [...root.querySelectorAll(".tdv-tab")];
-    const subEls = [...root.querySelectorAll(".tdv-subnav")];
-    const setMode = (i) => modeEls.forEach((e, k) => e.classList.toggle("on", k === i));
-    const setSub = (i) => subEls.forEach((e, k) => e.classList.toggle("on", k === i));
-    modeEls.forEach((e, i) => e.addEventListener("click", () => setMode(i)));
-    subEls.forEach((e, i) => e.addEventListener("click", () => setSub(i)));
+    /* ---- top modes ↔ left categories ---- */
+    const setMode = (mode) => {
+      root.querySelectorAll(".tdv-tab").forEach((e) => e.classList.toggle("on", e.textContent === mode));
+      sideEl.innerHTML = sideFor(mode);
+    };
+    const setSub = (label) => root.querySelectorAll(".tdv-subnav").forEach((e) => e.classList.toggle("on", e.textContent === label));
+    root.querySelectorAll(".tdv-tab").forEach((e) => e.addEventListener("click", () => setMode(e.textContent)));
+    sideEl.addEventListener("click", (ev) => { const b = ev.target.closest(".tdv-subnav"); if (b) setSub(b.textContent); });
 
-    /* ---- tier lock state (unchanged from the original) ---- */
+    /* ---- density toggle ---- */
+    const setCols = (n) => {
+      device.style.setProperty("--cols", n);
+      device.classList.toggle("tdv-c4", n === 4);
+      root.querySelectorAll(".tdv-dbtn").forEach((b) => b.classList.toggle("on", +b.dataset.cols === n));
+    };
+    root.querySelectorAll(".tdv-dbtn").forEach((b) => b.addEventListener("click", () => setCols(+b.dataset.cols)));
+
+    /* ---- collapsible cart ---- */
+    const openCart = (v) => { cartEl.classList.toggle("tdv-open", v); scrimEl.classList.toggle("tdv-on", v); };
+    root.querySelector(".tdv-cartfab").addEventListener("click", () => openCart(!cartEl.classList.contains("tdv-open")));
+    root.querySelector(".tdv-cartclose").addEventListener("click", () => openCart(false));
+    scrimEl.addEventListener("click", () => openCart(false));
+
+    /* ---- tier lock (unchanged) ---- */
     const tierEls = {};
     root.querySelectorAll(".tdv-tier").forEach((s) => (tierEls[s.dataset.tier] = s));
     const tierData = {};
@@ -217,16 +252,13 @@
       sec.querySelector(".tdv-lockmsg").textContent = locked ? t.lockmsg : t.donemsg;
       sec.querySelector(".tdv-unlockbtn").style.display = locked ? "" : "none";
     };
-    ["t2", "t3"].forEach((key) => {
-      tierEls[key].querySelector(".tdv-unlockbtn").addEventListener("click", () => setLocked(key, false));
-    });
-    /* nav focus is about navigation, not permissions — start everything unlocked */
+    ["t2", "t3"].forEach((key) => tierEls[key].querySelector(".tdv-unlockbtn").addEventListener("click", () => setLocked(key, false)));
     if (focus === "nav") { setLocked("t2", false); setLocked("t3", false); }
 
-    /* + buttons bump the cart count (unchanged) */
     root.querySelectorAll(".tdv-add").forEach((btn) => {
       btn.addEventListener("click", () => {
         count += 1; countEl.textContent = count;
+        root.querySelector(".tdv-fabbadge").textContent = count;
         btn.classList.remove("tdv-popped"); void btn.offsetWidth; btn.classList.add("tdv-popped");
       });
     });
@@ -262,7 +294,7 @@
       setLocked(key, false);
     };
 
-    /* Decision two — the original greyed → unlock tour, unchanged */
+    /* Decision 05 — original greyed → slide → unlock tour */
     async function tierCycle() {
       for (;;) {
         await waitOnStage(); await sleep(2600);
@@ -275,14 +307,14 @@
       }
     }
 
-    /* Decision one — walk the two nav levels: modes on top, sub-categories left */
+    /* Decision 04 — modes ↔ categories, then the 3/4 density toggle */
     async function navCycle() {
-      const modeOrder = [1, 0, 2, 1]; // BBQ → Hot Pot → Sushi → BBQ
-      const subOrder = [1, 4, 6, 0];  // Beef → Seafood → Sides → All
       for (;;) {
-        await waitOnStage(); setMode(1); setSub(0); await sleep(2400);
-        for (const i of modeOrder) { await waitOnStage(); setMode(i); await sleep(1700); }
-        for (const i of subOrder) { await waitOnStage(); setSub(i); await sleep(1600); }
+        await waitOnStage(); setMode("BBQ"); setCols(3); await sleep(2400);
+        for (const m of ["Hot Pot", "Sushi", "Drinks", "BBQ"]) { await waitOnStage(); setMode(m); await sleep(1900); }
+        await waitOnStage(); setSub("Beef"); await sleep(1400); setSub("All"); await sleep(900);
+        await waitOnStage(); setCols(4); await sleep(2600); setCols(3); await sleep(2000);
+        await waitOnStage(); openCart(true); await sleep(2200); openCart(false); await sleep(1400);
       }
     }
 

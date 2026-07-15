@@ -1774,46 +1774,59 @@
 
 
 /* ============================================================
-   tablet-06-menu-nav — the original tier demo (.tdv) with the two
-   navigation levels Mina asked for: the top scroller now holds the
-   major dining modes, and a grey left side-nav holds the mode's
-   sub-categories. Scoped to .tdv-hasnav so the backup tier demo
-   (tablet-05-tier-unlock, plain .tdv) is untouched. Monochrome only.
+   tablet-06-menu-nav — the original tier demo (.tdv) + the nav
+   Mina asked for: dining modes on top, a grey left side-nav whose
+   categories follow the mode, a 3/4 density toggle (images scale to
+   the column), and the cart collapsed to a bottom-right icon/drawer.
+   Scoped to .tdv-hasnav so the backup tier demo is untouched.
+   Strictly black / white / grey.
    ============================================================ */
 .tdv-hasnav .tdv-tabs { overflow-x: auto; }
 
 /* left side navigation — the mode's sub-categories (grey, never colour) */
-.tdv-side {
-  flex: none;
-  width: 150px;
-  border-right: 1px solid var(--g8);
-  padding: 16px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  background: #fff;
-  overflow-y: auto;
-}
-.tdv-subnav {
-  height: 42px;
-  padding: 0 14px;
-  border: none;
-  background: none;
-  border-radius: 8px;
-  text-align: left;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.1px;
-  color: var(--g4);
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
-}
+.tdv-side { flex: none; width: 168px; border-right: 1px solid var(--g8); padding: 16px 10px; display: flex; flex-direction: column; gap: 2px; background: #fff; overflow-y: auto; }
+.tdv-subnav { height: 42px; padding: 0 14px; border: none; background: none; border-radius: 8px; text-align: left; font-family: inherit; font-size: 14px; font-weight: 500; letter-spacing: 0.1px; color: var(--g4); cursor: pointer; transition: background .15s ease, color .15s ease; }
 .tdv-subnav:hover { background: var(--g9); }
 .tdv-subnav.on { background: var(--g9); color: var(--g1); font-weight: 600; }
 
-/* the menu column gives up its fixed 820 to make room for the side-nav;
-   the 244px cards are unchanged — the grid just reflows to two per row */
-.tdv-hasnav .tdv-left { width: 670px; flex: none; min-width: 0; }
-.tdv-hasnav .tdv-content { width: auto; margin-left: 0; padding: 0 32px 32px; }
-.tdv-hasnav .tdv-grid { grid-template-columns: repeat(2, 244px); gap: 28px 24px; }
+/* body anchors the cart drawer + fab; content takes the full remaining width */
+.tdv-hasnav .tdv-body { position: relative; }
+.tdv-hasnav .tdv-left { width: auto; flex: 1; min-width: 0; }
+
+/* content toolbar — the 3/4 density toggle, top-right */
+.tdv-toolbar { flex: none; display: flex; justify-content: flex-end; align-items: center; padding: 12px 28px 0; }
+.tdv-density { display: inline-flex; border: 1px solid var(--g7); border-radius: 9px; overflow: hidden; }
+.tdv-dbtn { width: 42px; height: 34px; display: flex; align-items: center; justify-content: center; background: #fff; color: var(--g5); border: none; cursor: pointer; }
+.tdv-dbtn svg { width: 19px; height: 19px; }
+.tdv-dbtn.on { background: var(--g1); color: #fff; }
+
+/* responsive grid — 3 or 4 per row; the images scale to the column width */
+.tdv-hasnav .tdv-content { width: auto; margin-left: 0; padding: 4px 28px 28px; }
+.tdv-hasnav .tdv-grid { grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 24px 16px; }
+.tdv-hasnav .tdv-card { width: auto; }
+.tdv-hasnav .tdv-img { width: 100%; height: auto; aspect-ratio: 1 / 1; }
+.tdv-hasnav.tdv-c4 .tdv-name { font-size: 14px; line-height: 20px; }
+.tdv-hasnav.tdv-c4 .tdv-h { font-size: 28px; }
+
+/* cart collapsed to a bottom-right icon; opens as a right slide-in drawer */
+.tdv-hasnav .tdv-cart {
+  position: absolute; top: 0; right: 0; bottom: 0; width: 372px; flex: none; z-index: 7;
+  transform: translateX(105%); transition: transform .32s cubic-bezier(.22, 1, .36, 1);
+  box-shadow: -12px 0 34px rgba(18, 18, 18, .14);
+}
+.tdv-hasnav .tdv-cart.tdv-open { transform: translateX(0); }
+.tdv-cartclose { width: 30px; height: 30px; border: none; background: none; color: var(--g4); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.tdv-cartclose svg { width: 18px; height: 18px; }
+.tdv-scrim { position: absolute; inset: 0; background: rgba(18, 18, 18, .26); opacity: 0; pointer-events: none; transition: opacity .28s ease; z-index: 6; }
+.tdv-scrim.tdv-on { opacity: 1; pointer-events: auto; }
+.tdv-cartfab {
+  position: absolute; right: 26px; bottom: 26px; width: 62px; height: 62px; border-radius: 50%;
+  background: var(--g1); color: #fff; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 24px rgba(18, 18, 18, .3); z-index: 5; cursor: pointer; border: none;
+}
+.tdv-cartfab svg { width: 26px; height: 26px; }
+.tdv-fabbadge {
+  position: absolute; top: -3px; right: -3px; min-width: 22px; height: 22px; padding: 0 6px;
+  border-radius: 100px; background: #fff; color: var(--g1); border: 2px solid var(--g1);
+  font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+}
