@@ -1774,100 +1774,46 @@
 
 
 /* ============================================================
-   tablet-06-menu-nav — shared enhanced Ordering-Tablet mockup
-   (Decision one = navigation focus, Decision two = tier focus).
-   Corrected IA: dining modes on top, sub-categories on the left,
-   density toggle in the main head. Native 1194x834, scaled to fit.
-   New .mnv- prefix so the .tdv tier demo stays intact as a backup.
+   tablet-06-menu-nav — the original tier demo (.tdv) with the two
+   navigation levels Mina asked for: the top scroller now holds the
+   major dining modes, and a grey left side-nav holds the mode's
+   sub-categories. Scoped to .tdv-hasnav so the backup tier demo
+   (tablet-05-tier-unlock, plain .tdv) is untouched. Monochrome only.
    ============================================================ */
-.mnv {
-  position: absolute; top: 0; left: 0;
-  --g1:#212121;--g4:#757575;--g5:#9e9e9e;--g7:#e0e0e0;--g8:#eeeeee;--g9:#f5f5f5;--g10:#fafafa;
-  --blue:#007aff;--amber:#ff9500;
-  width: 1194px; height: 834px; transform-origin: top left;
-  background: #fff; border-radius: 18px; overflow: hidden;
-  box-shadow: 0 30px 70px rgba(18,18,18,.22), 0 6px 18px rgba(18,18,18,.1);
-  font-family: "Inter","Geist",-apple-system,sans-serif; color: var(--g1);
-  user-select: none; display: flex; flex-direction: column;
+.tdv-hasnav .tdv-tabs { overflow-x: auto; }
+
+/* left side navigation — the mode's sub-categories (grey, never colour) */
+.tdv-side {
+  flex: none;
+  width: 150px;
+  border-right: 1px solid var(--g8);
+  padding: 16px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: #fff;
+  overflow-y: auto;
 }
-.mnv * { box-sizing: border-box; }
-.mnv p { margin: 0; }
-.mnv button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-.mnv svg { display: block; }
+.tdv-subnav {
+  height: 42px;
+  padding: 0 14px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  text-align: left;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: var(--g4);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.tdv-subnav:hover { background: var(--g9); }
+.tdv-subnav.on { background: var(--g9); color: var(--g1); font-weight: 600; }
 
-.mnv-top { flex: none; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid var(--g8); }
-.mnv-logo { display: flex; align-items: center; }
-.mnv-logodot { width: 26px; height: 26px; border-radius: 50%; background: var(--g1); }
-.mnv-pills { display: flex; align-items: center; gap: 4px; }
-.mnv-pill { display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 14px; border-radius: 100px; font-size: 13.5px; font-weight: 500; color: var(--g1); }
-.mnv-pill svg { width: 17px; height: 17px; color: var(--g4); }
-.mnv-outlined { border: 1px solid var(--g7); color: var(--blue); font-variant-numeric: tabular-nums; }
-.mnv-outlined svg { color: var(--blue); }
-.mnv-iconbtn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--g7); display: flex; align-items: center; justify-content: center; }
-.mnv-iconbtn svg { width: 17px; height: 17px; color: var(--g4); }
-
-/* dining-mode bar = the major categories (mixed-format AYCE venues offer several) */
-.mnv-modebar { flex: none; height: 56px; display: flex; align-items: center; gap: 6px; padding: 0 20px; border-bottom: 1px solid var(--g8); overflow-x: auto; }
-.mnv-mode { flex: none; height: 38px; padding: 0 20px; border-radius: 100px; font-size: 15px; font-weight: 600; color: var(--g4); background: var(--g9); transition: background .18s ease, color .18s ease; }
-.mnv-mode.on { background: var(--g1); color: #fff; }
-
-.mnv-body { flex: 1; min-height: 0; display: flex; }
-.mnv-side { flex: none; width: 170px; border-right: 1px solid var(--g8); padding: 14px 12px; display: flex; flex-direction: column; gap: 2px; overflow-y: auto; background: #fff; }
-.mnv-sub { height: 40px; padding: 0 14px; border-radius: 9px; text-align: left; font-size: 14px; font-weight: 500; color: var(--g4); transition: background .15s ease, color .15s ease; }
-.mnv-sub:hover { background: var(--g9); }
-.mnv-sub.on { background: rgba(0,122,255,.1); color: var(--blue); font-weight: 600; }
-
-.mnv-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.mnv-mainhead { flex: none; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; border-bottom: 1px solid var(--g9); }
-.mnv-crumb { font-size: 16px; font-weight: 700; letter-spacing: -.2px; }
-.mnv-density { display: inline-flex; border: 1px solid var(--g7); border-radius: 9px; overflow: hidden; }
-.mnv-dbtn { width: 40px; height: 34px; display: flex; align-items: center; justify-content: center; color: var(--g5); background: #fff; }
-.mnv-dbtn svg { width: 18px; height: 18px; }
-.mnv-dbtn.on { background: var(--g1); color: #fff; }
-
-.mnv-unlockbar { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 12px 22px 0; padding: 12px 16px; border: 1px solid var(--g7); border-radius: 12px; background: var(--g10); }
-.mnv-unlocktxt { font-size: 13.5px; color: var(--g4); }
-.mnv-unlockbtn { flex: none; display: inline-flex; align-items: center; gap: 4px; height: 36px; padding: 0 8px 0 16px; border-radius: 100px; background: var(--g1); color: #fff; font-size: 14px; font-weight: 600; transition: transform .15s ease; }
-.mnv-unlockbtn svg { width: 18px; height: 18px; }
-.mnv-unlockbtn.mnv-press { transform: scale(.92); }
-
-.mnv-scroll { flex: 1; min-height: 0; overflow-y: auto; padding: 18px 22px 24px; }
-.mnv-grid { display: grid; gap: 16px; }
-.mnv-grid[data-cols="3"] { grid-template-columns: repeat(3,1fr); }
-.mnv-grid[data-cols="4"] { grid-template-columns: repeat(4,1fr); }
-
-.mnv-card { border: 1px solid var(--g8); border-radius: 14px; overflow: hidden; background: #fff; transition: opacity .3s ease, filter .3s ease; }
-.mnv-media { position: relative; aspect-ratio: 16/10; background: linear-gradient(135deg,#ededed,#e2e2e2); }
-.mnv-img { position: absolute; inset: 0; }
-.mnv-lock { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(20,20,20,.42); }
-.mnv-lock svg { width: 26px; height: 26px; }
-.mnv-add { position: absolute; right: 8px; bottom: 8px; width: 30px; height: 30px; border-radius: 50%; background: var(--g1); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,.25); transition: transform .12s ease; }
-.mnv-add svg { width: 16px; height: 16px; }
-.mnv-add.mnv-popped { animation: mnvpop .3s ease; }
-@keyframes mnvpop { 0%{transform:scale(1);} 45%{transform:scale(1.28);} 100%{transform:scale(1);} }
-.mnv-txt { padding: 9px 11px 11px; }
-.mnv-name { font-size: 13.5px; font-weight: 600; line-height: 1.25; letter-spacing: -.1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mnv-tag { display: inline-block; margin-top: 5px; font-size: 10.5px; font-weight: 700; letter-spacing: .04em; color: var(--blue); }
-.mnv-grid[data-cols="4"] .mnv-name { font-size: 12.5px; }
-
-.mnv-grid.mnv-tierlock .mnv-t2 { filter: grayscale(1) opacity(.55); }
-.mnv-grid.mnv-tierlock .mnv-t2 .mnv-lock { display: flex; }
-.mnv-grid.mnv-tierlock .mnv-t2 .mnv-add { display: none; }
-
-.mnv-cart { flex: none; width: 360px; border-left: 1px solid var(--g8); background: var(--g10); padding: 16px; }
-.mnv-cartcard { background: #fff; border: 1px solid var(--g8); border-radius: 14px; height: 100%; display: flex; flex-direction: column; }
-.mnv-carthead { flex: none; display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border-bottom: 1px solid var(--g8); font-size: 15px; }
-.mnv-clear { font-size: 13px; color: var(--g5); }
-.mnv-cartscroll { flex: 1; min-height: 0; overflow-y: auto; padding: 8px 18px; }
-.mnv-citem { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--g9); }
-.mnv-thumb { flex: none; width: 52px; height: 52px; border-radius: 10px; background: linear-gradient(135deg,#ededed,#e2e2e2); }
-.mnv-cibody { flex: 1; min-width: 0; }
-.mnv-ciname { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mnv-stepper { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; border: 1px solid var(--g7); border-radius: 100px; padding: 2px; }
-.mnv-step { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--g1); }
-.mnv-step svg { width: 15px; height: 15px; }
-.mnv-qty { font-size: 14px; font-weight: 600; min-width: 14px; text-align: center; }
-.mnv-cartfoot { flex: none; padding: 14px 18px; border-top: 1px solid var(--g8); }
-.mnv-submit { width: 100%; height: 48px; border-radius: 12px; background: var(--g1); color: #fff; font-size: 15px; font-weight: 600; }
-
-@media (prefers-reduced-motion: reduce) { .mnv-mode, .mnv-sub, .mnv-card, .mnv-add, .mnv-unlockbtn { transition: none; } }
+/* the menu column gives up its fixed 820 to make room for the side-nav;
+   the 244px cards are unchanged — the grid just reflows to two per row */
+.tdv-hasnav .tdv-left { width: 670px; flex: none; min-width: 0; }
+.tdv-hasnav .tdv-content { width: auto; margin-left: 0; padding: 0 32px 32px; }
+.tdv-hasnav .tdv-grid { grid-template-columns: repeat(2, 244px); gap: 28px 24px; }
