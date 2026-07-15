@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="../case.css" />
+  <link rel="stylesheet" href="../case.css?v=20260715b" />
   <script src="../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-mpos">
@@ -96,13 +96,11 @@
 
     <!-- 最終畫面 -->
     <section class="case-section" id="screens">
-      <p class="case-kicker reveal">Final screens</p>
-      <div class="gallery">
-        <div class="fig-ph reveal" style="--ar: 350/702; --ph: linear-gradient(160deg, #ffe8d9, #ffd0a8)"><span>桌台視圖</span></div>
-        <div class="fig-ph reveal" style="--ar: 350/702; --ph: linear-gradient(200deg, #fff3d6, #ffc98f)"><span>桌邊點餐</span></div>
-        <div class="fig-ph reveal" style="--ar: 350/702; --ph: linear-gradient(150deg, #ffdfc2, #ffefda)"><span>顧客面結帳</span></div>
-        <div class="fig-ph reveal" style="--ar: 350/702; --ph: linear-gradient(180deg, #ffe2cc, #ffd4b0)"><span>訂單歷史</span></div>
-      </div>
+      <figure class="final-video reveal">
+        <div class="final-video-stage">
+          <video src="../demos/assets/mpos-brand-intro.mp4?v=20260715a" poster="../demos/assets/mpos-brand-intro-poster.jpg?v=20260715a" autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+      </figure>
     </section>
 
     <!-- Process -->
