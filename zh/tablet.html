@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
   <link rel="stylesheet" href="../case.css" />
-  <link rel="stylesheet" href="../demos/demos.css?v=20260713g" />
+  <link rel="stylesheet" href="../demos/demos.css?v=20260714b" />
   <script src="../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-tablet">
@@ -186,8 +186,16 @@
           <p>這個決策讓團隊把資源集中在目標業態真正需要的功能上:Tier 權限、輪次控制、已點歷史。</p>
         </div>
         <figure class="reveal">
-          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(190deg, #e4fbe9, #d2f5df)"><span>海報式 Prototype vs. 上線的卡片方案</span></div>
-          <figcaption>探索過、驗證過、然後主動放棄 &mdash;&mdash; Prototype 與最終方案的並排對比</figcaption>
+          <div class="fig-video">
+            <video src="../demos/assets/tablet-prototype-b.mp4" poster="../demos/assets/tablet-prototype-b-poster.jpg" muted loop playsinline controls preload="metadata"></video>
+          </div>
+          <figcaption>方案 B &mdash;&mdash; 當年為了驗證「海報式點餐」而真正錄下來的原型:一整張沉浸式的滾動菜單,點開一道菜、就地加點、再看購物車。做得很美 &mdash;&mdash; 也主動地把它擱置了。</figcaption>
+        </figure>
+        <figure class="reveal">
+          <div class="fig-video">
+            <video src="../demos/assets/tablet-prototype-c.mp4" poster="../demos/assets/tablet-prototype-c-poster.jpg" muted loop playsinline controls preload="metadata"></video>
+          </div>
+          <figcaption>方案 C &mdash;&mdash; 與 B 並行探索的第二種海報版型,從桌位歡迎畫面開始點餐。</figcaption>
         </figure>
       </article>
 
@@ -324,6 +332,7 @@
 
   <script src="../script.js"></script>
   <script src="../demos/tablet-05-tier-unlock.js?v=20260711d" defer></script>
+  <script src="../demos/fig-video.js?v=20260714a" defer></script>
   <script src="../demos/fig-hover.js?v=20260711d" defer></script>
 </body>
 </html>
