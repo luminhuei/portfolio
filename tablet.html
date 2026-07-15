@@ -149,6 +149,21 @@
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">04</p>
         <p class="step-label reveal">Decision one</p>
+        <h2 class="step-title reveal">Hundreds of dishes, <em>still navigable</em>.</h2>
+        <div class="step-body reveal">
+          <p>Many AYCE venues are mixed-format &mdash; the same restaurant lets a table choose all-you-can-eat hot pot, BBQ, or sushi. So navigation is two-tiered: the <strong>top bar carries the dining modes</strong> (hot pot, BBQ, sushi, plus drinks and desserts); tap one and a <strong>left side-navigation</strong> slides in with that mode&rsquo;s sub-categories &mdash; pork, chicken, beef, seafood, veggies, noodles.</p>
+          <p>Because a table can order hundreds of dishes, a <strong>density toggle</strong> lets guests switch layouts on the fly: three-per-row for big, appetising photos, or four-per-row to scan far more of the menu at once.</p>
+          <p>Two ideas I pushed for that didn&rsquo;t make the cut: a <strong>collapsible cart</strong> and a <strong>collapsible category rail</strong>, so guests could hide the chrome and focus purely on the food &mdash; still worth revisiting.</p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1194/834; --ph: linear-gradient(165deg, #d2f5df, #ecfbd9)"><span>Dining-mode bar + side-nav + density toggle</span></div>
+          <figcaption>Two-tier navigation for a menu hundreds of dishes deep &mdash; dining modes on top, sub-categories on the left, density on demand</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">05</p>
+        <p class="step-label reveal">Decision two</p>
         <h2 class="step-title reveal">Hide it &mdash; or <em>visible but locked</em>?</h2>
         <div class="step-body reveal">
           <p>Facing tiered menu permissions, the most straightforward approach is to hide dishes a guest can&rsquo;t order &mdash; the cleanest interface. We didn&rsquo;t take that path. The final solution: <strong>greyed-out + lock badge</strong> &mdash; higher-tier dishes remain visible, just locked.</p>
@@ -165,17 +180,35 @@
       </article>
 
       <article class="step">
-        <p class="step-num reveal" aria-hidden="true">05</p>
-        <p class="step-label reveal">Decision two</p>
+        <p class="step-num reveal" aria-hidden="true">06</p>
+        <p class="step-label reveal">Decision three</p>
         <h2 class="step-title reveal">Round rules as <em>configuration</em>, not code.</h2>
         <div class="step-body reveal">
-          <p>Round rules differ completely across dining formats &mdash; hot pot, sushi, and BBQ each restrict differently. So round control couldn&rsquo;t be fixed logic; it was designed as a <strong>merchant-configurable rule system rendered dynamically in the interface</strong> &mdash; one interface, carrying different round rules in different restaurants.</p>
+          <p>Round rules differ completely across dining formats &mdash; hot pot, sushi, and BBQ each restrict differently. So round control couldn&rsquo;t be fixed logic; it was designed as a <strong>merchant-configurable rule system rendered dynamically in the interface</strong> &mdash; one interface, carrying different round rules in different restaurants. Guests always see exactly what they can still order this round, which heads off rule disputes between guests and servers before they start.</p>
+        </div>
+        <figure class="reveal">
+          <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(165deg, #cdf2c4, #e4fbe9)"><span>Round limit state &mdash; gentle, not rejecting</span></div>
+          <figcaption>Rules rendered warmly: &ldquo;this round you can still order X&rdquo; &mdash; a limit that doesn&rsquo;t feel like a refusal</figcaption>
+        </figure>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">07</p>
+        <p class="step-label reveal">The full journey</p>
+        <h2 class="step-title reveal">Everything a table needs, <em>self-served</em>.</h2>
+        <div class="step-body reveal">
+          <p>Around those decisions sits the rest of the ordering flow &mdash; the parts that let a whole table&rsquo;s meal run without a server hovering:</p>
+          <ul>
+            <li><strong>Cart:</strong> the confirmation zone before submitting &mdash; quantities and options at a glance, so a shared table order goes in without mistakes</li>
+            <li><strong>Order history:</strong> guests can check what the table has already ordered at any time, killing duplicate orders &mdash; and wasted food &mdash; at the source</li>
+            <li><strong>Call server:</strong> self-service doesn&rsquo;t mean no service &mdash; one tap summons a server for tier upgrades, special requests, or questions, reserving human attention for the moments that genuinely need it</li>
+          </ul>
         </div>
       </article>
 
       <article class="step">
-        <p class="step-num reveal" aria-hidden="true">06</p>
-        <p class="step-label reveal">Decision three</p>
+        <p class="step-num reveal" aria-hidden="true">08</p>
+        <p class="step-label reveal">The one we cut</p>
         <h2 class="step-title reveal">The feature we <em>didn&rsquo;t build</em>.</h2>
         <div class="step-body reveal">
           <p>For the poster-style ordering merchants widely asked for, we built a prototype demo to validate the direction &mdash; and ultimately decided not to build it:</p>
@@ -183,7 +216,7 @@
             <li><strong>Engineering cost didn&rsquo;t match the payoff:</strong> high implementation effort against a small base of merchants it would apply to</li>
             <li><strong>Wrong dining format:</strong> poster-style immersion suits high-end dining, while mid-to-low-priced AYCE guests want to order fast, frequently, and in rounds &mdash; not admire a beautiful menu</li>
           </ul>
-          <p>That decision let the team concentrate resources on what the target segment actually needed: tier permissions, round control, and order history.</p>
+          <p>That decision let the team concentrate resources on what the target segment actually needed: navigation that scales, tier permissions, round control, and order history.</p>
         </div>
         <figure class="reveal">
           <div class="fig-video">
@@ -204,48 +237,13 @@
       </article>
 
       <article class="step">
-        <p class="step-num reveal" aria-hidden="true">07</p>
+        <p class="step-num reveal" aria-hidden="true">09</p>
         <p class="step-label reveal">Design system</p>
         <h2 class="step-title reveal">One kit, <em>many merchants</em>.</h2>
         <div class="step-body reveal">
           <p>As with Mobile POS, I designed a complete UI design system &mdash; component library and variant architecture &mdash; so restaurants across different merchants and dining formats could assemble their own ordering interface from the same components, instead of redesigning from scratch for every new merchant.</p>
         </div>
       </article>
-    </section>
-
-    <!-- Solution -->
-    <section class="case-section" id="solution">
-      <p class="case-kicker reveal">Solution</p>
-      <h2 class="step-title reveal">The guest&rsquo;s journey, <em>self-served</em>.</h2>
-
-      <div class="sol-item reveal">
-        <h3><span class="sol-num">01</span> Menu browsing + left-side categories</h3>
-        <p>Categories stay fixed on the left, so guests switch cuisines without getting lost; dishes are clear image-and-text cards &mdash; name, photo, and tier status at a glance.</p>
-      </div>
-      <div class="sol-item reveal">
-        <h3><span class="sol-num">02</span> Tier lock badges &amp; upgrade entry</h3>
-        <p>Dishes above the table&rsquo;s paid tier appear greyed-out with a lock badge &mdash; visible but not orderable; once an upgrade completes via the call-server button, locked dishes unlock instantly.</p>
-      </div>
-      <div class="sol-item reveal">
-        <h3><span class="sol-num">03</span> Cart</h3>
-        <p>When a whole table orders together, the cart is the confirmation zone before submitting: quantities and options at a glance, preventing mis-orders.</p>
-      </div>
-      <div class="sol-item reveal">
-        <h3><span class="sol-num">04</span> Order history</h3>
-        <p>Guests can check what the table has already ordered at any time &mdash; preventing duplicate orders at the source.</p>
-      </div>
-      <div class="sol-item reveal">
-        <h3><span class="sol-num">05</span> Call server</h3>
-        <p>Self-service doesn&rsquo;t mean no service. One tap summons a server for tier upgrades, special requests, or questions &mdash; reserving human service for the moments that genuinely need a human.</p>
-      </div>
-      <div class="sol-item reveal">
-        <h3><span class="sol-num">06</span> Round control</h3>
-        <p>Merchant-configured round rules render dynamically &mdash; guests know exactly what they can still order this round, reducing rule disputes between guests and servers.</p>
-      </div>
-      <figure class="reveal">
-        <div class="fig-ph" style="--ar: 1000/560; --ph: linear-gradient(165deg, #cdf2c4, #e4fbe9)"><span>Round limit state &mdash; gentle, not rejecting</span></div>
-        <figcaption>Rules rendered warmly: &ldquo;this round you can still order X&rdquo; &mdash; a limit that doesn&rsquo;t feel like a refusal</figcaption>
-      </figure>
     </section>
 
     <!-- Impact -->
@@ -278,10 +276,9 @@
     <!-- Reflection -->
     <section class="case-section" id="reflection">
       <p class="case-kicker reveal">Reflection</p>
-      <p class="case-lead reveal">The most important lesson came from a feature we <em>didn&rsquo;t build</em>.</p>
+      <p class="case-lead reveal">The most important lesson came from the feature we <em>didn&rsquo;t build</em>.</p>
       <div class="step-body reveal">
-        <p>Merchants widely hoped for a full-poster ordering experience; we prototyped it, then deliberately walked away. It&rsquo;s all called &ldquo;restaurant ordering,&rdquo; but a hot pot chain, a high-end omakase, and a fast-food counter need completely different things.</p>
-        <p>That experience built a habit I&rsquo;ve kept ever since: whenever a restaurant-related design request comes in, I ask about the dining format first &mdash; it determines which features are worth building, and which appealing-sounding requests deserve a firm no. Designing round control as a configurable rule system rather than fixed logic is the same principle applied in the positive direction: one interface, serving many dining formats.</p>
+        <p>Walking away from poster-style ordering built a habit I&rsquo;ve kept ever since: whenever a restaurant design request comes in, I ask about the dining format first &mdash; it decides which features are worth building, and which appealing-sounding requests deserve a firm no. Round control as a configurable rule system is that same instinct pointed the other way: one interface, serving many formats at once.</p>
       </div>
     </section>
 
