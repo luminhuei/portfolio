@@ -557,3 +557,111 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
 /* rows/chapters excluded by the active filter */
 .toc-row.f-hide,
 .toc-era.f-hide { display: none; }
+
+/* ============================================================
+   Brand case study — interactive concept-formula figure (#2)
+   Machine + Interaction + People = the Peblla mark. Hover (or
+   keyboard-focus) an element: it lifts a little and its grey
+   caption turns black. Pure CSS, no JS.
+   ============================================================ */
+.bcf-figure { margin-top: clamp(28px, 4vw, 48px); }
+.bcf {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(4px, 1.2vw, 16px);
+  padding: clamp(30px, 5vw, 60px) clamp(10px, 3vw, 28px);
+  border: 1px solid #e4e4e1;
+  border-radius: 16px;
+  background: #fafafa;
+  overflow-x: auto;
+}
+.bcf-item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: clamp(58px, 9vw, 104px);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 12px;
+  outline: none;
+}
+.bcf-item:hover,
+.bcf-item:focus-visible { transform: scale(1.07); }
+.bcf-glyph {
+  height: clamp(46px, 7vw, 68px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #121212;
+}
+.bcf-glyph svg { height: 100%; width: auto; display: block; }
+.bcf-glyph-stroke svg { height: 84%; }
+/* beat .step figure img (0,1,2): reset the gallery img sizing/background */
+.bcf-figure .bcf-glyph img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  display: block;
+  background: none;
+  border-radius: 0;
+}
+/* the "Peblla" glyph is the wordmark CSS-cropped to just the leading "p" */
+.bcf-glyph-p {
+  justify-content: flex-start;
+  overflow: hidden;
+  aspect-ratio: 100 / 160;
+}
+.bcf-cap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #adadad;
+  transition: color 0.3s ease;
+}
+.bcf-cap b { font-weight: 600; color: #7a7a7a; transition: color 0.3s ease; }
+.bcf-item:hover .bcf-cap,
+.bcf-item:focus-visible .bcf-cap,
+.bcf-item:hover .bcf-cap b,
+.bcf-item:focus-visible .bcf-cap b { color: #121212; }
+.bcf-op {
+  flex: 0 0 auto;
+  height: clamp(46px, 7vw, 68px);
+  display: flex;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: clamp(22px, 3.6vw, 38px);
+  font-weight: 300;
+  color: #121212;
+  user-select: none;
+}
+.bcf-hint {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #b8b8b8;
+}
+
+/* the whole Brand case study reacts to hover — every image lifts a little */
+.case-brand .gallery img,
+.case-brand figure:not(.bcf-figure) > img {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.case-brand .gallery img:hover,
+.case-brand figure:not(.bcf-figure) > img:hover { transform: scale(1.02); }
+
+@media (prefers-reduced-motion: reduce) {
+  .bcf-item,
+  .bcf-cap, .bcf-cap b,
+  .case-brand .gallery img,
+  .case-brand figure:not(.bcf-figure) > img { transition: none; }
+  .bcf-item:hover, .bcf-item:focus-visible,
+  .case-brand .gallery img:hover,
+  .case-brand figure:not(.bcf-figure) > img:hover { transform: none; }
+}
