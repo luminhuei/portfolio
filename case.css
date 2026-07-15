@@ -133,6 +133,11 @@
   color: var(--muted);
 }
 .psr-card strong { color: var(--ink); font-weight: 600; }
+.psr-card p {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: #3f3f46;
+}
 
 /* Final screens gallery */
 .gallery {
