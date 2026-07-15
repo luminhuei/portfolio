@@ -1747,23 +1747,27 @@
 
 /* ============================================================
    .fig-video — real prototype screen-recordings (Ordering Tablet
-   Section 06). Clean rounded frame matching the other figures;
-   plays via native <video>, play/pause driven by fig-video.js as
-   it scrolls in and out of view.
+   Section 06). Same flat #fafafa stage as the other device figures:
+   a gray frame with a centered, shadowed tablet card playing the
+   video. play/pause driven by fig-video.js as it scrolls in/out.
    ============================================================ */
 .fig-video {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
+  background: #fafafa;
   border: 1px solid #e4e4e1;
-  background: #0c0c0c;
-  line-height: 0;
+  border-radius: 16px;
+  padding: clamp(22px, 5vw, 52px) clamp(18px, 4vw, 46px);
 }
-.fig-video video {
+.fig-video-stage {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+  line-height: 0;
+  box-shadow: 0 30px 70px rgba(18, 18, 18, 0.22), 0 6px 18px rgba(18, 18, 18, 0.1);
+}
+.fig-video-stage video {
   width: 100%;
   height: auto;
   display: block;
-}
-@media (prefers-reduced-motion: reduce) {
-  .fig-video video { /* still controllable; autoplay suppressed via JS */ }
 }
