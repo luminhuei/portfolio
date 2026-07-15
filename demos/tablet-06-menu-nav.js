@@ -178,16 +178,14 @@
             <div class="tdv-tabs">
               ${MODES.map((m) => `<span class="tdv-tab${m === "BBQ" ? " on" : ""}">${m}</span>`).join("")}
             </div>
+            <div class="tdv-density" role="group" aria-label="Layout density">
+              <button class="tdv-dbtn on" data-cols="3" aria-label="Fewer per row">${I.minus}</button>
+              <button class="tdv-dbtn" data-cols="4" aria-label="More per row">${I.plus}</button>
+            </div>
           </div>
           <div class="tdv-body">
             <nav class="tdv-side">${sideFor("BBQ")}</nav>
             <div class="tdv-left">
-              <div class="tdv-toolbar">
-                <div class="tdv-density" role="group" aria-label="Layout density">
-                  <button class="tdv-dbtn on" data-cols="3" aria-label="Fewer per row">${I.minus}</button>
-                  <button class="tdv-dbtn" data-cols="4" aria-label="More per row">${I.plus}</button>
-                </div>
-              </div>
               <div class="tdv-scroll">
                 <div class="tdv-content">${focus === "nav" ? flatSection("BBQ") : TIERS.map(tierSection).join("")}</div>
               </div>
@@ -274,18 +272,20 @@
 
     /* ---- tier lock (unchanged) ---- */
     const tierEls = {};
-    root.querySelectorAll(".tdv-tier").forEach((s) => (tierEls[s.dataset.tier] = s));
+    root.querySelectorAll(".tdv-tier[data-tier]").forEach((s) => (tierEls[s.dataset.tier] = s));
     const tierData = {};
     TIERS.forEach((t) => (tierData[t.key] = t));
     const setLocked = (key, locked) => {
       const sec = tierEls[key], t = tierData[key];
-      if (!t.locked) return;
+      if (!sec || !t || !t.locked) return;
       sec.classList.toggle("tdv-locked", locked);
       sec.querySelector(".tdv-lockmsg").textContent = locked ? t.lockmsg : t.donemsg;
       sec.querySelector(".tdv-unlockbtn").style.display = locked ? "" : "none";
     };
-    ["t2", "t3"].forEach((key) => tierEls[key].querySelector(".tdv-unlockbtn").addEventListener("click", () => setLocked(key, false)));
-    if (focus === "nav") { setLocked("t2", false); setLocked("t3", false); }
+    ["t2", "t3"].forEach((key) => {
+      const el = tierEls[key];
+      if (el) el.querySelector(".tdv-unlockbtn").addEventListener("click", () => setLocked(key, false));
+    });
 
     contentEl.addEventListener("click", (e) => {
       const btn = e.target.closest(".tdv-add");
