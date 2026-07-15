@@ -707,3 +707,6 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
 .gallery-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
 .gallery-2col img, .gallery-3col img { width: 100%; height: auto; border-radius: 12px; display: block; }
 @media (max-width: 720px) { .gallery-2col, .gallery-3col { grid-template-columns: 1fr; } }
+.archive-links { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 28px; }
+.video-embed { position: relative; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; margin: 36px 0 0; }
+.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
