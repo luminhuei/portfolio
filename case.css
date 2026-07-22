@@ -182,8 +182,15 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
-/* Natural-aspect variant — the video keeps its own aspect ratio (e.g. the 16:10 prototype walkthrough) */
-.final-video-stage.is-natural video { aspect-ratio: auto; object-fit: contain; }
+/* Full-width inline video — same treatment as a full-width figure image */
+.case-section > figure video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid #e4e4e1;
+  background: var(--card-light);
+}
 
 /* Process steps */
 .step { margin-top: clamp(72px, 9vw, 120px); }
@@ -253,8 +260,6 @@
 .case figure.fig-full figcaption { margin-top: 12px; }
 /* Stacked variant — UI shots one per row at full column width instead of side by side */
 .step-grid.stacked { grid-template-columns: 1fr; }
-/* Caption under the framed video, aligned with the 80% stage card */
-.case figure.final-video figcaption { width: 80%; margin: 14px auto 0; }
 .step-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
