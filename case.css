@@ -147,7 +147,8 @@
 }
 .gallery img,
 .step-grid img,
-.step figure img {
+.step figure img,
+.case-section > figure img {
   display: block;
   width: 100%;
   height: auto;
