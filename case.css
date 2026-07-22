@@ -251,6 +251,10 @@
 /* Full-width figure — dense diagrams span the whole content column, caption drops below */
 .case figure.fig-full { display: block; }
 .case figure.fig-full figcaption { margin-top: 12px; }
+/* Stacked variant — UI shots one per row at full column width instead of side by side */
+.step-grid.stacked { grid-template-columns: 1fr; }
+/* Caption under the framed video, aligned with the 80% stage card */
+.case figure.final-video figcaption { width: 80%; margin: 14px auto 0; }
 .step-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
