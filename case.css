@@ -249,6 +249,9 @@
   padding-top: 8px;
   border-top: 1px solid rgba(212, 212, 216, 0.6);
 }
+/* Full-width figure — dense diagrams span the whole content column, caption drops below */
+.case figure.fig-full { display: block; }
+.case figure.fig-full figcaption { margin-top: 12px; }
 .step-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
