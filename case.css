@@ -258,6 +258,9 @@
 /* Full-width figure — dense diagrams span the whole content column, caption drops below */
 .case figure.fig-full { display: block; }
 .case figure.fig-full figcaption { margin-top: 12px; }
+/* Breathing room for figures dropped directly into a section after stats cards or body text */
+.case-section > .stats + figure,
+.case-section > .step-body + figure { margin-top: 44px; }
 /* Stacked variant — UI shots one per row at full column width instead of side by side */
 .step-grid.stacked { grid-template-columns: 1fr; }
 .step-grid {
