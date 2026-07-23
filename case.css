@@ -261,6 +261,9 @@
 /* Breathing room for figures dropped directly into a section after stats cards or body text */
 .case-section > .stats + figure,
 .case-section > .step-body + figure { margin-top: 44px; }
+/* …and for text or stats that follow a figure (repeated ¶→figure rhythm on archive pages) */
+.case-section > figure + .step-body,
+.case-section > figure + .stats { margin-top: 44px; }
 /* Stacked variant — UI shots one per row at full column width instead of side by side */
 .step-grid.stacked { grid-template-columns: 1fr; }
 .step-grid {
