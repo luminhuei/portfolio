@@ -63,6 +63,7 @@
         <div><dt>Year</dt><dd>2022&ndash;2023</dd></div>
         <div><dt>Team</dt><dd>PM &middot; UX/UI<br />Visual design<br />IA &middot; Engineering</dd></div>
         <div><dt>Role</dt><dd>UX research<br />Art direction<br />Accessibility &middot; SEO</dd></div>
+        <div><dt>Tools</dt><dd>Figma &middot; Miro<br />NVDA screen reader<br />SEMrush &middot; accessibility scans</dd></div>
       </dl>
     </section>
 
@@ -86,6 +87,11 @@
     </section>
 
     <section class="case-section">
+      <p class="case-kicker">Research</p>
+      <h2 class="step-title">Five interviews, 39 surveys, <em>five personas</em>.</h2>
+      <div class="step-body">
+        <p>Four goals framed the research: understand what users come to do, evaluate the existing experience, align the site with WCAG 2.0, and lift search rankings. Five 1-on-1 interviews (subject-matter experts, visually impaired users, franchisees and milk-tea buyers) and 39 survey responses were synthesized into five personas &mdash; and every finding was tested hands-on with the NVDA screen reader and tracked in SEMrush.</p>
+      </div>
       <figure>
         <div class="fig-duo">
           <img src="../assets/archive/gongcha-website/research-photo-1.webp" alt="Affinity mapping in progress on the whiteboard" loading="lazy" />
@@ -93,18 +99,91 @@
         </div>
         <figcaption>Research in progress &mdash; affinity-mapping five 1-on-1 interviews and 39 survey responses into the five personas that guided the work.</figcaption>
       </figure>
+      <div class="step-body">
+        <p><strong>Visually impaired users</strong> want to browse and order independently with a keyboard and screen reader. Their four blockers shaped the whole redesign:</p>
+        <ul>
+          <li>The rotating banner moved on before a screen reader could finish it, and the keyboard couldn&rsquo;t reach the next or last slide.</li>
+          <li>The store map&rsquo;s dropdown filters couldn&rsquo;t be operated by keyboard at all.</li>
+          <li>Ordering silently redirected to a third-party delivery site &mdash; no warning, no way back.</li>
+          <li>Color contrast was too low for users with color blindness.</li>
+        </ul>
+        <p><strong>Tea enthusiasts</strong> want hours, seasonal drinks, rewards and nutrition/allergen facts &mdash; but a name and a photo were all a drink got. <strong>Potential franchisees</strong> want transparent costs and process; hidden fees and thin support are their deepest fears. <strong>Event &amp; wedding planners</strong> need to compare catering options and couldn&rsquo;t tell what each package includes. <strong>Job seekers</strong> look for openings at nearby stores and clear hiring steps.</p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <p class="case-kicker">Information Architecture</p>
+      <h2 class="step-title">From affinity map to <em>50+ pages</em>.</h2>
+      <div class="step-body">
+        <p>Synthesis turned interviews directly into structure. For the franchise section alone, nine decision factors surfaced in franchisee and expert interviews (brand awareness, financials, training and more) were affinity-mapped into nine pages, from industry introduction to application form. Sitewide, the same method organized six visitor goals &mdash; Brand, Menu, Locations, Franchise, Events and Careers &mdash; into a 50+ page sitemap.</p>
+      </div>
+      <figure>
+        <img src="../assets/archive/gongcha-website/research-2.webp" alt="Sitemap of the redesigned Gong cha website" loading="lazy" />
+        <figcaption>The information architecture &mdash; six sections, 50+ pages, every one reachable by keyboard.</figcaption>
+      </figure>
+    </section>
+
+    <section class="case-section">
+      <p class="case-kicker">Key Decisions</p>
+      <h2 class="step-title">Five pages, <em>five accessibility decisions</em>.</h2>
+      <div class="step-body">
+        <p><strong>Landing</strong> — the rotating banner moved on before screen readers could finish reading it and trapped keyboard users, while 85% of visits were mobile. Solution: mobile-first — remove the carousel, move content into the scroll, and enforce color contrast, scalable type, alt text, forms with clear error messages, and captioned media throughout.</p>
+      </div>
+      <figure>
+        <img src="../assets/archive/gongcha-website/landing.webp" alt="Mobile-first landing page on laptop and phone" loading="lazy" />
+        <figcaption>The mobile-first landing page — carousel removed, content moved into the scroll.</figcaption>
+      </figure>
+      <div class="step-body">
+        <p><strong>Brand</strong> — Gong cha still lacked brand resonance with American audiences, and Asian cultural elements in the identity widened the gap. Solution: a comprehensive brand page — story, history, global expansion, identity system, philosophy and commitment, with a contact form.</p>
+      </div>
+      <figure>
+        <img src="../assets/archive/gongcha-website/brand-page.webp" alt="Brand section pages across tablets" loading="lazy" />
+        <figcaption>The brand section — story, history since 1996 and identity, built to close the cultural gap.</figcaption>
+      </figure>
+      <div class="step-body">
+        <p><strong>Menu</strong> — text baked into images was invisible to screen readers, and customers new to bubble tea didn&rsquo;t know how to order. Solution: real web text with descriptive metatext instead of text-on-image; calorie, ingredient and allergen info; and a step-by-step visual &ldquo;How to Order&rdquo; guide.</p>
+      </div>
+      <figure>
+        <img src="../assets/archive/gongcha-website/menu-page.webp" alt="Menu pages on laptop, tablet and phone" loading="lazy" />
+        <figcaption>Menu pages in real web text — nutrition, ingredients and a product view screen readers can parse.</figcaption>
+      </figure>
+      <div class="step-body">
+        <p><strong>Locations</strong> — &ldquo;Gong cha near me&rdquo; ranks among the top queries, and one page serves four audiences: tea drinkers checking hours and delivery, franchisees gauging store-to-store distances on the map, planners scoping catering, and job seekers hunting openings. All that density came at a cost &mdash; the map&rsquo;s dropdowns and filters stalled screen readers. Solution: dedicated per-store pages with photos and full details, and streamlined or removed filters.</p>
+      </div>
+      <figure>
+        <img src="../assets/archive/gongcha-website/locations.webp" alt="Store finder map and per-store page" loading="lazy" />
+        <figcaption>Per-store pages with photos and full details — the filters that stalled screen readers are gone.</figcaption>
+      </figure>
+      <div class="step-body">
+        <p><strong>Franchise</strong> — the nine-page structure came straight from the affinity map above; the content depth came from the field: an SME interview with Gong cha&rsquo;s event manager revealed how weddings, schools and fundraisers actually order catering, so a catering inquiry form gives staff early insight into events and improves conversion.</p>
+      </div>
+      <figure>
+        <img src="../assets/archive/gongcha-website/franchise-1.webp" alt="Franchise section pages across four devices" loading="lazy" />
+        <figcaption>The franchise section — nine pages from industry introduction to application form.</figcaption>
+      </figure>
+      <div class="step-body">
+        <p>Of the nine decision factors, financials weighed heaviest — so franchise costs became a transparent, itemized table instead of a brochure PDF.</p>
+      </div>
+      <figure>
+        <img src="../assets/archive/gongcha-website/franchise-2.webp" alt="Financial Information page on a desktop monitor" loading="lazy" />
+        <figcaption>The Financial Information page — every cost itemized, from royalty fee to development.</figcaption>
+      </figure>
+      <div class="step-body">
+        <p>And because accessible forms are only half the loop, every submission ends in a clear confirmation.</p>
+      </div>
+      <figure>
+        <img src="../assets/archive/gongcha-website/thank-you.webp" alt="Thank-you confirmation page on tablet and phone" loading="lazy" />
+        <figcaption>The thank-you page — every form closes its loop with a clear, accessible confirmation.</figcaption>
+      </figure>
     </section>
 
     <section class="case-section">
       <p class="case-kicker">Results</p>
       <h2 class="step-title">Three months in, <em>the numbers spoke</em>.</h2>
       <div class="step-body">
-        <p>I led the design team through an SEO-optimized, accessible responsive redesign, launching 50+ webpages. Per Google Analytics and SEMrush: sessions +251.69%, first-time users +280.51%, bounce rate −87.64%, page views +44.69%; CTR rose from 1.28% to 2.80% (+119%); search visibility jumped from 19.62% to 44.40%; mobile responsiveness drove a 34% traffic boost. The accessibility score climbed from 56% to 88% after fixing over 150 violations.</p>
+        <p>The redesign launched 50+ SEO-optimized, accessible pages. Per Google Analytics and SEMrush: sessions +251.69%, first-time users +280.51%, bounce rate −87.64%, page views +44.69%; CTR rose from 1.28% to 2.80% (+119%); search visibility jumped from 19.62% to 44.40%; mobile responsiveness alone drove a 34% traffic boost.</p>
+        <p>Accessibility went from claim to number: the SEMrush score climbed from 56% to 88% after fixing over 150 violations &mdash; well clear of the 75% line below which sites face legal exposure in markets like Ireland.</p>
       </div>
-      <figure>
-        <img src="../assets/archive/gongcha-website/research-2.webp" alt="Sitemap of the redesigned Gong cha website" loading="lazy" />
-        <figcaption>The information architecture behind the 50+ pages &mdash; Brand, Menu, Locations, Franchise, Events and Careers.</figcaption>
-      </figure>
       <div class="stats">
         <div class="stat">
           <p class="stat-value">+251%</p>
@@ -126,60 +205,9 @@
         <img src="../assets/archive/gongcha-website/seasonal-campaign.webp" alt="Seasonal campaign pages on laptop, tablet and phone" loading="lazy" />
         <figcaption>Seasonal campaigns rendered mobile-first on every screen &mdash; responsiveness alone drove a 34% traffic boost.</figcaption>
       </figure>
-    </section>
-
-    <section class="case-section">
-      <p class="case-kicker">Key Decisions</p>
-      <h2 class="step-title">Five pages, <em>five accessibility decisions</em>.</h2>
       <div class="step-body">
-        <p><strong>Landing</strong> — the rotating banner failed keyboard and screen-reader users, and 85% of visits were mobile. Solution: mobile-first — remove the carousel, move content into the scroll, and enforce color contrast, scalable type, alt text and accessible forms throughout.</p>
+        <p>And this page practices what it preaches &mdash; semantic headings, alt text on every figure, and a keyboard-accessible image viewer.</p>
       </div>
-      <figure>
-        <img src="../assets/archive/gongcha-website/landing.webp" alt="Mobile-first landing page on laptop and phone" loading="lazy" />
-        <figcaption>The mobile-first landing page — carousel removed, content moved into the scroll.</figcaption>
-      </figure>
-      <div class="step-body">
-        <p><strong>Brand</strong> — Gong cha still lacked brand resonance with American audiences, and Asian cultural elements in the identity widened the gap. Solution: a comprehensive brand page — story, history, global expansion, identity system, philosophy and commitment, with a contact form.</p>
-      </div>
-      <figure>
-        <img src="../assets/archive/gongcha-website/brand-page.webp" alt="Brand section pages across tablets" loading="lazy" />
-        <figcaption>The brand section — story, history since 1996 and identity, built to close the cultural gap.</figcaption>
-      </figure>
-      <div class="step-body">
-        <p><strong>Menu</strong> — text baked into images was invisible to screen readers, and customers new to bubble tea didn&rsquo;t know how to order. Solution: real web text with descriptive metatext instead of text-on-image; calorie, ingredient and allergen info; and a step-by-step visual &ldquo;How to Order&rdquo; guide.</p>
-      </div>
-      <figure>
-        <img src="../assets/archive/gongcha-website/menu-page.webp" alt="Menu pages on laptop, tablet and phone" loading="lazy" />
-        <figcaption>Menu pages in real web text — nutrition, ingredients and a product view screen readers can parse.</figcaption>
-      </figure>
-      <div class="step-body">
-        <p><strong>Locations</strong> — &ldquo;Gong cha near me&rdquo; ranks among the top queries, but the map&rsquo;s dropdowns and filters stalled screen readers. Solution: dedicated per-store pages with photos and full details, and streamlined or removed filters.</p>
-      </div>
-      <figure>
-        <img src="../assets/archive/gongcha-website/locations.webp" alt="Store finder map and per-store page" loading="lazy" />
-        <figcaption>Per-store pages with photos and full details — the filters that stalled screen readers are gone.</figcaption>
-      </figure>
-      <div class="step-body">
-        <p><strong>Franchise</strong> — competitor analysis plus expert and franchisee interviews surfaced nine decision factors (brand awareness, financials, training and more), which shaped nine pages from industry introduction to application form; a catering inquiry form gives staff early insight into events and improves conversion.</p>
-      </div>
-      <figure>
-        <img src="../assets/archive/gongcha-website/franchise-1.webp" alt="Franchise section pages across four devices" loading="lazy" />
-        <figcaption>The franchise section — nine pages from industry introduction to application form.</figcaption>
-      </figure>
-      <div class="step-body">
-        <p>Of the nine decision factors, financials weighed heaviest — so franchise costs became a transparent, itemized table instead of a brochure PDF.</p>
-      </div>
-      <figure>
-        <img src="../assets/archive/gongcha-website/franchise-2.webp" alt="Financial Information page on a desktop monitor" loading="lazy" />
-        <figcaption>The Financial Information page — every cost itemized, from royalty fee to development.</figcaption>
-      </figure>
-      <div class="step-body">
-        <p>And because accessible forms are only half the loop, every submission ends in a clear confirmation.</p>
-      </div>
-      <figure>
-        <img src="../assets/archive/gongcha-website/thank-you.webp" alt="Thank-you confirmation page on tablet and phone" loading="lazy" />
-        <figcaption>The thank-you page — every form closes its loop with a clear, accessible confirmation.</figcaption>
-      </figure>
     </section>
 
     <section class="case-section">

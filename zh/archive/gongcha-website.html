@@ -63,6 +63,7 @@
         <div><dt>Year</dt><dd>2022&ndash;2023</dd></div>
         <div><dt>Team</dt><dd>PM &middot; UX/UI<br />視覺設計<br />資訊架構 &middot; 工程</dd></div>
         <div><dt>Role</dt><dd>UX 研究<br />藝術指導<br />無障礙 &middot; SEO</dd></div>
+        <div><dt>Tools</dt><dd>Figma &middot; Miro<br />NVDA 螢幕報讀器<br />SEMrush &middot; 無障礙掃描</dd></div>
       </dl>
     </section>
 
@@ -86,6 +87,11 @@
     </section>
 
     <section class="case-section">
+      <p class="case-kicker">Research</p>
+      <h2 class="step-title">五場訪談、39 份問卷，<em>五種使用者角色</em>。</h2>
+      <div class="step-body">
+        <p>研究由四個目標框定：理解使用者來做什麼、評估既有體驗、讓網站對齊 WCAG 2.0、提升搜尋排名。五場一對一訪談（領域專家、視障使用者、加盟主與奶茶消費者）與 39 份問卷，收斂成五種使用者角色 —— 每一項發現都以 NVDA 螢幕報讀器實際測試、用 SEMrush 持續追蹤。</p>
+      </div>
       <figure>
         <div class="fig-duo">
           <img src="../../assets/archive/gongcha-website/research-photo-1.webp" alt="白板上進行中的親和圖分析" loading="lazy" />
@@ -93,18 +99,91 @@
         </div>
         <figcaption>研究進行中 —— 將五場一對一訪談與 39 份問卷的發現做親和圖分析，收斂出引導整個設計的五種使用者角色。</figcaption>
       </figure>
+      <div class="step-body">
+        <p><strong>視障使用者</strong>希望用鍵盤與螢幕報讀器獨立瀏覽、下單。他們遇到的四個阻礙，形塑了整個改版：</p>
+        <ul>
+          <li>輪播 banner 在報讀器唸完之前就切換，鍵盤也無法切到下一張或最後一張。</li>
+          <li>門市地圖的下拉篩選器完全無法用鍵盤操作。</li>
+          <li>點餐會無預警跳轉到第三方外送網站 —— 沒有提示、也回不來。</li>
+          <li>色彩對比不足，色盲使用者難以辨識。</li>
+        </ul>
+        <p><strong>茶飲愛好者</strong>想查營業時間、季節新品、集點與營養／過敏原資訊 —— 但過去一杯飲料只有名字和照片。<strong>潛在加盟主</strong>要的是透明的成本與流程；隱藏費用與單薄的支援是他們最深的顧慮。<strong>活動／婚禮策劃人</strong>需要比較外燴方案，卻看不出每個方案包含什麼。<strong>求職者</strong>想找附近門市的職缺與清楚的應徵流程。</p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <p class="case-kicker">Information Architecture</p>
+      <h2 class="step-title">從親和圖到 <em>50+ 個頁面</em>。</h2>
+      <div class="step-body">
+        <p>研究的整理直接變成了架構。光是加盟專區，從加盟主與專家訪談萃取出的九個決策因素（品牌知名度、財務門檻、教育訓練等），就透過親和圖對映成九個頁面 —— 從產業介紹到申請表單。放大到全站，同樣的方法把六種訪客目標 —— 品牌、菜單、門市、加盟、活動、職涯 —— 組織成 50+ 頁的網站地圖。</p>
+      </div>
+      <figure>
+        <img src="../../assets/archive/gongcha-website/research-2.webp" alt="改版後 Gong cha 官網的網站地圖" loading="lazy" />
+        <figcaption>資訊架構 —— 六大區、50+ 頁，每一頁都能用鍵盤抵達。</figcaption>
+      </figure>
+    </section>
+
+    <section class="case-section">
+      <p class="case-kicker">Key Decisions</p>
+      <h2 class="step-title">五個頁面，<em>五個無障礙決策</em>。</h2>
+      <div class="step-body">
+        <p><strong>首頁</strong> —— 輪播 banner 在報讀器唸完前就切換、把鍵盤使用者困住，而 85% 的造訪來自行動裝置。解法：行動優先 —— 移除輪播、把資訊放進向下捲動的版面，並全面落實色彩對比、可縮放字級、替代文字、有清楚錯誤訊息的表單，以及有字幕的影音。</p>
+      </div>
+      <figure>
+        <img src="../../assets/archive/gongcha-website/landing.webp" alt="行動優先的首頁在筆電與手機上的畫面" loading="lazy" />
+        <figcaption>行動優先的首頁 —— 移除輪播，把內容放進捲動版面。</figcaption>
+      </figure>
+      <div class="step-body">
+        <p><strong>品牌頁</strong> —— Gong cha 在美國市場的品牌共鳴不足，識別中的亞洲文化元素加深了文化隔閡。解法：以完整的品牌頁介紹品牌故事、歷史、全球布局、識別系統與承諾，並附上聯絡表單。</p>
+      </div>
+      <figure>
+        <img src="../../assets/archive/gongcha-website/brand-page.webp" alt="品牌專區頁面在多台平板上的畫面" loading="lazy" />
+        <figcaption>品牌專區 —— 品牌故事、1996 年以來的歷史與識別系統，拉近文化距離。</figcaption>
+      </figure>
+      <div class="step-body">
+        <p><strong>菜單</strong> —— 圖片上的文字螢幕報讀器讀不到；初次接觸手搖飲的顧客也不知道怎麼點。解法：banner 改用可被報讀的網頁文字與描述性 metatext；補上熱量、成分與過敏原資訊；把店內點餐流程視覺化成一步一步的「How to Order」指南。</p>
+      </div>
+      <figure>
+        <img src="../../assets/archive/gongcha-website/menu-page.webp" alt="菜單頁在筆電、平板與手機上的畫面" loading="lazy" />
+        <figcaption>菜單頁全面改用網頁文字 —— 營養、成分資訊，與螢幕報讀器能讀的產品頁。</figcaption>
+      </figure>
+      <div class="step-body">
+        <p><strong>門市</strong> —— 「Gong cha near me」是最熱門的搜尋字之一，而同一頁要服務四種人：查營業時間與外送的茶飲客、用地圖評估店距的加盟主、詢問外燴的策劃人、找職缺的求職者。資訊密度的代價，是地圖的下拉選單與篩選器讓螢幕報讀器寸步難行。解法：為每家店建立含照片與完整資訊的獨立頁面，並精簡或移除部分篩選器。</p>
+      </div>
+      <figure>
+        <img src="../../assets/archive/gongcha-website/locations.webp" alt="門市搜尋地圖與單店頁面" loading="lazy" />
+        <figcaption>每家門市都有含照片與完整資訊的獨立頁面 —— 讓報讀器卡關的篩選器都拿掉了。</figcaption>
+      </figure>
+      <div class="step-body">
+        <p><strong>加盟</strong> —— 九頁的架構直接來自上方的親和圖；內容深度則來自田野：與 Gong cha 活動經理的專家訪談，讓我們理解婚禮、學校與募款活動實際怎麼訂外燴，因此設計了外燴預約表單，讓門市人員提早掌握活動需求、提升成單率。</p>
+      </div>
+      <figure>
+        <img src="../../assets/archive/gongcha-website/franchise-1.webp" alt="加盟專區頁面在四種裝置上的畫面" loading="lazy" />
+        <figcaption>加盟專區 —— 從產業介紹到申請表單，共九個頁面。</figcaption>
+      </figure>
+      <div class="step-body">
+        <p>九個決策因素中，財務門檻最受重視 —— 所以加盟成本改用透明的逐項表格呈現，而不是一份 PDF 手冊。</p>
+      </div>
+      <figure>
+        <img src="../../assets/archive/gongcha-website/franchise-2.webp" alt="桌機螢幕上的 Financial Information 頁面" loading="lazy" />
+        <figcaption>Financial Information 頁 —— 從權利金到開發成本，每一筆費用逐項列出。</figcaption>
+      </figure>
+      <div class="step-body">
+        <p>無障礙的表單只完成了一半 —— 每一次送出，都要有清楚的確認回饋。</p>
+      </div>
+      <figure>
+        <img src="../../assets/archive/gongcha-website/thank-you.webp" alt="平板與手機上的 Thank You 確認頁" loading="lazy" />
+        <figcaption>Thank You 頁 —— 每份表單都以清楚、無障礙的確認頁收尾。</figcaption>
+      </figure>
     </section>
 
     <section class="case-section">
       <p class="case-kicker">Results</p>
       <h2 class="step-title">上線三個月，<em>數字說話</em>。</h2>
       <div class="step-body">
-        <p>我帶領設計團隊完成 SEO 優化、無障礙的響應式官網改版，上線超過 50 個頁面。根據 Google Analytics 與 SEMrush：工作階段成長 251.69%、新使用者成長 280.51%、跳出率下降 87.64%、頁面瀏覽量提升 44.69%；點擊率從 1.28% 升至 2.80%（+119%）；搜尋能見度由 19.62% 躍升至 44.40%；行動響應式體驗帶來 34% 的流量成長。無障礙分數則從 56% 提升到 88% —— 過程中修正了超過 150 個違規項目。</p>
+        <p>改版上線了 50+ 個 SEO 優化的無障礙頁面。根據 Google Analytics 與 SEMrush：工作階段成長 251.69%、新使用者成長 280.51%、跳出率下降 87.64%、頁面瀏覽量提升 44.69%；點擊率從 1.28% 升至 2.80%（+119%）；搜尋能見度由 19.62% 躍升至 44.40%；光是行動響應式體驗就帶來 34% 的流量成長。</p>
+        <p>無障礙從口號變成數字：SEMrush 分數從 56% 提升到 88%，過程中修正超過 150 個違規項目 —— 遠高於 75% 的門檻（在愛爾蘭等市場，低於此線的網站有法律風險）。</p>
       </div>
-      <figure>
-        <img src="../../assets/archive/gongcha-website/research-2.webp" alt="改版後 Gong cha 官網的網站地圖" loading="lazy" />
-        <figcaption>50+ 頁面背後的資訊架構 —— 品牌、菜單、門市、加盟、活動與職涯。</figcaption>
-      </figure>
       <div class="stats">
         <div class="stat">
           <p class="stat-value">+251%</p>
@@ -126,60 +205,9 @@
         <img src="../../assets/archive/gongcha-website/seasonal-campaign.webp" alt="季節活動頁在筆電、平板與手機上的畫面" loading="lazy" />
         <figcaption>季節活動頁在每個裝置上都行動優先 —— 光是響應式體驗就帶來 34% 的流量成長。</figcaption>
       </figure>
-    </section>
-
-    <section class="case-section">
-      <p class="case-kicker">Key Decisions</p>
-      <h2 class="step-title">五個頁面，<em>五個無障礙決策</em>。</h2>
       <div class="step-body">
-        <p><strong>首頁</strong> —— 輪播 banner 對鍵盤與螢幕報讀器並不友善，且 85% 的使用者從行動裝置造訪。解法：行動優先，移除輪播、把資訊放進向下捲動的版面，並全面落實色彩對比、可縮放字級、替代文字與表單提示。</p>
+        <p>這一頁自己也遵守同樣的規則 —— 語意化標題、每張圖都有替代文字，以及可用鍵盤操作的圖片檢視器。</p>
       </div>
-      <figure>
-        <img src="../../assets/archive/gongcha-website/landing.webp" alt="行動優先的首頁在筆電與手機上的畫面" loading="lazy" />
-        <figcaption>行動優先的首頁 —— 移除輪播，把內容放進捲動版面。</figcaption>
-      </figure>
-      <div class="step-body">
-        <p><strong>品牌頁</strong> —— Gong cha 在美國市場的品牌共鳴不足，識別中的亞洲文化元素加深了文化隔閡。解法：以完整的品牌頁介紹品牌故事、歷史、全球布局、識別系統與承諾，並附上聯絡表單。</p>
-      </div>
-      <figure>
-        <img src="../../assets/archive/gongcha-website/brand-page.webp" alt="品牌專區頁面在多台平板上的畫面" loading="lazy" />
-        <figcaption>品牌專區 —— 品牌故事、1996 年以來的歷史與識別系統，拉近文化距離。</figcaption>
-      </figure>
-      <div class="step-body">
-        <p><strong>菜單</strong> —— 圖片上的文字螢幕報讀器讀不到；初次接觸手搖飲的顧客也不知道怎麼點。解法：banner 改用可被報讀的網頁文字與描述性 metatext；補上熱量、成分與過敏原資訊；把店內點餐流程視覺化成一步一步的「How to Order」指南。</p>
-      </div>
-      <figure>
-        <img src="../../assets/archive/gongcha-website/menu-page.webp" alt="菜單頁在筆電、平板與手機上的畫面" loading="lazy" />
-        <figcaption>菜單頁全面改用網頁文字 —— 營養、成分資訊，與螢幕報讀器能讀的產品頁。</figcaption>
-      </figure>
-      <div class="step-body">
-        <p><strong>門市</strong> —— 「Gong cha near me」是最熱門的搜尋字之一，但地圖上大量的下拉選單與篩選器讓螢幕報讀器寸步難行。解法：為每家店建立含照片與完整資訊的獨立頁面，並精簡或移除部分篩選器。</p>
-      </div>
-      <figure>
-        <img src="../../assets/archive/gongcha-website/locations.webp" alt="門市搜尋地圖與單店頁面" loading="lazy" />
-        <figcaption>每家門市都有含照片與完整資訊的獨立頁面 —— 讓報讀器卡關的篩選器都拿掉了。</figcaption>
-      </figure>
-      <div class="step-body">
-        <p><strong>加盟</strong> —— 透過競品分析、專家與加盟主訪談，歸納出品牌知名度、財務門檻、教育訓練等九個關鍵決策因素，據此把加盟資訊組織成九個頁面（產業介紹到申請表單）；另為外燴服務設計預約表單，讓門市人員提早掌握活動需求、提升成單率。</p>
-      </div>
-      <figure>
-        <img src="../../assets/archive/gongcha-website/franchise-1.webp" alt="加盟專區頁面在四種裝置上的畫面" loading="lazy" />
-        <figcaption>加盟專區 —— 從產業介紹到申請表單，共九個頁面。</figcaption>
-      </figure>
-      <div class="step-body">
-        <p>九個決策因素中，財務門檻最受重視 —— 所以加盟成本改用透明的逐項表格呈現，而不是一份 PDF 手冊。</p>
-      </div>
-      <figure>
-        <img src="../../assets/archive/gongcha-website/franchise-2.webp" alt="桌機螢幕上的 Financial Information 頁面" loading="lazy" />
-        <figcaption>Financial Information 頁 —— 從權利金到開發成本，每一筆費用逐項列出。</figcaption>
-      </figure>
-      <div class="step-body">
-        <p>無障礙的表單只完成了一半 —— 每一次送出，都要有清楚的確認回饋。</p>
-      </div>
-      <figure>
-        <img src="../../assets/archive/gongcha-website/thank-you.webp" alt="平板與手機上的 Thank You 確認頁" loading="lazy" />
-        <figcaption>Thank You 頁 —— 每份表單都以清楚、無障礙的確認頁收尾。</figcaption>
-      </figure>
     </section>
 
     <section class="case-section">
