@@ -267,6 +267,26 @@
 /* Two side-by-side photos inside one figure — each gets its own uniform rounded corners */
 .case figure .fig-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
+/* ---------- Award recognition block (template for award-winning projects) ---------- */
+.award-badges {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(212, 212, 216, 0.6);
+}
+.award-badges img { height: 76px; width: auto; flex: none; }
+.award-badges p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--muted, #555);
+}
+@media (max-width: 720px) {
+  .award-badges { flex-wrap: wrap; gap: 18px; }
+}
+
 /* ---------- Click-to-zoom lightbox ---------- */
 .case figure img.zoomable { cursor: zoom-in; }
 .lightbox {
