@@ -266,6 +266,35 @@
 .case-section > figure + .stats { margin-top: 44px; }
 /* Two side-by-side photos inside one figure — each gets its own uniform rounded corners */
 .case figure .fig-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* ---------- Click-to-zoom lightbox ---------- */
+.case figure img.zoomable { cursor: zoom-in; }
+.lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 4vmin;
+  background: rgba(22, 22, 21, 0.93);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.lightbox.open { opacity: 1; pointer-events: auto; }
+.lightbox img {
+  max-width: 100%; max-height: 100%;
+  width: auto; height: auto;
+  border-radius: 8px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  cursor: zoom-out;
+}
+.lightbox-close {
+  position: absolute; top: 18px; right: 22px;
+  width: 44px; height: 44px;
+  border: 0; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff; font-size: 26px; line-height: 1;
+  cursor: pointer;
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.26); }
+@media (prefers-reduced-motion: reduce) { .lightbox { transition: none; } }
 /* Stacked variant — UI shots one per row at full column width instead of side by side */
 .step-grid.stacked { grid-template-columns: 1fr; }
 .step-grid {

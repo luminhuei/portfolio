@@ -816,3 +816,59 @@ function initTocFilter() {
   window.addEventListener("hashchange", applyFromHash);
 }
 initTocFilter();
+
+/* ---------- Click-to-zoom lightbox for case-study figures ---------- */
+function initLightbox() {
+  const imgs = [...document.querySelectorAll(".case figure img")].filter(
+    (img) => !img.closest(".bcf-figure")
+  );
+  if (!imgs.length) return;
+
+  const overlay = document.createElement("div");
+  overlay.className = "lightbox";
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-modal", "true");
+  overlay.setAttribute("aria-label", "Enlarged image view");
+  overlay.innerHTML =
+    '<button class="lightbox-close" aria-label="Close enlarged image">&#215;</button><img alt="" />';
+  document.body.appendChild(overlay);
+
+  const big = overlay.querySelector("img");
+  const closeBtn = overlay.querySelector(".lightbox-close");
+  let lastFocus = null;
+
+  const open = (img) => {
+    big.src = img.currentSrc || img.src;
+    big.alt = img.alt || "";
+    lastFocus = img;
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+    closeBtn.focus();
+  };
+  const close = () => {
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+    big.src = "";
+    if (lastFocus) lastFocus.focus();
+  };
+
+  imgs.forEach((img) => {
+    img.classList.add("zoomable");
+    img.setAttribute("tabindex", "0");
+    img.setAttribute("role", "button");
+    img.setAttribute("aria-label", (img.alt ? img.alt + " — " : "") + "click to enlarge");
+    img.addEventListener("click", () => open(img));
+    img.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        open(img);
+      }
+    });
+  });
+
+  overlay.addEventListener("click", close);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.classList.contains("open")) close();
+  });
+}
+initLightbox();
