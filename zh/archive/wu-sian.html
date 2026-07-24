@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="../../case.css?v=20260724c" />
+  <link rel="stylesheet" href="../../case.css?v=20260724d" />
   <script src="../../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-brand">
@@ -81,11 +81,31 @@
           <div class="atmo-ui">
             <p class="atmo-title">The Atmosphere</p>
             <div class="atmo-btns">
-              <button type="button" data-atmo="original" class="on">此刻</button>
-              <button type="button" data-atmo="morning">晨光 08:00</button>
-              <button type="button" data-atmo="golden">黃昏 17:30</button>
-              <button type="button" data-atmo="night">夜間 21:00</button>
-              <button type="button" data-atmo="close">打烊後 23:00</button>
+              <button type="button" data-atmo="original" class="on">
+                <span class="atmo-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg></span>
+                <span class="atmo-time">13:00</span>
+                <span class="atmo-tip">此刻</span>
+              </button>
+              <button type="button" data-atmo="morning">
+                <span class="atmo-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18"/><path d="M7.5 17a4.5 4.5 0 0 1 9 0"/><path d="M12 8.5V4"/><path d="M10 6l2-2 2 2"/></svg></span>
+                <span class="atmo-time">08:00</span>
+                <span class="atmo-tip">晨光</span>
+              </button>
+              <button type="button" data-atmo="golden">
+                <span class="atmo-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18"/><path d="M7.5 17a4.5 4.5 0 0 1 9 0"/><path d="M12 4v4.5"/><path d="M10 6.5l2 2 2-2"/></svg></span>
+                <span class="atmo-time">17:30</span>
+                <span class="atmo-tip">黃昏</span>
+              </button>
+              <button type="button" data-atmo="night">
+                <span class="atmo-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></span>
+                <span class="atmo-time">21:00</span>
+                <span class="atmo-tip">夜間</span>
+              </button>
+              <button type="button" data-atmo="close">
+                <span class="atmo-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16"/><path d="M12 4v3"/><rect x="6.5" y="7" width="11" height="8" rx="1.2"/><path d="M9.5 11h5"/></svg></span>
+                <span class="atmo-time">23:00</span>
+                <span class="atmo-tip">打烊後</span>
+              </button>
             </div>
           </div>
         </div>
