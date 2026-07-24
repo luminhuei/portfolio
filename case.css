@@ -335,6 +335,50 @@
   background: #000;
 }
 
+/* ---------- The Atmosphere — lighting switcher overlay on the walkthrough ---------- */
+.atmo {
+  position: absolute; inset: 0;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.8s ease;
+  z-index: 2;
+}
+.atmo.on { opacity: 1; pointer-events: auto; }
+.atmo-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.atmo-img.on { opacity: 1; }
+.atmo-ui {
+  position: absolute; left: 0; right: 0;
+  bottom: clamp(28px, 7vh, 72px);
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+  z-index: 3;
+}
+.atmo-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(30px, 4.2vw, 48px);
+  color: #fff;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.5);
+}
+.atmo-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.atmo-btns button {
+  font: inherit; font-size: 13px; letter-spacing: 0.05em;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(18, 18, 18, 0.35);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.atmo-btns button.on { background: #fff; color: #121212; border-color: #fff; }
+
 /* ---------- Password-protected vault (agency page) ---------- */
 .vault-gate { display: flex; gap: 12px; margin-top: 28px; align-items: center; flex-wrap: wrap; }
 .vault-gate input {

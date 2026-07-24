@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="../../case.css?v=20260724b" />
+  <link rel="stylesheet" href="../../case.css?v=20260724c" />
   <script src="../../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-brand">
@@ -72,6 +72,23 @@
     <div class="video-scrolly" id="wgScrolly">
       <div class="video-scrolly-sticky">
         <video src="../../demos/assets/wusian-walkthrough.mp4?v=20260724b" poster="../../demos/assets/wusian-walkthrough-poster.jpg" muted playsinline preload="auto" aria-label="Willow Glen 門店連續走行影片 —— 從用餐大廳一路走到貢茶櫃台"></video>
+        <div class="atmo" id="wgAtmo">
+          <img class="atmo-img on" data-atmo="original" src="../../assets/archive/wu-sian/willow-glen-counter.webp" alt="Willow Glen 櫃台 —— 渲染原圖" loading="lazy" />
+          <img class="atmo-img" data-atmo="morning" src="../../assets/archive/wu-sian/atmo-morning.webp" alt="店內晨光" loading="lazy" />
+          <img class="atmo-img" data-atmo="golden" src="../../assets/archive/wu-sian/atmo-golden.webp" alt="店內黃昏光" loading="lazy" />
+          <img class="atmo-img" data-atmo="night" src="../../assets/archive/wu-sian/atmo-night.webp" alt="夜間營業時分" loading="lazy" />
+          <img class="atmo-img" data-atmo="close" src="../../assets/archive/wu-sian/atmo-close.webp" alt="打烊後 —— 只剩招牌亮著" loading="lazy" />
+          <div class="atmo-ui">
+            <p class="atmo-title">The Atmosphere</p>
+            <div class="atmo-btns">
+              <button type="button" data-atmo="original" class="on">此刻</button>
+              <button type="button" data-atmo="morning">晨光 08:00</button>
+              <button type="button" data-atmo="golden">黃昏 17:30</button>
+              <button type="button" data-atmo="night">夜間 21:00</button>
+              <button type="button" data-atmo="close">打烊後 23:00</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script>
@@ -98,12 +115,21 @@
         if (pendingSeek !== null) { const t = pendingSeek; pendingSeek = null; doSeek(t); }
       });
 
-      const onScroll = () => {
+      const atmo = document.getElementById("wgAtmo");
+  const aImgs = atmo.querySelectorAll(".atmo-img");
+  const aBtns = atmo.querySelectorAll(".atmo-btns button");
+  aBtns.forEach((b) => b.addEventListener("click", () => {
+    aBtns.forEach((x) => x.classList.toggle("on", x === b));
+    aImgs.forEach((im) => im.classList.toggle("on", im.dataset.atmo === b.dataset.atmo));
+  }));
+
+  const onScroll = () => {
         const r = wrap.getBoundingClientRect();
         const vh = window.innerHeight;
         /* progress across the whole wrapper: enters at viewport bottom = 0, pin release = 1 */
         const p = Math.min(Math.max((vh - r.top) / r.height, 0), 1);
         doSeek(p * DURATION);
+    atmo.classList.toggle("on", p >= 0.97);
       };
       document.addEventListener("scroll", onScroll, { passive: true });
       v.addEventListener("loadeddata", onScroll, { once: true });
