@@ -265,7 +265,8 @@
 .case-section > figure + .step-body,
 .case-section > figure + .stats { margin-top: 44px; }
 /* Consecutive figures stacked in a section (image-led archive pages) breathe apart */
-.case-section > figure + figure { margin-top: 44px; }
+.case-section > figure + figure,
+.case-section > .archive-links + figure { margin-top: 44px; }
 /* Two side-by-side photos inside one figure — each gets its own uniform rounded corners */
 .case figure .fig-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .case figure .fig-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
