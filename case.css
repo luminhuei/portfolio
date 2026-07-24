@@ -191,6 +191,14 @@
   border: 1px solid #e4e4e1;
   background: var(--card-light);
 }
+/* Videos inside a stage card are clipped by the stage itself — never round or border
+   the video element too, or the stage's black backdrop peeks through at the corners */
+.case .final-video-stage video,
+.case .fig-video-stage video {
+  border-radius: 0;
+  border: 0;
+  background: none;
+}
 
 /* Process steps */
 .step { margin-top: clamp(72px, 9vw, 120px); }
