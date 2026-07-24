@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="../../case.css?v=20260724a" />
+  <link rel="stylesheet" href="../../case.css?v=20260724b" />
   <script src="../../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-brand">
@@ -69,20 +69,64 @@
       <p>本作品獲 <strong>Iron A&rsquo; Design Award</strong>（室內空間與展覽設計類，2021&ndash;2022）—— 並於七個國際設計展中展出。<a href="https://competition.adesignaward.com/gooddesign.php?ID=137016" target="_blank" rel="noopener">官方得獎頁 &nearr;</a></p>
     </div>
 
-    <div class="video-bleed" id="wgWalkthrough">
-      <video src="../../demos/assets/wusian-walkthrough.mp4" poster="../../demos/assets/wusian-walkthrough-poster.jpg" muted playsinline preload="metadata" aria-label="Willow Glen 門店連續走行影片 —— 從用餐大廳一路走到貢茶櫃台"></video>
+    <div class="video-scrolly" id="wgScrolly">
+      <div class="video-scrolly-sticky">
+        <video src="../../demos/assets/wusian-walkthrough.mp4?v=20260724b" poster="../../demos/assets/wusian-walkthrough-poster.jpg" muted playsinline preload="auto" aria-label="Willow Glen 門店連續走行影片 —— 從用餐大廳一路走到貢茶櫃台"></video>
+      </div>
     </div>
     <script>
     (function () {
-      const wrap = document.getElementById("wgWalkthrough");
+      const wrap = document.getElementById("wgScrolly");
       if (!wrap) return;
       const v = wrap.querySelector("video");
-      let played = false;
-      new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting && !played) { played = true; v.play().catch(() => {}); }
-        });
-      }, { threshold: 0.35 }).observe(wrap);
+      v.muted = true;
+      const SCRUB_END = 5.083;
+      const CHAPTERS = [10.082, 15.081, 22.79];
+      const START_AT = [0.05, 0.35, 0.65];
+      let chapter = -1, stopAt = null, seekBusy = false, pendingSeek = null;
+
+      let seekTimer = null;
+      const doSeek = (t) => {
+        if (v.readyState < 1) return;
+        if (Math.abs(v.currentTime - t) < 0.04) return; /* same frame — no event would fire */
+        if (seekBusy) { pendingSeek = t; return; }
+        seekBusy = true;
+        v.currentTime = t;
+        clearTimeout(seekTimer);
+        seekTimer = setTimeout(() => { seekBusy = false; }, 300); /* safety: never deadlock */
+      };
+      v.addEventListener("seeked", () => {
+        clearTimeout(seekTimer);
+        seekBusy = false;
+        if (pendingSeek !== null) { const t = pendingSeek; pendingSeek = null; doSeek(t); }
+      });
+      v.addEventListener("timeupdate", () => {
+        if (stopAt !== null && v.currentTime >= stopAt) { v.pause(); stopAt = null; }
+      });
+
+      const onScroll = () => {
+        const r = wrap.getBoundingClientRect();
+        const vh = window.innerHeight;
+        if (r.top > 0) {
+          if (!v.paused) v.pause();
+          stopAt = null; chapter = -1;
+          const e = Math.min(Math.max(1 - r.top / vh, 0), 1);
+          doSeek(e * SCRUB_END);
+        } else {
+          const pinned = Math.min(Math.max(-r.top / (r.height - vh), 0), 1);
+          if (chapter === -1 && v.paused && Math.abs(v.currentTime - SCRUB_END) > 0.1) doSeek(SCRUB_END);
+          let target = -1;
+          for (let i = 0; i < START_AT.length; i++) if (pinned >= START_AT[i]) target = i;
+          if (target > chapter) {
+            chapter = target;
+            stopAt = CHAPTERS[target];
+            if (v.currentTime < SCRUB_END - 0.05) doSeek(SCRUB_END);
+            v.play().catch(() => {});
+          }
+        }
+      };
+      document.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
     })();
     </script>
 
