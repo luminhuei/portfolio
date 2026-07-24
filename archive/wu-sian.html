@@ -80,15 +80,12 @@
       if (!wrap) return;
       const v = wrap.querySelector("video");
       v.muted = true;
-      const SCRUB_END = 5.083;                   /* phase 1: scrubbed on scroll */
-      const CHAPTERS = [10.082, 15.081, 22.79];  /* chapter end times */
-      const START_AT = [0.05, 0.35, 0.65];       /* pinned-progress trigger points */
-      let chapter = -1, stopAt = null, seekBusy = false, pendingSeek = null;
+      const DURATION = 22.73; /* full video scrubbed across the whole wrapper */
+      let seekBusy = false, pendingSeek = null, seekTimer = null;
 
-      let seekTimer = null;
       const doSeek = (t) => {
         if (v.readyState < 1) return;
-        if (Math.abs(v.currentTime - t) < 0.04) return; /* same frame — no event would fire */
+        if (Math.abs(v.currentTime - t) < 0.03) return; /* same frame — no event would fire */
         if (seekBusy) { pendingSeek = t; return; }
         seekBusy = true;
         v.currentTime = t;
@@ -100,34 +97,16 @@
         seekBusy = false;
         if (pendingSeek !== null) { const t = pendingSeek; pendingSeek = null; doSeek(t); }
       });
-      v.addEventListener("timeupdate", () => {
-        if (stopAt !== null && v.currentTime >= stopAt) { v.pause(); stopAt = null; }
-      });
 
       const onScroll = () => {
         const r = wrap.getBoundingClientRect();
         const vh = window.innerHeight;
-        if (r.top > 0) {
-          /* phase 1: the video slides up with the page — scrub 0→5s with entry progress */
-          if (!v.paused) v.pause();
-          stopAt = null; chapter = -1;
-          const e = Math.min(Math.max(1 - r.top / vh, 0), 1);
-          doSeek(e * SCRUB_END);
-        } else {
-          /* pinned full-screen: each scroll threshold plays the next 5s chapter */
-          const pinned = Math.min(Math.max(-r.top / (r.height - vh), 0), 1);
-          if (chapter === -1 && v.paused && Math.abs(v.currentTime - SCRUB_END) > 0.1) doSeek(SCRUB_END);
-          let target = -1;
-          for (let i = 0; i < START_AT.length; i++) if (pinned >= START_AT[i]) target = i;
-          if (target > chapter) {
-            chapter = target;
-            stopAt = CHAPTERS[target];
-            if (v.currentTime < SCRUB_END - 0.05) doSeek(SCRUB_END);
-            v.play().catch(() => {});
-          }
-        }
+        /* progress across the whole wrapper: enters at viewport bottom = 0, pin release = 1 */
+        const p = Math.min(Math.max((vh - r.top) / r.height, 0), 1);
+        doSeek(p * DURATION);
       };
       document.addEventListener("scroll", onScroll, { passive: true });
+      v.addEventListener("loadeddata", onScroll, { once: true });
       onScroll();
     })();
     </script>
