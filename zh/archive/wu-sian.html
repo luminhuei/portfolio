@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="../../case.css?v=20260723f" />
+  <link rel="stylesheet" href="../../case.css?v=20260724a" />
   <script src="../../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-brand">
@@ -68,6 +68,23 @@
       <img src="../../assets/awards/adesign-137016-wreath.png" alt="Iron A' Design Award 桂冠得獎標章" loading="lazy" />
       <p>本作品獲 <strong>Iron A&rsquo; Design Award</strong>（室內空間與展覽設計類，2021&ndash;2022）—— 並於七個國際設計展中展出。<a href="https://competition.adesignaward.com/gooddesign.php?ID=137016" target="_blank" rel="noopener">官方得獎頁 &nearr;</a></p>
     </div>
+
+    <div class="video-bleed" id="wgWalkthrough">
+      <video src="../../demos/assets/wusian-walkthrough.mp4" poster="../../demos/assets/wusian-walkthrough-poster.jpg" muted playsinline preload="metadata" aria-label="Willow Glen 門店連續走行影片 —— 從用餐大廳一路走到貢茶櫃台"></video>
+    </div>
+    <script>
+    (function () {
+      const wrap = document.getElementById("wgWalkthrough");
+      if (!wrap) return;
+      const v = wrap.querySelector("video");
+      let played = false;
+      new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && !played) { played = true; v.play().catch(() => {}); }
+        });
+      }, { threshold: 0.35 }).observe(wrap);
+    })();
+    </script>
 
     <section class="case-section">
       <p class="case-kicker">Concept</p>

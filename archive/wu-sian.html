@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="../case.css?v=20260723f" />
+  <link rel="stylesheet" href="../case.css?v=20260724a" />
   <script src="../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-brand">
@@ -68,6 +68,23 @@
       <img src="../assets/awards/adesign-137016-wreath.png" alt="Iron A' Design Award winner laurel logo" loading="lazy" />
       <p>Winner of the <strong>Iron A&rsquo; Design Award</strong> in Interior Space and Exhibition Design, 2021&ndash;2022 &mdash; exhibited at seven international design shows. <a href="https://competition.adesignaward.com/gooddesign.php?ID=137016" target="_blank" rel="noopener">Official winner page &nearr;</a></p>
     </div>
+
+    <div class="video-bleed" id="wgWalkthrough">
+      <video src="../demos/assets/wusian-walkthrough.mp4" poster="../demos/assets/wusian-walkthrough-poster.jpg" muted playsinline preload="metadata" aria-label="A continuous walkthrough of the Willow Glen store — from the dining hall to the Gong cha counter"></video>
+    </div>
+    <script>
+    (function () {
+      const wrap = document.getElementById("wgWalkthrough");
+      if (!wrap) return;
+      const v = wrap.querySelector("video");
+      let played = false;
+      new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && !played) { played = true; v.play().catch(() => {}); }
+        });
+      }, { threshold: 0.35 }).observe(wrap);
+    })();
+    </script>
 
     <section class="case-section">
       <p class="case-kicker">Concept</p>
