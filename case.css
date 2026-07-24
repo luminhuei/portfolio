@@ -612,6 +612,7 @@ html[lang="zh-Hant"] .sol-item p { line-height: 1.95; font-size: 16.5px; }
   justify-content: center;
   background: var(--lg, var(--card-light));
 }
+.toc-peek-img.has-photo span { display: none; }
 .toc-peek-img span {
   font-family: var(--mono);
   font-size: 11px;

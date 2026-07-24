@@ -751,9 +751,18 @@ function initWorkIndex() {
     peek.style.transform = `translate(${x}px, ${y}px)`;
   };
 
+  // pre-warm preview thumbnails so the card never flashes empty on first hover
+  document.querySelectorAll(".toc-row[data-img]").forEach((row) => {
+    const pre = new Image();
+    pre.src = row.dataset.img;
+  });
+
   document.querySelectorAll(".toc-row").forEach((row) => {
     row.addEventListener("mouseenter", (e) => {
-      img.style.background = row.style.getPropertyValue("--lg") || "";
+      img.style.background = row.dataset.img
+        ? `url("${row.dataset.img}") center top / cover no-repeat`
+        : row.style.getPropertyValue("--lg") || "";
+      img.classList.toggle("has-photo", !!row.dataset.img);
       note.textContent = row.dataset.note || "";
       tags.textContent = row.dataset.tags || "";
       peek.hidden = false;
