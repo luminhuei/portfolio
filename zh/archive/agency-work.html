@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="../../case.css?v=20260722g" />
+  <link rel="stylesheet" href="../../case.css?v=20260723g" />
   <script src="../../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-brand">
@@ -109,6 +109,49 @@
         <figcaption>僅以客戶名稱呈現 —— 產品設計仍受保密協議約束。</figcaption>
       </figure>
     </section>
+
+    <section class="case-section">
+      <p class="case-kicker">Full Case Studies</p>
+      <h2 class="step-title">密碼保護的完整內容。</h2>
+      <div class="step-body">
+        <p>完整的 campaign 與專案素材 —— 角色設定、分鏡、數位看板系統、品牌規範與 campaign 圖像 —— 需輸入密碼瀏覽，與舊網站相同的安排。<a href="mailto:luminhuei@gmail.com">來信</a>索取密碼。（內容目前為英文版）</p>
+      </div>
+      <div class="vault-gate">
+        <input type="password" id="vaultPw" placeholder="密碼" autocomplete="off" aria-label="密碼" />
+        <button id="vaultBtn" type="button">解鎖</button>
+        <p class="vault-msg" id="vaultMsg" hidden>密碼不正確，請再試一次。</p>
+      </div>
+      <div id="vaultContent"></div>
+    </section>
+
+    <script>
+    (function () {
+      const btn = document.getElementById("vaultBtn");
+      const pwEl = document.getElementById("vaultPw");
+      const msg = document.getElementById("vaultMsg");
+      async function unlock() {
+        const pw = pwEl.value.trim();
+        if (!pw) return;
+        btn.disabled = true; btn.textContent = "解鎖中…";
+        try {
+          const b64 = await fetch("../../assets/agency-vault.enc").then((r) => r.text());
+          const raw = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+          const salt = raw.slice(0, 16), iv = raw.slice(16, 28), ct = raw.slice(28);
+          const km = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
+          const key = await crypto.subtle.deriveKey({ name: "PBKDF2", salt, iterations: 250000, hash: "SHA-256" }, km, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+          const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ct);
+          document.getElementById("vaultContent").innerHTML = new TextDecoder().decode(pt);
+          document.querySelector(".vault-gate").hidden = true;
+          msg.hidden = true;
+        } catch (e) {
+          msg.hidden = false;
+          btn.disabled = false; btn.textContent = "解鎖";
+        }
+      }
+      btn.addEventListener("click", unlock);
+      pwEl.addEventListener("keydown", (e) => { if (e.key === "Enter") unlock(); });
+    })();
+    </script>
 
     <!-- Next -->
     <a class="next-project" href="../work.html">

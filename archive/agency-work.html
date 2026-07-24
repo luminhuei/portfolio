@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="../case.css?v=20260722g" />
+  <link rel="stylesheet" href="../case.css?v=20260723g" />
   <script src="../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-brand">
@@ -109,6 +109,49 @@
         <figcaption>Shown by client name only &mdash; product work remains under NDA.</figcaption>
       </figure>
     </section>
+
+    <section class="case-section">
+      <p class="case-kicker">Full Case Studies</p>
+      <h2 class="step-title">Password-protected work.</h2>
+      <div class="step-body">
+        <p>The complete campaign and program materials &mdash; character studies, storyboards, signage systems, brand guidelines and campaign graphics &mdash; are available with a password, the same arrangement as on my previous site. <a href="mailto:luminhuei@gmail.com">Email me</a> to request access.</p>
+      </div>
+      <div class="vault-gate">
+        <input type="password" id="vaultPw" placeholder="Password" autocomplete="off" aria-label="Vault password" />
+        <button id="vaultBtn" type="button">Unlock</button>
+        <p class="vault-msg" id="vaultMsg" hidden>Incorrect password &mdash; please try again.</p>
+      </div>
+      <div id="vaultContent"></div>
+    </section>
+
+    <script>
+    (function () {
+      const btn = document.getElementById("vaultBtn");
+      const pwEl = document.getElementById("vaultPw");
+      const msg = document.getElementById("vaultMsg");
+      async function unlock() {
+        const pw = pwEl.value.trim();
+        if (!pw) return;
+        btn.disabled = true; btn.textContent = "Unlocking…";
+        try {
+          const b64 = await fetch("../assets/agency-vault.enc").then((r) => r.text());
+          const raw = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+          const salt = raw.slice(0, 16), iv = raw.slice(16, 28), ct = raw.slice(28);
+          const km = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
+          const key = await crypto.subtle.deriveKey({ name: "PBKDF2", salt, iterations: 250000, hash: "SHA-256" }, km, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+          const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ct);
+          document.getElementById("vaultContent").innerHTML = new TextDecoder().decode(pt);
+          document.querySelector(".vault-gate").hidden = true;
+          msg.hidden = true;
+        } catch (e) {
+          msg.hidden = false;
+          btn.disabled = false; btn.textContent = "Unlock";
+        }
+      }
+      btn.addEventListener("click", unlock);
+      pwEl.addEventListener("keydown", (e) => { if (e.key === "Enter") unlock(); });
+    })();
+    </script>
 
     <!-- Next -->
     <a class="next-project" href="../work.html">
