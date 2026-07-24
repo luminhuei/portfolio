@@ -272,6 +272,19 @@
 .case figure .fig-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
 @media (max-width: 720px) { .case figure .fig-trio { grid-template-columns: 1fr; } }
 
+/* ---------- Brand color palette strip (coded swatches from the official guideline) ---------- */
+.color-strip { border-radius: 16px; overflow: hidden; border: 1px solid #e4e4e1; }
+.color-strip .swatch {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 18px 18px 14px;
+}
+.color-strip .swatch-primary { min-height: 150px; justify-content: flex-end; }
+.swatch .swatch-name { font-size: 15px; font-weight: 600; }
+.swatch .swatch-spec { font-family: var(--mono); font-size: 11px; line-height: 1.6; opacity: 0.85; }
+.swatch-row { display: grid; grid-template-columns: repeat(4, 1fr); }
+.swatch-row .swatch { min-height: 130px; justify-content: flex-end; }
+@media (max-width: 720px) { .swatch-row { grid-template-columns: 1fr 1fr; } }
+
 /* ---------- Award recognition block (template for award-winning projects) ---------- */
 .award-badges {
   display: flex;
