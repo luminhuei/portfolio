@@ -149,7 +149,7 @@
         /* progress across the whole wrapper: enters at viewport bottom = 0, pin release = 1 */
         const p = Math.min(Math.max((vh - r.top) / r.height, 0), 1);
         doSeek(p * DURATION);
-    atmo.classList.toggle("on", p >= 0.97);
+    atmo.classList.toggle("on", p >= 0.92);
       };
       document.addEventListener("scroll", onScroll, { passive: true });
       v.addEventListener("loadeddata", onScroll, { once: true });
