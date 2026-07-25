@@ -71,13 +71,13 @@
 
     <div class="video-scrolly" id="wgScrolly">
       <div class="video-scrolly-sticky">
-        <video src="../demos/assets/wusian-walkthrough.mp4?v=20260724b" poster="../demos/assets/wusian-walkthrough-poster.jpg" muted playsinline preload="auto" aria-label="A continuous walkthrough of the Willow Glen store — from the dining hall to the Gong cha counter"></video>
+        <video src="../demos/assets/wusian-walkthrough.mp4?v=20260725a" poster="../demos/assets/wusian-walkthrough-poster.jpg" muted playsinline preload="auto" aria-label="A continuous walkthrough of the Willow Glen store — from the dining hall to the Gong cha counter"></video>
         <div class="atmo" id="wgAtmo">
-          <img class="atmo-img on" data-atmo="original" src="../assets/archive/wu-sian/willow-glen-counter.webp" alt="The Willow Glen counter — original render" loading="lazy" />
-          <img class="atmo-img" data-atmo="morning" src="../assets/archive/wu-sian/atmo-morning.webp" alt="Morning light in the store" loading="lazy" />
-          <img class="atmo-img" data-atmo="golden" src="../assets/archive/wu-sian/atmo-golden.webp" alt="Golden hour light in the store" loading="lazy" />
-          <img class="atmo-img" data-atmo="night" src="../assets/archive/wu-sian/atmo-night.webp" alt="Evening business hours" loading="lazy" />
-          <img class="atmo-img" data-atmo="close" src="../assets/archive/wu-sian/atmo-close.webp" alt="After closing — only the sign stays lit" loading="lazy" />
+          <img class="atmo-img on" data-atmo="original" src="../assets/archive/wu-sian/willow-glen-counter.webp?v=20260725a" alt="The Willow Glen counter — original render" loading="lazy" />
+          <img class="atmo-img" data-atmo="morning" src="../assets/archive/wu-sian/atmo-morning.webp?v=20260725a" alt="Morning light in the store" loading="lazy" />
+          <img class="atmo-img" data-atmo="golden" src="../assets/archive/wu-sian/atmo-golden.webp?v=20260725a" alt="Golden hour light in the store" loading="lazy" />
+          <img class="atmo-img" data-atmo="night" src="../assets/archive/wu-sian/atmo-night.webp?v=20260725a" alt="Evening business hours" loading="lazy" />
+          <img class="atmo-img" data-atmo="close" src="../assets/archive/wu-sian/atmo-close.webp?v=20260725a" alt="After closing — only the sign stays lit" loading="lazy" />
           <div class="atmo-ui">
             <p class="atmo-title">The Atmosphere</p>
             <div class="atmo-btns">
@@ -117,7 +117,7 @@
       if (!wrap) return;
       const v = wrap.querySelector("video");
       v.muted = true;
-      const DURATION = 22.73; /* full video scrubbed across the whole wrapper */
+      const DURATION = 27.65; /* full video scrubbed across the whole wrapper */
       let seekBusy = false, pendingSeek = null, seekTimer = null;
 
       const doSeek = (t) => {
