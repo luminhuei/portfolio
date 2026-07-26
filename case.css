@@ -416,7 +416,7 @@
   position: absolute;
   top: clamp(14px, 2.5vw, 28px);
   right: clamp(14px, 2.5vw, 28px);
-  width: clamp(120px, 17vw, 220px);
+  width: clamp(100px, 14vw, 185px);
   height: auto;
   z-index: 1;
   pointer-events: none;
