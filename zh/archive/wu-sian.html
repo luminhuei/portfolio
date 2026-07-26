@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="../../case.css?v=20260724d" />
+  <link rel="stylesheet" href="../../case.css?v=20260726a" />
   <script src="../../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-brand">
@@ -72,6 +72,32 @@
     <div class="video-scrolly" id="wgScrolly">
       <div class="video-scrolly-sticky">
         <video src="../../demos/assets/wusian-walkthrough.mp4?v=20260725a" poster="../../demos/assets/wusian-walkthrough-poster.jpg" muted playsinline preload="auto" aria-label="Willow Glen 門店連續走行影片 —— 從用餐大廳一路走到貢茶櫃台"></video>
+        <svg class="minimap" viewBox="0 0 2092 1666" aria-hidden="true" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M420,60 H2050 V700" />
+          <path d="M2050,790 V1620 H790 L430,1190" />
+          <path d="M415,1150 L120,870 L430,460 V60" />
+          <path d="M430,1190 L510,1130" stroke-width="9" />
+          <path d="M415,1150 A98,98 0 0 1 510,1130" stroke-dasharray="18 20" stroke-width="6" />
+          <path d="M720,60 V390 H545" />
+          <path d="M455,390 H420" />
+          <path d="M455,390 A92,92 0 0 1 545,300" stroke-dasharray="18 20" stroke-width="6" />
+          <path d="M700,460 H1135 V290 H1250 V65" />
+          <path d="M1400,300 V835" />
+          <path d="M800,842 H1990" />
+          <path d="M120,868 H630" />
+          <path d="M2050,790 A90,90 0 0 1 1960,700" stroke-dasharray="18 20" stroke-width="6" />
+          <g fill="rgba(255,255,255,.55)" stroke="none" font-family="Helvetica, Arial, sans-serif" font-size="66" letter-spacing="6">
+            <text x="1310" y="1250">HALL</text>
+            <text x="1620" y="440">KITCHEN</text>
+            <text x="810" y="630">COUNTER</text>
+            <text x="490" y="245">WC</text>
+            <text x="318" y="1075" transform="rotate(-43 318 1075)">ENTRY</text>
+          </g>
+          <g id="wgCam" transform="translate(880,1000) rotate(25)">
+            <path d="M0,0 L-72,-155 A170,170 0 0 1 72,-155 Z" fill="rgba(255,255,255,.25)" stroke="none"/>
+            <circle r="19" fill="#fff" stroke="none"/>
+          </g>
+        </svg>
         <div class="atmo" id="wgAtmo">
           <img class="atmo-img on" data-atmo="original" src="../../assets/archive/wu-sian/willow-glen-counter.webp?v=20260725a" alt="Willow Glen 櫃台 —— 渲染原圖" loading="lazy" />
           <img class="atmo-img" data-atmo="morning" src="../../assets/archive/wu-sian/atmo-morning.webp?v=20260725a" alt="店內晨光" loading="lazy" />
@@ -135,7 +161,23 @@
         if (pendingSeek !== null) { const t = pendingSeek; pendingSeek = null; doSeek(t); }
       });
 
-      const atmo = document.getElementById("wgAtmo");
+      const cam = document.getElementById("wgCam");
+  const WAYPTS = [
+    [0.00, 880, 1000, 25],
+    [0.18, 860, 990, -55],
+    [0.54, 850, 980, -125],
+    [0.72, 660, 780, -15],
+    [0.92, 880, 660, 14],
+    [1.00, 880, 660, 14],
+  ];
+  const camAt = (p) => {
+    let i = 0;
+    while (i < WAYPTS.length - 2 && p > WAYPTS[i + 1][0]) i++;
+    const a = WAYPTS[i], b = WAYPTS[i + 1];
+    const t = Math.min(Math.max((p - a[0]) / (b[0] - a[0]), 0), 1);
+    return [a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t, a[3] + (b[3] - a[3]) * t];
+  };
+  const atmo = document.getElementById("wgAtmo");
   const aImgs = atmo.querySelectorAll(".atmo-img");
   const aBtns = atmo.querySelectorAll(".atmo-btns button");
   aBtns.forEach((b) => b.addEventListener("click", () => {
@@ -150,6 +192,8 @@
         const p = Math.min(Math.max((vh - r.top) / r.height, 0), 1);
         doSeek(p * DURATION);
     atmo.classList.toggle("on", p >= 0.92);
+    const c = camAt(p);
+    cam.setAttribute("transform", "translate(" + c[0].toFixed(1) + "," + c[1].toFixed(1) + ") rotate(" + c[2].toFixed(1) + ")");
       };
       document.addEventListener("scroll", onScroll, { passive: true });
       v.addEventListener("loadeddata", onScroll, { once: true });
