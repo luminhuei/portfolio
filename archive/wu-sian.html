@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="../case.css?v=20260726c" />
+  <link rel="stylesheet" href="../case.css?v=20260727a" />
   <script src="../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-brand">
@@ -72,6 +72,38 @@
     <div class="video-scrolly" id="wgScrolly">
       <div class="video-scrolly-sticky">
         <video src="../demos/assets/wusian-walkthrough.mp4?v=20260726d" poster="../demos/assets/wusian-walkthrough-poster.jpg?v=20260726c" muted playsinline preload="auto" aria-label="A continuous walkthrough of the Willow Glen store — from the dining hall to the Gong cha counter"></video>
+        <div class="specnotes" aria-hidden="true">
+          <div class="specnote" data-from="0.03" data-to="0.11">
+            <span class="specnote-num">01</span>
+            <span class="specnote-label">Entry Gallery</span>
+            <span class="specnote-data">Picture frames 600&times;800 &middot; leaf stencil, dark gray</span>
+          </div>
+          <div class="specnote" data-from="0.155" data-to="0.20">
+            <span class="specnote-num">02</span>
+            <span class="specnote-label">Signature Hall</span>
+            <span class="specnote-data">Signature-pattern sofa <i class="sw" style="background:#ba0c2f"></i>Tea Red 200C &middot; tea-story chalkboard &middot; TL-01 non-slip tile</span>
+          </div>
+          <div class="specnote" data-from="0.36" data-to="0.46">
+            <span class="specnote-num">03</span>
+            <span class="specnote-label">Material Palette</span>
+            <span class="specnote-data">WF-01 oak-coated wood &middot; <i class="sw" style="background:#dcb794"></i>PANTONE 4665C &middot; <i class="sw" style="background:#d7d2cb"></i>Warm Gray 1C</span>
+          </div>
+          <div class="specnote" data-from="0.50" data-to="0.60">
+            <span class="specnote-num">04</span>
+            <span class="specnote-label">Storefront</span>
+            <span class="specnote-data">Full-height glazing &middot; window bar seating &middot; black track lighting</span>
+          </div>
+          <div class="specnote" data-from="0.66" data-to="0.75">
+            <span class="specnote-num">05</span>
+            <span class="specnote-label">Brand Wall</span>
+            <span class="specnote-data">貢茶 seal &middot; acrylic H540 &middot; <i class="sw" style="background:#ba0c2f"></i>Tea Red 200C on oak</span>
+          </div>
+          <div class="specnote" data-from="0.80" data-to="0.88">
+            <span class="specnote-num">06</span>
+            <span class="specnote-label">Counter</span>
+            <span class="specnote-data">Menu boards 995&times;585 aluminum &middot; ORDER HERE acrylic &middot; warm indirect light</span>
+          </div>
+        </div>
         <div class="atmo" id="wgAtmo">
           <img class="atmo-img on" data-atmo="original" src="../assets/archive/wu-sian/willow-glen-counter.webp?v=20260725a" alt="The Willow Glen counter — original render" loading="lazy" />
           <img class="atmo-img" data-atmo="morning" src="../assets/archive/wu-sian/atmo-morning.webp?v=20260725a" alt="Morning light in the store" loading="lazy" />
@@ -135,7 +167,8 @@
         if (pendingSeek !== null) { const t = pendingSeek; pendingSeek = null; doSeek(t); }
       });
 
-      const atmo = document.getElementById("wgAtmo");
+      const notes = document.querySelectorAll(".specnote");
+  const atmo = document.getElementById("wgAtmo");
   const aImgs = atmo.querySelectorAll(".atmo-img");
   const aBtns = atmo.querySelectorAll(".atmo-btns button");
   aBtns.forEach((b) => b.addEventListener("click", () => {
@@ -150,6 +183,7 @@
         const p = Math.min(Math.max((vh - r.top) / r.height, 0), 1);
         doSeek(p * DURATION);
     atmo.classList.toggle("on", p >= 0.92);
+    notes.forEach((n) => n.classList.toggle("on", p >= +n.dataset.from && p <= +n.dataset.to));
       };
       document.addEventListener("scroll", onScroll, { passive: true });
       v.addEventListener("loadeddata", onScroll, { once: true });
