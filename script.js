@@ -828,10 +828,10 @@ initTocFilter();
 
 /* ---------- Click-to-zoom lightbox for case-study figures ---------- */
 function initLightbox() {
-  const imgs = [...document.querySelectorAll(".case figure img")].filter(
-    (img) => !img.closest(".bcf-figure")
-  );
-  if (!imgs.length) return;
+  const collect = () =>
+    [...document.querySelectorAll(".case figure img")].filter(
+      (img) => !img.closest(".bcf-figure") && !img.classList.contains("zoomable")
+    );
 
   const overlay = document.createElement("div");
   overlay.className = "lightbox";
@@ -861,7 +861,7 @@ function initLightbox() {
     if (lastFocus) lastFocus.focus();
   };
 
-  imgs.forEach((img) => {
+  const bind = (img) => {
     img.classList.add("zoomable");
     img.setAttribute("tabindex", "0");
     img.setAttribute("role", "button");
@@ -873,7 +873,11 @@ function initLightbox() {
         open(img);
       }
     });
-  });
+  };
+
+  const scan = () => collect().forEach(bind);
+  scan();
+  window.rescanLightbox = scan;
 
   overlay.addEventListener("click", close);
   document.addEventListener("keydown", (e) => {

@@ -74,7 +74,7 @@
         if (!pw) return;
         btn.disabled = true; btn.textContent = "Unlocking…";
         try {
-          const b64 = await fetch("../assets/agency-vault.enc?v=20260727d").then((r) => r.text());
+          const b64 = await fetch("../assets/agency-vault.enc?v=20260727g").then((r) => r.text());
           const raw = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
           const salt = raw.slice(0, 16), iv = raw.slice(16, 28), ct = raw.slice(28);
           const km = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
@@ -97,6 +97,7 @@
             v.src = URL.createObjectURL(new Blob([arr], { type: mime }));
           });
           document.getElementById("locked").hidden = false;
+          if (window.rescanLightbox) window.rescanLightbox();
           document.getElementById("gate").remove();
           window.scrollTo({ top: 0, behavior: "instant" });
         } catch (e) {
@@ -157,6 +158,6 @@
     <p class="footer-privacy">This site uses cookies and analytics (Google Analytics, Microsoft Clarity) to understand how visitors use it.</p>
   </footer>
 
-  <script src="../script.js"></script>
+  <script src="../script.js?v=20260727e"></script>
 </body>
 </html>
