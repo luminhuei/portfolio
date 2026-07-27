@@ -59,28 +59,8 @@
     </section>
 
     <div id="locked" hidden>
-      <section class="case-intro">
-        <div class="case-intro-main">
-          <p class="case-kicker">Overview</p>
-          <p class="case-lead">規劃系統,<em>把週期性工作變成模板</em>。</p>
-          <div class="case-intro-body">
-            <p>為 Xfinity 打造可重複使用的季度規劃模板系統 —— 把週期性的 campaign 簡報與圖像標準化成模板,並更新 Xfinity Mobile 的 SEO 內容。</p>
-          </div>
-        </div>
-        <dl class="case-meta">
-        <div><dt>Company</dt><dd>廣告代理商（NDA）</dd></div>
-        <div><dt>Platform</dt><dd>Campaign &middot; 數位</dd></div>
-        <div><dt>Year</dt><dd>2020&ndash;2021</dd></div>
-        <div><dt>Team</dt><dd>代理商團隊</dd></div>
-        <div><dt>Role</dt><dd>視覺設計</dd></div>
-      </dl>
-      </section>
-
-      <section class="case-section">
-        <figure>
-          <img src="../../assets/archive/agency-work/xfinity.webp" alt="Xfinity Quarterly Planning 摘錄" loading="lazy" />
-        </figure>
-        <div id="vaultContent"></div>
+      <div id="vaultContent"></div>
+    </div>
       </section>
     </div>
     </div>
@@ -95,7 +75,7 @@
         if (!pw) return;
         btn.disabled = true; btn.textContent = "解鎖中…";
         try {
-          const b64 = await fetch("../../assets/agency-vault.enc").then((r) => r.text());
+          const b64 = await fetch("../../assets/agency-vault-zh.enc?v=20260727a").then((r) => r.text());
           const raw = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
           const salt = raw.slice(0, 16), iv = raw.slice(16, 28), ct = raw.slice(28);
           const km = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
