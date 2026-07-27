@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>California Stores — 互動地圖 Demo v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #121212; --muted: #71717a; --faint: #a1a1aa; --red: #ba0c2f;
+    --serif: "Instrument Serif", "Noto Serif TC", Georgia, serif;
+    --sans: "Geist", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: "Geist Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fffefd; color: var(--ink); font-family: var(--sans); }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 64px 24px 120px; }
+  .kicker { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4.5vw, 52px); margin: 0 0 40px; letter-spacing: -0.01em; }
+  .stage { display: grid; grid-template-columns: minmax(340px, 1fr) 300px; gap: clamp(36px, 6vw, 80px); align-items: start; }
+  svg.camap { width: 100%; height: auto; display: block; }
+  .ca-fill { fill: #ecebe8; stroke: none; }
+  .store-dot { fill: var(--ink); cursor: pointer; transition: r .18s ease; }
+  .store-dot.active { fill: var(--ink); }
+
+  /* right rail — same grammar as the case-study cover metadata */
+  .case-meta { margin: 6px 0 0; border-top: 1px solid rgba(212, 212, 216, 0.6); }
+  .case-meta > div { padding: 16px 0; border-bottom: 1px solid rgba(212, 212, 216, 0.4); }
+  .case-meta dt { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .case-meta dd { font-size: 15px; font-weight: 500; margin: 0; line-height: 1.5; }
+
+  .browser { margin-top: 22px; }
+  .shot { position: relative; border-radius: 12px; overflow: hidden; background: #f4f4f2; cursor: zoom-in; }
+  .shot img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+  .navrow { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+  .navrow .count { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .06em; }
+  .arrows { display: flex; gap: 8px; }
+  .arrows button {
+    all: unset; cursor: pointer; width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid rgba(18,18,18,.25); display: flex; align-items: center; justify-content: center;
+    font-size: 15px; color: var(--ink); transition: background .2s ease;
+  }
+  .arrows button:hover { background: #f1f1ee; }
+
+  .viewer { position: fixed; inset: 0; z-index: 100; background: rgba(16,16,15,.94); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .25s ease; padding: 4vh 4vw; }
+  .viewer.on { opacity: 1; pointer-events: auto; }
+  .viewer img { max-width: 92vw; max-height: 82vh; border-radius: 6px; box-shadow: 0 30px 80px rgba(0,0,0,.5); cursor: zoom-out; }
+  .viewer figcaption { color: rgba(255,255,255,.85); font-family: var(--mono); font-size: 13px; margin-top: 14px; letter-spacing: .04em; }
+  .viewer .arrows { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: space-between; padding: 0 3vw; }
+  .viewer .arrows button { pointer-events: auto; width: 46px; height: 46px; border-color: rgba(255,255,255,.4); color: #fff; font-size: 19px; background: rgba(0,0,0,.25); }
+  .viewer .arrows button:hover { background: rgba(255,255,255,.18); }
+  @media (max-width: 760px) { .stage { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Demo v2 · Interactive Map</div>
+  <h1>Thirteen stores across California</h1>
+  <div class="stage">
+    <svg class="camap" id="camap" viewBox="0 0 600 700" aria-label="California store map"></svg>
+    <div>
+      <dl class="case-meta">
+        <div><dt>Store</dt><dd id="mStore">—</dd></div>
+        <div><dt>Year</dt><dd id="mYear">—</dd></div>
+        <div><dt>Location</dt><dd id="mLoc">—</dd></div>
+        <div><dt>Area</dt><dd id="mArea">—</dd></div>
+      </dl>
+      <div class="browser">
+        <div class="shot" id="shot"><img id="shotImg" src="" alt="" /></div>
+        <div class="navrow">
+          <span class="count" id="shotCount">1 / 1</span>
+          <div class="arrows">
+            <button id="prevBtn" aria-label="Previous">&#8592;</button>
+            <button id="nextBtn" aria-label="Next">&#8594;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="viewer" id="viewer">
+  <img id="viewerImg" src="" alt="" />
+  <figcaption id="viewerCap"></figcaption>
+  <div class="arrows">
+    <button id="vPrev" aria-label="Previous">&#8592;</button>
+    <button id="vNext" aria-label="Next">&#8594;</button>
+  </div>
+</div>
+
+<script>
+const CA_BORDER = [
+  [42.00,-124.21],[42.00,-120.00],[39.00,-120.00],[35.00,-114.63],
+  [34.30,-114.14],[34.17,-114.29],[34.00,-114.46],[33.40,-114.70],[32.72,-114.72],
+  [32.53,-117.12],[32.85,-117.28],[33.38,-117.59],[33.74,-118.11],[33.77,-118.43],
+  [34.00,-118.52],[34.08,-119.05],[34.45,-120.47],[34.90,-120.65],[35.16,-120.75],
+  [35.66,-121.28],[36.30,-121.90],[36.60,-121.89],[36.97,-122.03],[37.20,-122.40],
+  [37.78,-122.51],[38.00,-123.02],[38.31,-123.05],[38.95,-123.74],[39.80,-123.85],
+  [40.44,-124.40],[41.00,-124.15],[41.75,-124.25],[42.00,-124.21]
+];
+const A = "../assets/archive/wu-sian/";
+const STORES = [
+  {n:"Willow Glen", c:"San José", rg:"Bay Area", yr:"2023", sqft:"—", lat:37.309, lon:-121.899,
+   imgs:["willow-glen","willow-glen-hall","willow-glen-counter","willow-glen-window","willow-glen-banquettes","willow-glen-gallery"]},
+  {n:"Sunnyvale", c:"Sunnyvale", rg:"Bay Area", yr:"2022", sqft:"—", lat:37.369, lon:-122.036, imgs:["sunnyvale","sunnyvale-dining"]},
+  {n:"Dublin", c:"Dublin", rg:"East Bay", yr:"2022", sqft:"—", lat:37.702, lon:-121.936, imgs:["dublin","dublin-interior"]},
+  {n:"Hayward", c:"Hayward", rg:"East Bay", yr:"2022", sqft:"—", lat:37.669, lon:-122.081, imgs:["hayward","hayward-counter"]},
+  {n:"Tulare", c:"Tulare", rg:"Central Valley", yr:"2022", sqft:"—", lat:36.208, lon:-119.347, imgs:["tulare","tulare-dining"]},
+  {n:"Palmdale", c:"Palmdale", rg:"Greater LA", yr:"2023", sqft:"—", lat:34.579, lon:-118.116, imgs:["palmdale","palmdale-entry"]},
+  {n:"Little Tokyo", c:"Los Angeles", rg:"Greater LA", yr:"2022", sqft:"—", lat:34.050, lon:-118.240, imgs:["little-tokyo","little-tokyo-hall"]},
+  {n:"City of Industry", c:"City of Industry", rg:"Greater LA", yr:"2023", sqft:"—", lat:34.019, lon:-117.959, imgs:["city-of-industry","city-of-industry-hall"]},
+  {n:"Cerritos", c:"Cerritos", rg:"Greater LA", yr:"2022", sqft:"—", lat:33.858, lon:-118.065, imgs:["cerritos","cerritos-counter"]},
+  {n:"Santa Ana", c:"Santa Ana", rg:"Orange County", yr:"2022", sqft:"—", lat:33.746, lon:-117.868, imgs:["santa-ana","santa-ana-counter"]},
+  {n:"Menifee", c:"Menifee", rg:"Inland Empire", yr:"2022", sqft:"—", lat:33.678, lon:-117.167, imgs:["menifee","menifee-restroom"]},
+  {n:"Santee", c:"Santee", rg:"San Diego", yr:"2021", sqft:"—", lat:32.839, lon:-116.974, imgs:["santee-1","santee-2","santee-3","santee-dining"]}
+];
+const svg = document.getElementById("camap");
+const NS = "http://www.w3.org/2000/svg";
+const proj = (lat, lon) => [ (lon + 124.6) * 53.5 + 20, (42.15 - lat) * 67.5 + 15 ];
+const shape = document.createElementNS(NS, "path");
+shape.setAttribute("class", "ca-fill");
+shape.setAttribute("d", CA_BORDER.map((pt, i) => (i ? "L" : "M") + proj(pt[0], pt[1]).map(v => v.toFixed(1)).join(",")).join(" ") + " Z");
+svg.appendChild(shape);
+
+let cur = 0, shotIdx = 0;
+const mStore = document.getElementById("mStore"), mYear = document.getElementById("mYear"),
+      mLoc = document.getElementById("mLoc"), mArea = document.getElementById("mArea");
+const shotImg = document.getElementById("shotImg"), shotCount = document.getElementById("shotCount");
+const viewer = document.getElementById("viewer"), viewerImg = document.getElementById("viewerImg"), viewerCap = document.getElementById("viewerCap");
+
+function renderShot() {
+  const s = STORES[cur];
+  shotImg.src = A + s.imgs[shotIdx] + ".webp";
+  shotCount.textContent = (shotIdx + 1) + " / " + s.imgs.length;
+  if (viewer.classList.contains("on")) {
+    viewerImg.src = A + s.imgs[shotIdx] + ".webp";
+    viewerCap.textContent = s.n + " · " + s.c + " — " + (shotIdx + 1) + " / " + s.imgs.length;
+  }
+}
+function select(i) {
+  if (cur === i) return;
+  cur = i; shotIdx = 0;
+  const s = STORES[i];
+  mStore.textContent = s.n;
+  mYear.textContent = s.yr;
+  mLoc.textContent = s.c + " · " + s.rg;
+  mArea.textContent = s.sqft === "—" ? "—" : s.sqft;
+  STORES.forEach((st, j) => { st._dot.setAttribute("r", j === i ? 10 : 7); st._dot.classList.toggle("active", j === i); });
+  renderShot();
+}
+function step(d) { const s = STORES[cur]; shotIdx = (shotIdx + d + s.imgs.length) % s.imgs.length; renderShot(); }
+
+STORES.forEach((s, i) => {
+  const [x, y] = proj(s.lat, s.lon);
+  const dot = document.createElementNS(NS, "circle");
+  dot.setAttribute("class", "store-dot");
+  dot.setAttribute("cx", x.toFixed(1)); dot.setAttribute("cy", y.toFixed(1)); dot.setAttribute("r", 7);
+  dot.addEventListener("mouseenter", () => select(i));
+  dot.addEventListener("click", () => { select(i); });
+  svg.appendChild(dot);
+  s._dot = dot;
+});
+
+document.getElementById("prevBtn").addEventListener("click", () => step(-1));
+document.getElementById("nextBtn").addEventListener("click", () => step(1));
+document.getElementById("shot").addEventListener("click", () => {
+  viewer.classList.add("on"); renderShot();
+});
+viewer.addEventListener("click", (e) => { if (e.target === viewer || e.target === viewerImg) viewer.classList.remove("on"); });
+document.getElementById("vPrev").addEventListener("click", (e) => { e.stopPropagation(); step(-1); });
+document.getElementById("vNext").addEventListener("click", (e) => { e.stopPropagation(); step(1); });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") viewer.classList.remove("on");
+  if (e.key === "ArrowLeft") step(-1);
+  if (e.key === "ArrowRight") step(1);
+});
+
+cur = -1; select(0);
+</script>
+</body>
+</html>

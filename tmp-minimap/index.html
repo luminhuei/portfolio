@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Minimap 線稿校對</title>
+<style>
+  body { margin: 0; font-family: -apple-system, "PingFang TC", sans-serif; background: #1c1c1b; color: #eee; }
+  h2 { font-size: 15px; padding: 14px 18px 6px; margin: 0; font-weight: 600; }
+  .wrap { position: relative; width: 1046px; margin: 0 auto 26px; }
+  .wrap img { width: 100%; display: block; opacity: 0.55; }
+  .wrap svg.overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .dark { background: #232322; padding: 30px; display: flex; justify-content: center; }
+  .dark svg { width: 340px; }
+</style>
+</head>
+<body>
+<h2>① 比例校對：白色線稿疊在原圖上</h2>
+<div class="wrap">
+  <img src="plan.jpg" alt="" />
+  <svg class="overlay" viewBox="0 0 2092 1666" fill="none" stroke="#00e5ff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <use href="#planpaths" />
+  </svg>
+</div>
+<h2>② 實際樣子：深色底上的半透明白線（含位置點示意）</h2>
+<div class="dark">
+  <svg viewBox="0 0 2092 1666" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <use href="#planpaths" />
+    <g id="camDemo" transform="translate(880,1000) rotate(25)">
+      <path d="M0,0 L-75,-160 A175,175 0 0 1 75,-160 Z" fill="rgba(255,255,255,.28)" stroke="none"/>
+      <circle r="20" fill="#fff" stroke="none"/>
+    </g>
+  </svg>
+</div>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <g id="planpaths">
+      <!-- 外牆 -->
+      <path d="M420,60 H2050 V1620 H795 L519,1315" />
+      <path d="M435,1190 L120,870 L430,460 V60" />
+      <!-- 大門:門扇+外開弧線(實線) -->
+      <path d="M435,1190 L448,1338" stroke-width="10" />
+      <path d="M448,1338 A150,150 0 0 0 519,1315" stroke-width="10" />
+      <!-- 浴室:右牆+下牆(門口530-630)+門扇+內開弧線 -->
+      <path d="M735,60 V400 H630" />
+      <path d="M530,400 H420" />
+      <path d="M530,400 V300" stroke-width="10" />
+      <path d="M530,300 A100,100 0 0 1 630,400" stroke-width="10" />
+      <!-- 櫃檯(U形中島) -->
+      <path d="M731,445 H1135 V562 H910" />
+      <!-- 廚房分隔牆 -->
+      <path d="M1250,85 V445" />
+      <!-- 卡座隔屏(東段)+右端側門(門扇+北開弧線)+短牆 -->
+      <path d="M795,845 H1914" />
+      <path d="M2020,845 H2050" />
+      <path d="M2020,845 V740" stroke-width="10" />
+      <path d="M2020,740 A105,105 0 0 0 1915,845" stroke-width="10" />
+      <!-- 西段矮牆 -->
+      <path d="M214,868 H654" />
+          </g>
+  </defs>
+</svg>
+</body>
+</html>
