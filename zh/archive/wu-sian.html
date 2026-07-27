@@ -291,9 +291,11 @@
         function renderShot() {
           var s = STORES[cur];
           shotImg.src = A + s.imgs[idx] + ".webp";
+          shotImg.alt = s.n + " \u00b7 " + s.c + " \u2014 \u7167\u7247 " + (idx + 1) + "/" + s.imgs.length;
           count.textContent = (idx + 1) + " / " + s.imgs.length;
           if (viewer.classList.contains("on")) {
             vImg.src = A + s.imgs[idx] + ".webp";
+            vImg.alt = shotImg.alt;
             vCap.textContent = s.n + " \u00b7 " + s.c + " \u2014 " + (idx + 1) + " / " + s.imgs.length;
           }
         }
