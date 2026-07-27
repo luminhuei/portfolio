@@ -278,6 +278,10 @@
 /* Two side-by-side photos inside one figure — each gets its own uniform rounded corners */
 .case figure .fig-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .case figure .fig-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+/* Cut-out artwork (characters, logos) — no card frame, no rounded corners */
+.case figure.fig-plain img { border-radius: 0; background: none; }
+#vaultContent figure.fig-plain img { border-radius: 0; border: 0; background: none; }
+.case figure.fig-plain .fig-trio { gap: 8px; }
 @media (max-width: 720px) { .case figure .fig-trio { grid-template-columns: 1fr; } }
 
 /* ---------- Brand color palette strip (coded swatches from the official guideline) ---------- */
