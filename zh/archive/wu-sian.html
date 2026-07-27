@@ -209,7 +209,13 @@
     atmo.classList.toggle("on", p >= 0.92);
     notes.forEach((n) => n.classList.toggle("on", p >= +n.dataset.from && p <= +n.dataset.to));
       };
-      document.addEventListener("scroll", onScroll, { passive: true });
+      fetch(v.getAttribute("src")).then(function (r) { return r.blob(); }).then(function (b) {
+    var u = URL.createObjectURL(b);
+    v.addEventListener("loadeddata", function () { seekBusy = false; pendingSeek = null; onScroll(); }, { once: true });
+    v.src = u;
+    v.load();
+  }).catch(function () {});
+  document.addEventListener("scroll", onScroll, { passive: true });
       v.addEventListener("loadeddata", onScroll, { once: true });
       onScroll();
     })();
