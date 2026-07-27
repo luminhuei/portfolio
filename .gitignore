@@ -1,8 +1,10 @@
 
 # raw prototype screen-recordings (300MB each) — web versions live in demos/assets/
-ordering_tablet_*.MP4
-ordering_tablet_*.mp4
-_refs/
 .claude/
 _preview-color-blocks.html
+_refs/
+ordering_tablet_*.MP4
+ordering_tablet_*.mp4
 tmp-3d-preview/
+tmp-camap/
+tmp-minimap/
