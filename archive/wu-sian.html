@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="../case.css?v=20260727b" />
+  <link rel="stylesheet" href="../case.css?v=20260727c" />
   <script src="../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-brand">
@@ -246,6 +246,110 @@
       <div class="step-body">
         <p>From Cerritos to Willow Glen, the same space system rolled out across California — a selection of the stores below.</p>
       </div>
+
+      <div class="castores-stage" id="csStage">
+        <svg class="camap" id="csMap" viewBox="0 0 600 700" aria-label="California store map"></svg>
+        <div>
+          <dl class="case-meta">
+            <div><dt>Store</dt><dd id="csStore">&mdash;</dd></div>
+            <div><dt>Year</dt><dd id="csYear">&mdash;</dd></div>
+            <div><dt>Location</dt><dd id="csLoc">&mdash;</dd></div>
+          </dl>
+          <div class="castores-browser">
+            <div class="cs-shot" id="csShot"><img id="csShotImg" src="" alt="Store photo" loading="lazy" /></div>
+            <div class="cs-navrow">
+              <span class="cs-count" id="csCount">1 / 1</span>
+              <div class="cs-arrows">
+                <button type="button" id="csPrev" aria-label="Previous photo">&#8592;</button>
+                <button type="button" id="csNext" aria-label="Next photo">&#8594;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="castores-viewer" id="csViewer">
+        <img id="csViewerImg" src="" alt="" />
+        <figcaption id="csViewerCap"></figcaption>
+        <div class="cs-arrows">
+          <button type="button" id="csVPrev" aria-label="Previous photo">&#8592;</button>
+          <button type="button" id="csVNext" aria-label="Next photo">&#8594;</button>
+        </div>
+      </div>
+      <script>
+      (function () {
+        var CA = [[42,-124.21],[42,-120],[39,-120],[35,-114.63],[34.3,-114.14],[34.17,-114.29],[34,-114.46],[33.4,-114.7],[32.72,-114.72],[32.53,-117.12],[32.85,-117.28],[33.38,-117.59],[33.74,-118.11],[33.77,-118.43],[34,-118.52],[34.08,-119.05],[34.45,-120.47],[34.9,-120.65],[35.16,-120.75],[35.66,-121.28],[36.3,-121.9],[36.6,-121.89],[36.97,-122.03],[37.2,-122.4],[37.78,-122.51],[38,-123.02],[38.31,-123.05],[38.95,-123.74],[39.8,-123.85],[40.44,-124.4],[41,-124.15],[41.75,-124.25],[42,-124.21]];
+        var A = "../assets/archive/wu-sian/";
+        var STORES = [
+          {n:"Willow Glen", c:"San Jos\u00e9", rg:"Bay Area", yr:"2023", lat:37.309, lon:-121.899, imgs:["willow-glen","willow-glen-hall","willow-glen-counter","willow-glen-window","willow-glen-banquettes","willow-glen-gallery"]},
+          {n:"Sunnyvale", c:"Sunnyvale", rg:"Bay Area", yr:"2022", lat:37.369, lon:-122.036, imgs:["sunnyvale","sunnyvale-dining"]},
+          {n:"Dublin", c:"Dublin", rg:"East Bay", yr:"2022", lat:37.702, lon:-121.936, imgs:["dublin","dublin-interior"]},
+          {n:"Hayward", c:"Hayward", rg:"East Bay", yr:"2022", lat:37.669, lon:-122.081, imgs:["hayward","hayward-counter"]},
+          {n:"Tulare", c:"Tulare", rg:"Central Valley", yr:"2022", lat:36.208, lon:-119.347, imgs:["tulare","tulare-dining"]},
+          {n:"Palmdale", c:"Palmdale", rg:"Greater LA", yr:"2023", lat:34.579, lon:-118.116, imgs:["palmdale","palmdale-entry"]},
+          {n:"Little Tokyo", c:"Los Angeles", rg:"Greater LA", yr:"2022", lat:34.05, lon:-118.24, imgs:["little-tokyo","little-tokyo-hall"]},
+          {n:"City of Industry", c:"City of Industry", rg:"Greater LA", yr:"2023", lat:34.019, lon:-117.959, imgs:["city-of-industry","city-of-industry-hall"]},
+          {n:"Cerritos", c:"Cerritos", rg:"Greater LA", yr:"2022", lat:33.858, lon:-118.065, imgs:["cerritos","cerritos-counter"]},
+          {n:"Santa Ana", c:"Santa Ana", rg:"Orange County", yr:"2022", lat:33.746, lon:-117.868, imgs:["santa-ana","santa-ana-counter"]},
+          {n:"Menifee", c:"Menifee", rg:"Inland Empire", yr:"2022", lat:33.678, lon:-117.167, imgs:["menifee","menifee-restroom"]},
+          {n:"Santee", c:"Santee", rg:"San Diego", yr:"2021", lat:32.839, lon:-116.974, imgs:["santee-hero","santee-1","santee-2","santee-3","santee-dining"]}
+        ];
+        var svg = document.getElementById("csMap");
+        if (!svg) return;
+        var NS = "http://www.w3.org/2000/svg";
+        var proj = function (lat, lon) { return [(lon + 124.6) * 53.5 + 20, (42.15 - lat) * 67.5 + 15]; };
+        var d = "";
+        for (var i = 0; i < CA.length; i++) { var p = proj(CA[i][0], CA[i][1]); d += (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1); }
+        var shape = document.createElementNS(NS, "path");
+        shape.setAttribute("class", "ca-fill");
+        shape.setAttribute("d", d + " Z");
+        svg.appendChild(shape);
+        var cur = -1, idx = 0;
+        var elStore = document.getElementById("csStore"), elYear = document.getElementById("csYear"), elLoc = document.getElementById("csLoc");
+        var shotImg = document.getElementById("csShotImg"), count = document.getElementById("csCount");
+        var viewer = document.getElementById("csViewer"), vImg = document.getElementById("csViewerImg"), vCap = document.getElementById("csViewerCap");
+        function renderShot() {
+          var s = STORES[cur];
+          shotImg.src = A + s.imgs[idx] + ".webp";
+          count.textContent = (idx + 1) + " / " + s.imgs.length;
+          if (viewer.classList.contains("on")) {
+            vImg.src = A + s.imgs[idx] + ".webp";
+            vCap.textContent = s.n + " \u00b7 " + s.c + " \u2014 " + (idx + 1) + " / " + s.imgs.length;
+          }
+        }
+        function select(i) {
+          if (cur === i) return;
+          cur = i; idx = 0;
+          var s = STORES[i];
+          elStore.textContent = s.n; elYear.textContent = s.yr; elLoc.textContent = s.c + " \u00b7 " + s.rg;
+          for (var j = 0; j < STORES.length; j++) STORES[j]._dot.setAttribute("r", j === i ? 10 : 7);
+          renderShot();
+        }
+        function step(dd) { var s = STORES[cur]; idx = (idx + dd + s.imgs.length) % s.imgs.length; renderShot(); }
+        STORES.forEach(function (s, i) {
+          var p = proj(s.lat, s.lon);
+          var dot = document.createElementNS(NS, "circle");
+          dot.setAttribute("class", "store-dot");
+          dot.setAttribute("cx", p[0].toFixed(1)); dot.setAttribute("cy", p[1].toFixed(1)); dot.setAttribute("r", 7);
+          dot.addEventListener("mouseenter", function () { select(i); });
+          dot.addEventListener("click", function () { select(i); });
+          svg.appendChild(dot);
+          s._dot = dot;
+        });
+        document.getElementById("csPrev").addEventListener("click", function () { step(-1); });
+        document.getElementById("csNext").addEventListener("click", function () { step(1); });
+        document.getElementById("csShot").addEventListener("click", function () { viewer.classList.add("on"); renderShot(); });
+        viewer.addEventListener("click", function (e) { if (e.target === viewer || e.target === vImg) viewer.classList.remove("on"); });
+        document.getElementById("csVPrev").addEventListener("click", function (e) { e.stopPropagation(); step(-1); });
+        document.getElementById("csVNext").addEventListener("click", function (e) { e.stopPropagation(); step(1); });
+        document.addEventListener("keydown", function (e) {
+          if (!viewer.classList.contains("on")) return;
+          if (e.key === "Escape") viewer.classList.remove("on");
+          if (e.key === "ArrowLeft") step(-1);
+          if (e.key === "ArrowRight") step(1);
+        });
+        select(0);
+      })();
+      </script>
       <figure>
         <img src="../assets/archive/wu-sian/cerritos.webp" alt="Cerritos store interior" loading="lazy" />
         <figcaption>Cerritos &mdash; slatted wood ceiling, planters over the counter, the tea-journey mural in black.</figcaption>
