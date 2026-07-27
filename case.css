@@ -453,9 +453,10 @@
   display: block;
   font-family: var(--mono);
   font-size: 12.5px;
-  line-height: 1.65;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.92);
 }
+.specnote-line { display: block; padding: 3px 0; white-space: nowrap; }
 .specnote-data .sw {
   display: inline-block;
   width: 10px;
