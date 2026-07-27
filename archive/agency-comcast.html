@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Comcast — HIPPO SD campaign — Min Huei Lu</title>
-  <meta name="description" content="Comcast HIPPO SD campaign — an internal employee campaign, from strategy to style frames and film script. Password-protected under NDA." />
+  <title>Comcast — Hippo — employee campaign — Min Huei Lu</title>
+  <meta name="description" content="Comcast — agency-era client work. Password-protected under NDA." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -38,7 +38,7 @@
 
   <header class="case-hero">
     <p class="archive-badge">Archive · 2020–2021</p>
-    <h1 class="case-title">Comcast &mdash; HIPPO SD campaign.</h1>
+    <h1 class="case-title">Comcast &times; Hippo &mdash; employee campaign.</h1>
   </header>
 
   <main class="case">
@@ -74,7 +74,7 @@
         if (!pw) return;
         btn.disabled = true; btn.textContent = "Unlocking…";
         try {
-          const b64 = await fetch("../assets/agency-vault.enc?v=20260727a").then((r) => r.text());
+          const b64 = await fetch("../assets/agency-vault.enc?v=20260727b").then((r) => r.text());
           const raw = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
           const salt = raw.slice(0, 16), iv = raw.slice(16, 28), ct = raw.slice(28);
           const km = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
@@ -87,6 +87,15 @@
             if (on) parts.push(n.outerHTML);
           }
           document.getElementById("vaultContent").innerHTML = parts.join("");
+          document.getElementById("vaultContent").querySelectorAll("video[src^='data:']").forEach(function (v) {
+            var src = v.getAttribute("src");
+            var comma = src.indexOf(",");
+            var mime = src.slice(5, src.indexOf(";"));
+            var bin = atob(src.slice(comma + 1));
+            var arr = new Uint8Array(bin.length);
+            for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+            v.src = URL.createObjectURL(new Blob([arr], { type: mime }));
+          });
           document.getElementById("locked").hidden = false;
           document.getElementById("gate").remove();
           window.scrollTo({ top: 0, behavior: "instant" });
