@@ -38,13 +38,27 @@
 
   <header class="case-hero">
     <p class="archive-badge">Archive · 2020–2021</p>
-    <h1 class="case-title">代理商時期 —— NDA 之下的視覺摘錄。</h1>
+    <h1 class="case-title">代理商時期。</h1>
   </header>
 
   <main class="case">
 
     <!-- Overview -->
-    <section class="case-intro">
+    <section class="case-section" style="margin-top:clamp(40px,6vw,72px)">
+      <p class="case-kicker">Protected</p>
+      <h2 class="step-title">密碼保護的內容。</h2>
+      <div class="step-body">
+        <p>代理商時期的客戶專案,與舊網站相同的安排。<a href="mailto:luminhuei@gmail.com">來信</a>索取密碼。（內容目前為英文版）</p>
+      </div>
+      <div class="vault-gate">
+        <input type="password" id="vaultPw" placeholder="Password" autocomplete="off" aria-label="Vault password" />
+        <button id="vaultBtn" type="button">Unlock</button>
+        <p class="vault-msg" id="vaultMsg" hidden>Incorrect password &mdash; please try again.</p>
+      </div>
+    </section>
+
+    <div id="locked" hidden>
+<section class="case-intro">
       <div class="case-intro-main">
         <p class="case-kicker">Overview</p>
         <p class="case-lead">四個品牌專案，<em>僅能露出這些</em>。</p>
@@ -109,20 +123,8 @@
         <figcaption>僅以客戶名稱呈現 —— 產品設計仍受保密協議約束。</figcaption>
       </figure>
     </section>
-
-    <section class="case-section">
-      <p class="case-kicker">Full Case Studies</p>
-      <h2 class="step-title">密碼保護的完整內容。</h2>
-      <div class="step-body">
-        <p>完整的 campaign 與專案素材 —— 角色設定、分鏡、數位看板系統、品牌規範與 campaign 圖像 —— 需輸入密碼瀏覽，與舊網站相同的安排。<a href="mailto:luminhuei@gmail.com">來信</a>索取密碼。（內容目前為英文版）</p>
-      </div>
-      <div class="vault-gate">
-        <input type="password" id="vaultPw" placeholder="密碼" autocomplete="off" aria-label="密碼" />
-        <button id="vaultBtn" type="button">解鎖</button>
-        <p class="vault-msg" id="vaultMsg" hidden>密碼不正確，請再試一次。</p>
-      </div>
       <div id="vaultContent"></div>
-    </section>
+    </div>
 
     <script>
     (function () {
@@ -141,6 +143,7 @@
           const key = await crypto.subtle.deriveKey({ name: "PBKDF2", salt, iterations: 250000, hash: "SHA-256" }, km, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
           const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ct);
           document.getElementById("vaultContent").innerHTML = new TextDecoder().decode(pt);
+          document.getElementById("locked").hidden = false;
           document.querySelector(".vault-gate").hidden = true;
           msg.hidden = true;
         } catch (e) {
