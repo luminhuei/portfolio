@@ -1031,12 +1031,17 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
 .rec-list { margin-top: 36px; border-top: 1px solid rgba(212, 212, 216, 0.7); }
 .rec-row {
   display: grid;
-  grid-template-columns: 128px minmax(0, 1fr) auto;
+  grid-template-columns: 120px minmax(0, 1fr) auto;
   gap: 20px;
   align-items: baseline;
   padding: 20px 0;
   border-bottom: 1px solid rgba(212, 212, 216, 0.5);
 }
+.rec-row-award { align-items: center; }
+.rec-badge { display: block; }
+.rec-badge img { display: block; width: 104px; height: auto; }
+.rec-row-stack { grid-template-columns: 1fr; gap: 0; }
+.rec-row-stack .rec-date { display: block; margin-bottom: 7px; }
 .rec-level, .rec-date {
   font-family: var(--mono);
   font-size: 12px;
@@ -1074,6 +1079,7 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
 .rec-links a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 @media (max-width: 760px) {
   .rec-row { grid-template-columns: 1fr; gap: 8px; }
+  .rec-badge img { width: 84px; }
   .rec-links { align-items: flex-start; }
   .rec-tag { white-space: normal; }
 }
