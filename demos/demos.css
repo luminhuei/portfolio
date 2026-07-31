@@ -507,7 +507,13 @@
 .adv-r1tools { justify-content: center !important; }
 .adv-rail1 .adv-item { justify-content: center; gap: 0; padding: 6px; }
 /* logo placeholder — a plain black circle, same convention as the tablet demo */
-.adv-logomark { width: 24px; height: 24px; border-radius: 50%; background: #000; }
+.adv-logomark {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  /* the real black Peblla mark, cropped from the brand files */
+  background: #fff url("assets/peblla-mark.png") center / contain no-repeat;
+}
 .adv-r1menu { flex: 1; min-height: 0; overflow: hidden; padding: 16px; }
 .adv-r1menu > * + * { margin-top: 16px; }
 .adv-r1tools { display: flex; align-items: center; justify-content: space-between; }
@@ -1118,13 +1124,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  border: 1px solid var(--a-border);
   border-radius: 8px;
-  background: var(--a-ink);
-  color: #fff;
+  background: #fff;
+  color: var(--a-ink);
 }
 .odv-searchbtn svg { width: 20px; height: 20px; }
-.odv-searchbtn:hover { background: #333; }
+.odv-searchbtn:hover { background: var(--a-panel); }
 
 /* Order / Transaction switch — the product's own tabs */
 .odv-tabs { display: flex; gap: 4px; margin-top: 18px; border-bottom: 1px solid var(--a-border); }
@@ -1144,11 +1150,11 @@
 
 .odv-view { display: none; }
 .odv-view.on { display: block; }
-.odv-h2 { margin: 22px 0 0; font-size: 26px; line-height: 34px; font-weight: 600; color: var(--a-ink); }
-.odv-note { margin-top: 6px; color: var(--a-mid); }
+.odv-h2 { margin: 46px 0 0; font-size: 34px; line-height: 44px; font-weight: 600; color: var(--a-ink); }
+.odv-note { margin-top: 10px; color: var(--a-mid); }
 
 /* segmented pills + right-side actions */
-.odv-segrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; }
+.odv-segrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 32px; }
 .odv-seg { display: inline-flex; gap: 2px; padding: 3px; border-radius: 10px; background: var(--a-panel); }
 .odv-segbtn {
   border: none;
@@ -1167,13 +1173,13 @@
   gap: 8px;
   height: 40px;
   padding: 0 16px;
-  border: none;
+  border: 1px solid var(--a-border);
   border-radius: 8px;
-  background: var(--a-ink);
-  color: #fff;
+  background: #fff;
+  color: var(--a-ink);
   font-weight: 500;
 }
-.odv-export:hover { background: #333; }
+.odv-export:hover { background: var(--a-panel); }
 
 /* filter chips */
 .odv-chips { display: flex; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
