@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Type &amp; Style Sheet — Min Huei Lu Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fffefd;
+      --ink: #121212;
+      --muted: #71717a;
+      --faint: #a1a1aa;
+      --accent: #0099ff;
+      --line: rgba(212, 212, 216, 0.8);
+      --serif: "Instrument Serif", "Noto Serif TC", Georgia, serif;
+      --sans: "Geist", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: "Geist Mono", ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: clamp(40px, 6vw, 96px) clamp(20px, 4vw, 64px) 140px;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; }
+
+    .kicker { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(38px, 5vw, 68px); line-height: 1.1; letter-spacing: -0.02em; margin: 14px 0 20px; }
+    .lede { max-width: 60ch; font-size: 17px; line-height: 1.7; color: #3f3f46; }
+    .lede + .lede { margin-top: 14px; }
+
+    h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3vw, 40px); letter-spacing: -0.01em; line-height: 1.15; }
+    section { margin-top: clamp(64px, 8vw, 110px); }
+    .sec-head { display: flex; align-items: baseline; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+    .sec-num { font-family: var(--mono); font-size: 13px; color: var(--faint); }
+
+    /* Typeface cards */
+    .faces { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; }
+    .face { border: 1px solid var(--line); border-radius: 24px; padding: 28px 26px 30px; }
+    .face-role { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+    .face-name { margin-top: 12px; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+    .face-spec { margin-top: 8px; font-family: var(--mono); font-size: 12px; line-height: 1.7; color: var(--muted); }
+    .face-sample { margin-top: 22px; font-size: 44px; line-height: 1.2; }
+    .face-note { margin-top: 20px; font-size: 14px; line-height: 1.65; color: #52525b; }
+
+    /* Type specimen rows */
+    .row { display: grid; grid-template-columns: 1fr 300px; gap: clamp(24px, 4vw, 56px); align-items: start; padding: 30px 0; border-bottom: 1px solid rgba(212, 212, 216, 0.5); }
+    .row-sample { min-width: 0; overflow: hidden; }
+    .row-spec { font-family: var(--mono); font-size: 12px; line-height: 1.85; color: var(--muted); }
+    .row-spec b { display: block; color: var(--ink); font-weight: 500; letter-spacing: .04em; }
+    .row-spec .use { display: block; margin-top: 10px; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--faint); }
+
+    /* live samples — copied verbatim from styles.css / case.css */
+    .s-hero      { font-family: var(--serif); font-weight: 400; font-size: clamp(38px, 4.75vw, 72px); line-height: 1.1; letter-spacing: -0.03em; }
+    .s-casetitle { font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 5.5vw, 76px); line-height: 1.1; letter-spacing: -0.02em; }
+    .s-footer    { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: clamp(40px, 6vw, 80px); letter-spacing: -0.02em; line-height: 1.1; }
+    .s-craftlead { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.9vw, 54px); line-height: 1.15; letter-spacing: -0.015em; }
+    .s-lead      { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.6vw, 48px); line-height: 1.2; letter-spacing: -0.01em; }
+    .s-nexttitle { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4vw, 52px); line-height: 1.15; letter-spacing: -0.01em; }
+    .s-steptitle { font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 3.2vw, 42px); line-height: 1.2; letter-spacing: -0.01em; }
+    .s-crafttitle{ font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 2.9vw, 38px); line-height: 1.15; letter-spacing: -0.01em; }
+    .s-toctitle  { font-family: var(--serif); font-size: clamp(22px, 2.8vw, 32px); line-height: 1.2; }
+    .s-statvalue { font-family: var(--serif); font-weight: 400; font-size: 56px; line-height: 1; }
+    .s-ghost     { font-family: var(--serif); font-size: clamp(72px, 9vw, 128px); line-height: 0.85; color: rgba(18, 18, 18, 0.07); }
+    .s-pcard     { font-size: clamp(21px, 2.1vw, 30px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; }
+    .s-body      { font-size: 17px; line-height: 1.7; color: #3f3f46; max-width: 62ch; }
+    .s-note      { font-size: 15px; line-height: 1.7; color: #52525b; max-width: 36ch; }
+    .s-dd        { font-size: 15px; font-weight: 500; line-height: 1.5; }
+    .s-clientname{ font-size: 17px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.35; }
+    .s-sol       { font-size: 18px; font-weight: 600; }
+    .s-stattitle { font-size: 16px; font-weight: 600; line-height: 1.4; }
+    .s-tilename  { font-size: 15px; font-weight: 500; letter-spacing: -0.01em; }
+    .s-nav       { font-size: 14px; font-weight: 500; }
+    .s-kicker    { font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .s-steplabel { font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+    .s-dt        { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .s-caption   { font-family: var(--mono); font-size: 12.5px; line-height: 1.7; color: var(--faint); }
+    .s-years     { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); }
+    .s-morelink  { font-family: var(--mono); font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .s-chip      { display: inline-block; padding: 6px 13px; border-radius: 999px; border: 1px solid rgba(212,212,216,.45); font-size: 12px; color: var(--faint); }
+    .s-zh        { font-family: var(--sans); line-height: 1.75; }
+
+    /* swatches */
+    .sw-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; margin-top: 32px; }
+    .sw { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+    .sw-chip { height: 76px; }
+    .sw-body { padding: 12px 14px 14px; }
+    .sw-name { font-size: 14px; font-weight: 500; }
+    .sw-hex { margin-top: 3px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 26px; font-size: 14px; }
+    th, td { text-align: left; padding: 12px 14px 12px 0; border-bottom: 1px solid rgba(212,212,216,.5); vertical-align: top; }
+    th { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+    td code { font-family: var(--mono); font-size: 12.5px; }
+    .note { margin-top: 26px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 18px; font-size: 14.5px; line-height: 1.7; color: #52525b; }
+    .note b { color: var(--ink); font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .faces { grid-template-columns: 1fr; }
+      .row { grid-template-columns: 1fr; gap: 18px; }
+      .row-spec { border-left: 2px solid var(--line); padding-left: 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Internal reference &middot; not linked from the site</p>
+  <h1>Type &amp; style sheet</h1>
+  <p class="lede">Every text style currently running on luminhuei.com, rendered in the real fonts at the real sizes. Sizes written as <code>clamp(min, fluid, max)</code> scale with the window &mdash; the px in brackets is what you get on a 1440&nbsp;px-wide desktop.</p>
+  <p class="lede">Two files hold all of it: <code>styles.css</code> (home, work index, about) and <code>case.css</code> (every case study). The tokens below are defined once in <code>:root</code> and reused everywhere.</p>
+
+  <!-- 1 ................................................................. -->
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>The three typefaces</h2></div>
+    <div class="faces">
+      <div class="face">
+        <p class="face-role">Display &middot; --serif</p>
+        <p class="face-name">Instrument Serif</p>
+        <p class="face-spec">Google Fonts &middot; OFL<br />Regular 400 + Italic<br />Fallback: Noto Serif TC, Georgia</p>
+        <p class="face-sample" style="font-family: var(--serif)">Aa &mdash; <em>Bb</em></p>
+        <p class="face-note">The voice of the site. Every headline, section title, big number and the footer signature. Only one weight exists (400) &mdash; emphasis comes from italic and from size, never from bold.</p>
+      </div>
+      <div class="face">
+        <p class="face-role">Text &amp; UI &middot; --sans</p>
+        <p class="face-name">Geist</p>
+        <p class="face-spec">Google Fonts &middot; OFL (Vercel)<br />400 / 500 / 600 / 700<br />Fallback: Noto Sans TC, system UI</p>
+        <p class="face-sample" style="font-family: var(--sans)">Aa &mdash; Bb</p>
+        <p class="face-note">Everything you read for information: body copy, nav, buttons, metadata values, project names. 400 for paragraphs, 500 for UI, 600 for names and headings inside cards.</p>
+      </div>
+      <div class="face">
+        <p class="face-role">Label &middot; --mono</p>
+        <p class="face-name">Geist Mono</p>
+        <p class="face-spec">Google Fonts &middot; OFL<br />400 / 500<br />Fallback: ui-monospace</p>
+        <p class="face-sample" style="font-family: var(--mono)">Aa &mdash; Bb</p>
+        <p class="face-note">Small uppercase labels only: kickers, metadata keys, captions, years, counts. Always tracked out (+0.06 to +0.08em) and never used above 14&nbsp;px.</p>
+      </div>
+    </div>
+    <div class="note">
+      <b>Chinese.</b> The Latin fonts have no CJK glyphs, so 繁中 automatically falls through to <b>Noto Serif TC</b> (display) and <b>Noto Sans TC</b> (text). Three overrides live at the bottom of <code>styles.css</code>: body line-height goes 1.5&nbsp;&rarr;&nbsp;1.75, headline tracking goes negative&nbsp;&rarr;&nbsp;+0.02em (CJK hates tight tracking), and <code>&lt;em&gt;</code> drops italic for grey, because Chinese has no italics. The homepage headline is the one exception &mdash; it uses the handwriting face 辰宇落雁體 as an accent.
+    </div>
+  </section>
+
+  <!-- 2 ................................................................. -->
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>Display &mdash; Instrument Serif</h2></div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-footer">Let&rsquo;s connect.</p></div>
+      <p class="row-spec"><b>.footer-title</b>Instrument Serif Italic 400<br />clamp(40px, 6vw, 80px) &rarr; 80px<br />line-height 1.1 &middot; tracking &minus;0.02em<span class="use">The one italic headline on the site. Footer only.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-casetitle">A handheld POS.</p></div>
+      <p class="row-spec"><b>.case-title</b>Instrument Serif 400<br />clamp(36px, 5.5vw, 76px) &rarr; 76px<br />line-height 1.1 &middot; tracking &minus;0.02em<span class="use">Biggest type on the page. Case-study H1, animated in word by word.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-hero">From brand to product,<br />I design the <em style="font-style:italic">whole journey</em>.</p></div>
+      <p class="row-spec"><b>.hero-title</b>Instrument Serif 400 (+italic)<br />clamp(38px, 4.75vw, 72px) &rarr; 68px<br />line-height 1.1 &middot; tracking &minus;0.03em<span class="use">Homepage H1. The tightest tracking in the system.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-craftlead">I started in branding, moved into product.</p></div>
+      <p class="row-spec"><b>.craft-lead</b>Instrument Serif 400<br />clamp(30px, 3.9vw, 54px) &rarr; 54px<br />line-height 1.15 &middot; tracking &minus;0.015em<span class="use">New. The statement above the three-discipline block on the homepage.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-nexttitle">Next project &rarr;</p></div>
+      <p class="row-spec"><b>.next-title</b>Instrument Serif 400<br />clamp(32px, 4vw, 52px) &rarr; 52px<br />line-height 1.15 &middot; tracking &minus;0.01em<span class="use">The banner at the bottom of every case study.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-lead">Servers were walking the same lap twice.</p></div>
+      <p class="row-spec"><b>.case-lead</b>Instrument Serif 400<br />clamp(28px, 3.6vw, 48px) &rarr; 48px<br />line-height 1.2 &middot; tracking &minus;0.01em &middot; max 24ch<span class="use">The one-sentence summary under a case-study title.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-steptitle">What actually slowed them down</p></div>
+      <p class="row-spec"><b>.step-title</b>Instrument Serif 400<br />clamp(26px, 3.2vw, 42px) &rarr; 42px<br />line-height 1.2 &middot; tracking &minus;0.01em &middot; max 26ch<span class="use">Section headings inside a case study (H2).</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-crafttitle">Motion &amp; Video</p></div>
+      <p class="row-spec"><b>.craft-title</b>Instrument Serif 400<br />clamp(26px, 2.9vw, 38px) &rarr; 38px<br />line-height 1.15 &middot; tracking &minus;0.01em<span class="use">New. Titles of the three discipline columns.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-toctitle">Wu Sian &mdash; a teahouse designed to multiply</p></div>
+      <p class="row-spec"><b>.toc-title</b>Instrument Serif 400<br />clamp(22px, 2.8vw, 32px) &rarr; 32px<br />line-height 1.2<span class="use">Each project row on the Work index.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-statvalue">64%</p></div>
+      <p class="row-spec"><b>.stat-value</b>Instrument Serif 400<br />56px (fixed, not fluid)<br />line-height 1<span class="use">Result numbers in the stats band.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-ghost">01</p></div>
+      <p class="row-spec"><b>.step-num / .toc-era-num</b>Instrument Serif 400<br />clamp(72px, 9vw, 128px) &rarr; 128px<br />colour rgba(18,18,18,.07)<span class="use">The huge ghost numerals behind section headings.</span></p>
+    </div>
+  </section>
+
+  <!-- 3 ................................................................. -->
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Text &mdash; Geist</h2></div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-pcard">A report centre 700+ operators trust at a glance</p></div>
+      <p class="row-spec"><b>.pcard-title</b>Geist 600<br />clamp(21px, 2.1vw, 30px) &rarr; 30px<br />line-height 1.25 &middot; tracking &minus;0.015em<span class="use">Legacy homepage card headline. Not in use after the homepage rebuild &mdash; kept for reference.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-sol">01 &nbsp; Put the whole order in one thumb reach</p></div>
+      <p class="row-spec"><b>.sol-item h3</b>Geist 600<br />18px<span class="use">Numbered solution headings inside a case study.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-body">Servers were carrying orders in their heads from the table to a terminal at the back of the room, then walking back to confirm. The fix was not a smaller screen &mdash; it was moving the decision to where the guest is sitting.</p></div>
+      <p class="row-spec"><b>.step-body / .case-intro-body</b>Geist 400<br />17px &middot; line-height 1.7<br />colour #3f3f46 &middot; max 62ch<span class="use">The default reading size. Every paragraph in a case study.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-clientname">Peblla</p><p style="font-size:15px;color:var(--muted);line-height:1.35">Restaurant technology</p></div>
+      <p class="row-spec"><b>.client-name / .client-sector</b>Geist 600 / Geist 400<br />17px &middot; 15px<br />line-height 1.35<span class="use">New. Client identity on the homepage work rows.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-note">Four surfaces of one restaurant system: the handheld a server carries, the tablet a guest orders from, the report an owner opens every morning.</p></div>
+      <p class="row-spec"><b>.client-note</b>Geist 400<br />15px &middot; line-height 1.7<br />colour #52525b &middot; max 36ch<span class="use">New. Client description on the homepage work rows.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-stattitle">Checkouts moved tableside</p></div>
+      <p class="row-spec"><b>.stat-title</b>Geist 600<br />16px &middot; line-height 1.4<span class="use">Label under a stat number.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-tilename">Handheld Mobile POS</p></div>
+      <p class="row-spec"><b>.tile-name</b>Geist 500<br />15px &middot; tracking &minus;0.01em<span class="use">New. Case-study name under each homepage thumbnail.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-dd">UI Design &middot; Interaction Design &middot; Design System</p></div>
+      <p class="row-spec"><b>.case-meta dd</b>Geist 500<br />15px &middot; line-height 1.5<span class="use">The value side of case-study metadata.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-nav">Work &nbsp;&middot;&nbsp; About &nbsp;&middot;&nbsp; CV</p></div>
+      <p class="row-spec"><b>.nav-link / .work-viewall</b>Geist 500<br />14px<span class="use">Nav pills and buttons.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><span class="s-chip">What makes her different?</span></div>
+      <p class="row-spec"><b>.chip</b>Geist 400<br />12px &middot; colour #a1a1aa<span class="use">Suggestion chips under the MinaGPT bar.</span></p>
+    </div>
+  </section>
+
+  <!-- 4 ................................................................. -->
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Labels &mdash; Geist Mono</h2></div>
+    <p class="lede" style="margin-top:24px">All uppercase, all tracked out, all small. This is the only place monospace appears &mdash; it is what makes the site read like a spec sheet rather than a blog.</p>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-kicker">Selected work</p></div>
+      <p class="row-spec"><b>.case-kicker / .work-bar-label / .next-label</b>Geist Mono 400<br />13px &middot; tracking +0.08em &middot; uppercase<br />colour #71717a<span class="use">Section eyebrows.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-steplabel">The problem</p></div>
+      <p class="row-spec"><b>.step-label</b>Geist Mono 400<br />13px &middot; tracking +0.08em &middot; uppercase<br />colour #0099ff (accent)<span class="use">The only place the accent blue is used as text.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-morelink">View all &rarr;</p></div>
+      <p class="row-spec"><b>.more-link</b>Geist Mono 400<br />14px &middot; tracking +0.06em &middot; uppercase<span class="use">Largest mono size in the system. Underlined link.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-dt">Company</p></div>
+      <p class="row-spec"><b>.case-meta dt</b>Geist Mono 400<br />12px &middot; tracking +0.08em &middot; uppercase<br />colour #71717a<span class="use">The key side of case-study metadata.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-years">2024 &ndash; 2025 &nbsp;&middot;&nbsp; 4 case studies</p></div>
+      <p class="row-spec"><b>.client-years / .tile-year</b>Geist Mono 400<br />12px &middot; tracking +0.06em &middot; uppercase<br />colour #a1a1aa<span class="use">New. Dates and counts on the homepage work rows.</span></p>
+    </div>
+
+    <div class="row">
+      <div class="row-sample"><p class="s-caption">Store 04 &middot; counter elevation, 1:50</p></div>
+      <p class="row-spec"><b>.case figcaption</b>Geist Mono 400<br />12.5px &middot; line-height 1.7 &middot; sentence case<br />colour #a1a1aa &middot; hairline above<span class="use">Image captions. The one mono style that is not uppercase.</span></p>
+    </div>
+  </section>
+
+  <!-- 5 ................................................................. -->
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>Colour, spacing, shape</h2></div>
+    <div class="sw-grid">
+      <div class="sw"><div class="sw-chip" style="background:#fffefd;border-bottom:1px solid var(--line)"></div><div class="sw-body"><p class="sw-name">Page</p><p class="sw-hex">--bg #fffefd</p></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#121212"></div><div class="sw-body"><p class="sw-name">Ink</p><p class="sw-hex">--ink #121212</p></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#3f3f46"></div><div class="sw-body"><p class="sw-name">Body copy</p><p class="sw-hex">#3f3f46</p></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#52525b"></div><div class="sw-body"><p class="sw-name">Secondary copy</p><p class="sw-hex">#52525b</p></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#71717a"></div><div class="sw-body"><p class="sw-name">Muted / labels</p><p class="sw-hex">--muted #71717a</p></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#a1a1aa"></div><div class="sw-body"><p class="sw-name">Faint</p><p class="sw-hex">--faint #a1a1aa</p></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#0099ff"></div><div class="sw-body"><p class="sw-name">Accent</p><p class="sw-hex">--accent #0099ff</p></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#fdcf00"></div><div class="sw-body"><p class="sw-name">Mail button</p><p class="sw-hex">#fdcf00</p></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#f4f4f5"></div><div class="sw-body"><p class="sw-name">Light card</p><p class="sw-hex">--card-light #f4f4f5</p></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#09090b"></div><div class="sw-body"><p class="sw-name">Dark card</p><p class="sw-hex">--card-dark #09090b</p></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#0c0c0c"></div><div class="sw-body"><p class="sw-name">Footer</p><p class="sw-hex">--footer-bg #0c0c0c</p></div></div>
+      <div class="sw"><div class="sw-chip" style="background:rgba(212,212,216,.8)"></div><div class="sw-body"><p class="sw-name">Hairline</p><p class="sw-hex">rgba(212,212,216,.8)</p></div></div>
+    </div>
+
+    <table>
+      <tr><th>Token</th><th>Value</th><th>Where</th></tr>
+      <tr><td><code>--page-pad</code></td><td><code>clamp(20px, 4vw, 48px)</code></td><td>Left/right page margin on case studies</td></tr>
+      <tr><td>Homepage gutter</td><td><code>clamp(20px, 4vw, 64px)</code></td><td>Home, work index, footer</td></tr>
+      <tr><td>Section gap</td><td><code>clamp(80px, 10vw, 140px)</code></td><td>Between case-study sections</td></tr>
+      <tr><td><code>--radius</code></td><td><code>28px</code></td><td>Footer top corners</td></tr>
+      <tr><td>Panel radius</td><td><code>48px</code></td><td>Top corners of the work panel over the hero</td></tr>
+      <tr><td>Image radius</td><td><code>20&ndash;24px</code></td><td>Thumbnails, figures, cards</td></tr>
+      <tr><td>Pill radius</td><td><code>999px</code></td><td>Nav, buttons, chips</td></tr>
+      <tr><td>Easing</td><td><code>cubic-bezier(.22, 1, .36, 1)</code></td><td>Every movement on the site</td></tr>
+      <tr><td>Reveal</td><td><code>opacity 0.7s, translateY 24px</code></td><td><code>.reveal</code> &mdash; fires at 15% in view</td></tr>
+    </table>
+
+    <div class="note">
+      <b>The rule of thumb.</b> Serif says what the page is about. Sans says what you need to know. Mono says where you are. If a new element does not clearly belong to one of those three jobs, it probably does not need new type &mdash; it needs one of the sizes above.
+    </div>
+  </section>
+
+  <!-- 6 ................................................................. -->
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span><h2>繁中對照</h2></div>
+    <div class="row">
+      <div class="row-sample"><p class="s-lead" style="letter-spacing:.02em">從品牌到產品,我設計的是整段旅程。</p></div>
+      <p class="row-spec"><b>.case-lead (zh)</b>Noto Serif TC 400<br />same clamp as EN<br />tracking &minus;0.01em &rarr; +0.02em<span class="use">Display in Chinese falls through to Noto Serif TC and the negative tracking is reversed.</span></p>
+    </div>
+    <div class="row">
+      <div class="row-sample"><p class="s-body s-zh">服務生把整桌的單記在腦袋裡,走到後場的機台輸入,再走回來確認。真正該修的不是螢幕大小,而是把決定的位置移到客人坐的地方。</p></div>
+      <p class="row-spec"><b>body (zh)</b>Noto Sans TC 400<br />17px &middot; line-height 1.5 &rarr; <b style="display:inline">1.75</b><span class="use">Chinese needs more leading than Latin at the same size.</span></p>
+    </div>
+    <div class="row">
+      <div class="row-sample"><p class="s-body" style="line-height:1.75">品牌是<em style="font-style:normal;color:var(--muted)">整段旅程</em>的起點</p></div>
+      <p class="row-spec"><b>em (zh)</b>no italic &rarr; colour #71717a<span class="use">Chinese has no true italics; emphasis becomes grey instead.</span></p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
