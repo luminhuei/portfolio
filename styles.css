@@ -686,6 +686,34 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04e
 }
 .craft-icon svg { display: block; width: 52px; height: 52px; }
 
+/* The three marks animate once their column has scrolled in, each loop saying
+   something about the discipline: the brand marks breathe and turn, the layout
+   blocks reflow, the chevrons run left to right. */
+.craft-icon svg * { transform-box: fill-box; transform-origin: center; }
+
+.craft-col.visible .ci-a { animation: ci-breathe 4.4s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+.craft-col.visible .ci-b { animation: ci-turn 11s linear infinite; }
+.craft-col.visible .ci-c { animation: ci-breathe 4.4s cubic-bezier(0.22, 1, 0.36, 1) 0.7s infinite; }
+
+.craft-col.visible .ci-e { transform-origin: top; animation: ci-grow 5s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+.craft-col.visible .ci-f { transform-origin: bottom; animation: ci-shrink 5s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+
+.craft-col.visible .ci-g { animation: ci-run 2s ease-in-out infinite; }
+.craft-col.visible .ci-g:nth-of-type(2) { animation-delay: 0.13s; }
+.craft-col.visible .ci-g:nth-of-type(3) { animation-delay: 0.26s; }
+.craft-col.visible .ci-g:nth-of-type(4) { animation-delay: 0.39s; }
+
+@keyframes ci-breathe { 0%, 100% { transform: scale(1); } 45% { transform: scale(0.8); } }
+@keyframes ci-turn { to { transform: rotate(360deg); } }
+@keyframes ci-grow { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.5); } }
+@keyframes ci-shrink { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.55); } }
+@keyframes ci-run { 0%, 100% { opacity: 0.28; } 22% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .craft-col.visible .ci-a, .craft-col.visible .ci-b, .craft-col.visible .ci-c,
+  .craft-col.visible .ci-e, .craft-col.visible .ci-f, .craft-col.visible .ci-g { animation: none; }
+}
+
 @media (max-width: 900px) {
   .client { grid-template-columns: 1fr; }
   .client-info { gap: 18px; }
