@@ -723,7 +723,13 @@ function initLightbox() {
   overlay.setAttribute("aria-label", "Enlarged image view");
   overlay.innerHTML =
     '<button class="lightbox-close" aria-label="Close enlarged image">&#215;</button><img alt="" />';
-  document.body.appendChild(overlay);
+  /* Only enter the DOM once there is actually an image to enlarge. .lightbox is
+     styled in case.css, which the homepage doesn't load — appended there it
+     rendered as a plain 24px block under the footer, exposing the hero and its
+     pills below the dark panel. */
+  const mount = () => {
+    if (!overlay.isConnected) document.body.appendChild(overlay);
+  };
 
   const big = overlay.querySelector("img");
   const closeBtn = overlay.querySelector(".lightbox-close");
@@ -758,7 +764,11 @@ function initLightbox() {
     });
   };
 
-  const scan = () => collect().forEach(bind);
+  const scan = () => {
+    const imgs = collect();
+    if (imgs.length) mount();
+    imgs.forEach(bind);
+  };
   scan();
   window.rescanLightbox = scan;
 
