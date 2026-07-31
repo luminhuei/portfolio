@@ -432,7 +432,7 @@ html, body { overflow-x: clip; }
 
 .work-bar {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 20px;
   padding-bottom: 16px;
@@ -444,24 +444,51 @@ html, body { overflow-x: clip; }
   text-transform: uppercase;
   color: var(--muted);
 }
-.work-viewall {
+/* Round badge: translucent ring, spinning VIEW ALL label, eye at centre */
+.work-badge {
   flex: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(212, 212, 216, 0.8);
-  font-size: 14px;
-  font-weight: 500;
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  /* darker than the old card badge: that one sat on photos, this one sits on white */
+  background: rgba(12, 12, 12, 0.5);
+  display: grid;
+  place-items: center;
   text-decoration: none;
-  color: var(--ink);
-  white-space: nowrap;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
-.work-viewall span { transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
-.work-viewall:hover { background: var(--card-light); border-color: var(--ink); }
-.work-viewall:hover span { transform: translateX(3px); }
+.badge-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: badge-spin 14s linear infinite;
+}
+.badge-ring text {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  fill: #fff;
+}
+@keyframes badge-spin {
+  to { transform: rotate(360deg); }
+}
+.badge-core {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--card-dark);
+  color: #fafafa;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.badge-core svg { width: 24px; height: 24px; }
+.work-badge:hover .badge-core { background: var(--accent); transform: scale(1.08); }
+html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04em; }
+@media (prefers-reduced-motion: reduce) {
+  .badge-ring { animation: none; }
+}
 
 .client {
   display: grid;
@@ -668,7 +695,9 @@ html, body { overflow-x: clip; }
   .craft-col:last-child { border-bottom: none; }
 }
 @media (max-width: 560px) {
-  .work-bar { align-items: center; }
+  .work-badge { width: 80px; height: 80px; }
+  .badge-core { width: 42px; height: 42px; }
+  .badge-core svg { width: 21px; height: 21px; }
   .client-grid { gap: 10px; }
   .tile-media { border-radius: 14px; }
   .tile-name { font-size: 14px; }
