@@ -451,8 +451,8 @@ html, body { overflow-x: clip; }
   width: 96px;
   height: 96px;
   border-radius: 50%;
-  /* darker than the old card badge: that one sat on photos, this one sits on white */
-  background: rgba(12, 12, 12, 0.5);
+  /* very light disc on white; the ring label carries the contrast instead */
+  background: rgba(12, 12, 12, 0.15);
   display: grid;
   place-items: center;
   text-decoration: none;
@@ -468,7 +468,7 @@ html, body { overflow-x: clip; }
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.1em;
-  fill: #fff;
+  fill: #3f3f46;
 }
 @keyframes badge-spin {
   to { transform: rotate(360deg); }
