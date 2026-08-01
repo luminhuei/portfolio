@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>無襯線字體對照 — Min Huei Lu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Geist:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700&family=Host+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20260801a" />
+  <style>
+    .switcher {
+      position: sticky; top: 0; z-index: 60;
+      background: rgba(255,254,253,.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,212,216,.7);
+      padding: 18px clamp(20px,4vw,64px) 16px;
+    }
+    .switcher h1 { font-family: var(--serif); font-weight: 400; font-size: 26px; letter-spacing: -.01em; margin-bottom: 12px; }
+    .fbtns { display: flex; flex-wrap: wrap; gap: 8px; }
+    .fbtn {
+      padding: 8px 15px; border-radius: 999px; cursor: pointer;
+      border: 1px solid rgba(212,212,216,.8); background: #fff;
+      font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink);
+      transition: background .18s ease, border-color .18s ease, color .18s ease;
+    }
+    .fbtn:hover { border-color: var(--ink); }
+    .fbtn.on { background: var(--card-dark); border-color: var(--card-dark); color: #fafafa; }
+    .fnote { margin-top: 12px; font-size: 14px; line-height: 1.6; color: #52525b; max-width: 70ch; }
+    .fnote b { color: var(--ink); font-weight: 600; }
+    .specimen { padding: clamp(28px,4vw,48px) clamp(20px,4vw,64px) 0; }
+    .spec-label { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); margin-bottom: 14px; }
+    .spec-aa { font-size: clamp(46px,7vw,96px); line-height: 1.05; letter-spacing: -.02em; font-weight: 500; }
+    .spec-para { margin-top: 20px; max-width: 62ch; font-size: 17px; line-height: 1.7; color: #3f3f46; }
+    .spec-weights { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 26px; align-items: baseline; }
+    .spec-weights span { font-size: 21px; }
+    .projects { box-shadow: none; border-radius: 0; }
+    .reveal, .seq { opacity: 1 !important; transform: none !important; }
+  </style>
+</head>
+<body>
+  <div class="switcher">
+    <h1>無襯線字體對照</h1>
+    <div class="fbtns"><button class="fbtn on" data-font="Geist">Geist</button><button class="fbtn" data-font="Instrument Sans">Instrument Sans</button><button class="fbtn" data-font="Schibsted Grotesk">Schibsted Grotesk</button><button class="fbtn" data-font="Host Grotesk">Host Grotesk</button><button class="fbtn" data-font="Inter">Inter</button></div>
+    <p class="fnote" data-for="Geist"><b>Geist</b> — 現在用的。Vercel 出的 grotesque，中性偏工程感。</p><p class="fnote" data-for="Instrument Sans" hidden><b>Instrument Sans</b> — Instrument Serif 的親生同伴 —— 同一個團隊設計，本來就是配套的。</p><p class="fnote" data-for="Schibsted Grotesk" hidden><b>Schibsted Grotesk</b> — 最接近 Suisse Int'l 的免費選項。瑞士風、克制、沒有多餘個性。</p><p class="fnote" data-for="Host Grotesk" hidden><b>Host Grotesk</b> — 2024 年的新字體，比 Schibsted 多一點溫度和開口。</p><p class="fnote" data-for="Inter" hidden><b>Inter</b> — 業界最泛用的介面字。安全，但太常見、少了工作室的獨特感。</p>
+  </div>
+
+  <div class="specimen">
+    <p class="spec-label">字型樣張</p>
+    <p class="spec-aa">Building brands<br />&amp; the products</p>
+    <div class="spec-weights">
+      <span style="font-weight:400">Regular 400</span>
+      <span style="font-weight:500">Medium 500</span>
+      <span style="font-weight:600">Semibold 600</span>
+      <span style="font-weight:700">Bold 700</span>
+    </div>
+    <p class="spec-para">Four surfaces of one restaurant system: the handheld a server carries, the tablet a guest orders from, the report an owner opens every morning, and the loyalty app that ties the brands together. 同一套餐廳系統的四個介面。1234567890 &mdash; $208M &middot; 64% &middot; 411</p>
+  </div>
+
+  <main class="projects" style="padding-top:clamp(28px,4vw,48px)">
+    <section class="client reveal">
+      <div class="client-info">
+        <div class="client-id">
+          <div>
+            <h3 class="client-name">Peblla</h3>
+            <p class="client-sector">Restaurant technology</p>
+          </div>
+        </div>
+        <div>
+          <p class="client-note">Four surfaces of one restaurant system: the handheld a server carries, the tablet a guest orders from, the report an owner opens every morning, and the loyalty app that ties the brands together.</p>
+          <p class="client-years">2024 &ndash; 2025 &nbsp;&middot;&nbsp; 4 case studies</p>
+        </div>
+      </div>
+      <div class="client-grid">
+        <a class="tile" href="mpos.html">
+          <div class="tile-media" style="--ph: linear-gradient(160deg, #ffe8d9, #ffd0a8)"><img src="assets/home/mpos.webp?v=20260731a" alt="The handheld POS mid Smart Scan &mdash; twenty items detected, waiting on the side button to scan again" width="1200" height="750" loading="lazy" /></div>
+          <div class="tile-cap"><h4 class="tile-name">Handheld Mobile POS</h4><span class="tile-year">2025</span></div>
+        </a>
+        <a class="tile" href="points-alliance.html">
+          <div class="tile-media" style="--ph: linear-gradient(190deg, #ead9ff, #fbcfe8)"><img src="assets/home/points-alliance.webp?v=20260731a" alt="The Points Alliance app at the tip step of checkout &mdash; a 20% tip on a $142.30 bill, ready to confirm" width="1200" height="750" loading="lazy" /></div>
+          <div class="tile-cap"><h4 class="tile-name">Points Alliance App</h4><span class="tile-year">2025</span></div>
+        </a>
+        <a class="tile" href="dashboard.html">
+          <div class="tile-media" style="--ph: linear-gradient(150deg, #d9f0ff, #b8ebff)"><img src="assets/home/dashboard.webp?v=20260731a" alt="The Order Details report open on a laptop &mdash; a day of orders with payment status, channel, server and totals" width="1200" height="750" loading="lazy" /></div>
+          <div class="tile-cap"><h4 class="tile-name">Analytics Dashboard</h4><span class="tile-year">2024</span></div>
+        </a>
+        <a class="tile" href="tablet.html">
+          <div class="tile-media" style="--ph: linear-gradient(175deg, #dcf7e9, #d9f99d)"><img src="assets/home/tablet.webp?v=20260731a" alt="The Ordering Tablet on a table &mdash; a guest picks their all-you-can-eat tier and party size before ordering starts" width="1200" height="750" loading="lazy" /></div>
+          <div class="tile-cap"><h4 class="tile-name">Self-Ordering Tablet</h4><span class="tile-year">2024</span></div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <section class="craft">
+    <h2 class="craft-lead">I take a rough idea <em>all the way</em> to the thing that ships.</h2>
+    <div class="craft-grid">
+      <article class="craft-col reveal">
+        <p class="craft-num">01</p>
+        <h3 class="craft-title">Branding</h3>
+        <ul class="craft-list">
+          <li>Brand identity</li>
+          <li>Visual systems</li>
+          <li>Brand guidelines</li>
+          <li>Packaging &amp; print</li>
+          <li>Retail &amp; interiors</li>
+        </ul>
+        <span class="craft-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><circle class="ci-a" cx="13" cy="13" r="12"/><path class="ci-b" d="M37 1 47 11 37 21 27 11Z"/><path class="ci-c" d="M13 28 26 47 0 47Z"/></svg></span>
+      </article>
+      <article class="craft-col reveal">
+        <p class="craft-num">02</p>
+        <h3 class="craft-title">UX / UI</h3>
+        <ul class="craft-list">
+          <li>Product design</li>
+          <li>Mobile &amp; POS apps</li>
+          <li>Data dashboards</li>
+          <li>Design systems</li>
+          <li>Usability testing</li>
+        </ul>
+        <span class="craft-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><rect class="ci-d" x="0" y="0" width="19" height="48" rx="3"/><rect class="ci-e" x="25" y="0" width="23" height="20" rx="3"/><rect class="ci-f" x="25" y="26" width="23" height="22" rx="3"/></svg></span>
+      </article>
+      <article class="craft-col reveal">
+        <p class="craft-num">03</p>
+        <h3 class="craft-title">Motion &amp; Video</h3>
+        <ul class="craft-list">
+          <li>Campaign film</li>
+          <li>Motion graphics</li>
+          <li>Storyboarding</li>
+          <li>Art direction</li>
+          <li>Video editing</li>
+        </ul>
+        <span class="craft-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path class="ci-g" d="M0 5 11 24 0 43Z"/><path class="ci-g" d="M12 5 23 24 12 43Z"/><path class="ci-g" d="M24 5 35 24 24 43Z"/><path class="ci-g" d="M36 5 47 24 36 43Z"/></svg></span>
+      </article>
+    </div>
+  </section>
+
+
+  <script>
+    var btns = document.querySelectorAll(".fbtn");
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var f = b.dataset.font;
+        document.documentElement.style.setProperty("--sans", '"' + f + '", "Noto Sans TC", sans-serif');
+        btns.forEach(function (x) { x.classList.toggle("on", x === b); });
+        document.querySelectorAll(".fnote").forEach(function (n) { n.hidden = n.dataset.for !== f; });
+      });
+    });
+  </script>
+</body>
+</html>
