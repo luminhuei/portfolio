@@ -15,6 +15,8 @@
 --------------------------------------------------------------------------- */
 
 const ALLOWED_ORIGINS = [
+  "https://luminhueiportfolio.com",
+  "https://www.luminhueiportfolio.com",
   "https://luminhuei.github.io",
   "http://localhost:4174", // local testing
 ];

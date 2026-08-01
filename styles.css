@@ -691,9 +691,12 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04e
    blocks reflow, the chevrons run left to right. */
 .craft-icon svg * { transform-box: fill-box; transform-origin: center; }
 
-.craft-col.visible .ci-a { animation: ci-breathe 4.4s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-.craft-col.visible .ci-b { animation: ci-turn 11s linear infinite; }
-.craft-col.visible .ci-c { animation: ci-breathe 4.4s cubic-bezier(0.22, 1, 0.36, 1) 0.7s infinite; }
+/* Branding: the three marks get placed rather than spun — each turns a quarter
+   and settles, staggered, like a set being arranged. The circle can't show
+   rotation, so it settles in scale on the same beat. */
+.craft-col.visible .ci-a { animation: ci-settle 6s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+.craft-col.visible .ci-b { animation: ci-place 6s cubic-bezier(0.22, 1, 0.36, 1) 0.45s infinite; }
+.craft-col.visible .ci-c { animation: ci-place-back 6s cubic-bezier(0.22, 1, 0.36, 1) 0.9s infinite; }
 
 .craft-col.visible .ci-e { transform-origin: top; animation: ci-grow 5s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
 .craft-col.visible .ci-f { transform-origin: bottom; animation: ci-shrink 5s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
@@ -703,8 +706,9 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04e
 .craft-col.visible .ci-g:nth-of-type(3) { animation-delay: 0.26s; }
 .craft-col.visible .ci-g:nth-of-type(4) { animation-delay: 0.39s; }
 
-@keyframes ci-breathe { 0%, 100% { transform: scale(1); } 45% { transform: scale(0.8); } }
-@keyframes ci-turn { to { transform: rotate(360deg); } }
+@keyframes ci-settle { 0%, 8% { transform: scale(1); } 26%, 58% { transform: scale(1.13); } 82%, 100% { transform: scale(1); } }
+@keyframes ci-place { 0%, 8% { transform: rotate(0deg); } 26%, 58% { transform: rotate(90deg); } 82%, 100% { transform: rotate(0deg); } }
+@keyframes ci-place-back { 0%, 8% { transform: rotate(0deg); } 26%, 58% { transform: rotate(-90deg); } 82%, 100% { transform: rotate(0deg); } }
 @keyframes ci-grow { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.5); } }
 @keyframes ci-shrink { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.55); } }
 @keyframes ci-run { 0%, 100% { opacity: 0.28; } 22% { opacity: 1; } }
