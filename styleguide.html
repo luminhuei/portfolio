@@ -7,7 +7,7 @@
   <title>Type &amp; Style Sheet — Min Huei Lu Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #fffefd;
@@ -17,8 +17,8 @@
       --accent: #0099ff;
       --line: rgba(212, 212, 216, 0.8);
       --serif: "Instrument Serif", "Noto Serif TC", Georgia, serif;
-      --sans: "Geist", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
-      --mono: "Geist Mono", ui-monospace, monospace;
+      --sans: "Instrument Sans", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: "Instrument Sans", "Noto Sans TC", -apple-system, sans-serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -131,17 +131,17 @@
       </div>
       <div class="face">
         <p class="face-role">Text &amp; UI &middot; --sans</p>
-        <p class="face-name">Geist</p>
-        <p class="face-spec">Google Fonts &middot; OFL (Vercel)<br />400 / 500 / 600 / 700<br />Fallback: Noto Sans TC, system UI</p>
+        <p class="face-name">Instrument Sans</p>
+        <p class="face-spec">Google Fonts &middot; OFL (Instrument)<br />400 / 500 / 600 / 700<br />Fallback: Noto Sans TC, system UI</p>
         <p class="face-sample" style="font-family: var(--sans)">Aa &mdash; Bb</p>
         <p class="face-note">Everything you read for information: body copy, nav, buttons, metadata values, project names. 400 for paragraphs, 500 for UI, 600 for names and headings inside cards.</p>
       </div>
       <div class="face">
         <p class="face-role">Label &middot; --mono</p>
-        <p class="face-name">Geist Mono</p>
-        <p class="face-spec">Google Fonts &middot; OFL<br />400 / 500<br />Fallback: ui-monospace</p>
+        <p class="face-name">Instrument Sans <span style="color:var(--faint);font-weight:400">(uppercase)</span></p>
+        <p class="face-spec">Google Fonts &middot; OFL (Instrument)<br />400 / 500<br />Fallback: Noto Sans TC, system UI</p>
         <p class="face-sample" style="font-family: var(--mono)">Aa &mdash; Bb</p>
-        <p class="face-note">Small uppercase labels only: kickers, metadata keys, captions, years, counts. Always tracked out (+0.06 to +0.08em) and never used above 14&nbsp;px.</p>
+        <p class="face-note">Small labels only: kickers, metadata keys, captions, years, counts. The label role is no longer a separate monospace face &mdash; it is the same family, and the signal now comes entirely from <b>uppercase + tracking</b> (+0.06 to +0.08em), never above 14&nbsp;px.</p>
       </div>
     </div>
     <div class="note">
@@ -211,92 +211,92 @@
 
   <!-- 3 ................................................................. -->
   <section>
-    <div class="sec-head"><span class="sec-num">03</span><h2>Text &mdash; Geist</h2></div>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Text &mdash; Instrument Sans</h2></div>
 
     <div class="row">
       <div class="row-sample"><p class="s-pcard">A report centre 700+ operators trust at a glance</p></div>
-      <p class="row-spec"><b>.pcard-title</b>Geist 600<br />clamp(21px, 2.1vw, 30px) &rarr; 30px<br />line-height 1.25 &middot; tracking &minus;0.015em<span class="use">Legacy homepage card headline. Not in use after the homepage rebuild &mdash; kept for reference.</span></p>
+      <p class="row-spec"><b>.pcard-title</b>Instrument Sans 600<br />clamp(21px, 2.1vw, 30px) &rarr; 30px<br />line-height 1.25 &middot; tracking &minus;0.015em<span class="use">Legacy homepage card headline. Not in use after the homepage rebuild &mdash; kept for reference.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-sol">01 &nbsp; Put the whole order in one thumb reach</p></div>
-      <p class="row-spec"><b>.sol-item h3</b>Geist 600<br />18px<span class="use">Numbered solution headings inside a case study.</span></p>
+      <p class="row-spec"><b>.sol-item h3</b>Instrument Sans 600<br />18px<span class="use">Numbered solution headings inside a case study.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-body">Servers were carrying orders in their heads from the table to a terminal at the back of the room, then walking back to confirm. The fix was not a smaller screen &mdash; it was moving the decision to where the guest is sitting.</p></div>
-      <p class="row-spec"><b>.step-body / .case-intro-body</b>Geist 400<br />17px &middot; line-height 1.7<br />colour #3f3f46 &middot; max 62ch<span class="use">The default reading size. Every paragraph in a case study.</span></p>
+      <p class="row-spec"><b>.step-body / .case-intro-body</b>Instrument Sans 400<br />17px &middot; line-height 1.7<br />colour #3f3f46 &middot; max 62ch<span class="use">The default reading size. Every paragraph in a case study.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-clientname">Peblla</p><p style="font-size:15px;color:var(--muted);line-height:1.35">Restaurant technology</p></div>
-      <p class="row-spec"><b>.client-name / .client-sector</b>Geist 600 / Geist 400<br />17px &middot; 15px<br />line-height 1.35<span class="use">New. Client identity on the homepage work rows.</span></p>
+      <p class="row-spec"><b>.client-name / .client-sector</b>Instrument Sans 600 / Instrument Sans 400<br />17px &middot; 15px<br />line-height 1.35<span class="use">New. Client identity on the homepage work rows.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-note">Four surfaces of one restaurant system: the handheld a server carries, the tablet a guest orders from, the report an owner opens every morning.</p></div>
-      <p class="row-spec"><b>.client-note</b>Geist 400<br />15px &middot; line-height 1.7<br />colour #52525b &middot; max 36ch<span class="use">New. Client description on the homepage work rows.</span></p>
+      <p class="row-spec"><b>.client-note</b>Instrument Sans 400<br />15px &middot; line-height 1.7<br />colour #52525b &middot; max 36ch<span class="use">New. Client description on the homepage work rows.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-stattitle">Checkouts moved tableside</p></div>
-      <p class="row-spec"><b>.stat-title</b>Geist 600<br />16px &middot; line-height 1.4<span class="use">Label under a stat number.</span></p>
+      <p class="row-spec"><b>.stat-title</b>Instrument Sans 600<br />16px &middot; line-height 1.4<span class="use">Label under a stat number.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-tilename">Handheld Mobile POS</p></div>
-      <p class="row-spec"><b>.tile-name</b>Geist 500<br />15px &middot; tracking &minus;0.01em<span class="use">New. Case-study name under each homepage thumbnail.</span></p>
+      <p class="row-spec"><b>.tile-name</b>Instrument Sans 500<br />15px &middot; tracking &minus;0.01em<span class="use">New. Case-study name under each homepage thumbnail.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-dd">UI Design &middot; Interaction Design &middot; Design System</p></div>
-      <p class="row-spec"><b>.case-meta dd</b>Geist 500<br />15px &middot; line-height 1.5<span class="use">The value side of case-study metadata.</span></p>
+      <p class="row-spec"><b>.case-meta dd</b>Instrument Sans 500<br />15px &middot; line-height 1.5<span class="use">The value side of case-study metadata.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-nav">Work &nbsp;&middot;&nbsp; About &nbsp;&middot;&nbsp; CV</p></div>
-      <p class="row-spec"><b>.nav-link / .work-viewall</b>Geist 500<br />14px<span class="use">Nav pills and buttons.</span></p>
+      <p class="row-spec"><b>.nav-link / .work-viewall</b>Instrument Sans 500<br />14px<span class="use">Nav pills and buttons.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><span class="s-chip">What makes her different?</span></div>
-      <p class="row-spec"><b>.chip</b>Geist 400<br />12px &middot; colour #a1a1aa<span class="use">Suggestion chips under the MinaGPT bar.</span></p>
+      <p class="row-spec"><b>.chip</b>Instrument Sans 400<br />12px &middot; colour #a1a1aa<span class="use">Suggestion chips under the MinaGPT bar.</span></p>
     </div>
   </section>
 
   <!-- 4 ................................................................. -->
   <section>
-    <div class="sec-head"><span class="sec-num">04</span><h2>Labels &mdash; Geist Mono</h2></div>
-    <p class="lede" style="margin-top:24px">All uppercase, all tracked out, all small. This is the only place monospace appears &mdash; it is what makes the site read like a spec sheet rather than a blog.</p>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Labels &mdash; Instrument Sans, uppercase</h2></div>
+    <p class="lede" style="margin-top:24px">All uppercase, all tracked out, all small. Since the family is now shared with body text, the label role is carried by case and tracking alone &mdash; that is what keeps the site reading like a spec sheet rather than a blog.</p>
 
     <div class="row">
       <div class="row-sample"><p class="s-kicker">Selected work</p></div>
-      <p class="row-spec"><b>.case-kicker / .work-bar-label / .next-label</b>Geist Mono 400<br />13px &middot; tracking +0.08em &middot; uppercase<br />colour #71717a<span class="use">Section eyebrows.</span></p>
+      <p class="row-spec"><b>.case-kicker / .work-bar-label / .next-label</b>Instrument Sans 400, uppercase<br />13px &middot; tracking +0.08em &middot; uppercase<br />colour #71717a<span class="use">Section eyebrows.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-steplabel">The problem</p></div>
-      <p class="row-spec"><b>.step-label</b>Geist Mono 400<br />13px &middot; tracking +0.08em &middot; uppercase<br />colour #0099ff (accent)<span class="use">The only place the accent blue is used as text.</span></p>
+      <p class="row-spec"><b>.step-label</b>Instrument Sans 400, uppercase<br />13px &middot; tracking +0.08em &middot; uppercase<br />colour #0099ff (accent)<span class="use">The only place the accent blue is used as text.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-morelink">View all &rarr;</p></div>
-      <p class="row-spec"><b>.more-link</b>Geist Mono 400<br />14px &middot; tracking +0.06em &middot; uppercase<span class="use">Largest mono size in the system. Underlined link.</span></p>
+      <p class="row-spec"><b>.more-link</b>Instrument Sans 400, uppercase<br />14px &middot; tracking +0.06em &middot; uppercase<span class="use">Largest mono size in the system. Underlined link.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-dt">Company</p></div>
-      <p class="row-spec"><b>.case-meta dt</b>Geist Mono 400<br />12px &middot; tracking +0.08em &middot; uppercase<br />colour #71717a<span class="use">The key side of case-study metadata.</span></p>
+      <p class="row-spec"><b>.case-meta dt</b>Instrument Sans 400, uppercase<br />12px &middot; tracking +0.08em &middot; uppercase<br />colour #71717a<span class="use">The key side of case-study metadata.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-years">2024 &ndash; 2025 &nbsp;&middot;&nbsp; 4 case studies</p></div>
-      <p class="row-spec"><b>.client-years / .tile-year</b>Geist Mono 400<br />12px &middot; tracking +0.06em &middot; uppercase<br />colour #a1a1aa<span class="use">New. Dates and counts on the homepage work rows.</span></p>
+      <p class="row-spec"><b>.client-years / .tile-year</b>Instrument Sans 400, uppercase<br />12px &middot; tracking +0.06em &middot; uppercase<br />colour #a1a1aa<span class="use">New. Dates and counts on the homepage work rows.</span></p>
     </div>
 
     <div class="row">
       <div class="row-sample"><p class="s-caption">Store 04 &middot; counter elevation, 1:50</p></div>
-      <p class="row-spec"><b>.case figcaption</b>Geist Mono 400<br />12.5px &middot; line-height 1.7 &middot; sentence case<br />colour #a1a1aa &middot; hairline above<span class="use">Image captions. The one mono style that is not uppercase.</span></p>
+      <p class="row-spec"><b>.case figcaption</b>Instrument Sans 400, uppercase<br />12.5px &middot; line-height 1.7 &middot; sentence case<br />colour #a1a1aa &middot; hairline above<span class="use">Image captions. The one mono style that is not uppercase.</span></p>
     </div>
   </section>
 
@@ -332,7 +332,7 @@
     </table>
 
     <div class="note">
-      <b>The rule of thumb.</b> Serif says what the page is about. Sans says what you need to know. Mono says where you are. If a new element does not clearly belong to one of those three jobs, it probably does not need new type &mdash; it needs one of the sizes above.
+      <b>The rule of thumb.</b> Serif says what the page is about. Sans says what you need to know. Small tracked-out uppercase says where you are. If a new element does not clearly belong to one of those three jobs, it probably does not need new type &mdash; it needs one of the sizes above.
     </div>
   </section>
 

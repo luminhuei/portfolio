@@ -15,8 +15,9 @@
   --card-light: #f4f4f5;
   --footer-bg: #0c0c0c;
   --serif: "Instrument Serif", "Noto Serif TC", Georgia, serif;
-  --sans: "Geist", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
-  --mono: "Geist Mono", ui-monospace, monospace;
+  --sans: "Instrument Sans", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* label role: same family, carried by uppercase + tracking rather than a mono face */
+  --mono: "Instrument Sans", "Noto Sans TC", -apple-system, sans-serif;
   --radius: 28px;
   --page-pad: clamp(20px, 4vw, 48px);
 }
