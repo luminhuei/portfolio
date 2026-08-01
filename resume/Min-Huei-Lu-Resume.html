@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Min Huei Lu — Senior Product &amp; Experience Designer</title>
+<style>
+  @page { size: letter; margin: 0.5in 0.6in; }
+
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-Italic.ttf")  format("truetype"); font-weight: 400; font-style: italic; }
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-Medium.ttf")  format("truetype"); font-weight: 500; font-style: normal; }
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-Bold.ttf")    format("truetype"); font-weight: 700; font-style: normal; }
+
+  :root {
+    --ink: #16191F;
+    --ink-2: #3D4550;
+    --ink-3: #6B7480;
+    --rule: #C9CDD4;
+    /* deepened from the site accent #0099ff so 8pt type stays legible in print */
+    --accent: #0070CC;
+    --serif: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --sans: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    font-size: 9.6pt;
+    line-height: 1.42;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--ink); text-decoration: none; }
+
+  /* ---- header ---- */
+  header { margin-bottom: 13pt; }
+  h1 {
+    font-family: var(--serif);
+    font-size: 24pt;
+    font-weight: 700;
+    letter-spacing: -0.028em;
+    line-height: 1;
+    margin-bottom: 4pt;
+  }
+  .title {
+    font-size: 11pt;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+    margin-bottom: 7pt;
+  }
+  .contact {
+    font-size: 8.9pt;
+    color: var(--ink-2);
+    padding-top: 6pt;
+    border-top: 0.75pt solid var(--rule);
+  }
+  .contact span::after { content: "  ·  "; color: var(--rule); }
+  .contact span:last-child::after { content: ""; }
+
+  /* ---- sections ---- */
+  section { margin-top: 12pt; }
+  h2 {
+    font-family: var(--sans);
+    font-size: 8.2pt;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-bottom: 3pt;
+    margin-bottom: 7pt;
+    border-bottom: 0.75pt solid var(--rule);
+  }
+
+  .summary { font-size: 10pt; line-height: 1.5; color: var(--ink-2); }
+  .summary strong { color: var(--ink); font-weight: 600; }
+
+  /* ---- jobs ---- */
+  /* Bullets may flow across the page break; a job heading must never be
+     stranded at the foot of a page without at least two bullets under it. */
+  .job { margin-bottom: 11pt; }
+  .job:last-child { margin-bottom: 0; }
+  section { break-inside: avoid; page-break-inside: avoid; }
+  #experience { break-inside: auto; page-break-inside: auto; }
+  .job-head, .job-ctx { break-after: avoid; page-break-after: avoid; }
+  ul { orphans: 2; widows: 2; }
+  li { break-inside: avoid; page-break-inside: avoid; }
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12pt;
+    margin-bottom: 1pt;
+  }
+  .job-co { font-size: 10.6pt; font-weight: 700; font-family: var(--serif); letter-spacing: -0.014em; }
+  .job-role { font-size: 9.8pt; font-weight: 600; color: var(--ink-2); }
+  .job-dates {
+    font-size: 8.6pt;
+    color: var(--ink-3);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .job-ctx {
+    font-size: 8.8pt;
+    color: var(--ink-3);
+    font-style: italic;
+    margin: 2pt 0 5pt;
+  }
+  ul { list-style: none; }
+  li {
+    position: relative;
+    padding-left: 11pt;
+    margin-bottom: 3.6pt;
+  }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 1.5pt;
+    top: 5.2pt;
+    width: 3pt;
+    height: 3pt;
+    background: var(--rule);
+  }
+  li strong { font-weight: 600; }
+
+  /* ---- skills ---- */
+  .skill-row {
+    display: flex;
+    gap: 8pt;
+    margin-bottom: 3.4pt;
+    font-size: 9.3pt;
+  }
+  .skill-label {
+    flex: 0 0 92pt;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+  .skill-val { color: var(--ink); }
+
+  /* ---- two-up ---- */
+  .two-up { display: flex; gap: 26pt; }
+  .two-up > div { flex: 1; }
+
+  .edu-item { margin-bottom: 4.5pt; }
+  .edu-item .deg { font-weight: 600; }
+  .edu-item .sch { color: var(--ink-2); font-size: 9.2pt; }
+
+  .awards p { margin-bottom: 3.4pt; }
+  .awards .lead { font-weight: 600; }
+
+  .press { font-size: 9.2pt; color: var(--ink-2); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Min Huei Lu</h1>
+  <div class="title">Senior Product &amp; Experience Designer</div>
+  <div class="contact">
+    <span>luminhuei@gmail.com</span>
+    <span>(530) 551-8030</span>
+    <span>luminhueiportfolio.com</span>
+    <span>linkedin.com/in/minhueilu</span>
+    <span>Charlotte, NC · Open to remote</span>
+  </div>
+</header>
+
+<section>
+  <h2>Summary</h2>
+  <p class="summary">
+    Product designer specializing in <strong>complex vertical software — restaurant tech, POS, and payments</strong> —
+    built on a full brand design foundation. Seven-plus years spanning brand systems, responsive web, and
+    software product, most recently as the sole design leader for a platform processing
+    <strong>~$208M in annual payment volume</strong> across <strong>700+ active restaurant locations</strong>.
+    U.S. permanent residency application pending — <strong>no employer sponsorship required.</strong>
+  </p>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="job-head">
+      <div>
+        <div class="job-co">Peblla, Inc.</div>
+        <div class="job-role">Design &amp; User Experience Officer</div>
+      </div>
+      <div class="job-dates">Dec 2024 – Apr 2026</div>
+    </div>
+    <div class="job-ctx">
+      Restaurant technology platform — POS, mobile POS, self-ordering kiosks and tablets, ordering apps, merchant analytics.
+    </div>
+    <ul>
+      <li>Designed a handheld <strong>Mobile POS</strong> for full-service restaurants that <strong>migrated 64% of checkouts to tableside within three months of launch</strong>, cutting features aggressively for the small operating surface rather than porting desktop parity.</li>
+      <li>Launched the <strong>Points Alliance</strong> cross-brand loyalty MVP — a dual-ledger points system spanning independent restaurant brands — driving <strong>643 members to place cross-brand orders</strong> and 71 members to redeem <strong>36,361+ points</strong>.</li>
+      <li>Designed the interface and design system for a <strong>B2B analytics report center used daily by 600+ store operators</strong>, structured so a new report is assembled from existing components rather than designed from scratch.</li>
+      <li>Shipped a <strong>self-ordering tablet</strong> for all-you-can-eat restaurants, validated when <strong>5 of 5 untrained users completed the full ordering flow unaided</strong>.</li>
+      <li>Built the Mobile POS <strong>design system</strong> from scratch — reusable components, variant architecture, semantic color tokens — so a single component set supports both bright front-of-house and dim back-of-house environments.</li>
+      <li>Owned design across the entire product line as the sole design leader, partnering with product, engineering and marketing, while mentoring junior designers.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div>
+        <div class="job-co">Gong cha</div>
+        <div class="job-role">Lead Designer, Brand &amp; UX/UI</div>
+      </div>
+      <div class="job-dates">Mar 2020 – Dec 2024</div>
+    </div>
+    <div class="job-ctx">
+      Global tea franchise — US brand transformation, ordering app, loyalty program, responsive web.
+    </div>
+    <ul>
+      <li>Scaled the online ordering app and rewards system from a <strong>single-store pilot to 30 California stores</strong>, reaching <strong>~$910K in monthly omnichannel sales</strong> and <strong>$12K in monthly points redemption</strong> across app, web, counter POS and kiosk.</li>
+      <li>Led the US brand transformation and digital launch with a team of <strong>5+ designers</strong>, delivering a <strong>140% increase in US sales</strong> and a portfolio of internationally awarded work.</li>
+      <li>Led the redesign of an SEO-optimized, accessibility-first responsive website (50+ pages), delivering <strong>+251.69% sessions</strong>, <strong>+280.51% first-time users</strong>, an <strong>87.64% reduction in bounce rate</strong>, and an accessibility score lift from <strong>56% to 88%</strong> with 150+ violations resolved.</li>
+      <li>Ran accessibility research with real assistive-technology users — <strong>5 one-on-one interviews and 39 survey responses</strong>, tested against the NVDA screen reader.</li>
+      <li>Authored a brand stylesheet adopted by <strong>10+ cross-functional teams across 30 stores</strong>, none of whom reported into design.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div>
+        <div class="job-co">Contract &amp; Freelance</div>
+        <div class="job-role">Graphic &amp; Brand Designer</div>
+      </div>
+      <div class="job-dates">Mar 2019 – Mar 2021</div>
+    </div>
+    <div class="job-ctx">MOD Worldwide · Iyashi Brand Studio · Independent</div>
+    <ul>
+      <li>Brand guidelines, venture pitch decks, television commercials, websites and apps for <strong>Aetna, CVS, Comcast, Xfinity</strong> and HIPPO.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <div class="skill-row"><div class="skill-label">Product &amp; Systems</div><div class="skill-val">Design systems · B2B SaaS · POS &amp; payments · 0→1 product · Cross-platform · Accessibility (WCAG)</div></div>
+  <div class="skill-row"><div class="skill-label">Design</div><div class="skill-val">Figma · Adobe Creative Suite · Sketch · Framer · Prototyping · Motion graphics</div></div>
+  <div class="skill-row"><div class="skill-label">Research</div><div class="skill-val">Usability testing · Heuristic analysis · Assistive-technology research · Analytics-informed design</div></div>
+  <div class="skill-row"><div class="skill-label">AI &amp; Build</div><div class="skill-val">AI-assisted design workflow · Conversational UI · Front-end implementation (HTML/CSS/JS)</div></div>
+  <div class="skill-row"><div class="skill-label">Growth</div><div class="skill-val">Google Analytics · SEO · SEMrush · Google Ads · Web accessibility auditing</div></div>
+  <div class="skill-row"><div class="skill-label">Languages</div><div class="skill-val">English · Mandarin</div></div>
+</section>
+
+<section>
+  <h2>Education &amp; Certificates</h2>
+  <div class="two-up">
+    <div>
+      <div class="edu-item">
+        <div class="deg">MFA, Graphic Design</div>
+        <div class="sch">Academy of Art University · 2016–2020</div>
+      </div>
+      <div class="edu-item">
+        <div class="deg">B.S., Cosmetics Chemistry</div>
+        <div class="sch">Providence University · 2008–2012</div>
+      </div>
+    </div>
+    <div>
+      <div class="edu-item">
+        <div class="deg">Women's Entrepreneurship Certificate</div>
+        <div class="sch">eCornell, Cornell University · 2025</div>
+      </div>
+      <div class="edu-item">
+        <div class="deg">Digital Marketing · UX/UI Certificates</div>
+        <div class="sch">UC Berkeley Extension · 2022 · 2020</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="awards">
+  <h2>Awards &amp; Recognition</h2>
+  <p><span class="lead">8 A'Design Awards</span> — including Silver in Web Design (2024) and Silver in Visual Communication (2021), Milan.</p>
+  <p><span class="lead">14 international design exhibitions</span> across 5 countries — China, Italy, Turkey, Iran, India.</p>
+  <p class="press">Featured in LA Weekly, Haute Living, Tech Times and Digital Journal (2023).</p>
+</section>
+
+</body>
+</html>
