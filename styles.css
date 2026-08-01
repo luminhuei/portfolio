@@ -733,11 +733,15 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04e
   .craft-col { min-height: 0; border-right: none; border-bottom: 1px solid rgba(212, 212, 216, 0.85); }
   .craft-col:last-child { border-bottom: none; }
 }
+/* On a phone the 2x2 grid puts each cover at ~165px — too small to read.
+   One per row instead, full width. */
+@media (max-width: 640px) {
+  .client-grid { grid-template-columns: 1fr; row-gap: clamp(20px, 5vw, 28px); }
+}
 @media (max-width: 560px) {
   .work-badge { width: 80px; height: 80px; }
   .badge-core { width: 42px; height: 42px; }
   .badge-core svg { width: 21px; height: 21px; }
-  .client-grid { gap: 10px; }
   .tile-media { border-radius: 14px; }
   .tile-name { font-size: 14px; }
 }
