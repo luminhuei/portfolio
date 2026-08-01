@@ -684,7 +684,14 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04e
   padding-top: 40px;
   color: var(--ink);
 }
-.craft-icon svg { display: block; width: 52px; height: 52px; }
+.craft-icon svg {
+  display: block;
+  width: 52px;
+  height: 52px;
+  /* the marks rotate and scale past the 48-unit viewBox (the triangle by
+     2.5 units at a quarter turn), and an SVG root clips by default */
+  overflow: visible;
+}
 
 /* The three marks animate once their column has scrolled in, each loop saying
    something about the discipline: the brand marks breathe and turn, the layout
