@@ -88,7 +88,7 @@
   color: var(--muted);
   margin-bottom: 6px;
 }
-.case-meta dd { font-size: 14px; font-weight: 500; margin: 0; line-height: 1.5; }
+.case-meta dd { font-size: 18px; font-weight: 500; margin: 0; line-height: 1.5; }
 
 /* Problems / Solution / Results */
 .psr {
@@ -291,7 +291,7 @@
   padding: 18px 18px 14px;
 }
 .color-strip .swatch-primary { min-height: 150px; justify-content: flex-end; }
-.swatch .swatch-name { font-size: 14px; font-weight: 600; }
+.swatch .swatch-name { font-size: 18px; font-weight: 600; }
 .swatch .swatch-spec { font-family: var(--mono); font-size: 12px; line-height: 1.6; opacity: 0.85; }
 .swatch-row { display: grid; grid-template-columns: repeat(4, 1fr); }
 .swatch-row .swatch { min-height: 130px; justify-content: flex-end; }
@@ -309,7 +309,7 @@
 .award-badges img { height: 76px; width: auto; flex: none; }
 .award-badges p {
   margin: 0;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.7;
   color: var(--muted, #555);
 }
@@ -520,7 +520,7 @@
 }
 .vault-gate button:hover { opacity: 0.85; }
 .vault-gate button:disabled { opacity: 0.5; cursor: wait; }
-.vault-msg { color: #b91c1c; font-size: 14px; margin-top: 10px; width: 100%; }
+.vault-msg { color: #b91c1c; font-size: 18px; margin-top: 10px; width: 100%; }
 .vault-h { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); margin-top: 72px; }
 #vaultContent .step-body { margin-top: 18px; }
 #vaultContent figure { margin-top: 44px; }
@@ -847,7 +847,7 @@ html[lang="zh-Hant"] .sol-item p { line-height: 1.95; }
   transform: rotate(-4deg);
 }
 .toc-peek-body { padding: 14px 16px 16px; }
-.toc-peek-note { font-size: 14px; line-height: 1.55; color: var(--ink); }
+.toc-peek-note { font-size: 18px; line-height: 1.55; color: var(--ink); }
 .toc-peek-tags {
   margin-top: 8px;
   font-family: var(--mono);
