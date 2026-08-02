@@ -129,7 +129,7 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   gap: 14px;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--muted);
   margin-bottom: 28px;
 }
@@ -186,7 +186,7 @@ a { color: inherit; }
 }
 .hero-current {
   margin-top: 36px;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--muted);
   line-height: 1.7;
 }
@@ -247,7 +247,7 @@ body.chat-open { overflow: hidden; }
   margin: 0 auto;
   padding: 8px 20px 24px;
 }
-.chat-msg { font-size: 16px; line-height: 1.65; }
+.chat-msg { font-size: 18px; line-height: 1.65; }
 .chat-msg + .chat-msg { margin-top: 20px; }
 .chat-msg-user-row { text-align: right; }
 .chat-msg-user {
@@ -346,7 +346,7 @@ body.chat-open { overflow: hidden; }
   border-radius: 50%;
   background: var(--ink);
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
 }
@@ -634,7 +634,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04e
 .craft-sub {
   margin-top: 24px;
   max-width: 58ch;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.7;
   color: #3c3a36;
 }
@@ -811,7 +811,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04e
   font-size: clamp(30px, 3.8vw, 52px);
   letter-spacing: -0.02em;
 }
-.footer-sub { margin-top: 16px; color: #8c8880; font-size: 16px; }
+.footer-sub { margin-top: 16px; color: #8c8880; font-size: 18px; }
 .footer-actions {
   display: flex;
   justify-content: center;

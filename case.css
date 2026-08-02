@@ -53,7 +53,7 @@
 .case-intro-body {
   margin-top: 32px;
   max-width: 62ch;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.7;
   color: #3c3a36;
 }
@@ -119,7 +119,7 @@
 }
 .psr-card ul { list-style: none; }
 .psr-card li {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5;
   color: #3c3a36;
   padding-left: 18px;
@@ -134,7 +134,7 @@
 }
 .psr-card strong { color: var(--ink); font-weight: 600; }
 .psr-card p {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.65;
   color: #3c3a36;
 }
@@ -230,7 +230,7 @@
 .step-body {
   margin-top: 24px;
   max-width: 62ch;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.7;
   color: #3c3a36;
 }
@@ -586,7 +586,7 @@
   font-size: clamp(30px, 3.8vw, 52px);
   line-height: 1;
 }
-.stat-title { margin-top: 18px; font-size: 16px; font-weight: 600; line-height: 1.4; }
+.stat-title { margin-top: 18px; font-size: 18px; font-weight: 600; line-height: 1.4; }
 .stat-sub { margin-top: 10px; font-family: var(--mono); font-size: 12px; color: var(--muted); line-height: 1.6; }
 
 /* Next project */
@@ -670,7 +670,7 @@
   align-items: baseline;
   gap: 12px;
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--ink);
 }
@@ -682,7 +682,7 @@
 }
 .sol-item p {
   margin-top: 8px;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.7;
   color: #3c3a36;
 }
@@ -745,7 +745,7 @@ html[lang="zh-Hant"] .sol-item p { line-height: 1.95; font-size: 16.5px; }
 }
 .toc-era-note {
   margin-top: 10px;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.7;
   color: var(--muted);
   max-width: 560px;
@@ -1051,7 +1051,7 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
   white-space: nowrap;
 }
 .rec-main { display: block; }
-.rec-main b { display: block; font-size: 16px; font-weight: 500; line-height: 1.4; }
+.rec-main b { display: block; font-size: 18px; font-weight: 500; line-height: 1.4; }
 .rec-main i {
   display: block;
   font-style: normal;
