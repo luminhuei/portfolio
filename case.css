@@ -483,7 +483,7 @@
   all: unset; cursor: pointer; width: 34px; height: 34px; border-radius: 50%;
   border: 1px solid rgba(18, 18, 18, 0.25);
   display: flex; align-items: center; justify-content: center;
-  font-size: 15px; color: var(--ink); transition: background 0.2s ease;
+  font-size: 18px; color: var(--ink); transition: background 0.2s ease;
 }
 .cs-arrows button:hover { background: #f1f1ee; }
 .castores-viewer {
@@ -710,7 +710,7 @@ html[lang="zh-Hant"] .case-lead,
 html[lang="zh-Hant"] .step-title { letter-spacing: 0.02em; }
 html[lang="zh-Hant"] .case-intro-body,
 html[lang="zh-Hant"] .step-body,
-html[lang="zh-Hant"] .sol-item p { line-height: 1.95; font-size: 16.5px; }
+html[lang="zh-Hant"] .sol-item p { line-height: 1.95; }
 
 /* ---------- About: experience entries — year indicator on its own line ---------- */
 #experience .sol-item h3 { display: block; }

@@ -31,7 +31,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -488,7 +488,7 @@ html, body { overflow-x: clip; }
 }
 .badge-core svg { width: 24px; height: 24px; }
 .work-badge:hover .badge-core { transform: scale(1.08); }
-html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04em; }
+html[lang="zh-Hant"] .badge-ring text { font-size: 12px; letter-spacing: 0.02em; }
 @media (prefers-reduced-motion: reduce) {
   .badge-ring { animation: none; }
 }
@@ -902,7 +902,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04e
 
 @media (max-width: 560px) {
   .hero-title br { display: none; }
-  .pill { padding: 14px 20px; font-size: 11.5px; gap: 7px; }
+  .pill { padding: 14px 20px; font-size: 12px; gap: 7px; }
   .pill svg { width: 18px; height: 18px; }
   .nav-link { padding: 8px 10px; }
   .nav-link svg { display: none; }
