@@ -469,7 +469,8 @@ html, body { overflow-x: clip; }
 .badge-ring text {
   font-family: var(--mono);
   font-size: 12px;
-  letter-spacing: 0.1em;
+  /* eased from .1em when the ring text moved 11 -> 12px, so it still fits the circle */
+  letter-spacing: 0.06em;
   fill: #3c3a36;
 }
 @keyframes badge-spin {
