@@ -78,7 +78,7 @@ a { color: inherit; }
   gap: 7px;
   padding: 9px 14px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
   text-decoration: none;
@@ -103,7 +103,7 @@ a { color: inherit; }
   background: rgba(255, 254, 253, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.06em;
   color: var(--ink);
@@ -217,7 +217,7 @@ a { color: inherit; }
   border: 1px solid rgba(208, 205, 199, 0.45);
   background: transparent;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--faint);
   cursor: pointer;
@@ -265,7 +265,7 @@ body.chat-open { overflow: hidden; }
   content: "MinaGPT";
   display: block;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--faint);
@@ -334,7 +334,7 @@ body.chat-open { overflow: hidden; }
   outline: none;
   background: transparent;
   font-family: var(--sans);
-  font-size: 18px;
+  font-size: 14px;
   color: var(--ink);
 }
 .chat-input::placeholder { color: var(--faint); }
@@ -359,7 +359,7 @@ body.chat-open { overflow: hidden; }
   translate: -50% 0;
   text-decoration: none;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -385,7 +385,7 @@ body.chat-open { overflow: hidden; }
   padding: 20px 30px;
   border-radius: 999px;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -441,7 +441,7 @@ html, body { overflow-x: clip; }
 }
 .work-bar-label {
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 14px;
   /* it is an h2, so without this it inherits bold and sits heavier than
      every other 12px label on the page */
   font-weight: 500;
@@ -471,9 +471,9 @@ html, body { overflow-x: clip; }
 }
 .badge-ring text {
   font-family: var(--mono);
-  font-size: 12px;
-  /* eased from .1em when the ring text moved 11 -> 12px, so it still fits the circle */
-  letter-spacing: 0.06em;
+  font-size: 14px;
+  /* the arc has a fixed textLength, so tracking eases as the size climbs (now 14px) */
+  letter-spacing: 0.02em;
   fill: #3c3a36;
 }
 @keyframes badge-spin {
@@ -491,7 +491,7 @@ html, body { overflow-x: clip; }
 }
 .badge-core svg { width: 24px; height: 24px; }
 .work-badge:hover .badge-core { transform: scale(1.08); }
-html[lang="zh-Hant"] .badge-ring text { font-size: 12px; letter-spacing: 0.02em; }
+html[lang="zh-Hant"] .badge-ring text { font-size: 14px; letter-spacing: 0; }
 @media (prefers-reduced-motion: reduce) {
   .badge-ring { animation: none; }
 }
@@ -548,7 +548,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12px; letter-spacing: 0.02em;
 .client-years {
   margin-top: 14px;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--faint);
@@ -590,7 +590,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12px; letter-spacing: 0.02em;
 .tile-media span {
   padding: 0 14px;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: center;
@@ -613,7 +613,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12px; letter-spacing: 0.02em;
 .tile-year {
   flex: none;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--faint);
 }
 .tile:hover .tile-name { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
@@ -662,7 +662,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12px; letter-spacing: 0.02em;
   align-items: center;
   gap: 9px;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--muted);
 }
@@ -885,7 +885,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12px; letter-spacing: 0.02em;
   flex-wrap: wrap;
   margin-top: clamp(28px, 3vw, 48px);
   padding: 0 clamp(20px, 4vw, 64px);
-  font-size: 12px;
+  font-size: 14px;
   color: #8c8880;
 }
 .footer-privacy {
@@ -893,7 +893,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12px; letter-spacing: 0.02em;
   padding: 0 clamp(20px, 4vw, 64px);
   max-width: 640px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.6;
   color: #adaaa4;
 }
@@ -905,7 +905,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12px; letter-spacing: 0.02em;
 
 @media (max-width: 560px) {
   .hero-title br { display: none; }
-  .pill { padding: 14px 20px; font-size: 12px; gap: 7px; }
+  .pill { padding: 14px 20px; font-size: 14px; gap: 7px; }
   .pill svg { width: 18px; height: 18px; }
   .nav-link { padding: 8px 9px; }
   .nav-link svg { display: none; }
@@ -913,6 +913,10 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12px; letter-spacing: 0.02em;
   /* clears a 320px screen, which the nav has never quite fitted */
   .topbar { gap: 6px; }
   .nav { padding: 4px; }
+}
+@media (max-width: 360px) {
+  .nav-link { padding: 8px 6px; }
+  .nav { gap: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -927,7 +931,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12px; letter-spacing: 0.02em;
   align-items: center;
   gap: 6px;
   padding: 9px 14px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--faint);
 }
