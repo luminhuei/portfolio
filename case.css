@@ -31,7 +31,7 @@
 
 .case-kicker {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
@@ -53,7 +53,7 @@
 .case-intro-body {
   margin-top: 32px;
   max-width: 62ch;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.7;
   color: #3c3a36;
 }
@@ -61,7 +61,7 @@
 .case-intro-body q { font-style: italic; }
 .case-note {
   font-family: var(--mono);
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--faint);
 }
 
@@ -88,7 +88,7 @@
   color: var(--muted);
   margin-bottom: 6px;
 }
-.case-meta dd { font-size: 15px; font-weight: 500; margin: 0; line-height: 1.5; }
+.case-meta dd { font-size: 14px; font-weight: 500; margin: 0; line-height: 1.5; }
 
 /* Problems / Solution / Results */
 .psr {
@@ -119,7 +119,7 @@
 }
 .psr-card ul { list-style: none; }
 .psr-card li {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.5;
   color: #3c3a36;
   padding-left: 18px;
@@ -134,7 +134,7 @@
 }
 .psr-card strong { color: var(--ink); font-weight: 600; }
 .psr-card p {
-  font-size: 15.5px;
+  font-size: 16px;
   line-height: 1.65;
   color: #3c3a36;
 }
@@ -212,7 +212,7 @@
 }
 .step-label {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink);
@@ -230,7 +230,7 @@
 .step-body {
   margin-top: 24px;
   max-width: 62ch;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.7;
   color: #3c3a36;
 }
@@ -257,7 +257,7 @@
 }
 .case figcaption {
   font-family: var(--mono);
-  font-size: 12.5px;
+  font-size: 12px;
   line-height: 1.7;
   color: var(--faint);
   padding-top: 8px;
@@ -291,8 +291,8 @@
   padding: 18px 18px 14px;
 }
 .color-strip .swatch-primary { min-height: 150px; justify-content: flex-end; }
-.swatch .swatch-name { font-size: 15px; font-weight: 600; }
-.swatch .swatch-spec { font-family: var(--mono); font-size: 11px; line-height: 1.6; opacity: 0.85; }
+.swatch .swatch-name { font-size: 14px; font-weight: 600; }
+.swatch .swatch-spec { font-family: var(--mono); font-size: 12px; line-height: 1.6; opacity: 0.85; }
 .swatch-row { display: grid; grid-template-columns: repeat(4, 1fr); }
 .swatch-row .swatch { min-height: 130px; justify-content: flex-end; }
 @media (max-width: 720px) { .swatch-row { grid-template-columns: 1fr 1fr; } }
@@ -309,7 +309,7 @@
 .award-badges img { height: 76px; width: auto; flex: none; }
 .award-badges p {
   margin: 0;
-  font-size: 14.5px;
+  font-size: 14px;
   line-height: 1.7;
   color: var(--muted, #555);
 }
@@ -446,7 +446,7 @@
 .specnote-label {
   display: block;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   padding-bottom: 8px;
@@ -456,7 +456,7 @@
 .specnote-data {
   display: block;
   font-family: var(--mono);
-  font-size: 12.5px;
+  font-size: 12px;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.92);
 }
@@ -493,7 +493,7 @@
 }
 .castores-viewer.on { opacity: 1; pointer-events: auto; }
 .castores-viewer img { max-width: 92vw; max-height: 82vh; border-radius: 6px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); cursor: zoom-out; }
-.castores-viewer figcaption { color: rgba(255, 255, 255, 0.85); font-family: var(--mono); font-size: 13px; margin-top: 14px; letter-spacing: 0.04em; }
+.castores-viewer figcaption { color: rgba(255, 255, 255, 0.85); font-family: var(--mono); font-size: 12px; margin-top: 14px; letter-spacing: 0.04em; }
 .castores-viewer .cs-arrows { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: space-between; padding: 0 3vw; }
 .castores-viewer .cs-arrows button { pointer-events: auto; width: 46px; height: 46px; border-color: rgba(255, 255, 255, 0.4); color: #fff; font-size: 19px; background: rgba(0, 0, 0, 0.25); }
 .castores-viewer .cs-arrows button:hover { background: rgba(255, 255, 255, 0.18); }
@@ -520,7 +520,7 @@
 }
 .vault-gate button:hover { opacity: 0.85; }
 .vault-gate button:disabled { opacity: 0.5; cursor: wait; }
-.vault-msg { color: #b91c1c; font-size: 13.5px; margin-top: 10px; width: 100%; }
+.vault-msg { color: #b91c1c; font-size: 14px; margin-top: 10px; width: 100%; }
 .vault-h { font-family: var(--serif); font-size: clamp(26px, 3vw, 34px); margin-top: 72px; }
 #vaultContent .step-body { margin-top: 18px; }
 #vaultContent figure { margin-top: 44px; }
@@ -587,7 +587,7 @@
   line-height: 1;
 }
 .stat-title { margin-top: 18px; font-size: 16px; font-weight: 600; line-height: 1.4; }
-.stat-sub { margin-top: 10px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+.stat-sub { margin-top: 10px; font-family: var(--mono); font-size: 12px; color: var(--muted); line-height: 1.6; }
 
 /* Next project */
 .next-project {
@@ -605,7 +605,7 @@
 .next-project:hover { background: #eeeef0; }
 .next-label {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
@@ -670,19 +670,19 @@
   align-items: baseline;
   gap: 12px;
   font-family: var(--sans);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--ink);
 }
 .sol-item .sol-num {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--accent);
 }
 .sol-item p {
   margin-top: 8px;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.7;
   color: #3c3a36;
 }
@@ -745,7 +745,7 @@ html[lang="zh-Hant"] .sol-item p { line-height: 1.95; font-size: 16.5px; }
 }
 .toc-era-note {
   margin-top: 10px;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.7;
   color: var(--muted);
   max-width: 560px;
@@ -791,7 +791,7 @@ html[lang="zh-Hant"] .sol-item p { line-height: 1.95; font-size: 16.5px; }
 .toc-row:hover .toc-leader { border-color: rgba(18, 18, 18, 0.45); }
 .toc-tags {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--muted);
@@ -799,7 +799,7 @@ html[lang="zh-Hant"] .sol-item p { line-height: 1.95; font-size: 16.5px; }
 }
 .toc-year {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12px;
   color: var(--ink);
   min-width: 58px;
   text-align: right;
@@ -840,18 +840,18 @@ html[lang="zh-Hant"] .sol-item p { line-height: 1.95; font-size: 16.5px; }
 .toc-peek-img.has-photo span { display: none; }
 .toc-peek-img span {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(18, 18, 18, 0.4);
   transform: rotate(-4deg);
 }
 .toc-peek-body { padding: 14px 16px 16px; }
-.toc-peek-note { font-size: 13.5px; line-height: 1.55; color: var(--ink); }
+.toc-peek-note { font-size: 14px; line-height: 1.55; color: var(--ink); }
 .toc-peek-tags {
   margin-top: 8px;
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--muted);
@@ -892,7 +892,7 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
   border-bottom: 1px solid transparent;
 }
 .toc-filter-btn span {
-  font-size: 10.5px;
+  font-size: 12px;
   color: var(--faint);
   margin-left: 4px;
 }
@@ -966,7 +966,7 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
   align-items: center;
   text-align: center;
   font-family: var(--sans);
-  font-size: 12.5px;
+  font-size: 12px;
   line-height: 1.5;
   color: #adadad;
   transition: color 0.3s ease;
@@ -989,7 +989,7 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
 }
 .bcf-hint {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #b8b8b8;
@@ -1051,12 +1051,12 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
   white-space: nowrap;
 }
 .rec-main { display: block; }
-.rec-main b { display: block; font-size: 17px; font-weight: 500; line-height: 1.4; }
+.rec-main b { display: block; font-size: 16px; font-weight: 500; line-height: 1.4; }
 .rec-main i {
   display: block;
   font-style: normal;
   font-family: var(--mono);
-  font-size: 12.5px;
+  font-size: 12px;
   line-height: 1.6;
   color: var(--muted);
   margin-top: 5px;
