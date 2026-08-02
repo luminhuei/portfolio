@@ -176,7 +176,7 @@ a { color: inherit; }
 .hero-title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(38px, 4.75vw, 72px);
+  font-size: clamp(38px, 5vw, 76px);
   line-height: 1.1;
   letter-spacing: -0.03em;
 }
@@ -624,7 +624,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04e
 .craft-lead {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(30px, 3.9vw, 54px);
+  font-size: clamp(30px, 3.8vw, 52px);
   line-height: 1.15;
   letter-spacing: -0.015em;
   max-width: 22ch;
@@ -673,7 +673,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04e
   margin-top: clamp(26px, 4vw, 52px);
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(26px, 2.9vw, 38px);
+  font-size: clamp(26px, 3vw, 38px);
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
@@ -807,7 +807,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04e
   font-family: var(--serif);
   font-weight: 400;
   font-style: italic;
-  font-size: clamp(40px, 6vw, 80px);
+  font-size: clamp(30px, 3.8vw, 52px);
   letter-spacing: -0.02em;
 }
 .footer-sub { margin-top: 16px; color: #8c8880; font-size: 16px; }
@@ -849,7 +849,7 @@ html[lang="zh-Hant"] .badge-ring text { font-size: 12.5px; letter-spacing: 0.04e
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee span {
   font-family: var(--mono);
-  font-size: clamp(18px, 2.4vw, 28px);
+  font-size: clamp(22px, 2.6vw, 30px);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #fafafa;
