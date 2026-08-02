@@ -55,7 +55,7 @@
   max-width: 62ch;
   font-size: 17px;
   line-height: 1.7;
-  color: #3f3f46;
+  color: #3c3a36;
 }
 .case-intro-body p + p { margin-top: 16px; }
 .case-intro-body q { font-style: italic; }
@@ -74,11 +74,11 @@
 }
 .case-meta {
   margin: 6px 0 0;
-  border-top: 1px solid rgba(212, 212, 216, 0.6);
+  border-top: 1px solid rgba(208, 205, 199, 0.6);
 }
 .case-meta > div {
   padding: 16px 0;
-  border-bottom: 1px solid rgba(212, 212, 216, 0.4);
+  border-bottom: 1px solid rgba(208, 205, 199, 0.4);
 }
 .case-meta dt {
   font-family: var(--mono);
@@ -121,7 +121,7 @@
 .psr-card li {
   font-size: 15px;
   line-height: 1.5;
-  color: #3f3f46;
+  color: #3c3a36;
   padding-left: 18px;
   position: relative;
 }
@@ -136,7 +136,7 @@
 .psr-card p {
   font-size: 15.5px;
   line-height: 1.65;
-  color: #3f3f46;
+  color: #3c3a36;
 }
 
 /* Final screens gallery */
@@ -215,7 +215,7 @@
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--ink);
   margin-bottom: 16px;
 }
 .step-title {
@@ -232,7 +232,7 @@
   max-width: 62ch;
   font-size: 17px;
   line-height: 1.7;
-  color: #3f3f46;
+  color: #3c3a36;
 }
 .step-body p + p, .step-body ul { margin-top: 16px; }
 .step-body ul { padding-left: 22px; }
@@ -241,8 +241,8 @@
 .step-body q { font-style: italic; }
 
 .callout {
-  background: #eef7ff;
-  border: 1px solid rgba(0, 153, 255, 0.25);
+  background: #f5f4f2;
+  border: 1px solid rgba(18, 18, 18, 0.16);
   border-radius: 14px;
   padding: 16px 20px;
   color: var(--ink);
@@ -261,7 +261,7 @@
   line-height: 1.7;
   color: var(--faint);
   padding-top: 8px;
-  border-top: 1px solid rgba(212, 212, 216, 0.6);
+  border-top: 1px solid rgba(208, 205, 199, 0.6);
 }
 /* Full-width figure — dense diagrams span the whole content column, caption drops below */
 .case figure.fig-full { display: block; }
@@ -304,7 +304,7 @@
   gap: 28px;
   margin-top: 44px;
   padding-top: 28px;
-  border-top: 1px solid rgba(212, 212, 216, 0.6);
+  border-top: 1px solid rgba(208, 205, 199, 0.6);
 }
 .award-badges img { height: 76px; width: auto; flex: none; }
 .award-badges p {
@@ -684,7 +684,7 @@
   margin-top: 8px;
   font-size: 17px;
   line-height: 1.7;
-  color: #3f3f46;
+  color: #3c3a36;
 }
 .case-section .step-title + .sol-item { margin-top: 36px; }
 #solution figure { margin-top: 36px; margin-bottom: 4px; }
@@ -1028,14 +1028,14 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
 .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* ---------- Recognition record: awards / exhibitions / publications ---------- */
-.rec-list { margin-top: 36px; border-top: 1px solid rgba(212, 212, 216, 0.7); }
+.rec-list { margin-top: 36px; border-top: 1px solid rgba(208, 205, 199, 0.7); }
 .rec-row {
   display: grid;
   grid-template-columns: 120px minmax(0, 1fr) auto;
   gap: 20px;
   align-items: baseline;
   padding: 20px 0;
-  border-bottom: 1px solid rgba(212, 212, 216, 0.5);
+  border-bottom: 1px solid rgba(208, 205, 199, 0.5);
 }
 .rec-row-award { align-items: center; }
 .rec-badge { display: block; }
