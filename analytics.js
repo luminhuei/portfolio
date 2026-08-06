@@ -43,6 +43,30 @@
     try { return new URLSearchParams(location.search).get("utm_source") || ""; }
     catch (e) { return ""; }
   }
+
+  /* ATS referrer detection — application-form portfolio links carry no UTM, so
+     reviewers arriving from an ATS were invisible to Discord (found 2026-08-06:
+     a webflow.greenhouse.io review never pinged). Browsers send at least the
+     origin cross-site, so the referrer hostname — often including the company
+     subdomain, e.g. webflow.greenhouse.io — identifies these visits. */
+  var ATS_HOSTS = [
+    "greenhouse.io", "ashbyhq.com", "lever.co", "myworkdayjobs.com",
+    "myworkday.com", "icims.com", "smartrecruiters.com", "jobvite.com",
+    "taleo.net", "oraclecloud.com", "bamboohr.com", "breezy.hr",
+    "workable.com", "rippling.com", "linkedin.com", "indeed.com",
+  ];
+  function atsReferrer() {
+    try {
+      if (!document.referrer) return "";
+      var h = new URL(document.referrer).hostname;
+      if (h === location.hostname) return "";
+      for (var i = 0; i < ATS_HOSTS.length; i++) {
+        var d = ATS_HOSTS[i];
+        if (h === d || h.slice(-(d.length + 1)) === "." + d) return h;
+      }
+    } catch (e) {}
+    return "";
+  }
   window.portfolioNotify = function (type, detail) {
     if (!NOTIFY_URL) return;
     detail = detail || {};
@@ -63,9 +87,11 @@
     } catch (e) {}
   };
 
-  /* Ping once per session when a company-tagged link (?utm_source=…) is opened */
+  /* Ping once per session when a company-tagged link (?utm_source=…) is opened
+     OR when the visitor arrives from an ATS domain (referrer-based; the ping
+     shows the referrer hostname, e.g. "webflow.greenhouse.io"). */
   (function () {
-    var src = utmSource();
+    var src = utmSource() || atsReferrer();
     if (!src) return;
     try {
       if (sessionStorage.getItem("pf_notified_visit")) return;
