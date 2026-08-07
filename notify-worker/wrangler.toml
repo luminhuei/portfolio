@@ -1,0 +1,5 @@
+name = "portfolio-notify"
+main = "worker.js"
+compatibility_date = "2026-07-14"
+account_id = "b68ffc83c99819c8d399d6142e3b7392"
+workers_dev = true
