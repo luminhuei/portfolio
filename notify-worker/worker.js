@@ -48,7 +48,10 @@ export default {
       return new Response("Bad Request", { status: 400, headers: cors });
     }
 
-    const content = formatMessage(data);
+    const geo = request.cf
+      ? [request.cf.city, request.cf.country].filter(Boolean).join(", ")
+      : "";
+    const content = formatMessage(data, geo);
     if (!content) return new Response("Ignored", { headers: cors });
 
     if (env.DISCORD_WEBHOOK) {
@@ -76,12 +79,19 @@ function rateOk(ip) {
 }
 
 /* --- format a Discord message from the ping --- */
-function formatMessage(d) {
+function formatMessage(d, geo) {
   if (!d || typeof d !== "object") return null;
   const who = d.source ? `**${clean(d.source)}**` : "an organic visitor";
   const page = d.page ? ` — ${clean(d.page)}` : "";
+  const where = geo ? ` · 📍 ${clean(geo)}` : "";
   if (d.type === "visit") {
-    return `🔔 ${who} just opened your portfolio${page}`;
+    return `🔔 ${who} just opened your portfolio${page}${where}`;
+  }
+  /* Untagged-but-engaged visitor (2nd pageview, or click after 10s) — added
+     2026-08-19 so bare-URL visits are no longer invisible on Discord. */
+  if (d.type === "organic") {
+    const why = d.via ? ` (${clean(d.via)})` : "";
+    return `🕵️ an untagged visitor is reading${page}${where}${why}`;
   }
   if (d.type === "question") {
     const verb = d.via === "chip" ? "tapped a suggestion" : "asked MinaGPT";

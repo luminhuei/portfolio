@@ -99,4 +99,41 @@
     } catch (e) {}
     window.portfolioNotify("visit", { source: src });
   })();
+
+  /* Untagged visits (no UTM, no ATS referrer) were invisible on Discord — e.g.
+     a recruiter typing the bare URL mid-interview (found 2026-08-18: Owner.com
+     read Mobile POS for 6 minutes during the call, zero pings). Ping once per
+     session when an untagged visitor shows real engagement — a 2nd pageview,
+     or a click after 10s — which also filters out one-shot ATS scanners and
+     parked tabs. Mina excludes herself by opening any page with ?me=1 once
+     per browser (persisted in localStorage). */
+  (function () {
+    try {
+      if (new URLSearchParams(location.search).get("me") === "1") {
+        localStorage.setItem("pf_self", "1");
+      }
+    } catch (e) {}
+    try { if (localStorage.getItem("pf_self") === "1") return; } catch (e) {}
+    if (utmSource() || atsReferrer()) return; // tagged visits already ping above
+    try { if (sessionStorage.getItem("pf_org_pinged")) return; } catch (e) {}
+    var pages = 1;
+    try {
+      pages = (parseInt(sessionStorage.getItem("pf_org_pages") || "0", 10) || 0) + 1;
+      sessionStorage.setItem("pf_org_pages", String(pages));
+    } catch (e) {}
+    var started = Date.now();
+    function fire(reason) {
+      try {
+        if (sessionStorage.getItem("pf_org_pinged")) return;
+        sessionStorage.setItem("pf_org_pinged", "1");
+      } catch (e) {}
+      document.removeEventListener("click", onClick, true);
+      window.portfolioNotify("organic", { via: reason });
+    }
+    function onClick() {
+      if (Date.now() - started >= 10000) fire("engaged click");
+    }
+    if (pages >= 2) { fire(pages + " pages this visit"); return; }
+    document.addEventListener("click", onClick, true);
+  })();
 })();
