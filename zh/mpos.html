@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css?v=20260801i" />
-  <link rel="stylesheet" href="../case.css?v=20260826a" />
+  <link rel="stylesheet" href="../case.css?v=20260826b" />
   <script src="../analytics.js?v=20260714c"></script>
 </head>
 <body class="case-mpos">
@@ -104,11 +104,13 @@
         </div>
         <figure class="reveal fig-shot">
           <div class="fig-shot-frame">
-            <div class="fig-shot-stage">
-              <img src="../assets/mpos/desktop-pos-home.webp?v=20260826a" alt="Peblla 桌機版 POS 首頁:左側是日期、時鐘、店家、印表機與使用者資訊,右側是十七個功能圖示" loading="lazy" width="1920" height="1080" />
+            <div class="fig-shot-stage" data-walkthrough>
+              <img class="fs-screen" src="../assets/mpos/pos-flow-01-home.webp?v=20260826b" alt="Peblla 桌機版 POS 首頁:左側日期時鐘,右側十七個功能圖示,游標移向 Table Service" loading="lazy" width="1920" height="1080" />
+              <img class="fs-screen" src="../assets/mpos/pos-flow-02-tables.webp?v=20260826b" alt="Table Service 的桌台平面圖:左側桌卡,中央的圓桌 A-1 以藍色高亮" width="1920" height="1080" />
+              <img class="fs-screen" src="../assets/mpos/pos-flow-03-ordering.webp?v=20260826b" alt="完整點餐畫面:左側訂單、中間功能列、右側數百道菜的菜單格" width="1920" height="1080" />
             </div>
           </div>
-          <figcaption>這就是要被取代的 Desktop POS 介面 &mdash;&mdash; 十七個功能攤在櫃台尺寸的螢幕上。這正是這個專案的挑戰:把功能這麼複雜的桌機 POS,好好地收進手持的小螢幕裡,又不能丟掉服務生真正會用到的東西</figcaption>
+          <figcaption>這就是要被取代的 Desktop POS,自己走一遍點擊動線:按下 Table Service,在桌台圖上選桌,進入完整點餐畫面 &mdash;&mdash; 十七個功能攤在櫃台尺寸的螢幕上。這個專案的挑戰:把這麼複雜的桌機 POS 收進手持的小螢幕,又不能丟掉服務生真正會用到的東西</figcaption>
         </figure>
       </article>
 
@@ -368,5 +370,6 @@
   </footer>
 
   <script src="../script.js?v=20260731b"></script>
+  <script src="../demos/mpos-walkthrough.js?v=20260826b"></script>
 </body>
 </html>
