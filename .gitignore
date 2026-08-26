@@ -8,3 +8,7 @@ ordering_tablet_*.mp4
 tmp-3d-preview/
 tmp-camap/
 tmp-minimap/
+
+# resume build tooling — local only
+fonts/
+resume/build.py
