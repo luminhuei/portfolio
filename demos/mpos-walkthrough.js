@@ -24,6 +24,7 @@
 
   var TS = { x: 40.3, y: 14.5 };   // Table Service disc, screen 1
   var TBL = { x: 51.1, y: 81.3 };  // blue table A-1, screen 2
+  var BACK = { x: 31.2, y: 86.0 }; // Back button, screen 3 — closes the loop
   var REST = { x: 60, y: 52 };     // neutral entry point
 
   function place(p, dur) {
@@ -57,9 +58,11 @@
     at(4100, function () { place(TBL, 1200); });        /* pause, then glide to A-1 */
     at(5450, function () { click(TBL); });
     at(5900, function () { show(2); });                 /* -> ordering */
-    at(9300, function () { cursor.style.opacity = "0"; });
-    at(9900, function () { show(0); });                 /* fade home, loop */
-    at(10600, run);
+    at(8500, function () { place(BACK, 1100); });       /* browse, then glide to Back */
+    at(9700, function () { click(BACK); });
+    at(10150, function () { show(0); });                /* Back tap returns home */
+    at(10700, function () { cursor.style.opacity = "0"; });
+    at(11500, run);
   }
   function stop() {
     timers.forEach(clearTimeout);
