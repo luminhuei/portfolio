@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="../styles.css?v=20260801i" />
   <link rel="stylesheet" href="../case.css?v=20260830a" />
   <script src="../analytics.js?v=20260714c"></script>
+  <link rel="stylesheet" href="../demos/gongcha-kiosk.css?v=20260907a" />
+  <script type="module" src="../demos/gongcha-kiosk.js?v=20260907a"></script>
 </head>
 <body class="case-brand">
 
@@ -346,9 +348,30 @@
         <img src="../assets/archive/wu-sian/spec-book-2.webp" alt="Spec book — global development map wall" loading="lazy" />
         <figcaption>From the spec book &mdash; the Global Development map wall, specified in pattern and material.</figcaption>
       </figure>
-      <figure>
-        <img src="../assets/archive/wu-sian/kiosk-1.webp" alt="Mall kiosk — front elevation" loading="lazy" />
-        <figcaption>The mall kiosk &mdash; the same space system compressed to a freestanding footprint.</figcaption>
+      <figure class="fig-full kiosk-figure" id="kiosk-3d">
+        <div class="kiosk-stage" data-state="loading" style="--kiosk-poster:url('../assets/archive/wu-sian/kiosk-3d-poster.jpg')">
+          <model-viewer
+            src="../assets/archive/wu-sian/gongcha-kiosk.glb"
+            poster="../assets/archive/wu-sian/kiosk-3d-poster.jpg"
+            alt="Gong cha mall kiosk, an interactive 3D model" aria-describedby="kiosk-help"
+            loading="eager" reveal="auto" camera-controls disable-pan
+            touch-action="pan-y" interaction-prompt="none"
+            camera-orbit="33deg 75deg 105%" camera-target="0m 1.45m 0m"
+            min-camera-orbit="auto 10deg 45%" max-camera-orbit="auto 88deg 180%"
+            field-of-view="28deg" exposure="0.8" shadow-intensity="0.55" shadow-softness="1"
+            environment-image="../assets/archive/wu-sian/kiosk-studio.hdr" tone-mapping="aces">
+            <span slot="pan-target" style="display:none" aria-hidden="true"></span>
+          </model-viewer>
+          <div class="kiosk-fallback" aria-hidden="true"></div>
+          <div class="kiosk-toolbar" role="group" aria-label="3D view controls">
+            <button type="button" data-action="out" aria-label="Zoom out" title="Zoom out" disabled><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 10h12"/></svg></button>
+            <button type="button" data-action="in" aria-label="Zoom in" title="Zoom in" disabled><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 10h12M10 4v12"/></svg></button>
+            <button type="button" data-action="reset" disabled>Reset view</button>
+          </div>
+          <p class="kiosk-status" role="status" aria-live="polite">Loading 3D</p>
+        </div>
+        <figcaption>The mall kiosk &mdash; the same space system compressed to a freestanding footprint.<span class="kiosk-help" id="kiosk-help">Drag to rotate · Scroll or pinch to zoom · Reset to return</span></figcaption>
+        <noscript><p>Enable JavaScript to rotate and zoom the model.</p></noscript>
       </figure>
       <figure>
         <div class="fig-trio">

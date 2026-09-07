@@ -1,0 +1,76 @@
+/* The WU SIAN kiosk shares the site's figure rhythm and typography. */
+.case figure.kiosk-figure { display: block; scroll-margin-top: 96px; }
+.kiosk-stage {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(208, 205, 199, .6);
+  border-radius: 16px;
+  background: #fafafa;
+  isolation: isolate;
+}
+.kiosk-stage model-viewer {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  background: #fafafa;
+  --poster-color: #fafafa;
+  touch-action: pan-y;
+  --progress-bar-color: #555;
+  --progress-bar-height: 2px;
+  --progress-mask: transparent;
+  outline-offset: -4px;
+}
+.kiosk-stage model-viewer:not(:defined) { visibility: hidden; }
+.kiosk-fallback {
+  position: absolute;
+  inset: 0;
+  background: #fafafa var(--kiosk-poster) center / contain no-repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+.kiosk-stage[data-state="ready"] .kiosk-fallback { display: none; }
+.kiosk-toolbar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+}
+.kiosk-toolbar button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #dedede;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .94);
+  color: #383838;
+  font: 500 14px/1 var(--sans, sans-serif);
+  cursor: pointer;
+}
+.kiosk-toolbar button:hover:not(:disabled) { background: #ededed; }
+.kiosk-toolbar button:focus-visible { outline: 2px solid #555; outline-offset: 3px; }
+.kiosk-toolbar button:disabled { opacity: .45; cursor: default; }
+.kiosk-toolbar svg { width: 16px; height: 16px; }
+.kiosk-status {
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  bottom: 18px;
+  margin: 0;
+  max-width: calc(100% - 40px);
+  color: #595959;
+  font: 14px/1.5 var(--mono, monospace);
+}
+.kiosk-status:empty { display: none; }
+.kiosk-help { display: block; margin-top: 4px; color: #666; }
+.kiosk-figure noscript p { font-size: 14px; }
+@media (max-width: 600px) {
+  .kiosk-stage model-viewer { aspect-ratio: 4 / 5; }
+  .kiosk-toolbar { top: 12px; right: 12px; gap: 4px; }
+  .kiosk-status { left: 14px; bottom: 14px; font-size: 14px; }
+}

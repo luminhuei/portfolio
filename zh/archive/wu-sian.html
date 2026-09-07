@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="../../styles.css?v=20260801i" />
   <link rel="stylesheet" href="../../case.css?v=20260830a" />
   <script src="../../analytics.js?v=20260714c"></script>
+  <link rel="stylesheet" href="../../demos/gongcha-kiosk.css?v=20260907a" />
+  <script type="module" src="../../demos/gongcha-kiosk.js?v=20260907a"></script>
 </head>
 <body class="case-brand">
 
@@ -346,9 +348,30 @@
         <img src="../../assets/archive/wu-sian/spec-book-2.webp" alt="規範書 —— 全球展店地圖牆" loading="lazy" />
         <figcaption>規範書選頁 —— 全球展店地圖牆的圖樣與材質規範。</figcaption>
       </figure>
-      <figure>
-        <img src="../../assets/archive/wu-sian/kiosk-1.webp" alt="商場店中店 —— 正立面" loading="lazy" />
-        <figcaption>商場店中店 —— 同一套空間系統，壓縮進獨立櫃位的尺度。</figcaption>
+      <figure class="fig-full kiosk-figure" id="kiosk-3d">
+        <div class="kiosk-stage" data-state="loading" style="--kiosk-poster:url('../../assets/archive/wu-sian/kiosk-3d-poster.jpg')">
+          <model-viewer
+            src="../../assets/archive/wu-sian/gongcha-kiosk.glb"
+            poster="../../assets/archive/wu-sian/kiosk-3d-poster.jpg"
+            alt="貢茶商場攤位，可旋轉及縮放的 3D 模型" aria-describedby="kiosk-help"
+            loading="eager" reveal="auto" camera-controls disable-pan
+            touch-action="pan-y" interaction-prompt="none"
+            camera-orbit="33deg 75deg 105%" camera-target="0m 1.45m 0m"
+            min-camera-orbit="auto 10deg 45%" max-camera-orbit="auto 88deg 180%"
+            field-of-view="28deg" exposure="0.8" shadow-intensity="0.55" shadow-softness="1"
+            environment-image="../../assets/archive/wu-sian/kiosk-studio.hdr" tone-mapping="aces">
+            <span slot="pan-target" style="display:none" aria-hidden="true"></span>
+          </model-viewer>
+          <div class="kiosk-fallback" aria-hidden="true"></div>
+          <div class="kiosk-toolbar" role="group" aria-label="3D 視角控制">
+            <button type="button" data-action="out" aria-label="縮小" title="縮小" disabled><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 10h12"/></svg></button>
+            <button type="button" data-action="in" aria-label="放大" title="放大" disabled><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 10h12M10 4v12"/></svg></button>
+            <button type="button" data-action="reset" disabled>重設視角</button>
+          </div>
+          <p class="kiosk-status" role="status" aria-live="polite">正在載入 3D</p>
+        </div>
+        <figcaption>商場店中店 —— 同一套空間系統，壓縮進獨立櫃位的尺度。<span class="kiosk-help" id="kiosk-help">拖曳旋轉 · 滾輪或雙指縮放 · 重設視角</span></figcaption>
+        <noscript><p>啟用 JavaScript 即可旋轉與縮放模型。</p></noscript>
       </figure>
       <figure>
         <div class="fig-trio">

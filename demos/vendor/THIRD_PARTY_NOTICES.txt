@@ -1,0 +1,8 @@
+model-viewer 4.3.1
+Copyright Google LLC. Apache License 2.0.
+https://github.com/google/model-viewer
+
+Draco decoder 1.5.6
+Copyright The Draco Authors. Apache License 2.0.
+https://github.com/google/draco
+https://github.com/google/draco/blob/main/LICENSE
