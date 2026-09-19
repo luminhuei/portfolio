@@ -74,6 +74,9 @@
       type: type,
       text: detail.text || "",
       via: detail.via || "",
+      answer: detail.answer || "",
+      rule: detail.rule || "",
+      sid: detail.sid || "",
       page: document.title || location.pathname,
       source: detail.source || utmSource(),
     });

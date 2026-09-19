@@ -124,7 +124,15 @@ function formatMessage(d, geo) {
   if (d.type === "question") {
     const verb = d.via === "chip" ? "tapped a suggestion" : "asked MinaGPT";
     const icon = d.via === "chip" ? "👆" : "💬";
-    return `${icon} ${who} ${verb}${page}:\n> ${clean(d.text)}`;
+    const sid = d.sid ? ` · #${clean(d.sid)}` : "";
+    let msg = `${icon} ${who} ${verb}${page}${where}${sid}\n> ${clean(d.text)}`;
+    /* full-exchange logging (2026-09-19): the reply and which rule fired ride
+       along, so the channel reads as a complete conversation — messages that
+       share a #sid are the same visitor's session. */
+    if (d.answer) {
+      msg += `\n**↳ MinaGPT** (${clean(d.rule) || "?"})\n${quoteBlock(cleanLong(d.answer))}`;
+    }
+    return msg;
   }
   return null;
 }
