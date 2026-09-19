@@ -9,9 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=20260801i" />
-  <link rel="stylesheet" href="case.css?v=20260830a" />
+  <link rel="stylesheet" href="case.css?v=20260919a" />
   <link rel="stylesheet" href="demos/demos.css?v=20260731a" />
   <script src="analytics.js?v=20260714c"></script>
+  <meta name="robots" content="noindex" />
+  <script>(function(){try{if(localStorage.getItem("pv-ok")!=="1")document.documentElement.classList.add("locked");}catch(e){document.documentElement.classList.add("locked");}})();</script>
 </head>
 <body class="case-dashboard">
 
@@ -42,6 +44,21 @@
   </header>
 
   <main class="case">
+
+    <!-- Peblla NDA gate -->
+    <section class="case-section pv-gate" id="pvGate" style="margin-top:clamp(40px,6vw,72px)">
+      <p class="case-kicker">Protected</p>
+      <h2 class="step-title">Password-protected work.</h2>
+      <div class="step-body">
+        <p>Peblla&rsquo;s product work sits behind a password &mdash; I keep my NDA even after leaving. The password is on my resume, or <a href="mailto:luminhuei@gmail.com">email me</a> and I&rsquo;ll send it over.</p>
+      </div>
+      <div class="vault-gate">
+        <input type="password" id="pvPw" placeholder="Password" autocomplete="off" aria-label="Password" />
+        <button id="pvBtn" type="button">Unlock</button>
+        <p class="vault-msg" id="pvMsg" hidden>Incorrect password &mdash; please try again.</p>
+      </div>
+    </section>
+
 
     <!-- Overview -->
     <section class="case-intro">
@@ -258,5 +275,6 @@
   <script src="demos/dashboard-07-order-transaction.js?v=20260713o" defer></script>
   <script src="demos/dashboard-08-weekly-report.js?v=20260713o" defer></script>
   <script src="demos/fig-hover.js?v=20260713o" defer></script>
+  <script src="gate.js?v=20260919a"></script>
 </body>
 </html>

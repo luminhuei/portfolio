@@ -634,6 +634,12 @@
 .vault-gate button:hover { opacity: 0.85; }
 .vault-gate button:disabled { opacity: 0.5; cursor: wait; }
 .vault-msg { color: #b91c1c; font-size: 18px; margin-top: 10px; width: 100%; }
+
+/* Peblla NDA gate — while html.locked, everything in the case body except the
+   gate itself is hidden; gate.js lifts the class on the right password.
+   Visitors already unlocked never see the gate at all. */
+html.locked main.case > :not(#pvGate) { display: none; }
+html:not(.locked) #pvGate { display: none; }
 .vault-h { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); margin-top: 72px; }
 #vaultContent .step-body { margin-top: 18px; }
 #vaultContent figure { margin-top: 44px; }

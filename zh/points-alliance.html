@@ -9,8 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css?v=20260801i" />
-  <link rel="stylesheet" href="../case.css?v=20260830a" />
+  <link rel="stylesheet" href="../case.css?v=20260919a" />
   <script src="../analytics.js?v=20260714c"></script>
+  <meta name="robots" content="noindex" />
+  <script>(function(){try{if(localStorage.getItem("pv-ok")!=="1")document.documentElement.classList.add("locked");}catch(e){document.documentElement.classList.add("locked");}})();</script>
 </head>
 <body>
 
@@ -41,6 +43,21 @@
   </header>
 
   <main class="case">
+
+    <!-- Peblla NDA gate -->
+    <section class="case-section pv-gate" id="pvGate" style="margin-top:clamp(40px,6vw,72px)">
+      <p class="case-kicker">Protected</p>
+      <h2 class="step-title">密碼保護的內容。</h2>
+      <div class="step-body">
+        <p>Peblla 的產品作品放在密碼後面 &mdash;&mdash; 離開之後,我仍然遵守保密協議。密碼在我的履歷上,或<a href="mailto:luminhuei@gmail.com">來信</a>索取,我會盡快回覆。</p>
+      </div>
+      <div class="vault-gate">
+        <input type="password" id="pvPw" placeholder="Password" autocomplete="off" aria-label="Password" />
+        <button id="pvBtn" type="button">Unlock</button>
+        <p class="vault-msg" id="pvMsg" hidden>密碼不正確,請再試一次。</p>
+      </div>
+    </section>
+
 
     <!-- Overview -->
     <section class="case-intro">
@@ -306,5 +323,6 @@
   </footer>
 
   <script src="../script.js?v=20260731b"></script>
+  <script src="../gate.js?v=20260919a"></script>
 </body>
 </html>
