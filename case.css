@@ -640,6 +640,72 @@
    Visitors already unlocked never see the gate at all. */
 html.locked main.case > :not(#pvGate) { display: none; }
 html:not(.locked) #pvGate { display: none; }
+
+/* Private feedback (feedback.js) — reactions, note box, selection comments.
+   Everything stays in the site's ink/grey language; the only colour is what
+   the emoji themselves bring. */
+.fb-block { margin-top: clamp(72px, 9vw, 120px); }
+.fb-react { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+.fb-emoji {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 14px 18px 10px; min-width: 86px;
+  background: #fafafa; border: 1px solid #e4e4e1; border-radius: 14px;
+  font-family: inherit; cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.fb-emoji span { font-size: 26px; line-height: 1; }
+.fb-emoji small { font-family: var(--mono); font-size: 14px; color: var(--muted); }
+.fb-emoji:hover { transform: translateY(-2px); border-color: var(--ink); }
+.fb-emoji.on { background: #f0efec; border-color: var(--ink); }
+.fb-emoji.on small { color: var(--ink); }
+.fb-form { margin-top: 22px; max-width: 560px; }
+.fb-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.fb-text {
+  width: 100%; padding: 14px 16px; font-family: var(--sans); font-size: 18px;
+  color: var(--ink); background: #fff; border: 1px solid #d6d3cd; border-radius: 12px;
+  resize: vertical; outline: none;
+}
+.fb-text:focus { border-color: var(--ink); }
+.fb-send, .fb-pop-send, .fb-pop-cancel {
+  margin-top: 12px; padding: 11px 26px; font-family: var(--mono); font-size: 14px;
+  letter-spacing: 0.04em; color: #fff; background: var(--ink);
+  border: 0; border-radius: 999px; cursor: pointer;
+}
+.fb-send:hover, .fb-pop-send:hover { opacity: 0.85; }
+.fb-pop-cancel { color: var(--ink); background: transparent; border: 1px solid #d6d3cd; }
+.fb-thanks { font-family: var(--mono); font-size: 14px; color: var(--ink); margin-top: 12px; }
+.fb-toast { font-family: var(--mono); font-size: 14px; color: var(--muted); margin-top: 10px; opacity: 0; transition: opacity 0.3s ease; }
+.fb-toast.show { opacity: 1; }
+.fb-hint {
+  font-family: var(--mono); font-size: 14px; color: var(--faint);
+  margin-top: clamp(40px, 5vw, 64px); padding-top: 10px;
+  border-top: 1px solid rgba(208, 205, 199, 0.6);
+}
+.fb-fab {
+  position: fixed; z-index: 60; padding: 9px 16px;
+  font-family: var(--mono); font-size: 14px; color: #fff; background: var(--ink);
+  border: 0; border-radius: 999px; cursor: pointer;
+  box-shadow: 0 6px 18px rgba(18, 18, 18, 0.18);
+}
+.fb-pop {
+  position: fixed; z-index: 61; padding: 18px;
+  background: #fff; border: 1px solid #e4e4e1; border-radius: 14px;
+  box-shadow: 0 18px 44px rgba(18, 18, 18, 0.16);
+}
+.fb-pop-title { font-family: var(--mono); font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+.fb-quote {
+  font-size: 14px; line-height: 1.6; color: var(--muted);
+  border-left: 2px solid #d6d3cd; padding-left: 10px; margin-bottom: 10px;
+}
+.fb-pop textarea {
+  width: 100%; padding: 10px 12px; font-family: var(--sans); font-size: 16px;
+  color: var(--ink); border: 1px solid #d6d3cd; border-radius: 10px;
+  resize: vertical; outline: none;
+}
+.fb-pop textarea:focus { border-color: var(--ink); }
+.fb-pop-row { display: flex; gap: 10px; justify-content: flex-end; }
+.fb-pop-row button { margin-top: 10px; padding: 9px 20px; }
+@media (max-width: 560px) { .fb-emoji { min-width: 72px; padding: 12px 12px 8px; } }
 .vault-h { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); margin-top: 72px; }
 #vaultContent .step-body { margin-top: 18px; }
 #vaultContent figure { margin-top: 44px; }

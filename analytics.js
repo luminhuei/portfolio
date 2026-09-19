@@ -92,6 +92,10 @@
      shows the referrer hostname, e.g. "webflow.greenhouse.io"). */
   (function () {
     var src = utmSource() || atsReferrer();
+    /* Remember the attribution for the whole visit — the UTM lives only on
+       the landing URL, so without this, feedback sent from an inner page
+       would lose the company name (feedback.js reads pf_src). */
+    if (src) { try { sessionStorage.setItem("pf_src", src); } catch (e) {} }
     if (!src) return;
     try {
       if (sessionStorage.getItem("pf_notified_visit")) return;

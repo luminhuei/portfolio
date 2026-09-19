@@ -6,6 +6,12 @@
 
    The site (analytics.js → window.portfolioNotify) sends a text/plain POST:
      { type: "visit" | "question", text, via, page, source }
+   feedback.js adds the private-feedback types (2026-09-19):
+     { type: "reaction", emoji, label, page, source }
+     { type: "comment", text, page, source }
+     { type: "annotation", text, quote, section, page, source }
+   All three are anonymous on the visitor side; source carries the UTM/ATS
+   attribution so Mina can tell which company it came from.
 
    Protections (best-effort, right-sized for a personal portfolio):
      - Origin allowlist: only accept requests from the live site.
@@ -47,6 +53,10 @@ export default {
     try { data = JSON.parse(await request.text()); } catch (e) {
       return new Response("Bad Request", { status: 400, headers: cors });
     }
+
+    // Honeypot — feedback forms carry a hidden field bots love to fill.
+    // Pretend success so the bot moves on.
+    if (data && data.hp) return new Response("ok", { headers: cors });
 
     const geo = request.cf
       ? [request.cf.city, request.cf.country].filter(Boolean).join(", ")
@@ -93,12 +103,37 @@ function formatMessage(d, geo) {
     const why = d.via ? ` (${clean(d.via)})` : "";
     return `🕵️ an untagged visitor is reading${page}${where}${why}`;
   }
+  /* --- private feedback (2026-09-19): reactions / notes / text-selection
+     comments from case-study pages. Anonymous to the visitor; who = the
+     UTM/ATS attribution when we have it. --- */
+  if (d.type === "reaction") {
+    const emoji = clean(d.emoji).slice(0, 8) || "❓";
+    const label = clean(d.label) || "reaction";
+    return `${emoji} ${who} reacted **${label}**${page}${where}`;
+  }
+  if (d.type === "comment") {
+    if (!d.text) return null;
+    return `📝 ${who} left you a note${page}${where}\n${quoteBlock(cleanLong(d.text))}`;
+  }
+  if (d.type === "annotation") {
+    if (!d.text || !d.quote) return null;
+    const sec = d.section ? ` (${clean(d.section)})` : "";
+    return `✏️ ${who} commented on a passage${page}${sec}${where}\n` +
+      `> 「${clean(d.quote)}」\n${quoteBlock("💬 " + cleanLong(d.text))}`;
+  }
   if (d.type === "question") {
     const verb = d.via === "chip" ? "tapped a suggestion" : "asked MinaGPT";
     const icon = d.via === "chip" ? "👆" : "💬";
     return `${icon} ${who} ${verb}${page}:\n> ${clean(d.text)}`;
   }
   return null;
+}
+function cleanLong(s) {
+  s = String(s == null ? "" : s).replace(/[`@]/g, "").trim();
+  return s.length > 1000 ? s.slice(0, 1000) + "…" : s;
+}
+function quoteBlock(s) {
+  return s.split("\n").filter(Boolean).map((l) => "> " + l).join("\n");
 }
 function clean(s) {
   s = String(s == null ? "" : s).replace(/[`@]/g, "").trim();
