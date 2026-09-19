@@ -387,9 +387,9 @@ const PILLS = [
       "Her Points Alliance app lets restaurant brands share one rewards currency while keeping their books separate. 643 cross-brand members in the pilot — hypothesis validated, Phase 2 funded.",
     ] },
     { id: "dashboard", match: /dashboard|analytic|report|data/i, a: [
-      "She designed the UI and design system for a B2B analytics report center that 600+ store operators open every day — built for trust-at-a-glance, numbers that read as answers.",
-      "The Analytics Dashboard: 600+ restaurant operators check it daily. Her rule for it was “numbers should read as answers” — no decoration, just decisions.",
-      "A B2B report center used daily by 600+ operators, structured so a new report is assembled from existing components instead of designed from scratch. Very Mina: systems over one-offs.",
+      "She designed the UI and design system for a B2B analytics report center that 700+ store operators open every day — built for trust-at-a-glance, numbers that read as answers.",
+      "The Analytics Dashboard: 700+ restaurant operators check it daily. Her rule for it was “numbers should read as answers” — no decoration, just decisions.",
+      "A B2B report center used daily by 700+ operators, structured so a new report is assembled from existing components instead of designed from scratch. Very Mina: systems over one-offs.",
     ] },
     { id: "tablet", match: /tablet|ayce|self.?order/i, a: [
       "The self-ordering tablet was built for all-you-can-eat restaurants — and in usability testing, 5 out of 5 untrained users completed the whole ordering flow unaided. Zero-training UX, literally.",
@@ -427,8 +427,8 @@ const PILLS = [
       "Bilingual — English and Mandarin, and this whole portfolio ships in both. Tools she actually uses: Figma, Adobe CS, Framer, Webflow, Claude Code / Claude / GPT / Gemini, Google Analytics.",
     ] },
     { id: "projects", match: /ship|project|work|portfolio|done|built|case/i, a: [
-      "Four products from 2024–25: the handheld Mobile POS (64% of checkouts moved tableside), Points Alliance loyalty app (643 cross-brand members), a B2B analytics dashboard (600+ daily operators), and a zero-training self-ordering tablet. Scroll down — they’re all here ↓",
-      "The short reel: a Mobile POS servers run one-handed, a cross-brand loyalty app, an analytics center 600+ operators open daily, and a tablet guests use with zero training. Every one shipped. ↓",
+      "Four products from 2024–25: the handheld Mobile POS (64% of checkouts moved tableside), Points Alliance loyalty app (643 cross-brand members), a B2B analytics dashboard (700+ daily operators), and a zero-training self-ordering tablet. Scroll down — they’re all here ↓",
+      "The short reel: a Mobile POS servers run one-handed, a cross-brand loyalty app, an analytics center 700+ operators open daily, and a tablet guests use with zero training. Every one shipped. ↓",
       "She ships. 2024–25 alone: Mobile POS, Points Alliance, Analytics Dashboard, Ordering Tablet — four surfaces of one restaurant platform, all live. The case studies below have the receipts ↓",
     ] },
     { id: "different", match: /different|superpower|strength|special|unique|brand|system/i, a: [
@@ -476,9 +476,9 @@ const PILLS = [
       "積分聯盟 App 讓品牌們共享一種積分貨幣、各自保有帳本。試點 643 名跨品牌會員 —— 假設驗證成功,Phase 2 已獲注資。",
     ] },
     { id: "dashboard", match: /dashboard|analytic|report|報表|儀表|數據/i, a: [
-      "她為 B2B 數據報表中心設計了 UI 與設計系統 —— 600+ 家門店營運者每天打開的經營窗口,核心理念是「一眼讀懂、數字誠實」。",
-      "數據儀表板:600+ 位餐廳營運者每天在看。她給它的規矩是「數字要讀起來像答案」—— 不裝飾,只給決策。",
-      "一個 600+ 營運者天天用的 B2B 報表中心,架構設計成「新報表用現有元件組裝」而不是每次重畫 —— 非常 Mina:系統思維優先。",
+      "她為 B2B 數據報表中心設計了 UI 與設計系統 —— 700+ 家門店營運者每天打開的經營窗口,核心理念是「一眼讀懂、數字誠實」。",
+      "數據儀表板:700+ 位餐廳營運者每天在看。她給它的規矩是「數字要讀起來像答案」—— 不裝飾,只給決策。",
+      "一個 700+ 營運者天天用的 B2B 報表中心,架構設計成「新報表用現有元件組裝」而不是每次重畫 —— 非常 Mina:系統思維優先。",
     ] },
     { id: "tablet", match: /tablet|平板|點餐|吃到飽/i, a: [
       "自助點餐平板為吃到飽餐廳而生:正式測試中,5 位零培訓用戶全部獨立完成完整點餐流程 —— 名符其實的零學習成本。",
@@ -516,8 +516,8 @@ const PILLS = [
       "雙語 —— 英文與中文,整個作品集也雙語出貨。她真正在用的工具:Figma、Adobe CS、Framer、Webflow、Claude Code / Claude / GPT / Gemini、Google Analytics。",
     ] },
     { id: "projects", match: /ship|project|work|portfolio|做過|作品|產品|專案/i, a: [
-      "2024–25 年四個產品:手持 Mobile POS(64% 結帳移到桌邊)、積分聯盟 App(643 名跨品牌會員)、B2B 數據儀表板(600+ 每日營運者)、零培訓自助點餐平板。往下捲就能看到 ↓",
-      "精華版:一台服務生單手操作的 POS、一個跨品牌會員 App、一個 600+ 營運者天天開的數據中心、一台零教學的點餐平板。每一個都真的上線了 ↓",
+      "2024–25 年四個產品:手持 Mobile POS(64% 結帳移到桌邊)、積分聯盟 App(643 名跨品牌會員)、B2B 數據儀表板(700+ 每日營運者)、零培訓自助點餐平板。往下捲就能看到 ↓",
+      "精華版:一台服務生單手操作的 POS、一個跨品牌會員 App、一個 700+ 營運者天天開的數據中心、一台零教學的點餐平板。每一個都真的上線了 ↓",
       "她是會出貨的設計師。光 2024–25:Mobile POS、積分聯盟、數據儀表板、點餐平板 —— 同一個餐飲平台的四個介面,全部上線。案例就在下面 ↓",
     ] },
     { id: "different", match: /different|superpower|strength|unique|不同|獨特|特別|品牌/i, a: [
