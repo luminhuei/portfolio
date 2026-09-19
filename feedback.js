@@ -37,8 +37,10 @@
       ["👍", "喜歡", "Like"],
       ["🔥", "很厲害", "Impressive"],
       ["💡", "有啟發", "Insightful"],
+      ["🤔", "可以更好", "Could be better", true],
       ["🤝", "想聊聊", "Let’s talk"],
     ],
+    promptBetter: "哪裡可以更好?跟我說是哪個部分、往什麼方向 ——",
   } : {
     kicker: "Feedback",
     title: "Tell me <em>what you think</em>.",
@@ -57,8 +59,10 @@
       ["👍", "Like", "Like"],
       ["🔥", "Impressive", "Impressive"],
       ["💡", "Insightful", "Insightful"],
+      ["🤔", "Could be better", "Could be better", true],
       ["🤝", "Let’s talk", "Let’s talk"],
     ],
+    promptBetter: "What could be better? Tell me which part, and in what direction —",
   };
 
   /* --- attribution + send ------------------------------------------------ */
@@ -115,6 +119,12 @@
       try { localStorage.setItem(key, "1"); } catch (e) {}
       send({ type: "reaction", emoji: r[0], label: r[2] });
       toast(react, T.reacted);
+      /* "Could be better" invites a follow-up: retarget the note box and
+         hand them the pen, so the critique arrives with a direction. */
+      if (r[3]) {
+        var ta = form.querySelector(".fb-text");
+        if (ta) { ta.placeholder = T.promptBetter; ta.focus(); }
+      }
     });
     react.appendChild(b);
   });
