@@ -279,6 +279,16 @@ body.chat-open { overflow: hidden; }
   margin: 0 auto;
 }
 /* Horizontally scrollable / draggable suggestion row above the input */
+/* Contextual follow-up chips under the latest MinaGPT answer — the rail that
+   keeps the conversation rolling. Reuses the site chip look, bot-side. */
+.chat-followups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 2px 0 10px;
+  padding-right: 12%;
+}
+
 .chat-suggest {
   max-width: 720px;
   margin: 0 auto 10px;

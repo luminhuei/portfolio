@@ -45,6 +45,14 @@ export default {
       return new Response("Forbidden", { status: 403, headers: cors });
     }
 
+    // Not a real human → stay silent (Mina 2026-09-19: humans ring, bots
+    // don't). Engagement thresholds and the honeypot catch most of it;
+    // this catches crawlers that execute JS but announce themselves.
+    const ua = request.headers.get("User-Agent") || "";
+    if (/bot|crawl|spider|scrape|headless|preview|monitor/i.test(ua)) {
+      return new Response("ok", { headers: cors });
+    }
+
     // Per-IP rate limit (best-effort, per isolate)
     const ip = request.headers.get("CF-Connecting-IP") || "unknown";
     if (!rateOk(ip)) return new Response("Too Many Requests", { status: 429, headers: cors });
