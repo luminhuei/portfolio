@@ -115,6 +115,7 @@ const PILLS = [
   const grav = engine.gravity || world.gravity || { y: 1, scale: 0.001 };
   const gCancel = grav.y * (grav.scale != null ? grav.scale : 0.001);
   const BALL_SPEED = 4.8;
+  let ballNow = BALL_SPEED; // cruise target: a hit boosts it, then it decays back
   let ceiling = null;
   if (ball) {
     const b = ball.body;
@@ -136,15 +137,27 @@ const PILLS = [
 
     // When the ball strikes a pill, wake it and pop it away from the ball with a
     // little lift + spin — otherwise settled pills sleep and ignore the hit.
+    // And when the pill is the striker — dragged by hand or thrown — the ball
+    // bounces away with the blow, then eases back to cruise speed.
     Matter.Events.on(engine, "collisionStart", (evt) => {
       for (const pair of evt.pairs) {
         const other =
           pair.bodyA === b ? pair.bodyB : pair.bodyB === b ? pair.bodyA : null;
         if (!other || other.isStatic) continue;
-        Matter.Sleeping.set(other, false);
         const dx = other.position.x - b.position.x;
         const dy = other.position.y - b.position.y;
         const d = Math.hypot(dx, dy) || 1;
+        const plug = other.plugin || {};
+        const swing =
+          plug.held && plug.swing
+            ? Math.hypot(plug.swing.x, plug.swing.y)
+            : Math.hypot(other.velocity.x, other.velocity.y);
+        if (plug.held || swing > 2.5) {
+          ballNow = Math.min(16, Math.max(BALL_SPEED * 1.6, swing * 1.1));
+          Body.setVelocity(b, { x: (-dx / d) * ballNow, y: (-dy / d) * ballNow });
+        }
+        if (plug.held) continue; // never pop a pill out of the visitor's hand
+        Matter.Sleeping.set(other, false);
         const KICK = 3.6;
         Body.setVelocity(other, {
           x: other.velocity.x + (dx / d) * KICK,
@@ -213,7 +226,9 @@ const PILLS = [
       Body.applyForce(b, b.position, { x: 0, y: -b.mass * gCancel }); // cancel gravity
       return;
     }
-    // post-step: renormalize to a constant speed, avoid a vertical-only path
+    // post-step: ease any hit-boost back toward cruise speed, renormalize,
+    // and avoid a vertical-only path
+    ballNow = BALL_SPEED + (ballNow - BALL_SPEED) * 0.96;
     let vx = b.velocity.x,
       vy = b.velocity.y;
     const sp = Math.hypot(vx, vy);
@@ -223,7 +238,7 @@ const PILLS = [
     } else if (Math.abs(vx) < 0.18 * sp) {
       vx = (vx >= 0 ? 1 : -1) * 0.18 * sp;
     }
-    const k = BALL_SPEED / Math.hypot(vx, vy);
+    const k = ballNow / Math.hypot(vx, vy);
     Body.setVelocity(b, { x: vx * k, y: vy * k });
     // safety net: never let a fast frame tunnel the ball out of the box
     const r = Math.min(ball.w, ball.h) / 2;
@@ -300,6 +315,9 @@ const PILLS = [
       el.classList.add("held");
       lastP = { ...toLocal(e), t: performance.now() };
       vel = { x: 0, y: 0 };
+      body.plugin = body.plugin || {};
+      body.plugin.held = true;
+      body.plugin.swing = vel;
       Matter.Sleeping.set(body, false);
       e.preventDefault();
     });
@@ -310,6 +328,7 @@ const PILLS = [
       const now = performance.now();
       const dt = Math.max(1, now - lastP.t);
       vel = { x: ((p.x - lastP.x) / dt) * 16, y: ((p.y - lastP.y) / dt) * 16 };
+      body.plugin.swing = vel; // the collision handler reads the swing speed
       Matter.Sleeping.set(body, false);
       Body.setPosition(body, p);
       Body.setVelocity(body, { x: 0, y: 0 });
@@ -321,6 +340,7 @@ const PILLS = [
       if (!down) return;
       down = false;
       el.classList.remove("held");
+      if (body.plugin) body.plugin.held = false;
       // wake the body up, then fling it with the velocity the pointer had —
       // a sleeping body ignores velocity and would hang frozen in the air
       Matter.Sleeping.set(body, false);
