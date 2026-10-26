@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=20261023a" />
-  <link rel="stylesheet" href="case.css?v=20261026a" />
+  <link rel="stylesheet" href="case.css?v=20261026c" />
   <script src="analytics.js?v=20260919d"></script>
   <meta name="robots" content="noindex" />
   <script>(function(){try{if(localStorage.getItem("pv-ok")!=="1")document.documentElement.classList.add("locked");}catch(e){document.documentElement.classList.add("locked");}})();</script>
@@ -66,7 +66,7 @@
         <p class="case-lead reveal">Within three months of launch, <em>64% of checkouts</em> moved from the counter to the tableside.</p>
         <div class="case-intro-body reveal">
           <p>Mobile POS brings ordering, kitchen firing, and checkout to the tableside instead of the counter. It was built around one core question: how do you fit a desktop POS&rsquo;s core flows onto a single phone screen &mdash; and let servers complete tableside work one&#8209;handed, fast, and without errors?</p>
-          <p><strong>Constraints:</strong> a two&#8209;month deadline to launch the MVP, and a phone screen that cannot carry the desktop POS&rsquo;s full feature set.</p>
+          <p><strong>Constraints:</strong> two months to launch the MVP, and seventeen desktop functions that could never all fit on a phone screen.</p>
           <p><strong>Key trade&#8209;off:</strong> only the high&#8209;frequency tableside flows move to the phone; the rest stays on the countertop POS.</p>
         </div>
       </div>
@@ -76,7 +76,7 @@
         <div><dt>Platform</dt><dd>Handheld Device</dd></div>
         <div><dt>Year</dt><dd>2025</dd></div>
         <div><dt>Team</dt><dd>Product Manager<br />Engineering</dd></div>
-        <div><dt>Role</dt><dd>UI Design<br />Interaction Design<br />Design System</dd></div>
+        <div><dt>Role</dt><dd>Research<br />UI Design<br />Interaction Design<br />Design System</dd></div>
       </dl>
     </section>
 
@@ -117,7 +117,8 @@
         <p class="step-label reveal">The floor problem</p>
         <h2 class="step-title reveal">One order, <em>three trips</em>.</h2>
         <div class="step-body reveal">
-          <p>In a restaurant running a traditional countertop POS, the same scene plays out all day: a server jots the order on paper at the table, walks back to the counter to queue and enter it, then walks back to confirm. At peak hours these round trips pile up and slow ordering, kitchen output, and table turnover &mdash; and the moment the network or power dies, that countertop terminal takes the whole restaurant down with it. Mobile POS exists to fix both: bring ordering and checkout to the tableside, and stay dependable when the network isn&rsquo;t.</p>
+          <p>It started with reliability. A countertop POS went down for a full day, and about <strong>$600K in payments couldn&rsquo;t go through</strong>. The company&rsquo;s priority became clear: get a handheld live, fast, so no restaurant ever depends on a single terminal again.</p>
+          <p>But the handheld also had to fix a problem that happened every day, not once. A server writes the order on paper at the table, walks to the counter to enter it, walks back to confirm. At peak hour those trips pile up: they slow the kitchen, limit table turnover, and cause mistakes. Mobile POS exists to fix both &mdash; bring ordering and checkout to the table, and keep running when the counter can&rsquo;t.</p>
         </div>
         <figure class="reveal fig-shot">
           <div class="fig-shot-frame">
@@ -136,61 +137,105 @@
         <p class="step-label reveal">Who it&rsquo;s for</p>
         <h2 class="step-title reveal">Trained servers, operating by <em>muscle memory</em>.</h2>
         <div class="step-body reveal">
-          <p>Mobile POS is built for trained restaurant servers working under real pressure: noise, time constraints, guests watching, standing, device in one hand. The design goal is therefore not &ldquo;understandable at first glance&rdquo; but <strong>operable by muscle memory after training, and error-free at peak hours</strong> &mdash; fixed control positions, shortest paths, guarded risky actions. That allows higher information density than a consumer product, and demands far stricter operational consistency in return.</p>
+          <p>Mobile POS is built for trained restaurant servers working under real pressure: standing, in a loud room, guests watching, device in one hand.</p>
+          <p>Their job at one table runs in a fixed order: seat, order, modifiers, coursing, send to the kitchen, serve, split and pay, close. Almost every step happens at the table. Before Mobile POS, two of them &mdash; entering the order and taking payment &mdash; needed the counter. That&rsquo;s where the trips came from.</p>
+          <p>Because these are trained users, the design goal is not &ldquo;understandable at first glance.&rdquo; It&rsquo;s <strong>operable by muscle memory, and error-free at peak hour</strong>. That allows higher information density than a consumer app, and demands far stricter consistency in return: every control in the same place, on every screen.</p>
         </div>
+              <figure class="reveal fig-full task-flow-fig">
+          <ol class="task-flow" aria-label="A server's task flow at one table">
+            <li><span class="tf-num">01</span><span class="tf-name">Seat</span></li>
+            <li><span class="tf-num">02</span><span class="tf-name">Order</span></li>
+            <li><span class="tf-num">03</span><span class="tf-name">Modifiers</span></li>
+            <li><span class="tf-num">04</span><span class="tf-name">Coursing</span></li>
+            <li><span class="tf-num">05</span><span class="tf-name">Send to kitchen</span></li>
+            <li><span class="tf-num">06</span><span class="tf-name">Serve</span></li>
+            <li><span class="tf-num">07</span><span class="tf-name">Split &amp; pay</span></li>
+            <li><span class="tf-num">08</span><span class="tf-name">Close</span></li>
+          </ol>
+          <figcaption>A server&rsquo;s job at one table, start to finish. Almost every step happens at the table &mdash; but before Mobile POS, entering the order and taking payment meant walking back to the counter.</figcaption>
+        </figure>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">03</p>
         <p class="step-label reveal">Research</p>
-        <h2 class="step-title reveal">Benchmark, audit, and <em>watch real hands</em>.</h2>
+        <h2 class="step-title reveal">Watch real hands, <em>audit every function</em>.</h2>
         <div class="step-body reveal">
+          <p>The brief was &ldquo;make it mobile.&rdquo; The real question was which of the seventeen desktop functions belonged in a two-month MVP. Two kinds of research answered it.</p>
           <ul>
-            <li>Benchmarked <strong>Toast GO</strong> &mdash; its always-accessible table checks, tabbed by payment status, became the key reference for order history</li>
-            <li>Audited the desktop POS&rsquo;s complete feature list: what must move to the phone, what stays behind</li>
-            <li>Watched how staff actually hold devices in real restaurants &mdash; typically left hand holding, right hand operating, standing</li>
+            <li><strong>Field observation</strong> &mdash; I watched servers work in real restaurants. The complaint that came up most was some version of &ldquo;I&rsquo;m away from my table.&rdquo; I also watched how they hold the device: left hand holds, right thumb taps, standing the whole shift</li>
+            <li><strong>Feature audit</strong> &mdash; I went through the desktop POS&rsquo;s complete feature list, one function at a time, and mapped where each one actually happens: at the table, or at the counter</li>
           </ul>
+          <p>Put together, the answer was clear. Servers didn&rsquo;t need a smaller POS. They needed fewer trips.</p>
         </div>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">04</p>
-        <p class="step-label reveal">Decision one</p>
-        <h2 class="step-title reveal">Feature triage &mdash; what deserves a place <em>in the pocket</em>.</h2>
+        <p class="step-label reveal">Feature prioritization</p>
+        <h2 class="step-title reveal">One question for every feature: <em>does this happen at the table?</em></h2>
         <div class="step-body reveal">
-          <p>We filtered by how often things happen at the table: ordering, checkout, and order-history management moved fully onto the phone, one tap away; low-frequency and complex functions deliberately stayed on the countertop POS. The cost is incompleteness &mdash; but Mobile POS was never meant to replace the terminal. It exists to <strong>perfect the part worth carrying</strong>: the lighter the device in a server&rsquo;s hand, the faster the service at the table.</p>
+          <p>Ordering, checkout, and order history moved fully onto the phone, one tap away. Reservations, waitlist, and gift cards stayed on the countertop POS, deliberately.</p>
+          <p>Some features were split down the middle. Table management is the clearest case: editing the floor plan is a manager&rsquo;s task, done once, so it stayed on the desktop. Reading the floor &mdash; who sat down when, who&rsquo;s running long, which table is empty &mdash; is a server&rsquo;s task, every few minutes. That moved to the phone as a bird&rsquo;s-eye view, color-coded by status.</p>
+          <p>The cost is a less complete first version. But Mobile POS was never meant to replace the terminal. It exists to <strong>perfect the part worth carrying</strong> &mdash; and the scope was agreed with the PM and engineering before a single screen was drawn.</p>
         </div>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">05</p>
-        <p class="step-label reveal">Decision two</p>
-        <h2 class="step-title reveal">One screen, <em>two audiences</em>.</h2>
+        <p class="step-label reveal">Design principles</p>
+        <h2 class="step-title reveal">Rules that run through <em>every screen</em>.</h2>
         <div class="step-body reveal">
-          <p>Mobile POS has a moment a countertop terminal never faces: at checkout, the device turns to face the guest. The audience flips instantly from a trained employee to an untrained customer &mdash; one choosing a tip and signing while the server stands right beside them. So the staff-facing side is optimized for density and speed, while the guest-facing payment and tip screens are deliberately minimal with unmistakable amounts &mdash; refined across multiple review rounds to avoid confusion or awkwardness in a socially loaded moment.</p>
+          <p>You can&rsquo;t shrink a desktop onto a phone: the targets get too small, and servers use it one-handed. So before any screen, I wrote the principles. Each one answers something seen in the field.</p>
+        </div>
+        <figure class="reveal fig-full principles-fig">
+          <table class="principles">
+            <thead>
+              <tr><th scope="col">User insight</th><th scope="col">Design solution</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>One hand, standing</td><td>Minimum thumb travel &mdash; drawers became modals so everything sits in reach</td></tr>
+              <tr><td>Peak-hour rush</td><td>The shortest possible path, no redundant steps</td></tr>
+              <tr><td>Typing in a hurry</td><td>The keyboard opens the moment input is needed, never a tap later</td></tr>
+              <tr><td>Muscle memory</td><td>Control positions and states stay consistent across screens, including a strict Confirm vs. Done distinction</td></tr>
+            </tbody>
+          </table>
+        </figure>
+        <div class="step-body reveal">
+          <p>With the rules set, migrating dozens of screens stopped being a debate. Each one became &ldquo;apply the principle.&rdquo;</p>
         </div>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">06</p>
-        <p class="step-label reveal">Decision three</p>
-        <h2 class="step-title reveal">Designing for <em>interruption</em>.</h2>
+        <p class="step-label reveal">Decision one</p>
+        <h2 class="step-title reveal">One screen, <em>two audiences</em>.</h2>
         <div class="step-body reveal">
-          <p>Office software assumes users can finish a flow uninterrupted; a restaurant floor is the opposite &mdash; mid-order, another table calls, the kitchen shouts, a guest changes their mind. Every core flow therefore had to be <strong>safely interruptible and resumable</strong>: unsubmitted orders hold their state, and servers pick up exactly where they left off instead of starting over.</p>
+          <p>Mobile POS has a moment a countertop terminal never faces: at checkout, the device turns to face the guest. In one second the user changes &mdash; from a trained employee to someone who has never seen this screen, choosing a tip and signing while the server stands right there.</p>
+          <p>So the staff-facing side is optimized for density and speed, while the guest-facing tip and payment screens are deliberately minimal, with unmistakable amounts. If the guest hesitates, it&rsquo;s awkward for everyone &mdash; those screens went through more review rounds than any other.</p>
         </div>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">07</p>
-        <p class="step-label reveal">Decision four</p>
-        <h2 class="step-title reveal">Color is a <em>faster channel</em> than text.</h2>
+        <p class="step-label reveal">Decision two</p>
+        <h2 class="step-title reveal">Designing for <em>interruption</em>.</h2>
         <div class="step-body reveal">
-          <p>In a high-pressure environment, the cost of finding information has to approach zero &mdash; so one color language runs through the entire system:</p>
+          <p>Office software assumes you finish what you start. A restaurant floor never lets you: mid-order, another table waves, the kitchen calls, a guest changes their mind. Every core flow therefore had to be <strong>safely interruptible and resumable</strong> &mdash; an unsent order holds everything entered, and the server picks up exactly where they left off instead of starting over.</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">08</p>
+        <p class="step-label reveal">Decision three</p>
+        <h2 class="step-title reveal">Color only <em>where it matters</em>.</h2>
+        <div class="step-body reveal">
+          <p>The whole app is black, white, and gray. In a busy restaurant, color has to mean something, so it appears in exactly two places:</p>
           <ul>
-            <li><strong>Table states</strong> &mdash; open, dining, and overtime tables each carry a dedicated status color: a server reads the entire floor in one glance, no reading table by table</li>
-            <li><strong>Dish categories</strong> &mdash; seafood, drinks, and house specials each carry a dedicated color: in a grid of hundreds of items, finding a dish turns from reading into scanning &mdash; lock the color zone first, confirm the name second</li>
-            <li><strong>The number pad</strong> &mdash; outlined keys became solid color blocks, instantly readable as tappable</li>
+            <li><strong>Table status</strong> &mdash; open, dining, and running-over tables each carry one status color. A server reads the entire floor in a glance, without reading table by table</li>
+            <li><strong>Dish categories</strong> &mdash; in a grid hundreds of items deep, each category has its own color. Finding a dish turns from reading into scanning: lock the color zone first, confirm the name second</li>
           </ul>
+          <p>One more rule sits underneath: <strong>anything tappable is a solid block; plain text is information only.</strong> The number pad&rsquo;s outlined keys became solid blocks for exactly this reason. Servers never have to guess what&rsquo;s a button.</p>
         </div>
         <figure class="final-video reveal">
           <div class="final-video-stage">
@@ -200,31 +245,27 @@
       </article>
 
       <article class="step">
-        <p class="step-num reveal" aria-hidden="true">08</p>
-        <p class="step-label reveal">Interaction principles</p>
-        <h2 class="step-title reveal">Rules that run through <em>every screen</em>.</h2>
+        <p class="step-num reveal" aria-hidden="true">09</p>
+        <p class="step-label reveal">Decision four</p>
+        <h2 class="step-title reveal">Guardrails where <em>mistakes cost money</em>.</h2>
         <div class="step-body reveal">
-          <ul>
-            <li><strong>Shortest possible operation path</strong> &mdash; no redundant steps</li>
-            <li><strong>Keyboards auto-invoke</strong> wherever input is needed</li>
-            <li><strong>Minimal thumb travel</strong> for one-handed use</li>
-            <li><strong>Deliberate friction for irreversible actions</strong> &mdash; Void and Discount require PIN verification: the one place designed to trade speed for safety</li>
-            <li><strong>Consistent button positions and states</strong> across screens</li>
-          </ul>
-          <p>In the details, that meant drawers converted to modals for thumb reach, a Confirm vs. Done copy distinction, and a streamlined note-input path &mdash; small changes that decide whether a server can operate accurately in a hectic environment.</p>
+          <p>Everywhere else in the system, I removed steps. Two actions got one added. Voids and discounts cost the restaurant money, and a void can&rsquo;t be undone &mdash; so both require a manager PIN.</p>
+          <p>It&rsquo;s the one place that deliberately breaks the shortest-path rule. Fast everywhere, except where a mistake costs money.</p>
         </div>
       </article>
 
       <article class="step">
-        <p class="step-num reveal" aria-hidden="true">09</p>
+        <p class="step-num reveal" aria-hidden="true">10</p>
         <p class="step-label reveal">Design system</p>
         <h2 class="step-title reveal">Decisions locked into <em>components</em>.</h2>
         <div class="step-body reveal">
-          <p>With dozens of screens to migrate, designing each page individually would have been slow and impossible to keep consistent. So I built a componentized design system:</p>
+          <p>The one real disagreement on the project was the foundation. I proposed Material Design 3: a shorter learning curve for servers, and faster design work. Engineering pushed back &mdash; restaurant tech is a deep vertical with custom workflows, and generic components wouldn&rsquo;t fit.</p>
+          <p>Instead of debating, we ran a one-day A/B test with real servers, comparing task completion, speed, and confidence. Servers learned Material 3 faster. Engineering was right too: some restaurant patterns simply don&rsquo;t exist in Material. So we kept Material&rsquo;s structure and tokens, and built our own components only where restaurants needed them.</p>
+          <p>That became a componentized design system:</p>
           <ul>
             <li><strong>Component variants</strong> for buttons, inputs, modals, and list items &mdash; covering size, state, and use case</li>
-            <li><strong>Semantic color definitions</strong> so Light and Dark Mode share one component structure &mdash; no parallel design files to maintain</li>
-            <li><strong>Interaction rules baked into components</strong> &mdash; any new screen inherits the standards automatically, no designer discipline required</li>
+            <li><strong>Semantic color tokens</strong>, so Light and Dark Mode share one component structure &mdash; no parallel design files to maintain</li>
+            <li><strong>Interaction rules baked in</strong> &mdash; every new screen inherits the principles automatically</li>
           </ul>
           <p>Screen design turned from &ldquo;drawing page by page&rdquo; into &ldquo;assembling from components,&rdquo; and design and engineering gained a single source of truth.</p>
         </div>
@@ -274,7 +315,7 @@
       </figure>
       <div class="sol-item reveal">
         <h3><span class="sol-num">05</span> Split Check &amp; Flexible Payments</h3>
-        <p>Groups split the check for individual payment; contactless cards, digital wallets, gift cards, and loyalty points are all accepted at the table. Tip selection and payment complete in one uninterrupted flow.</p>
+        <p>Splitting a check takes four quick steps: how many people (one to six, or any custom number); how each person pays (card, cash, digital wallet, gift card, or loyalty points); split by amount, by percentage, or by item; then the tip, where the device turns to the guest. One flow, no detours.</p>
       </div>
       <figure class="final-video reveal">
         <div class="final-video-stage">
@@ -306,7 +347,8 @@
       <p class="case-kicker reveal">Impact</p>
       <h2 class="step-title reveal">Checkout left the counter &mdash; <em>and stayed gone</em>.</h2>
       <div class="step-body reveal">
-        <p>After launch, the most immediate change happened at checkout: within three months, <strong>64% of checkouts shifted from the countertop POS to tableside Mobile POS</strong>. Servers stopped shuttling back and forth for payment, and the guest&rsquo;s wait from asking for the check to walking out the door was substantially compressed. Plate scanning, meanwhile, turned conveyor-belt sushi checkout from counting by hand into scan-and-done.</p>
+        <p>Before launch we chose one metric: the share of checkouts completed at the table instead of the counter &mdash; the trip we most wanted gone. Within three months, <strong>64% of checkouts had moved to Mobile POS</strong>, and the number held. Plate scanning, meanwhile, turned conveyor-belt sushi checkout from counting by hand into scan-and-done.</p>
+        <p>That number proves adoption; it doesn&rsquo;t prove checkout got faster. Time per order wasn&rsquo;t tracked from day one, so checkout speed and error rate went onto the next roadmap as the first things to instrument.</p>
         <p><em>Industry reference: handheld POS paired with well-designed workflows typically delivers 15&ndash;35% faster table turns &mdash; and interface design is the precondition for all of it. If a server fumbles at the table, guests will simply ask to pay at the counter.</em></p>
       </div>
       <div class="stats">
@@ -328,13 +370,25 @@
       </div>
     </section>
 
+    <!-- Edge case -->
+    <section class="case-section" id="edge-case">
+      <p class="case-kicker reveal">Edge case</p>
+      <h2 class="step-title reveal">The table of ten that <em>research never showed</em>.</h2>
+      <div class="step-body reveal">
+        <p>The edge case that taught the most came after launch: large groups. A table of ten, everyone paying a different amount by a different method &mdash; some cash, some cards, someone with a gift card.</p>
+        <p>The split flow could handle it. But it was designed around how people split in research &mdash; evenly, by amount, or by percentage &mdash; and with ten people, servers lost track of who had paid and what was left.</p>
+        <p>Two additions came straight from watching real use: <strong>pay by item</strong>, so each guest pays for exactly what they ordered, and a <strong>payment summary</strong> showing what&rsquo;s paid and what remains.</p>
+      </div>
+    </section>
+
     <!-- Reflection -->
     <section class="case-section" id="reflection">
       <p class="case-kicker reveal">Reflection</p>
       <p class="case-lead reveal">Principles before pixels &mdash; and <em>error-proof</em> beats beautiful.</p>
       <div class="step-body reveal">
-        <p>Moving a desktop system to a phone, the biggest trap is shrinking page by page instead of redesigning. With principles locked in first, dozens of screen migrations became &ldquo;apply the principle&rdquo; rather than &ldquo;argue it again.&rdquo; And in high-pressure environments, error-proof matters far more than beautiful: changes that looked minor in design reviews decided whether frontline staff could operate by muscle memory at peak hours.</p>
-        <p>If I did this again, I&rsquo;d push earlier for small-scale field observation in real restaurants &mdash; issues like readability in direct sunlight and mis-taps from greasy fingers only reveal themselves in the real world.</p>
+        <p>Moving a desktop system to a phone, the biggest trap is shrinking page by page instead of redesigning. With principles locked first, dozens of screen migrations became &ldquo;apply the principle&rdquo; rather than &ldquo;argue it again.&rdquo; And in a high-pressure environment, error-proof matters more than beautiful: changes that looked minor in design review decided whether a server could operate by muscle memory at peak hour.</p>
+        <p>The surprise was coursing. We had it down as a nice-to-have; it was one of the first things servers asked for, because the kitchen&rsquo;s timing and the guest&rsquo;s timing are never the same.</p>
+        <p>If I did this project again, I&rsquo;d bring edge cases and guardrails into research and design from the start, instead of discovering them after launch. The table of ten and the manager PIN both came from the floor, and both could have been found earlier with more field observation in real restaurants. Readability in direct sunlight, mis-taps from greasy fingers &mdash; those only show up on the floor, not in a Figma review.</p>
       </div>
     </section>
 

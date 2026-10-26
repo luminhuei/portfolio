@@ -1272,3 +1272,71 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
   .rec-links { align-items: flex-start; }
   .rec-tag { white-space: normal; }
 }
+
+/* ---------- User task flow (numbered step strip, Mobile POS 02) ---------- */
+.task-flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 12px;
+}
+.task-flow li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 96px;
+  padding: 14px 14px 16px;
+  background: var(--card-light);
+  border: 1px solid #e4e4e1;
+  border-radius: 14px;
+}
+.task-flow li + li::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid var(--faint);
+  border-right: 1.5px solid var(--faint);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.task-flow .tf-num {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--faint);
+}
+.task-flow .tf-name {
+  margin-top: auto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.case figure.task-flow-fig figcaption { margin-top: 12px; }
+@media (max-width: 900px) {
+  .task-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .task-flow li:nth-child(4n + 1)::before { display: none; }
+}
+@media (max-width: 480px) {
+  .task-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .task-flow li { min-height: 72px; }
+  .task-flow li:nth-child(4n + 1)::before { display: block; }
+  .task-flow li:nth-child(2n + 1)::before { display: none; }
+}
+
+/* Design principles table (mpos 05) */
+.case figure.principles-fig { margin-top: 24px; }
+.principles { width: 100%; border-collapse: collapse; font-size: 16px; line-height: 1.5; }
+.principles th, .principles td { text-align: left; vertical-align: top; padding: 14px 16px; border-bottom: 1px solid #e4e4e1; }
+.principles th { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); padding-top: 0; }
+.principles td:first-child { width: 32%; font-weight: 500; color: var(--ink); }
+.principles tr:last-child td { border-bottom: 0; }
+@media (max-width: 480px) {
+  .principles { font-size: 15px; }
+  .principles th, .principles td { padding: 12px 10px; }
+  .principles td:first-child { width: 38%; }
+}

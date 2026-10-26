@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css?v=20261023a" />
-  <link rel="stylesheet" href="../case.css?v=20261026a" />
+  <link rel="stylesheet" href="../case.css?v=20261026c" />
   <script src="../analytics.js?v=20260919d"></script>
   <meta name="robots" content="noindex" />
   <script>(function(){try{if(localStorage.getItem("pv-ok")!=="1")document.documentElement.classList.add("locked");}catch(e){document.documentElement.classList.add("locked");}})();</script>
@@ -66,7 +66,7 @@
         <p class="case-lead reveal">上線三個月內,<em>64% 的結帳</em>從櫃台移到了桌邊。</p>
         <div class="case-intro-body reveal">
           <p>Mobile POS 讓點餐、送廚、結帳都發生在桌邊,而不是櫃台。整個產品圍繞一個核心問題:如何把桌機 POS 的核心流程裝進一塊手機螢幕 &mdash;&mdash; 讓服務生單手、快速、不出錯地完成桌邊工作?</p>
-          <p><strong>限制條件:</strong>兩個月內上線 MVP;手機螢幕承載不了桌機 POS 的完整功能。</p>
+          <p><strong>限制條件:</strong>兩個月內上線 MVP;桌機 POS 的十七個功能,一塊手機螢幕裝不下。</p>
           <p><strong>關鍵取捨:</strong>只把高頻的桌邊流程搬上手機,其餘功能保留在櫃台桌機 POS 上操作。</p>
         </div>
       </div>
@@ -76,7 +76,7 @@
         <div><dt>Platform</dt><dd>手持裝置</dd></div>
         <div><dt>Year</dt><dd>2025</dd></div>
         <div><dt>Team</dt><dd>產品經理<br />工程團隊</dd></div>
-        <div><dt>Role</dt><dd>UI 設計<br />互動設計<br />設計系統</dd></div>
+        <div><dt>Role</dt><dd>研究<br />UI 設計<br />互動設計<br />設計系統</dd></div>
       </dl>
     </section>
 
@@ -117,7 +117,8 @@
         <p class="step-label reveal">現場的問題</p>
         <h2 class="step-title reveal">一份訂單,<em>三趟路</em>。</h2>
         <div class="step-body reveal">
-          <p>用傳統桌機 POS 的餐廳裡,同樣的場景整天上演:服務生在桌邊用紙筆記下點單,走回櫃台排隊輸入,再走回桌邊確認。高峰期這些來回累積起來,直接拖慢點餐、出菜與翻台 &mdash;&mdash; 而一旦斷網或停電,櫃台那台桌機會讓整家店跟著停擺。Mobile POS 要解決的正是這兩件事:讓點餐和結帳發生在桌邊,並讓系統在網路不穩時依然可靠。</p>
+          <p>起點是可靠性。有一天,一家店的櫃台 POS 當機了一整天,大約 <strong>60 萬美元的款項收不進來</strong>。公司的優先順序從此很清楚:盡快讓手持 POS 上線,讓任何一家餐廳都不再只靠一台機器。</p>
+          <p>但手持 POS 還得解決另一個天天發生、不是偶發的問題。服務生在桌邊用紙筆記下點單,走回櫃台輸入,再走回桌邊確認。高峰期這些來回累積起來:拖慢廚房、限制翻台、也更容易出錯。Mobile POS 要解決的正是這兩件事 &mdash;&mdash; 讓點餐和結帳發生在桌邊,並在櫃台停擺時依然能運作。</p>
         </div>
         <figure class="reveal fig-shot">
           <div class="fig-shot-frame">
@@ -136,61 +137,105 @@
         <p class="step-label reveal">為誰而做</p>
         <h2 class="step-title reveal">受過訓練的服務生,靠<em>肌肉記憶</em>操作。</h2>
         <div class="step-body reveal">
-          <p>Mobile POS 的用戶是受過培訓的餐廳服務生,但工作環境是高壓的:噪音、趕時間、客人直視、站立、單手持機。因此設計目標不是「第一眼看懂」,而是<strong>訓練後能盲操作、高峰期不出錯</strong> &mdash;&mdash; 操作位置固定、路徑最短、風險操作有防護。這允許比消費級產品更高的資訊密度,但對操作一致性的要求也嚴苛得多。</p>
+          <p>Mobile POS 的用戶是受過培訓的餐廳服務生,但工作環境是高壓的:站著、環境吵、客人直視、單手持機。</p>
+          <p>他們在一張桌子的工作有固定順序:帶位、點餐、客製化、上菜節奏、送進廚房、上菜、拆單結帳、結束桌次。幾乎每一步都在桌邊完成。但在 Mobile POS 之前,其中兩步 &mdash;&mdash; 輸入點單和結帳 &mdash;&mdash; 必須回櫃台。三趟路就是從這裡來的。</p>
+          <p>因為用戶受過訓練,設計目標就不是「第一眼看懂」,而是<strong>靠肌肉記憶盲操作、高峰期不出錯</strong>。這允許比消費級產品更高的資訊密度,但對一致性的要求也嚴苛得多:每個控制項在每個畫面都要在同一個位置。</p>
         </div>
+              <figure class="reveal fig-full task-flow-fig">
+          <ol class="task-flow" aria-label="服務生在一張桌子的工作流程">
+            <li><span class="tf-num">01</span><span class="tf-name">帶位</span></li>
+            <li><span class="tf-num">02</span><span class="tf-name">點餐</span></li>
+            <li><span class="tf-num">03</span><span class="tf-name">客製化</span></li>
+            <li><span class="tf-num">04</span><span class="tf-name">上菜節奏</span></li>
+            <li><span class="tf-num">05</span><span class="tf-name">送進廚房</span></li>
+            <li><span class="tf-num">06</span><span class="tf-name">上菜</span></li>
+            <li><span class="tf-num">07</span><span class="tf-name">拆單結帳</span></li>
+            <li><span class="tf-num">08</span><span class="tf-name">結束桌次</span></li>
+          </ol>
+          <figcaption>服務生在一張桌子從頭到尾的工作。幾乎每一步都在桌邊完成 &mdash;&mdash; 但在 Mobile POS 之前,輸入點單和結帳都得走回櫃台。</figcaption>
+        </figure>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">03</p>
         <p class="step-label reveal">研究</p>
-        <h2 class="step-title reveal">對標、盤點,以及<em>看真實的手</em>。</h2>
+        <h2 class="step-title reveal">看真實的手,<em>盤點每一個功能</em>。</h2>
         <div class="step-body reveal">
+          <p>需求是「做成手機版」。真正的問題是:桌機的十七個功能裡,哪些該進兩個月的 MVP?兩種研究回答了這個問題。</p>
           <ul>
-            <li>對標 <strong>Toast GO</strong> &mdash;&mdash; 隨時可查看的桌餐帳單(按支付狀態分頁),成為訂單歷史功能的重要參考</li>
-            <li>盤點桌機 POS 的完整功能清單:哪些必須搬上手機、哪些留在櫃台</li>
-            <li>觀察員工在真實門店的用法 &mdash;&mdash; 通常左手拿設備、右手操作、站著使用</li>
+            <li><strong>實地觀察</strong> &mdash;&mdash; 我到真實門店看服務生工作。最常聽到的抱怨都是「我不在我的桌邊」的某種版本。我也觀察他們怎麼拿設備:左手拿、右手拇指按、整班站著</li>
+            <li><strong>功能盤點</strong> &mdash;&mdash; 把桌機 POS 的完整功能清單逐一過一遍,標出每個功能實際發生的地方:桌邊,還是櫃台</li>
           </ul>
+          <p>兩邊放在一起,答案很清楚。服務生要的不是一台縮小的 POS,而是少走幾趟路。</p>
         </div>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">04</p>
-        <p class="step-label reveal">決策一</p>
-        <h2 class="step-title reveal">功能取捨 &mdash;&mdash; 什麼值得<em>裝進口袋</em>。</h2>
+        <p class="step-label reveal">功能優先級</p>
+        <h2 class="step-title reveal">每個功能只問一個問題:<em>這件事發生在桌邊嗎?</em></h2>
         <div class="step-body reveal">
-          <p>我們按「桌邊發生的頻率」篩選:點餐、結帳、訂單管理等高頻流程完整搬上手機、一步直達;低頻或複雜的功能被有意捨棄,保留在櫃台桌機上操作。代價是功能不完整 &mdash;&mdash; 但 Mobile POS 的定位從來不是取代桌機,而是<strong>把值得隨身攜帶的那部分做到極致</strong>:服務生手裡的設備越輕,桌邊的服務越快。</p>
+          <p>點餐、結帳、訂單歷史完整搬上手機,一步直達。訂位、候位、禮品卡刻意留在櫃台桌機上。</p>
+          <p>有些功能被切成兩半。桌台管理是最清楚的例子:編輯桌位平面圖是經理的工作,做一次就好,所以留在桌機。看全場狀況 &mdash;&mdash; 哪桌幾點入座、哪桌坐太久、哪桌是空的 &mdash;&mdash; 是服務生每隔幾分鐘就要做的事,所以搬上手機,做成按狀態上色的鳥瞰圖。</p>
+          <p>代價是第一版不夠完整。但 Mobile POS 的定位從來不是取代桌機,而是<strong>把值得隨身攜帶的那部分做到極致</strong> &mdash;&mdash; 這個範圍在畫第一張畫面之前,就和產品經理與工程團隊談定了。</p>
         </div>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">05</p>
-        <p class="step-label reveal">決策二</p>
-        <h2 class="step-title reveal">一塊螢幕,<em>兩種觀眾</em>。</h2>
+        <p class="step-label reveal">設計原則</p>
+        <h2 class="step-title reveal">貫穿<em>每個畫面</em>的規則。</h2>
         <div class="step-body reveal">
-          <p>Mobile POS 有一個桌機永遠不會面對的時刻:結帳時,設備會轉向顧客。螢幕的觀眾從「受過訓練的員工」瞬間切換成「零培訓的顧客」&mdash;&mdash; 而且顧客是在服務生站在身旁的社交情境下選小費、簽名。因此員工側介面追求資訊密度與效率,而顧客面向的支付與小費介面刻意做到極簡、金額清晰 &mdash;&mdash; 經過多輪評審打磨,避免顧客在壓力情境下產生困惑或尷尬。</p>
+          <p>桌機不能直接縮小塞進手機:按鈕會太小,而且服務生是單手操作。所以在畫任何畫面之前,我先寫下原則。每一條都對應現場看到的一件事。</p>
+        </div>
+        <figure class="reveal fig-full principles-fig">
+          <table class="principles">
+            <thead>
+              <tr><th scope="col">使用者洞察</th><th scope="col">設計對應</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>單手、站著</td><td>拇指移動最少 &mdash;&mdash; 抽屜改成彈窗,所有東西都在拇指可達的範圍</td></tr>
+              <tr><td>高峰期趕時間</td><td>操作路徑最短,不做多餘的步驟</td></tr>
+              <tr><td>匆忙中要打字</td><td>需要輸入的那一刻鍵盤就自動出現,不用多點一下</td></tr>
+              <tr><td>肌肉記憶</td><td>控制項的位置與狀態在每個畫面都一致,包括 Confirm 與 Done 的嚴格分工</td></tr>
+            </tbody>
+          </table>
+        </figure>
+        <div class="step-body reveal">
+          <p>規則定好之後,幾十個畫面的移植就不再需要爭論。每一個都變成「套用原則」。</p>
         </div>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">06</p>
-        <p class="step-label reveal">決策三</p>
-        <h2 class="step-title reveal">為「<em>被打斷</em>」而設計。</h2>
+        <p class="step-label reveal">決策一</p>
+        <h2 class="step-title reveal">一塊螢幕,<em>兩種觀眾</em>。</h2>
         <div class="step-body reveal">
-          <p>辦公軟體假設用戶能專注走完一個流程,餐廳現場恰恰相反:點單點到一半,隔壁桌呼叫、廚房傳話、顧客改主意都是常態。因此所有核心流程都要能<strong>安全中斷、隨時恢復</strong>:未提交的訂單保留在原狀態,服務生處理完插入事務後從中斷處繼續,而不是從頭再來。</p>
+          <p>Mobile POS 有一個桌機永遠不會面對的時刻:結帳時,設備會轉向顧客。一秒之內,用戶就變了 &mdash;&mdash; 從受過訓練的員工,變成從沒看過這個畫面的人,而且是在服務生站在身旁的情境下選小費、簽名。</p>
+          <p>因此員工側介面追求資訊密度與效率,而顧客面向的小費與支付畫面刻意做到極簡、金額清晰。顧客一猶豫,所有人都尷尬 &mdash;&mdash; 這幾個畫面經過的評審輪數,比任何其他畫面都多。</p>
         </div>
       </article>
 
       <article class="step">
         <p class="step-num reveal" aria-hidden="true">07</p>
-        <p class="step-label reveal">決策四</p>
-        <h2 class="step-title reveal">顏色是比文字<em>更快的資訊通道</em>。</h2>
+        <p class="step-label reveal">決策二</p>
+        <h2 class="step-title reveal">為「<em>被打斷</em>」而設計。</h2>
         <div class="step-body reveal">
-          <p>高壓環境裡,「找資訊」的成本必須壓到最低 &mdash;&mdash; 因此一套色彩語言貫穿整個系統:</p>
+          <p>辦公軟體假設你會把開始的事做完,餐廳現場從來不給你這個機會:點單點到一半,隔壁桌招手、廚房叫人、顧客改主意。因此所有核心流程都要能<strong>安全中斷、隨時恢復</strong> &mdash;&mdash; 未送出的訂單保留所有已輸入的內容,服務生回來就從中斷處繼續,而不是從頭再來。</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <p class="step-num reveal" aria-hidden="true">08</p>
+        <p class="step-label reveal">決策三</p>
+        <h2 class="step-title reveal">顏色只用在<em>有意義的地方</em>。</h2>
+        <div class="step-body reveal">
+          <p>整個 app 是黑、白、灰。在忙碌的餐廳裡,顏色必須有意義,所以它只出現在兩個地方:</p>
           <ul>
-            <li><strong>桌台狀態</strong> &mdash;&mdash; 空桌、用餐中、超時各有專屬狀態色:掃一眼讀完全場,不必逐桌閱讀</li>
-            <li><strong>菜品品類</strong> &mdash;&mdash; 海鮮、飲品、招牌特色各有專屬顏色:在上百道菜的按鈕網格裡,「找菜」從逐個閱讀變成掃視定位 &mdash;&mdash; 先鎖顏色,再讀菜名</li>
-            <li><strong>數字鍵盤</strong> &mdash;&mdash; 從線框改成色塊,直覺上就是可點擊的</li>
+            <li><strong>桌台狀態</strong> &mdash;&mdash; 空桌、用餐中、超時各有一個狀態色。服務生掃一眼讀完全場,不必逐桌閱讀</li>
+            <li><strong>菜品品類</strong> &mdash;&mdash; 在上百道菜的按鈕網格裡,每個品類有自己的顏色。「找菜」從逐個閱讀變成掃視定位:先鎖顏色,再讀菜名</li>
           </ul>
+          <p>底下還有一條規則:<strong>可以點的都是實心色塊;純文字只是資訊。</strong>數字鍵盤從線框改成色塊,就是這個原因。服務生永遠不用猜哪個是按鈕。</p>
         </div>
         <figure class="final-video reveal">
           <div class="final-video-stage">
@@ -200,31 +245,27 @@
       </article>
 
       <article class="step">
-        <p class="step-num reveal" aria-hidden="true">08</p>
-        <p class="step-label reveal">交互原則</p>
-        <h2 class="step-title reveal">貫穿<em>每個畫面</em>的規則。</h2>
+        <p class="step-num reveal" aria-hidden="true">09</p>
+        <p class="step-label reveal">決策四</p>
+        <h2 class="step-title reveal">在<em>出錯要賠錢</em>的地方設防線。</h2>
         <div class="step-body reveal">
-          <ul>
-            <li><strong>操作路徑最短</strong>,不做多餘的操作</li>
-            <li>需要輸入的地方,<strong>一定自動喚起鍵盤</strong></li>
-            <li><strong>拇指移動路徑最短</strong>,盡量做到單手操作</li>
-            <li><strong>重要且不可撤回的操作刻意增加難度</strong> &mdash;&mdash; Void 與 Discount 需要 PIN 驗證:在所有原則都追求最短路徑的系統裡,這是唯一一處反向設計,用「慢」換「安全」</li>
-            <li><strong>按鈕位置與狀態保持一致</strong>,降低尋找成本</li>
-          </ul>
-          <p>落到細節:抽屜改成拇指可達的彈窗、Confirm 與 Done 的文案分工、精簡備註輸入路徑 &mdash;&mdash; 小改動,卻決定服務生在忙亂環境中能否快速準確地操作。</p>
+          <p>系統裡其他地方我都在減少步驟,只有兩個操作多加了一步。作廢(Void)和折扣(Discount)會讓餐廳損失金錢,而作廢無法復原 &mdash;&mdash; 所以兩者都需要經理 PIN 碼。</p>
+          <p>這是唯一一處刻意打破「最短路徑」原則的地方。到處都要快,除了出錯要賠錢的地方。</p>
         </div>
       </article>
 
       <article class="step">
-        <p class="step-num reveal" aria-hidden="true">09</p>
+        <p class="step-num reveal" aria-hidden="true">10</p>
         <p class="step-label reveal">設計系統</p>
         <h2 class="step-title reveal">把決策鎖進<em>組件</em>。</h2>
         <div class="step-body reveal">
-          <p>面對幾十個功能頁面的移植工作,逐頁繪製既慢又無法保證一致。因此我為 Mobile POS 搭建了組件化的設計系統:</p>
+          <p>這個專案唯一一次真正的意見分歧,是在地基上。我提議用 Material Design 3:服務生學習曲線短,設計也能更快。工程團隊反對 &mdash;&mdash; 餐飲科技是很深的垂直領域,有大量客製流程,通用組件套不上。</p>
+          <p>我們沒有繼續爭論,而是找真實的服務生做了一天的 A/B 測試,比較任務完成率、速度和信心。服務生學 Material 3 比較快。但工程團隊也說對了:有些餐廳的操作模式在 Material 裡根本不存在。所以我們保留 Material 的結構與 token,只在餐廳需要的地方自己做組件。</p>
+          <p>這就成了組件化的設計系統:</p>
           <ul>
             <li><strong>組件變體</strong>:按鈕、輸入框、彈窗、列表項的 Variant 體系,覆蓋尺寸、狀態與使用場景</li>
-            <li><strong>語義化色彩</strong>:顏色按用途定義,Light / Dark 雙主題共用同一套組件結構</li>
-            <li><strong>交互規範內建於組件</strong>:新頁面使用組件就自動繼承規範,不靠設計師自覺</li>
+            <li><strong>語義化色彩 token</strong>:Light / Dark 雙主題共用同一套組件結構,不用維護兩套設計檔</li>
+            <li><strong>交互規範內建於組件</strong>:每個新畫面自動繼承原則</li>
           </ul>
           <p>頁面設計從「逐頁繪製」變成「組裝組件」,設計與工程之間有了單一可信來源。</p>
         </div>
@@ -274,7 +315,7 @@
       </figure>
       <div class="sol-item reveal">
         <h3><span class="sol-num">05</span> 桌邊結帳:拆單與彈性支付</h3>
-        <p>一桌多人可拆分帳單分別支付;非接觸卡、數位錢包、禮品卡、會員積分折抵全部支援。小費選擇與支付在同一流程內完成。</p>
+        <p>拆單只要四步:幾個人分(一到六人,或任意自訂人數);每個人怎麼付(刷卡、現金、數位錢包、禮品卡或會員積分);按金額、按百分比或按品項拆;最後是小費,設備在這裡轉向顧客。一條流程,不繞路。</p>
       </div>
       <figure class="final-video reveal">
         <div class="final-video-stage">
@@ -306,7 +347,8 @@
       <p class="case-kicker reveal">Impact</p>
       <h2 class="step-title reveal">結帳離開了櫃台 &mdash;&mdash; <em>再也沒回去</em>。</h2>
       <div class="step-body reveal">
-        <p>上線後最直接的變化發生在結帳環節:三個月內,<strong>64% 的結帳從櫃台桌機轉移到桌邊的 Mobile POS 完成</strong>。服務生不再為結帳來回奔波,客人從示意結帳到離店的等待時間被實質壓縮。掃盤結帳則把迴轉壽司的結帳從人工數盤變成掃描即完成。</p>
+        <p>上線前我們只選了一個指標:在桌邊完成、而不是回櫃台完成的結帳佔比 &mdash;&mdash; 那正是我們最想消滅的那一趟路。三個月內,<strong>64% 的結帳移到了 Mobile POS</strong>,而且數字一直維持住。掃盤結帳則把迴轉壽司的結帳從人工數盤變成掃描即完成。</p>
+        <p>這個數字證明的是「大家用了」,不是「結帳變快了」。每筆訂單的時間沒有從第一天就追蹤,所以結帳速度和錯誤率被排進下一個 roadmap,作為第一批要量測的東西。</p>
         <p><em>行業參考:手持 POS 配合合理的流程設計,通常能帶來 15&ndash;35% 的翻台效率提升 &mdash;&mdash; 而介面設計正是這一切落地的前提。如果服務生在桌邊手忙腳亂,客人只會要求回櫃台結帳。</em></p>
       </div>
       <div class="stats">
@@ -328,13 +370,25 @@
       </div>
     </section>
 
+    <!-- Edge case -->
+    <section class="case-section" id="edge-case">
+      <p class="case-kicker reveal">Edge case</p>
+      <h2 class="step-title reveal">研究裡從沒出現過的<em>十人桌</em>。</h2>
+      <div class="step-body reveal">
+        <p>教我最多的 edge case 在上線之後才出現:大桌。一桌十個人,每個人要付的金額不同、付款方式也不同 &mdash;&mdash; 有人現金、有人刷卡、有人用禮品卡。</p>
+        <p>拆單流程撐得住。但它是照研究裡看到的分法設計的 &mdash;&mdash; 平均分、按金額、按百分比 &mdash;&mdash; 十個人一來,服務生就記不清誰付過了、還剩多少。</p>
+        <p>兩個新功能直接來自觀察真實使用:<strong>按品項付款</strong>,每位客人只付自己點的;以及<strong>付款摘要</strong>,清楚顯示已付多少、還剩多少。</p>
+      </div>
+    </section>
+
     <!-- Reflection -->
     <section class="case-section" id="reflection">
       <p class="case-kicker reveal">Reflection</p>
       <p class="case-lead reveal">原則先於畫面 &mdash;&mdash; 而「<em>不出錯</em>」比「好看」重要。</p>
       <div class="step-body reveal">
-        <p>把桌面系統搬到手機上,最大的陷阱是逐頁「縮小」而不是重新「設計」。先確立原則,幾十個頁面的移植就從「重新爭論」變成「套用原則」。而在高壓使用場景裡,「不出錯」遠比「好看」重要:那些評審會上看似很小的改動,實際決定了一線人員高峰期能否盲操作。</p>
-        <p>如果重來一次,我會更早推動在真實門店做小規模實地觀察與測試 &mdash;&mdash; 強光下的可讀性、油手指的誤觸,只有真實環境才會暴露。</p>
+        <p>把桌面系統搬到手機上,最大的陷阱是逐頁「縮小」而不是重新「設計」。先確立原則,幾十個頁面的移植就從「重新爭論」變成「套用原則」。而在高壓使用場景裡,「不出錯」遠比「好看」重要:那些評審會上看似很小的改動,實際決定了服務生高峰期能否盲操作。</p>
+        <p>意外的是上菜節奏(coursing)。我們原本把它列為「有也不錯」,結果是服務生最先要求的功能之一,因為廚房的節奏和客人的節奏永遠對不上。</p>
+        <p>如果重做一次這個專案,我會從研究和設計階段就把 edge case 和防線(guardrail)納入考量,而不是上線後才發現。十人桌和經理 PIN 碼都是從現場來的,只要更早、更常到真實門店做實地觀察,兩者都可以提前找到。強光下的可讀性、油手指的誤觸 &mdash;&mdash; 這些只有在現場才看得到,Figma 評審裡看不到。</p>
       </div>
     </section>
 
