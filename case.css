@@ -1324,18 +1324,6 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
   line-height: 1.3;
   color: var(--ink);
 }
-.task-flow .tf-tag {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 2px 8px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--ink);
-  border: 1px solid var(--ink);
-  border-radius: 999px;
-}
 .case figure.task-flow-fig figcaption { margin-top: 20px; }
 @media (max-width: 720px) {
   .task-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 22px; }
