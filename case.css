@@ -1280,52 +1280,71 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
   padding: 0;
   display: grid;
   grid-template-columns: repeat(8, minmax(0, 1fr));
-  gap: 12px;
 }
 .task-flow li {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-height: 96px;
-  padding: 14px 14px 16px;
-  background: var(--card-light);
-  border: 1px solid #e4e4e1;
-  border-radius: 14px;
+  padding: 24px 12px 0 0;
 }
-.task-flow li + li::before {
+.task-flow li::before {
   content: "";
   position: absolute;
-  left: -10px;
-  top: 50%;
-  width: 7px;
-  height: 7px;
-  border-top: 1.5px solid var(--faint);
-  border-right: 1.5px solid var(--faint);
-  transform: translate(-50%, -50%) rotate(45deg);
+  left: 0;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  z-index: 1;
 }
+.task-flow li::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  right: 0;
+  top: 7px;
+  height: 1px;
+  background: #d9d8d4;
+}
+.task-flow li:last-child::after { display: none; }
+.task-flow li.tf-counter::before { background: var(--ink); }
 .task-flow .tf-num {
+  display: block;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12px;
+  letter-spacing: .06em;
   color: var(--faint);
 }
 .task-flow .tf-name {
-  margin-top: auto;
+  display: block;
+  margin-top: 4px;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.3;
   color: var(--ink);
 }
-.case figure.task-flow-fig figcaption { margin-top: 12px; }
-@media (max-width: 900px) {
-  .task-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .task-flow li:nth-child(4n + 1)::before { display: none; }
+.task-flow .tf-tag {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
 }
-@media (max-width: 480px) {
+.case figure.task-flow-fig figcaption { margin-top: 20px; }
+@media (max-width: 720px) {
+  .task-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 22px; }
+  .task-flow li:nth-child(4n)::after { display: none; }
+}
+@media (max-width: 400px) {
   .task-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .task-flow li { min-height: 72px; }
-  .task-flow li:nth-child(4n + 1)::before { display: block; }
-  .task-flow li:nth-child(2n + 1)::before { display: none; }
+  .task-flow li:nth-child(4n)::after { display: block; }
+  .task-flow li:nth-child(2n)::after { display: none; }
 }
 
 /* Design principles table (mpos 05) */

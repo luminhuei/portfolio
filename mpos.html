@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=20261023a" />
-  <link rel="stylesheet" href="case.css?v=20261026c" />
+  <link rel="stylesheet" href="case.css?v=20261026d" />
   <script src="analytics.js?v=20260919d"></script>
   <meta name="robots" content="noindex" />
   <script>(function(){try{if(localStorage.getItem("pv-ok")!=="1")document.documentElement.classList.add("locked");}catch(e){document.documentElement.classList.add("locked");}})();</script>
@@ -138,21 +138,21 @@
         <h2 class="step-title reveal">Trained servers, operating by <em>muscle memory</em>.</h2>
         <div class="step-body reveal">
           <p>Mobile POS is built for trained restaurant servers working under real pressure: standing, in a loud room, guests watching, device in one hand.</p>
-          <p>Their job at one table runs in a fixed order: seat, order, modifiers, coursing, send to the kitchen, serve, split and pay, close. Almost every step happens at the table. Before Mobile POS, two of them &mdash; entering the order and taking payment &mdash; needed the counter. That&rsquo;s where the trips came from.</p>
+          <p>Their job at one table runs in a fixed order: seat, order, modifiers, coursing, send to the kitchen, serve, split and pay, close. Every one of those steps happens at the table. But before Mobile POS, five of them &mdash; entering the order, its modifiers and coursing, sending it to the kitchen, and taking payment &mdash; could only be done at the counter. That&rsquo;s where the trips came from.</p>
           <p>Because these are trained users, the design goal is not &ldquo;understandable at first glance.&rdquo; It&rsquo;s <strong>operable by muscle memory, and error-free at peak hour</strong>. That allows higher information density than a consumer app, and demands far stricter consistency in return: every control in the same place, on every screen.</p>
         </div>
               <figure class="reveal fig-full task-flow-fig">
           <ol class="task-flow" aria-label="A server's task flow at one table">
             <li><span class="tf-num">01</span><span class="tf-name">Seat</span></li>
-            <li><span class="tf-num">02</span><span class="tf-name">Order</span></li>
-            <li><span class="tf-num">03</span><span class="tf-name">Modifiers</span></li>
-            <li><span class="tf-num">04</span><span class="tf-name">Coursing</span></li>
-            <li><span class="tf-num">05</span><span class="tf-name">Send to kitchen</span></li>
+            <li class="tf-counter"><span class="tf-num">02</span><span class="tf-name">Order</span><span class="tf-tag">Counter</span></li>
+            <li class="tf-counter"><span class="tf-num">03</span><span class="tf-name">Modifiers</span><span class="tf-tag">Counter</span></li>
+            <li class="tf-counter"><span class="tf-num">04</span><span class="tf-name">Coursing</span><span class="tf-tag">Counter</span></li>
+            <li class="tf-counter"><span class="tf-num">05</span><span class="tf-name">Send to kitchen</span><span class="tf-tag">Counter</span></li>
             <li><span class="tf-num">06</span><span class="tf-name">Serve</span></li>
-            <li><span class="tf-num">07</span><span class="tf-name">Split &amp; pay</span></li>
+            <li class="tf-counter"><span class="tf-num">07</span><span class="tf-name">Split &amp; pay</span><span class="tf-tag">Counter</span></li>
             <li><span class="tf-num">08</span><span class="tf-name">Close</span></li>
           </ol>
-          <figcaption>A server&rsquo;s job at one table, start to finish. Almost every step happens at the table &mdash; but before Mobile POS, entering the order and taking payment meant walking back to the counter.</figcaption>
+          <figcaption>A server&rsquo;s job at one table, start to finish. Filled steps are the ones that meant walking back to the counter before Mobile POS: entering the order, modifiers, coursing, sending to the kitchen, and payment.</figcaption>
         </figure>
       </article>
 

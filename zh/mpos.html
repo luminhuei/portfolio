@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css?v=20261023a" />
-  <link rel="stylesheet" href="../case.css?v=20261026c" />
+  <link rel="stylesheet" href="../case.css?v=20261026d" />
   <script src="../analytics.js?v=20260919d"></script>
   <meta name="robots" content="noindex" />
   <script>(function(){try{if(localStorage.getItem("pv-ok")!=="1")document.documentElement.classList.add("locked");}catch(e){document.documentElement.classList.add("locked");}})();</script>
@@ -138,21 +138,21 @@
         <h2 class="step-title reveal">受過訓練的服務生,靠<em>肌肉記憶</em>操作。</h2>
         <div class="step-body reveal">
           <p>Mobile POS 的用戶是受過培訓的餐廳服務生,但工作環境是高壓的:站著、環境吵、客人直視、單手持機。</p>
-          <p>他們在一張桌子的工作有固定順序:帶位、點餐、客製化、上菜節奏、送進廚房、上菜、拆單結帳、結束桌次。幾乎每一步都在桌邊完成。但在 Mobile POS 之前,其中兩步 &mdash;&mdash; 輸入點單和結帳 &mdash;&mdash; 必須回櫃台。三趟路就是從這裡來的。</p>
+          <p>他們在一張桌子的工作有固定順序:帶位、點餐、客製化、上菜節奏、送進廚房、上菜、拆單結帳、結束桌次。每一步都發生在桌邊。但在 Mobile POS 之前,其中五步 &mdash;&mdash; 輸入點單、客製化、上菜節奏、送進廚房、結帳 &mdash;&mdash; 都只能在櫃台做。三趟路就是從這裡來的。</p>
           <p>因為用戶受過訓練,設計目標就不是「第一眼看懂」,而是<strong>靠肌肉記憶盲操作、高峰期不出錯</strong>。這允許比消費級產品更高的資訊密度,但對一致性的要求也嚴苛得多:每個控制項在每個畫面都要在同一個位置。</p>
         </div>
               <figure class="reveal fig-full task-flow-fig">
           <ol class="task-flow" aria-label="服務生在一張桌子的工作流程">
             <li><span class="tf-num">01</span><span class="tf-name">帶位</span></li>
-            <li><span class="tf-num">02</span><span class="tf-name">點餐</span></li>
-            <li><span class="tf-num">03</span><span class="tf-name">客製化</span></li>
-            <li><span class="tf-num">04</span><span class="tf-name">上菜節奏</span></li>
-            <li><span class="tf-num">05</span><span class="tf-name">送進廚房</span></li>
+            <li class="tf-counter"><span class="tf-num">02</span><span class="tf-name">點餐</span><span class="tf-tag">櫃台</span></li>
+            <li class="tf-counter"><span class="tf-num">03</span><span class="tf-name">客製化</span><span class="tf-tag">櫃台</span></li>
+            <li class="tf-counter"><span class="tf-num">04</span><span class="tf-name">上菜節奏</span><span class="tf-tag">櫃台</span></li>
+            <li class="tf-counter"><span class="tf-num">05</span><span class="tf-name">送進廚房</span><span class="tf-tag">櫃台</span></li>
             <li><span class="tf-num">06</span><span class="tf-name">上菜</span></li>
-            <li><span class="tf-num">07</span><span class="tf-name">拆單結帳</span></li>
+            <li class="tf-counter"><span class="tf-num">07</span><span class="tf-name">拆單結帳</span><span class="tf-tag">櫃台</span></li>
             <li><span class="tf-num">08</span><span class="tf-name">結束桌次</span></li>
           </ol>
-          <figcaption>服務生在一張桌子從頭到尾的工作。幾乎每一步都在桌邊完成 &mdash;&mdash; 但在 Mobile POS 之前,輸入點單和結帳都得走回櫃台。</figcaption>
+          <figcaption>服務生在一張桌子從頭到尾的工作。實心點是 Mobile POS 之前得走回櫃台才能做的步驟:輸入點單、客製化、上菜節奏、送進廚房、結帳。</figcaption>
         </figure>
       </article>
 
