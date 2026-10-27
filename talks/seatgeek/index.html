@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script>(function(){try{if(localStorage.getItem("pv-ok")!=="1")document.documentElement.classList.add("locked");}catch(e){document.documentElement.classList.add("locked");}})();</script>
+<title>Portfolio review — Min Huei Lu</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+  /* Layout: fixed left rail listing every slide (one word each, grouped by section) + a full-bleed, non-scrolling stage on the right. Same type and neutrals as luminhuei.com so the deck reads as part of the portfolio. */
+  :root {
+    --bg: #fbfbfa;
+    --fg: #121212;
+    --muted: #6f6b66;
+    --faint: #a4a09a;
+    --line: #e6e4e0;
+    --card: #f1f0ec;
+    --rail: #f6f5f2;
+    --accent: #121212;
+    --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --sans: "Instrument Sans", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141414; --fg: #f2f1ee; --muted: #a39f99; --faint: #6e6a65; --line: #2a2a2a; --card: #1e1e1e; --rail: #191919; --accent: #f2f1ee;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141414; --fg: #f2f1ee; --muted: #a39f99; --faint: #6e6a65; --line: #2a2a2a; --card: #1e1e1e; --rail: #191919; --accent: #f2f1ee;
+    color-scheme: dark;
+  }
+  html, body { height: 100%; overflow: hidden; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  .app { display: grid; grid-template-columns: 224px 1fr; height: 100%; overflow: hidden; }
+
+  /* Rail */
+  .rail { background: var(--rail); border-right: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; padding-left: max(16px, env(safe-area-inset-left, 0px)); }
+  .rail-head { padding: 18px 16px 10px 0; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .rail-head .name { font-family: var(--serif); font-size: 18px; letter-spacing: 0.01em; }
+  .rail-head .count { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .rail-list { flex: 1; overflow-y: auto; padding: 0 12px 12px 0; }
+  .sec { margin-top: 10px; }
+  .sec-h { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 8px 4px; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); }
+  .sec-h .min { letter-spacing: 0; text-transform: none; font-variant-numeric: tabular-nums; }
+  .item { display: grid; grid-template-columns: 22px 1fr; align-items: center; gap: 6px; width: 100%; text-align: left; padding: 6px 8px; border: 0; border-radius: 6px; background: transparent; color: var(--fg); font: inherit; font-size: 14px; cursor: pointer; }
+  .item .n { font-size: 11px; color: var(--faint); font-variant-numeric: tabular-nums; }
+  .item:hover { background: var(--card); }
+  .item:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .item.done { color: var(--muted); }
+  .item.done .n { text-decoration: line-through; }
+  .item.cur { background: var(--fg); color: var(--bg); }
+  .item.cur .n { color: var(--bg); opacity: 0.7; }
+  .rail-foot { padding: 10px 12px 14px 0; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); }
+  .rail-foot button { font: inherit; font-size: 12px; padding: 5px 9px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer; }
+  .rail-foot button:focus-visible { outline: 2px solid var(--accent); }
+  .clock { font-variant-numeric: tabular-nums; font-size: 14px; color: var(--fg); }
+  .progress { height: 2px; background: var(--line); }
+  .progress > i { display: block; height: 100%; background: var(--fg); width: 0; transition: width .25s ease; }
+
+  /* Stage */
+  .main { display: grid; grid-template-rows: 0 1fr; min-width: 0; height: 100%; overflow: hidden; }
+  .stage-wrap { display: grid; min-width: 0; min-height: 0; }
+  .stage { width: 100%; height: 100%; background: var(--bg); position: relative; overflow: hidden; container-type: inline-size; }
+  .slide { position: absolute; inset: 0; padding: 5cqw 6cqw 4cqw; padding-right: max(6cqw, env(safe-area-inset-right, 0px)); display: none; flex-direction: column; overflow: hidden; }
+  .slide.on { display: flex; }
+  .eyebrow { font-size: 1.5cqw; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); margin-bottom: 1.6cqw; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: 6cqw; line-height: 1.05; margin: 0 0 2.4cqw; text-wrap: balance; letter-spacing: -0.01em; }
+  h1 em { font-style: italic; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: 4.4cqw; line-height: 1.1; margin: 0 0 2cqw; text-wrap: balance; }
+  p { font-size: 2.1cqw; line-height: 1.45; margin: 0; max-width: 60ch; color: var(--muted); }
+  .big { font-family: var(--serif); font-size: 16cqw; line-height: 1; letter-spacing: -0.02em; }
+  .grid { display: grid; gap: 2cqw; }
+  .cols-2 { grid-template-columns: 1fr 1fr; }
+  .cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .cell { border-top: 1px solid var(--line); padding-top: 1.4cqw; min-width: 0; }
+  .cell .k { font-size: 1.4cqw; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); margin-bottom: 0.8cqw; }
+  .cell .v { font-size: 2cqw; line-height: 1.35; }
+  .img { background: var(--card); border: 1px dashed var(--faint); border-radius: 6px; display: grid; place-items: center; color: var(--faint); font-size: 1.5cqw; letter-spacing: 0.08em; text-transform: uppercase; min-height: 0; }
+  .fill { flex: 1; min-height: 0; }
+  .tf { display: grid; grid-template-columns: repeat(8, 1fr); gap: 1cqw; margin-top: 3cqw; }
+  .tf div { position: relative; padding-top: 3cqw; font-size: 1.7cqw; }
+  .tf div::before { content: ""; position: absolute; top: 0.7cqw; left: 0; width: 1.4cqw; height: 1.4cqw; border-radius: 50%; border: 1px solid var(--fg); background: var(--bg); box-sizing: border-box; }
+  .tf div::after { content: ""; position: absolute; top: 1.35cqw; left: 1.4cqw; right: -1cqw; height: 1px; background: var(--line); }
+  .tf div:last-child::after { display: none; }
+  .tf div.c::before { background: var(--fg); }
+  .tf small { display: block; color: var(--faint); font-size: 1.2cqw; margin-bottom: 0.3cqw; }
+  .row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 1.6cqw; padding: 1.2cqw 0; border-top: 1px solid var(--line); font-size: 1.9cqw; }
+  .row .a { color: var(--muted); }
+  .num { font-family: var(--serif); font-size: 7cqw; line-height: 1; }
+  .lbl { font-size: 1.6cqw; color: var(--muted); margin-top: 0.8cqw; }
+  .foot { margin-top: auto; font-size: 1.5cqw; color: var(--faint); display: flex; justify-content: space-between; }
+
+  /* Tap zones */
+  .zone { position: absolute; top: 0; bottom: 0; width: 50%; background: transparent; border: 0; cursor: pointer; }
+  .zone.l { left: 0; } .zone.r { right: 0; }
+  .zone:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
+
+  @media (max-width: 760px) {
+    .app { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+    .rail { border-right: 0; border-bottom: 1px solid var(--line); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+    .rail-list { display: flex; overflow-x: auto; gap: 4px; padding: 0 0 8px; }
+    .sec { display: flex; gap: 4px; margin-top: 0; }
+    .sec-h { display: none; }
+    .item { width: auto; white-space: nowrap; padding: 5px 8px; }
+    .slide { padding: 6cqw max(16px, env(safe-area-inset-right, 0px)) 5cqw max(16px, env(safe-area-inset-left, 0px)); }
+    .cols-4, .cols-5 { grid-template-columns: 1fr 1fr; }
+    .tf { grid-template-columns: repeat(4, 1fr); row-gap: 3cqw; }
+    .tf div:nth-child(4)::after { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .progress > i { transition: none; } }
+
+  /* Gate: same password as the case studies (gate.js). */
+  html.locked .app { display: none; }
+  html:not(.locked) #pvGate { display: none; }
+  #pvGate { min-height: 100%; display: grid; place-content: center; gap: 12px; padding: 32px max(16px, env(safe-area-inset-right, 0px)) 32px max(16px, env(safe-area-inset-left, 0px)); max-width: 46ch; margin: 0 auto; }
+  #pvGate .k { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); margin: 0; }
+  #pvGate h2 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1.1; margin: 0; }
+  #pvGate p { font-size: 15px; line-height: 1.5; color: var(--muted); margin: 0; }
+  #pvGate a { color: var(--fg); }
+  .vault-gate { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+  .vault-gate input { font: inherit; font-size: 15px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--fg); min-width: 0; }
+  .vault-gate button { font: inherit; font-size: 15px; padding: 10px 16px; border: 0; border-radius: 6px; background: var(--fg); color: var(--bg); cursor: pointer; }
+  .vault-msg { font-size: 13px; color: var(--muted); width: 100%; }
+</style>
+</head>
+<body>
+<div id="pvGate">
+  <p class="k">Protected</p>
+  <h2>Portfolio review deck</h2>
+  <p>Shared privately out of respect for Peblla&rsquo;s confidentiality. The password is on my resume, or <a href="mailto:luminhuei@gmail.com">email me</a> and I&rsquo;ll send it over.</p>
+  <div class="vault-gate">
+    <input type="password" id="pvPw" placeholder="Password" autocomplete="off" aria-label="Password" />
+    <button id="pvBtn" type="button">Unlock</button>
+    <p class="vault-msg" id="pvMsg" hidden>Incorrect password &mdash; please try again.</p>
+  </div>
+</div>
+
+<div class="app">
+  <nav class="rail" aria-label="Slides">
+    <div class="rail-head"><span class="name">SeatGeek R3</span><span class="count" id="count">1 / 24</span></div>
+    <div class="rail-list" id="list"></div>
+    <div class="rail-foot">
+      <span class="clock" id="clock">00:00</span>
+      <span><button type="button" id="tbtn">Start</button> <button type="button" id="treset" aria-label="Reset timer">Reset</button></span>
+    </div>
+    <div class="progress"><i id="bar"></i></div>
+  </nav>
+
+  <div class="main">
+    <div></div>
+    <div class="stage-wrap">
+      <div class="stage" id="stage" aria-live="polite">
+
+        <!-- 0 Cover -->
+        <section class="slide" data-sec="Open" data-word="Cover">
+          <div class="eyebrow">Portfolio review · SeatGeek · Senior Product Designer</div>
+          <h1>Min Huei Lu</h1>
+          <p>Product designer. Seven years in restaurant tech and consumer products. People use my work standing up, in a hurry, with one hand.</p>
+          <div class="grid cols-2" style="margin-top:4cqw">
+            <div class="cell"><div class="k">01 · 15 min</div><div class="v">Mobile POS. A handheld for restaurant servers.</div></div>
+            <div class="cell"><div class="k">02 · 12 min</div><div class="v">Gong cha website. Research, accessibility, numbers.</div></div>
+          </div>
+          <div class="foot"><span>Questions after each section</span><span>Last 15 minutes are yours</span></div>
+        </section>
+
+        <!-- 1 Overview -->
+        <section class="slide" data-sec="Mobile POS" data-word="Overview">
+          <div class="eyebrow">Mobile POS · 2025 · Android</div>
+          <h1>A handheld POS that fits in a server's pocket.</h1>
+          <div class="grid cols-5">
+            <div class="cell"><div class="k">Problem</div><div class="v">One order, three trips to the counter</div></div>
+            <div class="cell"><div class="k">Success metric</div><div class="v">Share of checkouts completed at the table</div></div>
+            <div class="cell"><div class="k">Role</div><div class="v">Only designer, end to end</div></div>
+            <div class="cell"><div class="k">Team</div><div class="v">PM · EM · engineering in China</div></div>
+            <div class="cell"><div class="k">Constraints</div><div class="v">Two months · seventeen desktop functions</div></div>
+          </div>
+          <div class="foot"><span>0% → 64% in three months</span><span>Peblla</span></div>
+        </section>
+
+        <!-- 2 Why -->
+        <section class="slide" data-sec="Mobile POS" data-word="Why">
+          <div class="eyebrow">Why this project existed</div>
+          <div class="grid cols-2 fill">
+            <div class="img">Desktop POS home · 17 tiles</div>
+            <div>
+              <h1>One order, <em>three trips.</em></h1>
+              <p>A countertop outage took a full day, and about $600K in payments couldn't go through. And every day, every order: write at the table, walk to the counter, walk back.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3 Amanda -->
+        <section class="slide" data-sec="Mobile POS" data-word="Amanda">
+          <div class="eyebrow">Who it's for</div>
+          <h1>Amanda's table, start to finish.</h1>
+          <p>Trained, standing, loud room, one hand. Filled dots are the steps that pulled her away from the guest.</p>
+          <div class="tf">
+            <div><small>01</small>Seat</div>
+            <div class="c"><small>02</small>Order</div>
+            <div class="c"><small>03</small>Modifiers</div>
+            <div class="c"><small>04</small>Coursing</div>
+            <div class="c"><small>05</small>Send</div>
+            <div><small>06</small>Serve</div>
+            <div class="c"><small>07</small>Split &amp; pay</div>
+            <div><small>08</small>Close</div>
+          </div>
+          <div class="foot"><span>Goal: muscle memory, not first glance</span><span>Controls stay in the same place on every screen</span></div>
+        </section>
+
+        <!-- 4 Product -->
+        <section class="slide" data-sec="Mobile POS" data-word="Product">
+          <div class="eyebrow">What shipped</div>
+          <div class="grid cols-4 fill">
+            <div class="img">Floor map</div>
+            <div class="img">Ordering</div>
+            <div class="img">Split check</div>
+            <div class="img">Guest tip screen</div>
+          </div>
+          <div class="foot"><span>Black, white, gray. Color in exactly two places.</span><span>Live prototype on request</span></div>
+        </section>
+
+        <!-- 5 Question -->
+        <section class="slide" data-sec="Mobile POS" data-word="Question">
+          <div class="eyebrow">Research → feature prioritization</div>
+          <h1>One question for every feature: <em>does this happen at the table?</em></h1>
+          <div class="grid cols-3">
+            <div class="cell"><div class="k">Moved to the phone</div><div class="v">Ordering · Checkout · Order history</div></div>
+            <div class="cell"><div class="k">Split in half</div><div class="v">Table management: read the floor on the phone, edit the floor plan on the desktop</div></div>
+            <div class="cell"><div class="k">Stayed on the desktop</div><div class="v">Reservations · Staff · Inventory</div></div>
+          </div>
+          <div class="foot"><span>Watched real hands · audited all 17 functions</span><span>Full table in appendix</span></div>
+        </section>
+
+        <!-- 6 Principles -->
+        <section class="slide" data-sec="Mobile POS" data-word="Principles">
+          <div class="eyebrow">Design principles</div>
+          <h2>Rules that run through every screen.</h2>
+          <div class="row"><span class="a">One hand, standing</span><span>Minimum thumb travel</span></div>
+          <div class="row"><span class="a">Peak-hour rush</span><span>Shortest path, no extra steps</span></div>
+          <div class="row"><span class="a">Typing in a hurry</span><span>Keyboard opens the moment it's needed</span></div>
+          <div class="row"><span class="a">Muscle memory</span><span>Controls stay in the same place on every screen</span></div>
+        </section>
+
+        <!-- 7 Audiences -->
+        <section class="slide" data-sec="Mobile POS" data-word="Audiences">
+          <div class="eyebrow">Decision one of four</div>
+          <div class="grid cols-2 fill">
+            <div>
+              <h1>One screen, <em>two audiences.</em></h1>
+              <p>At checkout the phone turns to the guest. Staff screens are dense and fast. Tip and payment screens are minimal, with unmistakable amounts.</p>
+            </div>
+            <div class="grid cols-2"><div class="img">Staff side</div><div class="img">Guest side</div></div>
+          </div>
+        </section>
+
+        <!-- 8 Interruption -->
+        <section class="slide" data-sec="Mobile POS" data-word="Interruption">
+          <div class="eyebrow">Decision two of four</div>
+          <div class="grid cols-2 fill">
+            <div>
+              <h1>Designing for <em>interruption.</em></h1>
+              <p>Another table waves, the kitchen calls, the guest changes their mind. Every core flow pauses and resumes. An unsent order keeps everything.</p>
+            </div>
+            <div class="img">Unsent order, held</div>
+          </div>
+        </section>
+
+        <!-- 9 Color -->
+        <section class="slide" data-sec="Mobile POS" data-word="Color">
+          <div class="eyebrow">Decision three of four</div>
+          <h1>Color only <em>where it matters.</em></h1>
+          <div class="grid cols-2 fill">
+            <div class="img">Table status colors</div>
+            <div class="img">Dish category colors</div>
+          </div>
+          <div class="foot"><span>Anything tappable is a solid block</span><span>Plain text is information only</span></div>
+        </section>
+
+        <!-- 10 Guardrails -->
+        <section class="slide" data-sec="Mobile POS" data-word="Guardrails">
+          <div class="eyebrow">Decision four of four</div>
+          <div class="grid cols-2 fill">
+            <div>
+              <h1>Guardrails where <em>mistakes cost money.</em></h1>
+              <p>Voids and discounts need a manager PIN. The one place I broke my own shortest-path rule.</p>
+            </div>
+            <div class="img">Manager PIN</div>
+          </div>
+        </section>
+
+        <!-- 11 System -->
+        <section class="slide" data-sec="Mobile POS" data-word="System">
+          <div class="eyebrow">The one disagreement</div>
+          <h2>Material 3 or our own? We tested it in a day.</h2>
+          <div class="grid cols-3 fill">
+            <div class="img">Material 3 components</div>
+            <div class="cell"><div class="k">One-day A/B with real servers</div><div class="v">Task completion · time on task · confidence, 1 to 5</div></div>
+            <div class="img">Our restaurant components</div>
+          </div>
+          <div class="foot"><span>Material structure and tokens</span><span>Custom components only where restaurants need them</span></div>
+        </section>
+
+        <!-- 12 Impact -->
+        <section class="slide" data-sec="Mobile POS" data-word="Impact">
+          <div class="eyebrow">Impact · three months after launch</div>
+          <div class="big">64%</div>
+          <p style="margin-top:1cqw">of checkouts moved from the counter to the table, and stayed there.</p>
+          <div class="grid cols-3" style="margin-top:3cqw">
+            <div class="cell"><div class="k">Servers</div><div class="v">Task completion · mis-taps</div></div>
+            <div class="cell"><div class="k">Operations</div><div class="v">Send-to-kitchen to pickup time</div></div>
+            <div class="cell"><div class="k">Business</div><div class="v">Table turns</div></div>
+          </div>
+          <div class="foot"><span>Proves adoption. Doesn't prove faster.</span><span>Guardrails: first group measured, rest on the next roadmap</span></div>
+        </section>
+
+        <!-- 13 Edge -->
+        <section class="slide" data-sec="Mobile POS" data-word="Edge">
+          <div class="eyebrow">Edge case · after launch</div>
+          <div class="grid cols-2 fill">
+            <div>
+              <h1>The table of ten that <em>research never showed.</em></h1>
+              <p>Ten guests, ten amounts, ten methods. Added pay by item and a payment summary: what's paid, what's left.</p>
+            </div>
+            <div class="img">Payment summary</div>
+          </div>
+        </section>
+
+        <!-- 14 Reflection -->
+        <section class="slide" data-sec="Mobile POS" data-word="Reflection">
+          <div class="eyebrow">Reflection</div>
+          <h2>Principles before pixels.</h2>
+          <h2>Error-proof beats beautiful.</h2>
+          <h2>Next time: edge cases and guardrails in research from day one.</h2>
+          <div class="foot"><span>The surprise: coursing</span><span>Sunlight and greasy fingers only show up on the floor</span></div>
+        </section>
+
+        <!-- 15 Funnel -->
+        <section class="slide" data-sec="Gong cha" data-word="Funnel">
+          <div class="eyebrow">Case two</div>
+          <h1>POS is the end of the funnel. <em>This is the top.</em></h1>
+          <p>How people find you, and whether they can use what they find.</p>
+        </section>
+
+        <!-- 16 Overview -->
+        <section class="slide" data-sec="Gong cha" data-word="Overview">
+          <div class="eyebrow">Gong cha website · May 2023 · 50+ pages</div>
+          <h1>From a legal letter to a site anyone can use.</h1>
+          <div class="grid cols-5">
+            <div class="cell"><div class="k">Trigger</div><div class="v">Accessibility lawsuit and settlement</div></div>
+            <div class="cell"><div class="k">Goals</div><div class="v">WCAG · mobile-first · search ranking</div></div>
+            <div class="cell"><div class="k">Role</div><div class="v">Research, art direction, accessibility, SEO</div></div>
+            <div class="cell"><div class="k">Team</div><div class="v">PM · visual designer · IA · engineering</div></div>
+            <div class="cell"><div class="k">Recognition</div><div class="v">Silver A' Design Award</div></div>
+          </div>
+        </section>
+
+        <!-- 17 Problems -->
+        <section class="slide" data-sec="Gong cha" data-word="Problems">
+          <div class="eyebrow">The old site</div>
+          <div class="grid cols-2 fill">
+            <div class="img">Old homepage</div>
+            <div>
+              <h2>Three problems nobody who built it could see.</h2>
+              <div class="row"><span class="a">85% mobile</span><span>Designed for desktop</span></div>
+              <div class="row"><span class="a">Menu</span><span>Text inside images, unreadable to screen readers</span></div>
+              <div class="row"><span class="a">Carousel</span><span>Rotated before a screen reader finished, trapped keyboards</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 18 Research -->
+        <section class="slide" data-sec="Gong cha" data-word="Research">
+          <div class="eyebrow">Beyond the checklist</div>
+          <div class="grid cols-2 fill">
+            <div>
+              <div class="num">5 + 39</div>
+              <div class="lbl">interviews, including visually impaired users, and survey responses → five personas</div>
+            </div>
+            <div>
+              <div class="cell"><div class="k">Four blockers</div><div class="v">Carousel · map filters with no keyboard access · ordering that jumped away with no way back · low contrast</div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 19 Structure -->
+        <section class="slide" data-sec="Gong cha" data-word="Structure">
+          <div class="eyebrow">Research became structure</div>
+          <div class="grid cols-2 fill">
+            <div><div class="num">6 → 6</div><div class="lbl">reasons people visit → sections, all keyboard-usable</div></div>
+            <div><div class="num">9 → 9</div><div class="lbl">things franchisees care about → franchise pages, intro to application</div></div>
+          </div>
+        </section>
+
+        <!-- 20 Decisions -->
+        <section class="slide" data-sec="Gong cha" data-word="Decisions">
+          <div class="eyebrow">Three decisions</div>
+          <div class="grid cols-3 fill">
+            <div><div class="img" style="height:55%">Homepage</div><div class="cell"><div class="k">Homepage</div><div class="v">Carousel removed. Mobile-first scroll.</div></div></div>
+            <div><div class="img" style="height:55%">Menu</div><div class="cell"><div class="k">Menu</div><div class="v">Real text, nutrition, a how-to-order guide.</div></div></div>
+            <div><div class="img" style="height:55%">Cost table</div><div class="cell"><div class="k">Franchise costs</div><div class="v">Every cost on the page, not in a PDF.</div></div></div>
+          </div>
+        </section>
+
+        <!-- 21 Pages -->
+        <section class="slide" data-sec="Gong cha" data-word="Pages">
+          <div class="eyebrow">The pages</div>
+          <div class="grid cols-4 fill">
+            <div class="img">Homepage</div>
+            <div class="img">Menu</div>
+            <div class="img">Store page</div>
+            <div class="img">Franchise</div>
+          </div>
+        </section>
+
+        <!-- 22 Results -->
+        <section class="slide" data-sec="Gong cha" data-word="Results">
+          <div class="eyebrow">Three months after launch · Google Analytics · SEMrush</div>
+          <div class="grid cols-3 fill">
+            <div><div class="num">+251%</div><div class="lbl">sessions</div></div>
+            <div><div class="num">2×</div><div class="lbl">click-through from search</div></div>
+            <div><div class="num">56 → 88</div><div class="lbl">accessibility score, 150+ issues fixed</div></div>
+          </div>
+          <div class="foot"><span>Next time: keep testing with screen reader users after launch</span></div>
+        </section>
+
+        <!-- 23 Close -->
+        <section class="slide" data-sec="Close" data-word="Questions">
+          <div class="eyebrow">Two projects</div>
+          <h1>Both started by watching real people. Both ended with a number we chose before launch.</h1>
+          <div class="grid cols-2"><div class="img">Mobile POS</div><div class="img">Gong cha</div></div>
+          <div class="foot"><span>Questions?</span><span>luminhuei.com · password: portfolio</span></div>
+        </section>
+
+        <button type="button" class="zone l" id="prev" aria-label="Previous slide"></button>
+        <button type="button" class="zone r" id="next" aria-label="Next slide"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var list = document.getElementById('list');
+  var count = document.getElementById('count');
+  var bar = document.getElementById('bar');
+  var mins = { 'Open': '2 min', 'Mobile POS': '15 min', 'Gong cha': '12 min', 'Close': '1 min' };
+  var cur = 0, items = [];
+
+  // Build the rail, grouped by section
+  var secEl = null, lastSec = null;
+  slides.forEach(function (s, i) {
+    var sec = s.getAttribute('data-sec');
+    if (sec !== lastSec) {
+      secEl = document.createElement('div'); secEl.className = 'sec';
+      var h = document.createElement('div'); h.className = 'sec-h';
+      h.innerHTML = '<span>' + sec + '</span><span class="min">' + (mins[sec] || '') + '</span>';
+      secEl.appendChild(h); list.appendChild(secEl); lastSec = sec;
+    }
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'item';
+    b.innerHTML = '<span class="n">' + (i + 1) + '</span><span>' + s.getAttribute('data-word') + '</span>';
+    b.addEventListener('click', function () { go(i); });
+    secEl.appendChild(b); items.push(b);
+  });
+
+  function go(i) {
+    cur = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach(function (s, k) { s.classList.toggle('on', k === cur); });
+    items.forEach(function (b, k) { b.classList.toggle('cur', k === cur); b.classList.toggle('done', k < cur); });
+    count.textContent = (cur + 1) + ' / ' + slides.length;
+    bar.style.width = ((cur + 1) / slides.length * 100) + '%';
+    try { history.replaceState(null, '', '#s' + (cur + 1)); } catch (e) {}
+    var b = items[cur]; if (b && b.scrollIntoView) b.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+  document.getElementById('prev').addEventListener('click', function () { go(cur - 1); });
+  document.getElementById('next').addEventListener('click', function () { go(cur + 1); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(cur + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(cur - 1); }
+    else if (e.key === 'Home') { go(0); } else if (e.key === 'End') { go(slides.length - 1); }
+  });
+  // Swipe on the stage
+  var x0 = null, stage = document.getElementById('stage');
+  stage.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', function (e) {
+    if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) go(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+
+  // Timer
+  var t0 = null, acc = 0, tick = null;
+  var clock = document.getElementById('clock'), tbtn = document.getElementById('tbtn');
+  function fmt(ms) { var s = Math.floor(ms / 1000); var m = Math.floor(s / 60); s = s % 60; return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s; }
+  function render() { clock.textContent = fmt(acc + (t0 ? Date.now() - t0 : 0)); }
+  tbtn.addEventListener('click', function () {
+    if (t0) { acc += Date.now() - t0; t0 = null; clearInterval(tick); tbtn.textContent = 'Start'; }
+    else { t0 = Date.now(); tick = setInterval(render, 500); tbtn.textContent = 'Pause'; }
+    render();
+  });
+  document.getElementById('treset').addEventListener('click', function () { acc = 0; t0 = null; clearInterval(tick); tbtn.textContent = 'Start'; render(); });
+
+  var m = /^#s(\d+)$/.exec(location.hash || '');
+  go(m ? parseInt(m[1], 10) - 1 : 0);
+})();
+</script>
+<script src="../../gate.js?v=20260919a"></script>
+</body>
+</html>
