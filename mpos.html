@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=20261023a" />
-  <link rel="stylesheet" href="case.css?v=20261026e" />
+  <link rel="stylesheet" href="case.css?v=20261026f" />
   <script src="analytics.js?v=20260919d"></script>
   <meta name="robots" content="noindex" />
   <script>(function(){try{if(localStorage.getItem("pv-ok")!=="1")document.documentElement.classList.add("locked");}catch(e){document.documentElement.classList.add("locked");}})();</script>
@@ -179,6 +179,33 @@
           <p>Some features were split down the middle. Table management is the clearest case: editing the floor plan is a manager&rsquo;s task, done once, so it stayed on the desktop. Reading the floor &mdash; who sat down when, who&rsquo;s running long, which table is empty &mdash; is a server&rsquo;s task, every few minutes. That moved to the phone as a bird&rsquo;s-eye view, color-coded by status.</p>
           <p>The cost is a less complete first version. But Mobile POS was never meant to replace the terminal. It exists to <strong>perfect the part worth carrying</strong> &mdash; and the scope was agreed with the PM and engineering before a single screen was drawn.</p>
         </div>
+        <figure class="reveal fig-full prio-fig">
+          <table class="prio" aria-label="Seventeen desktop functions sorted by whether they happen at the table">
+            <thead>
+              <tr><th scope="col">Capability</th><th scope="col">Where it happens</th><th scope="col">Mobile</th><th scope="col">Desktop</th></tr>
+            </thead>
+            <tbody>
+              <tr class="prio-group"><th scope="rowgroup" colspan="4">Moved to the phone</th></tr>
+              <tr><td>Tableside ordering, modifiers, coursing</td><td class="where">At the table, every order</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Send to kitchen &amp; KDS status</td><td class="where">At the table, every order</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Split check, tip, payment</td><td class="where">At the table, every check</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Order history</td><td class="where">At the table, several times a shift</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Plate scanning (conveyor-belt sushi)</td><td class="where">At the table, every check</td><td class="yes">✓</td><td class="no">—</td></tr>
+              <tr class="prio-group"><th scope="rowgroup" colspan="4">Split in half</th></tr>
+              <tr><td>Table management &mdash; read the floor, seat a party</td><td class="where">At the table, every few minutes</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Table management &mdash; edit the floor plan</td><td class="where">Manager, once</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Members &mdash; redeem points at checkout</td><td class="where">At the table</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Members &mdash; manage accounts</td><td class="where">Back office</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr class="prio-group"><th scope="rowgroup" colspan="4">Stayed on the desktop</th></tr>
+              <tr><td>Reservations &amp; waitlist</td><td class="where">At the host stand</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Gift cards</td><td class="where">At the counter</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Quick service &amp; online orders</td><td class="where">At the counter</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Reports, shifts, cash log, cash drawer</td><td class="where">Manager, once a day</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Admin, settings, printers, terminals, buzzer</td><td class="where">Setup, once</td><td class="no">—</td><td class="yes">✓</td></tr>
+            </tbody>
+          </table>
+          <figcaption>The seventeen desktop functions, sorted by one question. The desktop keeps everything; the phone carries only what happens at the table &mdash; plus one thing the desktop never had, plate scanning.</figcaption>
+        </figure>
       </article>
 
       <article class="step">

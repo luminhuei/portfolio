@@ -1335,6 +1335,26 @@ html[lang="zh-Hant"] .toc-row:hover .toc-title { font-style: normal; color: var(
   .task-flow li:nth-child(2n)::after { display: none; }
 }
 
+/* Feature prioritization table (mpos 04) */
+.case figure.prio-fig { margin-top: 24px; }
+.prio { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.45; }
+.prio th, .prio td { text-align: left; vertical-align: top; padding: 11px 12px; border-bottom: 1px solid #e4e4e1; }
+.prio thead th { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); padding-top: 0; }
+.prio td:first-child { color: var(--ink); font-weight: 500; }
+.prio td.where { color: #6b6964; }
+.prio th:nth-child(3), .prio th:nth-child(4), .prio td.yes, .prio td.no { text-align: center; width: 88px; white-space: nowrap; }
+.prio td.yes { color: var(--ink); }
+.prio td.no { color: #c9c6c0; }
+.prio tr.prio-group th { padding: 22px 12px 8px; font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink); }
+.prio tbody tr:last-child td { border-bottom: 0; }
+.case figure.prio-fig figcaption { margin-top: 12px; }
+@media (max-width: 600px) {
+  .prio { font-size: 14px; }
+  .prio th, .prio td { padding: 10px 8px; }
+  .prio td.where, .prio thead th:nth-child(2) { display: none; }
+  .prio th:nth-child(3), .prio th:nth-child(4), .prio td.yes, .prio td.no { width: 64px; }
+}
+
 /* Design principles table (mpos 05) */
 .case figure.principles-fig { margin-top: 24px; }
 .principles { width: 100%; border-collapse: collapse; font-size: 16px; line-height: 1.5; }
