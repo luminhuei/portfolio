@@ -1,8 +1,9 @@
 /* ---------------------------------------------------------------------------
    tablet-06-menu-nav — the ORIGINAL tier-unlock demo, modified only to add the
-   navigation Mina asked for. Strictly black/white/grey (white-label product —
+   navigation Mina asked for. Neutral interface (white-label product —
    brand colour belongs to the merchants, the chrome stays neutral). Card
-   style, dish names, tags and tier sections are the original, untouched.
+   style, tags and tier sections retain their original structure.
+   Approved food photos and circular click cues match the SeatGeek deck.
 
    Additions (Decision 04 shows the first two off; Decision 05 the tier tour):
      • top scroller = major DINING MODES (Hot Pot / BBQ / Sushi / Drinks /
@@ -102,10 +103,101 @@
     "Desserts": ["All", "Cakes", "Ice Cream", "Fruit"],
   };
 
-  /* card + tierSection — UNCHANGED from the original */
+  /* Approved menu photographs reused from the SeatGeek grid exploration. */
+  const photoBase = new URL("assets/tablet-menu/", document.currentScript.src);
+  const FOOD_PHOTOS = {
+    "Marinated Short Rib": "marinated-short-rib.jpg",
+    "Beef Brisket Slices": "beef-brisket.jpg",
+    "Spicy Chicken Bulgogi": "spicy-chicken.jpg",
+    "A5 Wagyu Striploin": "wagyu-striploin.jpg",
+    "Pork Belly Samgyeopsal": "pork-belly.jpg",
+    "Mala Spicy Broth": "mala-broth.jpg",
+    "Garlic Shrimp Skewers": "garlic-shrimp.jpg",
+    "Pork Bone Broth": "pork-bone-broth.jpg",
+    "Fatty Beef Roll": "fatty-beef-roll.jpg",
+    "Fresh Shrimp Paste": "shrimp-paste.jpg",
+    "Seasonal Veggie Platter": "veggie-platter.jpg",
+    "Sliced Ribeye": "sliced-ribeye.jpg",
+    "Salmon Nigiri": "salmon-nigiri.jpg",
+    "Handmade Fish Tofu": "fish-tofu.jpg",
+    "Prime Ribeye": "prime-ribeye.jpg",
+    "Bluefin Tuna Nigiri": "tuna-nigiri.jpg",
+    "Napa & Mushroom Set": "napa-mushroom.jpg",
+    "Spicy Tuna Roll": "spicy-tuna-roll.jpg",
+    "Hand-pulled Udon": "udon.jpg",
+    "Shrimp Tempura": "shrimp-tempura.jpg",
+    "Dragon Roll": "dragon-roll.jpg",
+    "Miso Soup": "miso-soup.jpg",
+    "Salmon Sashimi": "salmon-sashimi.jpg",
+    "Peach Green Tea": "peach-green-tea.jpg",
+    "Iced Barley Tea": "barley-tea.jpg",
+    "Fresh Lemonade": "lemonade.jpg",
+    "Chirashi Bowl": "chirashi.jpg",
+    "Yuzu Soda": "yuzu-soda.jpg",
+    "Draft Beer": "draft-beer.jpg",
+    "Cold Brew Coffee": "cold-brew.jpg",
+    "Matcha Lava Cake": "matcha-cake.jpg",
+    "Egg Tart": "egg-tart.jpg",
+    "Black Sesame Ice Cream": "sesame-icecream.jpg",
+    "Mango Mochi": "mango-mochi.jpg",
+    "Seasonal Fruit Plate": "fruit-plate.jpg",
+    "Brown Sugar Boba": "boba.jpg",
+    "Beef Tongue with Scallion": "beef-tongue.jpg",
+    "Iberico Pork Collar": "iberico-pork-collar.jpg",
+    "Miso Black Cod": "miso-black-cod.jpg",
+    "Herb Lamb Chops": "herb-lamb-chops.jpg",
+    "Jumbo Tiger Prawns": "jumbo-tiger-prawns.jpg",
+    "Wagyu Chateaubriand": "wagyu-chateaubriand.jpg",
+    "Truffle Wagyu Nigiri": "truffle-wagyu-nigiri.jpg",
+    "Wagyu Zabuton": "wagyu-zabuton.jpg",
+    "A5 Wagyu Ribcap": "a5-wagyu-ribcap.jpg",
+    "Wagyu Karubi Short Rib": "wagyu-karubi-short-rib.jpg"
+};
+  const photo = (name, className = "tdv-img") => FOOD_PHOTOS[name]
+    ? `<img class="${className}" src="${new URL(FOOD_PHOTOS[name], photoBase).href}" alt="" width="640" height="640" loading="lazy" decoding="async">`
+    : `<div class="${className}"></div>`;
+
+  /* A non-interactive overlay follows manual and automatic button actions. */
+  function createClickCue(device) {
+    const marker = document.createElement("span");
+    marker.className = "tdv-click-cue";
+    marker.setAttribute("aria-hidden", "true");
+    device.append(marker);
+    let animation;
+    const pulse = (x, y) => {
+      animation?.cancel();
+      marker.style.left = `${x}%`;
+      marker.style.top = `${y}%`;
+      const base = "translate(-50%, -50%)";
+      animation = marker.animate([
+        { opacity: .95, transform: `${base} scale(${reduced ? 1 : .7})` },
+        { opacity: .8, transform: `${base} scale(1)`, offset: .35 },
+        { opacity: 0, transform: `${base} scale(${reduced ? 1 : 1.2})` }
+      ], { duration: 850, easing: "ease-out" });
+    };
+    const atElement = (target) => {
+      if (!target) return;
+      const box = device.getBoundingClientRect(), rect = target.getBoundingClientRect();
+      if (!box.width || !box.height || !rect.width || !rect.height) return;
+      pulse(100 * (rect.x + rect.width / 2 - box.x) / box.width,
+        100 * (rect.y + rect.height / 2 - box.y) / box.height);
+    };
+    device.addEventListener("click", (event) => {
+      const target = event.target.closest("button, .tdv-tab, .tdv-scrim");
+      if (!target) return;
+      if (!event.detail) return atElement(target);
+      const box = device.getBoundingClientRect();
+      if (!box.width || !box.height) return;
+      pulse(100 * (event.clientX - box.x) / box.width,
+        100 * (event.clientY - box.y) / box.height);
+    }, true);
+    return { atElement };
+  }
+
+  /* Cards retain their existing layout with food photography. */
   const card = ([name, tag]) => `
     <div class="tdv-card">
-      <div class="tdv-media"><div class="tdv-img"></div><span class="tdv-lock">${I.lock}</span><button class="tdv-add" aria-label="Add ${name}">${I.plus}</button></div>
+      <div class="tdv-media">${photo(name)}<span class="tdv-lock">${I.lock}</span><button class="tdv-add" aria-label="Add ${name}">${I.plus}</button></div>
       <div class="tdv-text">
         <p class="tdv-name">${name}</p>
         ${tag ? `<span class="tdv-tag">${tag}</span>` : `<span class="tdv-tag" style="visibility:hidden">·</span>`}
@@ -195,14 +287,14 @@
                 <div class="tdv-carthead"><b>Shopping Cart (<span class="tdv-count">2</span>)</b><button class="tdv-cartclose" aria-label="Close">${I.close}</button></div>
                 <div class="tdv-cartscroll">
                   <div class="tdv-item">
-                    <span class="tdv-thumb"></span>
+                    ${photo("Marinated Short Rib", "tdv-thumb")}
                     <div class="tdv-itembody">
                       <p class="tdv-itemname">Marinated Short Rib</p>
                       <div class="tdv-itemfoot"><span class="tdv-stepper"><button class="tdv-step">${I.minus}</button><span class="tdv-qty">1</span><button class="tdv-step">${I.plus}</button></span></div>
                     </div>
                   </div>
                   <div class="tdv-item">
-                    <span class="tdv-thumb"></span>
+                    ${photo("Pork Belly Samgyeopsal", "tdv-thumb")}
                     <div class="tdv-itembody">
                       <p class="tdv-itemname">Pork Belly Samgyeopsal</p>
                       <div class="tdv-itemfoot"><span class="tdv-stepper"><button class="tdv-step">${I.minus}</button><span class="tdv-qty">2</span><button class="tdv-step">${I.plus}</button></span></div>
@@ -221,6 +313,7 @@
 
     const stage = root.querySelector(".demo-stage");
     const device = root.querySelector(".tdv");
+    const clickCue = createClickCue(device);
     const scroller = root.querySelector(".tdv-scroll");
     const sideEl = root.querySelector(".tdv-side");
     const contentEl = root.querySelector(".tdv-content");
@@ -247,17 +340,22 @@
     }, 1000);
 
     /* ---- top modes ↔ left categories ---- */
-    const setMode = (mode) => {
+    const setMode = (mode, showCue = false) => {
+      if (showCue) clickCue.atElement([...root.querySelectorAll(".tdv-tab")].find(e => e.textContent === mode));
       root.querySelectorAll(".tdv-tab").forEach((e) => e.classList.toggle("on", e.textContent === mode));
       sideEl.innerHTML = sideFor(mode);
       if (focus === "nav") { contentEl.innerHTML = flatSection(mode); scroller.scrollTop = 0; }
     };
-    const setSub = (label) => root.querySelectorAll(".tdv-subnav").forEach((e) => e.classList.toggle("on", e.textContent === label));
+    const setSub = (label, showCue = false) => {
+      if (showCue) clickCue.atElement([...root.querySelectorAll(".tdv-subnav")].find(e => e.textContent === label));
+      root.querySelectorAll(".tdv-subnav").forEach((e) => e.classList.toggle("on", e.textContent === label));
+    };
     root.querySelectorAll(".tdv-tab").forEach((e) => e.addEventListener("click", () => setMode(e.textContent)));
     sideEl.addEventListener("click", (ev) => { const b = ev.target.closest(".tdv-subnav"); if (b) setSub(b.textContent); });
 
     /* ---- density toggle ---- */
-    const setCols = (n) => {
+    const setCols = (n, showCue = false) => {
+      if (showCue) clickCue.atElement(root.querySelector(`[data-cols="${n}"]`));
       device.style.setProperty("--cols", n);
       device.classList.toggle("tdv-c4", n === 4);
       root.querySelectorAll(".tdv-dbtn").forEach((b) => b.classList.toggle("on", +b.dataset.cols === n));
@@ -265,7 +363,10 @@
     root.querySelectorAll(".tdv-dbtn").forEach((b) => b.addEventListener("click", () => setCols(+b.dataset.cols)));
 
     /* ---- collapsible cart ---- */
-    const openCart = (v) => { cartEl.classList.toggle("tdv-open", v); scrimEl.classList.toggle("tdv-on", v); };
+    const openCart = (v, showCue = false) => {
+      if (showCue) clickCue.atElement(root.querySelector(v ? ".tdv-cartfab" : ".tdv-cartclose"));
+      cartEl.classList.toggle("tdv-open", v); scrimEl.classList.toggle("tdv-on", v);
+    };
     root.querySelector(".tdv-cartfab").addEventListener("click", () => openCart(!cartEl.classList.contains("tdv-open")));
     root.querySelector(".tdv-cartclose").addEventListener("click", () => openCart(false));
     scrimEl.addEventListener("click", () => openCart(false));
@@ -322,6 +423,7 @@
     const pressUnlock = async (key) => {
       if (!tierEls[key].classList.contains("tdv-locked")) return;
       const btn = tierEls[key].querySelector(".tdv-unlockbtn");
+      clickCue.atElement(btn);
       btn.classList.add("tdv-press"); await sleep(220); btn.classList.remove("tdv-press"); await sleep(160);
       setLocked(key, false);
     };
@@ -343,10 +445,10 @@
     async function navCycle() {
       for (;;) {
         await waitOnStage(); setMode("BBQ"); setCols(3); await sleep(2400);
-        for (const m of ["Hot Pot", "Sushi", "Drinks", "BBQ"]) { await waitOnStage(); setMode(m); await sleep(1900); }
-        await waitOnStage(); setSub("Beef"); await sleep(1400); setSub("All"); await sleep(900);
-        await waitOnStage(); setCols(4); await sleep(2600); setCols(3); await sleep(2000);
-        await waitOnStage(); openCart(true); await sleep(2200); openCart(false); await sleep(1400);
+        for (const m of ["Hot Pot", "Sushi", "Drinks", "BBQ"]) { await waitOnStage(); setMode(m, true); await sleep(1900); }
+        await waitOnStage(); setSub("Beef", true); await sleep(1400); setSub("All", true); await sleep(900);
+        await waitOnStage(); setCols(4, true); await sleep(2600); setCols(3, true); await sleep(2000);
+        await waitOnStage(); openCart(true, true); await sleep(2200); openCart(false, true); await sleep(1400);
       }
     }
 

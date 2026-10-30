@@ -1816,6 +1816,23 @@
 .tdv-hasnav.tdv-c4 .tdv-name { font-size: 14px; line-height: 20px; }
 .tdv-hasnav.tdv-c4 .tdv-h { font-size: 28px; }
 
+/* Shared with the SeatGeek presentation: food photos and click feedback. */
+.tdv-hasnav img.tdv-img, .tdv-hasnav img.tdv-thumb { display: block; object-fit: cover; }
+.tdv-click-cue {
+  position: absolute;
+  z-index: 100;
+  width: 4.7%;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  border: 2px solid rgba(255, 255, 255, .92);
+  border-radius: 50%;
+  background: rgba(35, 39, 43, .22);
+  box-shadow: 0 0 0 1.5px rgba(35, 39, 43, .48);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* cart collapsed to a bottom-right icon; opens as a right slide-in drawer */
 .tdv-hasnav .tdv-cart {
   position: absolute; top: 0; right: 0; bottom: 0; width: 372px; flex: none; z-index: 7;

@@ -81,3 +81,7 @@ HTML 錨點 `#demo-{id}` · 檔案 `demos/{id}.js` · CSS 寫進 `demos/demos.cs
 
 01 Menu browsing · 02 Tier lock badges · 03 Order history · 04 Round control · 06 Poster prototype vs shipped(Figma frame 待定)· 07 Round limit state。
 其他 case:mpos-05-staff-vs-guest(版位比例 1000:560;**Figma node-id 與原生尺寸未記錄,動工前先跟 Mina 要**)。
+
+## 2026-10-30: Tablet 04 / 05 photography and click cues
+
+`tablet-06-menu-nav` powers both current figures, in English and Chinese. Mina approved replacing their gray photo placeholders: all 46 unique dishes and the cart thumbnails now have food photos. 36 are reused from the SeatGeek Prototype B collection; ten premium dish images were generated to preserve all existing dish names (prompts in `demos/assets/tablet-menu/README.md`). Circular non-interactive click cues follow manual mouse/touch/keyboard activation and the automatic mode, category, density, cart, and tier-unlock demonstrations. Reduced motion retains manual interaction and stationary fading cues. The existing three/four-column density choice is preserved.
